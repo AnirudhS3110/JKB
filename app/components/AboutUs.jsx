@@ -106,7 +106,7 @@ export default function AboutUsSection() {
                     setImageErrors(prev => ({...prev, [key]: true}));
                   }}
                 />
-                <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+                <div className="absolute inset-0 opacity-65 bg-black "></div>
               </div>
               {!imagesLoaded[key] && !imageErrors[key] && (
                 <div className="absolute inset-0 z-10 bg-black flex items-center justify-center">
