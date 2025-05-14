@@ -122,16 +122,16 @@ export default function LandingPage() {
   const expandingORotateY = useTransform(scrollYProgress, [0.44, 0.55], [0, -15]);
   const expandingOZ = useTransform(scrollYProgress, [0.44, 0.55], [0, 100]);
   
-  // HomePage reveal animation
+  // HomePage reveal animation - MODIFIED for smoother transition
   const homePageY = useTransform(
     scrollYProgress, 
-    [0.75, 0.95], 
+    [0.70, 0.98], // Wider range for slower transition
     ["100vh", "0vh"]
   );
   
   const homePageOpacity = useTransform(
     scrollYProgress,
-    [0.75, 0.85],
+    [0.70, 0.90], // Wider range for slower fade-in
     [0, 1]
   );
   
@@ -203,15 +203,16 @@ export default function LandingPage() {
     }
   }, [isMounted]);
   
+  // MODIFIED trigger points for smoother transition
   useEffect(() => {
     const unsubscribe = scrollYProgress.onChange(v => {
-      if (v > 0.75) {
+      if (v > 0.70) { // Start showing homepage earlier
         setShowHomepage(true);
       } else {
         setShowHomepage(false);
       }
       
-      if (v > 0.97) {
+      if (v > 0.98) { // Delay completion for smoother transition
         setAnimationComplete(true);
         setHomePageScrollEnabled(true);
       } else {
@@ -542,7 +543,7 @@ export default function LandingPage() {
         )}
       </div>
       
-      {/* HomePage Content - Appears from bottom with scroll */}
+      {/* HomePage Content - Appears from bottom with scroll - ENHANCED with smoother transitions */}
       <motion.div
         ref={homePageRef}
         className="relative w-full"
@@ -551,6 +552,10 @@ export default function LandingPage() {
           opacity: homePageOpacity,
           zIndex: 100,
           pointerEvents: animationComplete ? "auto" : "none"
+        }}
+        transition={{
+          y: { duration: 2.2, ease: [0.16, 1, 0.3, 1] }, // Slower, custom easing curve
+          opacity: { duration: 2.6, ease: [0.33, 1, 0.68, 1] } // Even slower fade with nice easing
         }}
       >
         {/* HomePage container without scroll overflow */}
