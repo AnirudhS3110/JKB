@@ -9,12 +9,14 @@ export default function LandingPage() {
   const [animationComplete, setAnimationComplete] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const [scrollRatio, setScrollRatio] = useState(0);
+  const [homePageScrollEnabled, setHomePageScrollEnabled] = useState(false);
   const containerRef = useRef(null);
+  const animationSectionRef = useRef(null);
   const videoRef = useRef(null);
   const mainVideoRef = useRef(null);
   const secondORef = useRef(null);
   const innovationRef = useRef(null);
-  const overlayRef = useRef(null);
+  const homePageRef = useRef(null);
   
   // Handle client-side mounting to prevent hydration issues
   useEffect(() => {
@@ -57,23 +59,24 @@ export default function LandingPage() {
     };
   }, [isMounted]);
   
+  // Main scroll progress for the animation section
   const { scrollYProgress } = useScroll({
-    target: containerRef,
+    target: animationSectionRef,
     offset: ["start start", "end start"]
   });
   
-  // For overlay effect
-  const { scrollYProgress: overlayScrollProgress } = useScroll({
-    target: overlayRef,
-    offset: ["start end", "end start"]
+  // Full page scroll progress
+  const { scrollYProgress: fullPageScrollProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
   });
   
-  // Track scroll progress for fine-grained control (Farm Africa style)
+  // Track scroll progress for fine-grained control
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     setScrollRatio(latest);
   });
   
-  // Helper function for mapping scroll values (similar to Farm Africa's approach)
+  // Helper function for mapping scroll values
   const mapScrollToValue = (ratio, start, end) => 
     Math.min(1, Math.max(0, (ratio - start) / (end - start)));
   
@@ -85,7 +88,6 @@ export default function LandingPage() {
   const headingRotateX = useTransform(scrollYProgress, [0.3, 0.45], [0, -10]);
   
   // Individual letter reveal animations with perspective
-  // Each letter appears as we scroll, then the word completes
   const letter1Opacity = useTransform(scrollYProgress, [0.05, 0.09], [0, 1]); // I
   const letter2Opacity = useTransform(scrollYProgress, [0.08, 0.12], [0, 1]); // N
   const letter3Opacity = useTransform(scrollYProgress, [0.11, 0.15], [0, 1]); // N
@@ -120,22 +122,26 @@ export default function LandingPage() {
   const expandingORotateY = useTransform(scrollYProgress, [0.44, 0.55], [0, -15]);
   const expandingOZ = useTransform(scrollYProgress, [0.44, 0.55], [0, 100]);
   
-  // HomePage overlay effect - Blue Forest style
-  const overlayY = useTransform(overlayScrollProgress, [0, 0.5], ["100%", "0%"]);
-  const overlayOpacity = useTransform(overlayScrollProgress, [0, 0.3], [0, 1]);
-  
-  // After the overlay is fully visible, we want it to scroll normally
-  const overlayFixed = useTransform(
-    overlayScrollProgress,
-    (value) => value <= 0.5
+  // HomePage reveal animation
+  const homePageY = useTransform(
+    scrollYProgress, 
+    [0.75, 0.95], 
+    ["100vh", "0vh"]
   );
   
-  // Text reveal animations - defined at the top level
+  const homePageOpacity = useTransform(
+    scrollYProgress,
+    [0.75, 0.85],
+    [0, 1]
+  );
+  
+  // Text reveal animations
   const firstTextClipPath = useTransform(
     scrollYProgress, 
     [0.60, 0.80], 
     ["inset(0% 100% 0% 0%)", "inset(0% 0% 0% 0%)"]
   );
+  
   const firstTextX = useTransform(
     scrollYProgress,
     [0.60, 0.80],
@@ -147,6 +153,7 @@ export default function LandingPage() {
     [0.80, 0.96], 
     ["inset(0% 100% 0% 0%)", "inset(0% 0% 0% 0%)"]
   );
+  
   const secondTextX = useTransform(
     scrollYProgress,
     [0.80, 0.96],
@@ -160,7 +167,7 @@ export default function LandingPage() {
     // Update second O position for the expanding O animation with continuous tracking
     if (secondORef.current && isMounted) {
       const updatePosition = () => {
-        if (!secondORef.current) return; // Add null check here
+        if (!secondORef.current) return;
         const rect = secondORef.current.getBoundingClientRect();
         // Use functional update to avoid dependency on previous state
         setSecondOPosition(() => ({
@@ -194,30 +201,63 @@ export default function LandingPage() {
         window.removeEventListener('resize', handleResize);
       };
     }
-  }, [isMounted]); // Remove scrollRatio from dependencies
+  }, [isMounted]);
   
   useEffect(() => {
     const unsubscribe = scrollYProgress.onChange(v => {
-      if (v > 0.75) {  // Adjusted timing to match slower video transition
+      if (v > 0.75) {
         setShowHomepage(true);
       } else {
         setShowHomepage(false);
       }
       
-      if (v > 0.9) {
+      if (v > 0.97) {
         setAnimationComplete(true);
+        setHomePageScrollEnabled(true);
       } else {
         setAnimationComplete(false);
+        setHomePageScrollEnabled(false);
       }
     });
     
     return () => unsubscribe();
   }, [scrollYProgress]);
   
+  // Handle the transition between main scroll and HomePage scroll
+  useEffect(() => {
+    const handleScroll = (e) => {
+      // Prevent default scroll behavior when we want HomePage to take over
+      if (animationComplete && !homePageScrollEnabled) {
+        const scrollPos = window.scrollY;
+        const threshold = animationSectionRef.current.offsetHeight;
+        
+        if (scrollPos >= threshold) {
+          // Set fixed position at the transition point
+          document.body.style.overflow = 'hidden';
+          setHomePageScrollEnabled(true);
+        }
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [animationComplete, homePageScrollEnabled]);
+  
+  // Unlock scrolling once animation is complete and user scrolls to HomePage
+  useEffect(() => {
+    if (homePageScrollEnabled) {
+      document.body.style.overflow = '';
+    }
+  }, [homePageScrollEnabled]);
+  
   return (
-    <>
-      <div ref={containerRef} className="relative h-[400vh] bg-[#000000]">
-        {/* Main container with Farm Africa style sticky viewport */}
+    <div ref={containerRef} className="relative min-h-screen">
+      {/* Animation section - Fixed height for scroll-based animations */}
+      <div ref={animationSectionRef} className="relative h-[500vh]">
+        {/* Fixed viewport elements */}
         <div className="fixed top-0 left-0 w-full h-screen flex flex-col items-center justify-center overflow-visible will-change-transform">
           {/* Heading Text with 3D transforms */}
           <motion.div 
@@ -502,28 +542,22 @@ export default function LandingPage() {
         )}
       </div>
       
-      {/* Overlay section with HomePage content - Blue Forest style */}
-      <div ref={overlayRef} className="min-h-[300vh]">
-        <motion.div
-          className="fixed top-0 left-0 w-full h-screen z-40 bg-[#F8F9FA] overflow-y-auto"
-          style={{ 
-            y: overlayY,
-            opacity: overlayOpacity,
-            position: "fixed" // Keep it fixed to prevent it from scrolling away
-          }}
-          transition={{ 
-            duration: 0.5,
-            ease: [0.22, 1, 0.36, 1]
-          }}
-        >
+      {/* HomePage Content - Appears from bottom with scroll */}
+      <motion.div
+        ref={homePageRef}
+        className="relative w-full"
+        style={{ 
+          y: homePageY,
+          opacity: homePageOpacity,
+          zIndex: 100,
+          pointerEvents: animationComplete ? "auto" : "none"
+        }}
+      >
+        {/* HomePage container without scroll overflow */}
+        <div className={`w-full bg-[#F8F9FA] ${homePageScrollEnabled ? "" : "h-screen overflow-hidden"}`}>
           {isMounted && <HomePage />}
-        </motion.div>
-        
-        {/* Additional scrollable space after the HomePage is shown */}
-        <div className="pt-[100vh]">
-          {/* This empty space allows scrolling to continue after HomePage is shown */}
         </div>
-      </div>
-    </>
+      </motion.div>
+    </div>
   );
 }
