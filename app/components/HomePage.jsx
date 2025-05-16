@@ -8,6 +8,13 @@ import NewsResources from './NewsResources';
 import FactsFigures from './FactsFigures';
 import PersuasuveSection from './PersuasuveSection';
 import Footer from './Footer';
+import WhatWeDo from './WhatWeDo';
+import ImpactCounter from './ImpactCounter';
+import AppleCardsCarouselDemo from '@/components/apple-cards-carousel-demo';
+import ForestHero from './ForestHero';
+import HeroParallaxDemo from '@/components/ui/hero-parallax-demo';
+import FounderTribute from './FounderTribute';
+import TimelineDemo from '@/components/timeline-demo';
 
 export default function HomePage() {
   const videoRef = useRef(null);
@@ -65,14 +72,14 @@ export default function HomePage() {
               transition={{ duration: 1 }}
               className="mb-20"
             >
-              <h2 className="text-white text-6xl sm:text-7xl md:text-8xl font-semibold leading-tight tracking-tighter">
+              <h2 className="text-white text-6xl sm:text-7xl md:text-8xl font-cormorant font-semibold leading-tight tracking-tighter">
                 Change isn't coming.
               </h2>
-              <h2 className="text-black text-6xl sm:text-7xl md:text-8xl font-semibold mt-2 leading-tight tracking-tighter">
+              <h2 className="text-black text-6xl sm:text-7xl md:text-8xl font-cormorant font-semibold mt-2 leading-tight tracking-tighter">
                 <span className="text-balck">It's </span><span className='text-white'>here</span>  <span className="text-black">.</span>
               </h2>
               
-              <p className="text-white text-xl md:text-3xl mt-8 max-w-3xl font-light leading-relaxed">
+              <p className="text-white text-xl md:text-3xl mt-8 max-w-3xl font-montserrat font-light leading-relaxed">
                 Join the campaigns that don't just promise tomorrow.
                 <br />They deliver it today.
               </p>
@@ -90,47 +97,45 @@ export default function HomePage() {
             </motion.div>
           </div>
         </section>
-        
-        {/* Main content section - Based on second image */}
-        {/* <section 
-          ref={mainContentRef}
-          className="min-h-screen bg-white relative overflow-hidden"
-        >
-          <div className="container mx-auto px-6 py-40">
-            <motion.div
-              className="max-w-5xl"
-              style={{ 
-                opacity: mainTextOpacity,
-                y: taglineY 
-              }}
-            >
-              <h2 className="text-gray-700 text-6xl sm:text-7xl md:text-8xl font-bold mb-10">
-                sustainable initiatives
-              </h2>
-              
-              <h2 className="text-black text-6xl sm:text-7xl md:text-8xl font-bold mb-20">
-                is the answer
-              </h2>
-              
-              <p className="text-gray-900 text-xl md:text-2xl max-w-3xl">
-                What if there was a way to empower lives through sustainable initiatives?
-              </p>
-            </motion.div>
-          </div>
-        </section> */}
-        
-        {/* Upcoming Campaigns Section */}
-        <section id="upcoming-campaigns" className="relative">
+
+         {/* Upcoming Campaigns Section */}
+         <section id="upcoming-campaigns" className="relative">
           <UpcomingCampaigns />
         </section>
-        <PersuasuveSection />
+        
+        {/* Hero Parallax Section */}
+        <section className="bg-white relative">
+          <HeroParallaxDemo />
+        </section>
+
+        <FounderTribute/>
+
+        
+        {/* Apple Cards Carousel Section */}
+        <section className="bg-white relative">
+          <AppleCardsCarouselDemo />
+        </section>
+        
+       
+        {/* <PersuasuveSection /> */}
         
         {/* Facts and Figures Section */}
         {/* <section id="facts-figures" className="relative">
           <FactsFigures />
         </section> */}
 
-        <AboutUsSection />
+        {/* <AboutUsSection /> */}
+        <WhatWeDo/>
+        <ImpactCounter/>
+        <ForestHero/>
+        
+        {/* Timeline Section */}
+        <section id="our-journey" className="relative w-full">
+          <TimelineDemo 
+            title="Our Journey"
+            description="Tracking our progress and milestones in building a better future through sustainable initiatives."
+          />
+        </section>
         
         {/* Partnership Opportunities Section */}
         <section id="partnership" className="relative">

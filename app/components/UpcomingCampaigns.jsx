@@ -13,7 +13,7 @@ export default function UpcomingCampaigns() {
     {
       id: 1,
       title: "Upper Wenatchee | FRB",
-      image: "https://videos.openai.com/vg-assets/assets%2Ftask_01jv2q20xye4zr3wqcq43pa4re%2F1747069331_img_2.webp?st=2025-05-12T15%3A55%3A18Z&se=2025-05-18T16%3A55%3A18Z&sks=b&skt=2025-05-12T15%3A55%3A18Z&ske=2025-05-18T16%3A55%3A18Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=aa5ddad1-c91a-4f0a-9aca-e20682cc8969&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=eafHgk4DyxCBEYK1WhWNu69e1P9u%2FTnYP990ZzSgI%2FQ%3D&az=oaivgprodscus",
+      image: "https://www.hindustantimes.com/ht-img/img/2024/02/17/1600x900/Bollywood-Actor-Shradha-Kapoor-joined-Protesters-f_1708193327170.jpg",
       status: "Project Underway",
       statusColor: "#F4720B", // Orange
       description: "Supporting sustainable agriculture practices in the Upper Wenatchee region to improve food security and community resilience."
@@ -21,7 +21,7 @@ export default function UpcomingCampaigns() {
     {
       id: 2,
       title: "Clean Water Initiative",
-      image: "https://videos.openai.com/vg-assets/assets%2Ftask_01jv2qg197ej49zzway9yqgd09%2F1747069795_img_0.webp?st=2025-05-12T15%3A57%3A04Z&se=2025-05-18T16%3A57%3A04Z&sks=b&skt=2025-05-12T15%3A57%3A04Z&ske=2025-05-18T16%3A57%3A04Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=aa5ddad1-c91a-4f0a-9aca-e20682cc8969&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=VmWhpQ5J%2FIqlWaH%2FCouR8MlZl9SYFNvH%2F%2B3CCn7HnFY%3D&az=oaivgprodscus",
+      image: "https://images.hindustantimes.com/rf/image_size_630x354/HT/p2/2018/09/06/Pictures/assignment-name-in-brief_ef7f133a-b1e8-11e8-a206-120fd6da8a0d.jpg",
       status: "Enrolling Now",
       statusColor: "#F4720B", // Orange
       description: "Bringing clean water to communities through innovative filtration systems and education on water conservation."
@@ -29,7 +29,7 @@ export default function UpcomingCampaigns() {
     {
       id: 3,
       title: "Education Empowerment",
-      image: "https://videos.openai.com/vg-assets/assets%2Ftask_01jv2skjbdeaqvs5krqhr85d18%2F1747072011_img_0.webp?st=2025-05-12T15%3A55%3A18Z&se=2025-05-18T16%3A55%3A18Z&sks=b&skt=2025-05-12T15%3A55%3A18Z&ske=2025-05-18T16%3A55%3A18Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=aa5ddad1-c91a-4f0a-9aca-e20682cc8969&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=DnJiVyHp6W4Qq3tiVRIj%2F342kvK0VyivlrdxP5ArktE%3D&az=oaivgprodscus",
+      image: "https://images.firstpost.com/wp-content/uploads/2019/10/aarey-banner.jpg",
       status: "Starting Soon",
       statusColor: "#F4720B", // Orange
       description: "Providing educational resources and technology to underserved schools to bridge the digital divide."
