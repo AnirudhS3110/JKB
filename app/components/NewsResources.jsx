@@ -41,7 +41,7 @@ export default function NewsFeed() {
   return (
     <section 
       ref={sectionRef}
-      className="bg-[#2D5E30] relative overflow-hidden py-16 md:py-20"
+      className="bg-[#F4720B] relative overflow-hidden py-16 md:py-20"
     >
       {/* Decorative leaf patterns */}
       <div className="absolute top-0 right-0 w-64 h-64 md:w-96 md:h-96">
@@ -112,7 +112,7 @@ export default function NewsFeed() {
                 {articles[0].categories.map((category, index) => (
                   <div key={index} className="flex items-center">
                     <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center">
-                      <div className="w-4 h-4 rounded-full bg-[#2D5E30]"></div>
+                      <div className="w-4 h-4 rounded-full bg-[#262626]"></div>
                     </div>
                     <span className="ml-3 text-white">{category}</span>
                   </div>

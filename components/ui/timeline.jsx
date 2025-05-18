@@ -7,10 +7,16 @@ import {
 } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 
-export const Timeline = ({ data, title, description }) => {
+export const Timeline = ({ data, title, description, customStyles = {} }) => {
   const ref = useRef(null);
   const containerRef = useRef(null);
   const [height, setHeight] = useState(0);
+
+  // Default styles that can be overridden
+  const styles = {
+    bg: customStyles.bg || "bg-[#0F172A]",
+    yearColor: customStyles.yearColor || "text-orange-500",
+  };
 
   useEffect(() => {
     if (ref.current) {
@@ -29,7 +35,7 @@ export const Timeline = ({ data, title, description }) => {
 
   return (
     <div
-      className="w-full bg-[#0F172A] text-white py-32 min-h-screen"
+      className={`w-full ${styles.bg} text-white py-32 min-h-screen`}
       ref={containerRef}
     >
       <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-10 pb-10">
@@ -53,13 +59,13 @@ export const Timeline = ({ data, title, description }) => {
                 <div className="h-12 absolute left-3 md:left-3 w-12 rounded-full bg-[#1E293B] flex items-center justify-center shadow-lg">
                   <div className="h-5 w-5 rounded-full bg-orange-500 dark:bg-orange-600 border border-orange-300 dark:border-orange-700 p-2 shadow-inner" />
                 </div>
-                <h3 className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold text-orange-500 font-cormorant">
+                <h3 className={`hidden md:block text-xl md:pl-20 md:text-5xl font-bold ${styles.yearColor} font-cormorant`}>
                   {item.title}
                 </h3>
               </div>
 
               <div className="relative pl-20 pr-4 md:pl-4 w-full">
-                <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-orange-500 font-cormorant">
+                <h3 className={`md:hidden block text-2xl mb-4 text-left font-bold ${styles.yearColor} font-cormorant`}>
                   {item.title}
                 </h3>
                 {item.content}{" "}

@@ -9,12 +9,12 @@ export default function AppleCardsCarouselDemo() {
   ));
 
   return (
-    <div className="w-full h-full py-20 bg-[#f1ede7]">
-      <div className="max-w-7xl mx-auto px-4 mb-8 rounded-lg bg-gradient-to-r from-green-700 to-green-500 py-6">
-        <h2 className="text-xl md:text-5xl font-bold text-white dark:text-white font-cormorant">
+    <div className="w-full h-full py-20 bg-[#F4720B]">
+      <div className="max-w-7xl mx-auto px-4 mb-8 rounded-lg bg-[#fbfbfb] from-green-700 to-green-500 py-6">
+        <h2 className="text-xl md:text-5xl font-bold text-black ">
           Get to know our impact.
         </h2>
-        <p className="text-green-100 mt-2 font-montserrat">
+        <p className="text-black mt-2 font-montserrat">
           Discover how our initiatives are creating positive change in communities around the world.
         </p>
       </div>

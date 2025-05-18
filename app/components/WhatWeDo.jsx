@@ -15,7 +15,7 @@ const WhatWeDo = () => {
   ];
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative h-screen w-full overflow-hidden ">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <div 
@@ -26,12 +26,12 @@ const WhatWeDo = () => {
           }}
         >
           {/* Subtle overlay for better text readability */}
-          <div className="absolute inset-0 bg-black bg-opacity-20"></div>
+          <div className="absolute inset-0 bg-[#F4720B] opacity-15"></div>
         </div>
       </div>
 
       {/* Navigation & Donate Button */}
-      <div className="absolute top-0 w-full flex justify-between items-center p-6 z-10">
+      {/* <div className="absolute top-0 w-full flex justify-between items-center p-6 z-10">
         <div className="w-16 h-16 bg-green-800 rounded-full flex items-center justify-center">
           <button className="text-white">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -45,7 +45,7 @@ const WhatWeDo = () => {
           </svg>
           Donate
         </Link>
-      </div>
+      </div> */}
 
       {/* Main Content */}
       <div className="absolute inset-0 flex flex-col justify-center z-10">
@@ -64,7 +64,7 @@ const WhatWeDo = () => {
               >
                 {/* Highlight background that appears on hover */}
                 {activeItem === item.id && (
-                  <div className="absolute left-0 right-0 h-full bg-sky-400 bg-opacity-90 z-0"></div>
+                  <div className="absolute left-0 right-0 h-full bg-sky-400 opacity-90 transition-all duration-300  z-0"></div>
                 )}
                 
                 {/* Menu item */}

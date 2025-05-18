@@ -73,7 +73,7 @@ export default function PartnershipOpportunities() {
   return (
     <section 
       ref={sectionRef}
-      className="py-24 bg-green-50 relative overflow-hidden"
+      className="py-24 bg-white relative overflow-hidden"
       id="partnership-opportunities"
     >
       {/* Background elements */}
@@ -85,8 +85,8 @@ export default function PartnershipOpportunities() {
       <div className="container mx-auto px-6">
         {/* Section header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-green-800 mb-4 tracking-tight">Partnership Opportunities</h2>
-          <div className="h-1 w-24 bg-green-600 rounded-full mx-auto mb-6"></div>
+          <h2 className="text-4xl md:text-5xl font-bold text-[#F4720B] mb-4 tracking-tight">Partnership Opportunities</h2>
+          <div className="h-1 w-24 bg-[#F4720B] rounded-full mx-auto mb-6"></div>
           <p className="text-xl text-gray-700 leading-relaxed">
             Not just donors. <span className="font-semibold">Catalysts for change.</span> Join forces with a legacy initiative 
             committed to building a socially inclusive future through structured development.
@@ -108,7 +108,7 @@ export default function PartnershipOpportunities() {
               fill
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-green-900/90 via-green-800/50 to-transparent">
+            <div className="absolute inset-0 bg-gradient-to-t from-[#F4720B]/90 via-[#F4720B]/50 to-transparent">
               <div className="absolute bottom-0 left-0 w-full p-8 md:p-10">
                 <p className="text-white text-2xl font-light leading-tight">
                   "His vision emphasized <span className="font-medium">not charity, but creating opportunities</span> for people to become independent contributors to society."
@@ -131,8 +131,8 @@ export default function PartnershipOpportunities() {
                 variants={itemVariants}
                 className={`bg-white p-6 md:p-8 rounded-lg shadow-sm border-l-4 ${
                   activePartner === type.id 
-                    ? 'border-l-green-600 bg-green-50' 
-                    : 'border-l-green-200 hover:border-l-green-400 hover:bg-green-50/50'
+                    ? 'border-l-[#F4720B] bg-orange-50' 
+                    : 'border-l-orange-200 hover:border-l-[#F4720B] hover:bg-orange-50/50'
                 } transition-all duration-300 relative overflow-hidden`}
                 onMouseEnter={() => setActivePartner(type.id)}
                 onMouseLeave={() => setActivePartner(null)}
@@ -142,25 +142,25 @@ export default function PartnershipOpportunities() {
                   activePartner === type.id ? 'opacity-15' : 'opacity-5'
                 }`}>
                   <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                    <path fill="#166534" d="M47.7,-57.2C59,-47.3,64.2,-29.7,67.2,-11.5C70.2,6.8,71.1,25.7,62.6,38.5C54.2,51.3,36.4,58.1,19.2,61.7C1.9,65.3,-14.8,65.7,-31.1,60.4C-47.4,55.1,-63.3,44,-69.5,29C-75.7,14,-72.2,-4.9,-65.1,-21.3C-57.9,-37.7,-47.2,-51.5,-34.2,-60.7C-21.2,-69.9,-6,-74.4,7.7,-72.8C21.3,-71.2,36.5,-67.1,47.7,-57.2Z" transform="translate(100 100)" />
+                    <path fill="#F4720B" d="M47.7,-57.2C59,-47.3,64.2,-29.7,67.2,-11.5C70.2,6.8,71.1,25.7,62.6,38.5C54.2,51.3,36.4,58.1,19.2,61.7C1.9,65.3,-14.8,65.7,-31.1,60.4C-47.4,55.1,-63.3,44,-69.5,29C-75.7,14,-72.2,-4.9,-65.1,-21.3C-57.9,-37.7,-47.2,-51.5,-34.2,-60.7C-21.2,-69.9,-6,-74.4,7.7,-72.8C21.3,-71.2,36.5,-67.1,47.7,-57.2Z" transform="translate(100 100)" />
                   </svg>
                 </div>
                 
                 <div className="flex items-start">
-                  <div className={`mr-5 bg-green-100 p-3 rounded-lg transition-all duration-300 ${
-                    activePartner === type.id ? 'bg-green-200 shadow-sm' : 'bg-green-100'
+                  <div className={`mr-5 bg-orange-100 p-3 rounded-lg transition-all duration-300 ${
+                    activePartner === type.id ? 'bg-orange-200 shadow-sm' : 'bg-orange-100'
                   }`}>
-                    <div className="w-8 h-8 text-green-700">
+                    <div className="w-8 h-8 text-[#F4720B]">
                       {type.icon}
                     </div>
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-gray-800 mb-1">{type.title}</h3>
-                    <p className="text-green-700 font-medium text-sm mb-2">{type.tagline}</p>
+                    <p className="text-[#F4720B] font-medium text-sm mb-2">{type.tagline}</p>
                     <p className="text-gray-600 text-sm mb-4">{type.description}</p>
                     <Link 
                       href="/partnership"
-                      className="flex items-center text-green-700 font-medium text-sm hover:text-green-900 transition-colors group"
+                      className="flex items-center text-[#F4720B] font-medium text-sm hover:text-orange-800 transition-colors group"
                     >
                       Learn more
                       <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -179,7 +179,7 @@ export default function PartnershipOpportunities() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="max-w-4xl mx-auto text-center bg-green-800 text-white p-10 md:p-12 rounded-lg relative overflow-hidden shadow-md"
+          className="max-w-4xl mx-auto text-center bg-[#F4720B] text-white p-10 md:p-12 rounded-lg relative overflow-hidden shadow-md"
         >
           {/* Background pattern */}
           <div className="absolute inset-0 opacity-10">
@@ -211,13 +211,13 @@ export default function PartnershipOpportunities() {
               </svg>
             </div>
             <h3 className="text-2xl md:text-3xl font-semibold mb-4">Join Our Mission</h3>
-            <p className="text-green-50 mb-8 max-w-2xl mx-auto">
+            <p className="text-white/90 mb-8 max-w-2xl mx-auto">
               Connect with us to explore how you can contribute to our initiatives in education, healthcare, rural infrastructure, and sustainable livelihood development.
             </p>
             
             <Link 
               href="/partnership" 
-              className="inline-flex items-center bg-white text-green-800 font-medium px-8 py-3 rounded-md hover:bg-green-50 transition-all transform hover:-translate-y-1 hover:shadow-lg duration-300"
+              className="inline-flex items-center bg-white text-[#F4720B] font-medium px-8 py-3 rounded-md hover:bg-orange-50 transition-all transform hover:-translate-y-1 hover:shadow-lg duration-300"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd" />

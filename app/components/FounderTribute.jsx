@@ -60,7 +60,7 @@ export default function FounderTribute() {
   };
 
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-black">
+    <section className="relative h-screen w-full overflow-hidden bg-[#fbfbfb]">
       {/* Full-screen founder image with parallax effect */}
       <div 
         className="absolute inset-0 h-[110%] w-full"
@@ -69,12 +69,10 @@ export default function FounderTribute() {
           transition: 'transform 0.1s linear'
         }}
       >
-        <Image
-          src="/images/founder.jpg" // Replace with actual founder image
-          alt="Late Shri Jaskaran Bothra"
-          fill
-          className={`object-cover object-top transition-opacity duration-1000 ${isLoaded ? 'opacity-60' : 'opacity-0'}`}
-          priority
+        <img
+          src="https://videos.openai.com/vg-assets/assets%2Ftask_01jv1y1r4jf5m83n6brpt8pf01%2F1747043086_img_0.webp?st=2025-05-18T10%3A01%3A02Z&se=2025-05-24T11%3A01%3A02Z&sks=b&skt=2025-05-18T10%3A01%3A02Z&ske=2025-05-24T11%3A01%3A02Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=8ebb0df1-a278-4e2e-9c20-f2d373479b3a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=F3tGYM7sorkTEiSq8jSeZPAo2qAdgr9JKyt%2FzqLZGHE%3D&az=oaivgprodscus" // Replace with actual founder image
+          alt="Late Shri Jaskaran Bothra"  
+          className={`object-cover object-top transition-opacity duration-1000 ${isLoaded ? 'opacity-60' : 'opacity-0'}`} 
         />
         
         {/* Gradient overlays for better text legibility */}
@@ -101,21 +99,21 @@ export default function FounderTribute() {
             animate="visible"
             className="mb-3"
           >
-            <span className="text-green-400 text-xl uppercase tracking-widest font-light">Our Founder</span>
+            <span className="text-[#F4720B] text-xl uppercase tracking-widest font-light">Our Founder</span>
           </motion.div>
           
           <motion.div
             variants={lineVariants}
             initial="hidden"
             animate="visible"
-            className="h-px bg-green-500 mb-8"
+            className="h-px bg-[#F4720B] mb-8"
           ></motion.div>
           
           <motion.h1
             variants={textVariants}
             initial="hidden"
             animate="visible"
-            className="text-5xl md:text-7xl lg:text-8xl text-white font-bold tracking-tight mb-6"
+            className="text-5xl md:text-7xl lg:text-8xl text-[#F4720B] font-bold tracking-tight mb-6"
           >
             Jaskaran Bothra
           </motion.h1>
@@ -125,7 +123,7 @@ export default function FounderTribute() {
             initial="hidden"
             animate="visible"
             transition={{ delay: 0.2 }}
-            className="text-xl md:text-2xl text-white/80 max-w-2xl font-light mb-10"
+            className="text-xl md:text-2xl text-[#1b1a1f] max-w-2xl font-light mb-10"
           >
             Visionary conservationist and humanitarian who dedicated his life to creating sustainable pathways for rural communities and protecting our natural ecosystems.
           </motion.p>
@@ -134,12 +132,12 @@ export default function FounderTribute() {
             variants={quoteVariants}
             initial="hidden"
             animate="visible"
-            className="max-w-xl border-l-4 border-green-500 pl-6 py-2"
+            className="max-w-xl border-l-4 border-[#F4720B] pl-6 py-2"
           >
-            <p className="text-white/90 text-lg md:text-xl italic font-light leading-relaxed">
+            <p className="text-[#1b1a1f] text-lg md:text-xl italic font-light leading-relaxed">
               "True conservation isn't about saving nature from people, but empowering people to become stewards of nature. When communities thrive, the environment flourishes."
             </p>
-            <p className="text-green-400 mt-4">1962 - 2018</p>
+            <p className="text-[#F4720B] mt-4">1962 - 2018</p>
           </motion.div>
         </div>
       </div>

@@ -109,6 +109,7 @@ export default function HomePage() {
         </section>
 
         <FounderTribute/>
+        <AboutUsSection/>
 
         
         {/* Apple Cards Carousel Section */}
@@ -127,7 +128,7 @@ export default function HomePage() {
         {/* <AboutUsSection /> */}
         <WhatWeDo/>
         <ImpactCounter/>
-        <ForestHero/>
+       
         
         {/* Timeline Section */}
         <section id="our-journey" className="relative w-full">

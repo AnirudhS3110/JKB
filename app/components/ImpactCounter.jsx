@@ -124,29 +124,29 @@ const ImpactCounter = () => {
   };
 
   return (
-    <div className="py-12 px-4 max-w-screen-xl mx-auto">
-      <h2 className="text-xl font-medium text-brown-600 mb-4 flex items-center">
+    <div className="py-12 px-4 max-w-screen-xl min-h-[100vh] mx-auto flex flex-col  justify-center">
+      <h2 className="text-xl font-medium text-[#1b1a1f] mb-4 flex items-center">
         <span className="inline-block w-3 h-3 bg-brown-600 rounded-full mr-2"></span>
         Our Impact to Date
       </h2>
       
       <div 
         ref={componentRef}
-        className="bg-green-800 rounded-lg p-6 md:p-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-white"
+        className="bg-[#F4720B] rounded-lg p-6 md:p-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-white"
       >
         {/* Money Counter */}
-        <div className="text-center md:text-left md:border-r md:border-green-700 md:pr-8">
+        <div className="text-center md:text-left md:border-r md:border-white md:pr-8">
           <h3 className="text-5xl md:text-6xl font-light mb-2">
             ${moneyCount.toFixed(1)} M
           </h3>
           <p className="text-xl text-green-100 mb-6">Deployed for Ecosystem Resilience</p>
-          <button className="bg-green-700 hover:bg-green-600 transition-colors px-6 py-2 rounded-md">
+          <button className="bg-[#1b1a1f] hover:bg-[#262626] transition-colors px-6 py-2 rounded-md">
             Learn More
           </button>
         </div>
         
         {/* Acres Counter */}
-        <div className="text-center md:border-r md:border-green-700 md:px-8">
+        <div className="text-center md:border-r md:border-white md:px-8">
           <h3 className="text-5xl md:text-6xl font-light mb-2">
             {formatNumber(Math.floor(acresCount))}
           </h3>

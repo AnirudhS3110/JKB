@@ -2,6 +2,12 @@ import React from "react";
 import { Timeline } from "@/components/ui/timeline";
 
 export default function TimelineDemo({ title, description }) {
+  // Custom styles to override defaults in the Timeline component
+  const customStyles = {
+    bg: "bg-[#F4720B]", // Custom background color
+    yearColor: "text-[#fbfbfb]", // Custom year text color
+  };
+
   const data = [
     {
       title: "2024",
@@ -186,6 +192,7 @@ export default function TimelineDemo({ title, description }) {
         data={data} 
         title={title || "Milestones in Our Journey"}
         description={description || "From humble beginnings to ambitious future plans - tracing the growth of the Jaskaran Bothra Foundation and its impact."}
+        customStyles={customStyles}
       />
     </div>
   );

@@ -1,6 +1,6 @@
 import "./globals.css";
 import { Cormorant_Garamond, Montserrat } from 'next/font/google';
-import Navbar from './components/Navbar';
+import ImprovedNavbar from './components/Navbar';
 
 // Define premium fonts
 const cormorant = Cormorant_Garamond({
@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${cormorant.variable} ${montserrat.variable}`}>
       <body className="bg-white font-montserrat" suppressHydrationWarning>
-        <Navbar />
+        <ImprovedNavbar />
         {children}
       </body>
     </html>
