@@ -499,7 +499,7 @@ export default function LandingPage() {
                     x: secondTextX
                   }}
                 >
-                  Honoring Jaskaran Bothra's legacy of compassion and innovation
+                  Honoring Jaskaran Bothra&apos;s legacy of compassion and innovation
                 </motion.p>
               </motion.div>
             </div>

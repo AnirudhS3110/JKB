@@ -111,7 +111,7 @@ export default function PartnershipOpportunities() {
             <div className="absolute inset-0 bg-gradient-to-t from-[#F4720B]/90 via-[#F4720B]/50 to-transparent">
               <div className="absolute bottom-0 left-0 w-full p-8 md:p-10">
                 <p className="text-white text-2xl font-light leading-tight">
-                  "His vision emphasized <span className="font-medium">not charity, but creating opportunities</span> for people to become independent contributors to society."
+                  &ldquo;His vision emphasized <span className="font-medium">not charity, but creating opportunities</span> for people to become independent contributors to society.&rdquo;
                 </p>
                 <p className="text-white/80 mt-4 italic">— In memory of Late Shri Jaskaran Bothra</p>
               </div>

@@ -135,7 +135,7 @@ export default function FounderTribute() {
             className="max-w-xl border-l-4 border-[#F4720B] pl-6 py-2"
           >
             <p className="text-[#1b1a1f] text-lg md:text-xl italic font-light leading-relaxed">
-              "True conservation isn't about saving nature from people, but empowering people to become stewards of nature. When communities thrive, the environment flourishes."
+              &ldquo;True conservation isn&apos;t about saving nature from people, but empowering people to become stewards of nature. When communities thrive, the environment flourishes.&rdquo;
             </p>
             <p className="text-[#F4720B] mt-4">1962 - 2018</p>
           </motion.div>

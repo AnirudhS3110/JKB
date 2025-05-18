@@ -1,6 +1,7 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 
 const ImprovedNavbar = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -78,12 +79,12 @@ const ImprovedNavbar = () => {
       <div className="container mx-auto px-4 md:px-8 lg:px-16 xl:px-24">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="/" className="flex items-center">
+          <Link href="/" className="flex items-center">
             <h1 className="text-xl font-bold">
               <span className="text-[#F4A261]">Jaskaran Bothra</span>
               <span className="ml-2 text-[#F8F9FA]">Foundation</span>
             </h1>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           {renderComplete && (

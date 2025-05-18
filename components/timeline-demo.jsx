@@ -134,7 +134,7 @@ export default function TimelineDemo({ title, description }) {
               ✅ Educational Technology in 1,000 Schools
             </div>
             <div className="flex items-center gap-2 text-xs text-neutral-700 md:text-sm dark:text-neutral-300">
-              ✅ Women's Empowerment through Skills Development
+              ✅ Women&apos;s Empowerment through Skills Development
             </div>
             <div className="flex items-center gap-2 text-xs text-neutral-700 md:text-sm dark:text-neutral-300">
               ✅ Healthcare Accessibility in Remote Areas
