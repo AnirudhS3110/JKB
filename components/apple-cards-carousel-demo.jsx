@@ -1,24 +1,62 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
+import { motion, useInView } from "framer-motion";
 
 export default function AppleCardsCarouselDemo() {
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: false, amount: 0.2 });
+  
   const cards = data.map((card, index) => (
     <Card key={card.src} card={card} index={index} />
   ));
 
+  const containerVariants = {
+    hidden: { opacity: 0, y: 100 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut"
+      }
+    }
+  };
+
   return (
-    <div className="w-full h-full py-20 bg-[#F4720B]">
-      <div className="max-w-7xl mx-auto px-4 mb-8 rounded-lg bg-[#fbfbfb] from-green-700 to-green-500 py-6">
+    <div className="w-full h-full py-20 bg-[#F4720B]" ref={sectionRef}>
+      <motion.div 
+        className="max-w-7xl mx-auto px-4 mb-8 rounded-lg bg-[#fbfbfb] from-green-700 to-green-500 py-6"
+        variants={containerVariants}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+      >
         <h2 className="text-xl md:text-5xl font-bold text-black ">
           Get to know our impact.
         </h2>
         <p className="text-black mt-2 font-montserrat">
           Discover how our initiatives are creating positive change in communities around the world.
         </p>
-      </div>
-      <Carousel items={cards} />
+      </motion.div>
+      <motion.div
+        variants={{
+          hidden: { opacity: 0, y: 60 },
+          visible: { 
+            opacity: 1, 
+            y: 0,
+            transition: {
+              duration: 0.6,
+              delay: 0.3,
+              ease: "easeOut"
+            }
+          }
+        }}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+      >
+        <Carousel items={cards} />
+      </motion.div>
     </div>
   );
 }

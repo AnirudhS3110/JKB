@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Link from 'next/link';
 import { FaArrowRight } from 'react-icons/fa';
 
 const WhatWeDo = () => {
@@ -15,13 +14,13 @@ const WhatWeDo = () => {
   ];
 
   return (
-    <section className="relative h-screen w-full overflow-hidden ">
+    <section className="relative min-h-screen w-full py-[40px] ">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <div 
           className="h-full w-full bg-cover bg-center"
           style={{ 
-            backgroundImage: "url('https://www.farmafrica.org/wp-content/uploads/2024/08/b0c28c6c321159613dd90fea4c698b92-scaled.jpeg.webp')",
+            backgroundImage: "url('https://videos.openai.com/vg-assets/assets%2Ftask_01jv1y1r4jf5m83n6brpt8pf01%2F1747043086_img_0.webp?st=2025-05-18T14%3A43%3A24Z&se=2025-05-24T15%3A43%3A24Z&sks=b&skt=2025-05-18T14%3A43%3A24Z&ske=2025-05-24T15%3A43%3A24Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=aa5ddad1-c91a-4f0a-9aca-e20682cc8969&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=QXFptrtEQiOlG1pn7XQaNwEMe4dw4jMKkJaaMCjki%2B8%3D&az=oaivgprodscus')",
             backgroundPosition: "center",
           }}
         >
@@ -30,54 +29,49 @@ const WhatWeDo = () => {
         </div>
       </div>
 
-      {/* Navigation & Donate Button */}
-      {/* <div className="absolute top-0 w-full flex justify-between items-center p-6 z-10">
-        <div className="w-16 h-16 bg-green-800 rounded-full flex items-center justify-center">
-          <button className="text-white">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-        </div>
-        <Link href="/donate" className="bg-yellow-300 text-gray-900 py-4 px-8 rounded-lg flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-            <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
-          </svg>
-          Donate
-        </Link>
-      </div> */}
-
       {/* Main Content */}
       <div className="absolute inset-0 flex flex-col justify-center z-10">
         <div className="container mx-auto px-6 lg:px-20">
-          <h1 className="text-6xl md:text-7xl font-bold text-yellow-300 mb-16 mt-10">
+          <h1 className="text-6xl px-[34px] md:text-7xl font-bold text-[#fbfbfb] mb-16 pt-[50px]">
             What we do
           </h1>
 
-          <div className="w-full max-w-3xl">
+          <div className="w-full mb-[40px]">
             {menuItems.map((item, index) => (
               <div 
                 key={item.id}
-                className="relative"
+                className="relative overflow-hidden"
                 onMouseEnter={() => setActiveItem(item.id)}
                 onMouseLeave={() => setActiveItem(null)}
               >
-                {/* Highlight background that appears on hover */}
-                {activeItem === item.id && (
-                  <div className="absolute left-0 right-0 h-full bg-sky-400 opacity-90 transition-all duration-300  z-0"></div>
-                )}
+                {/* Highlight background with smooth transition */}
+                <div 
+                  className={`absolute left-0 right-0 h-full bg-[#151419] opacity-0 transition-all duration-500 ease-in-out z-0 ${
+                    activeItem === item.id ? 'opacity-100' : ''
+                  }`}
+                ></div>
                 
-                {/* Menu item */}
-                <div className={`relative z-10 py-7 ${index !== menuItems.length - 1 ? 'border-b border-gray-400 border-opacity-30' : ''}`}>
-                  <Link 
+                {/* Menu item with smooth content scaling */}
+                <div className={`relative z-10 py-7 mx-[50px] mr-[80px] transition-transform duration-500 ease-in-out ${
+                  activeItem === item.id ? 'scale-105 origin-left' : ''
+                } ${index !== menuItems.length - 1 ? 'border-b border-gray-400 border-opacity-30' : ''}`}>
+                  <a 
                     href={item.href}
                     className="flex items-center justify-between text-white text-2xl md:text-3xl font-medium group"
                   >
-                    <span className={activeItem === item.id ? 'font-semibold' : ''}>{item.text}</span>
-                    <div className={`w-10 h-10 rounded-full flex items-center justify-center ${activeItem === item.id ? 'bg-white' : item.color}`}>
-                      <FaArrowRight className={`text-xs ${activeItem === item.id ? 'text-sky-400' : 'text-white'}`} />
+                    <span className={`transition-all duration-500 ease-in-out ${
+                      activeItem === item.id ? 'font-semibold text-[#F4720B] transform scale-105' : ''
+                    }`}>
+                      {item.text}
+                    </span>
+                    <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 ease-in-out ${
+                      activeItem === item.id ? 'bg-[#F4720B] transform scale-110' : item.color
+                    }`}>
+                      <FaArrowRight className={`text-xs transition-all duration-500 ease-in-out ${
+                        activeItem === item.id ? 'text-[#fbfbfb]' : 'text-white'
+                      }`} />
                     </div>
-                  </Link>
+                  </a>
                 </div>
               </div>
             ))}

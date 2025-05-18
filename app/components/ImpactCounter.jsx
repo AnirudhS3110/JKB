@@ -125,7 +125,7 @@ const ImpactCounter = () => {
 
   return (
     <div className="py-12 px-4 max-w-screen-xl min-h-[100vh] mx-auto flex flex-col  justify-center">
-      <h2 className="text-xl font-medium text-[#1b1a1f] mb-4 flex items-center">
+      <h2 className="text-xl font-medium text-[#1b1a1f] md:text-[42px] mb-[20px] flex items-center">
         <span className="inline-block w-3 h-3 bg-brown-600 rounded-full mr-2"></span>
         Our Impact to Date
       </h2>
