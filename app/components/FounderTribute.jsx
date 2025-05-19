@@ -60,7 +60,7 @@ export default function FounderTribute() {
   };
 
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-[#fbfbfb]">
+    <section className="relative h-screen w-full overflow-hidden bg-[#000000] ">
       {/* Full-screen founder image with parallax effect */}
       <div 
         className="absolute inset-0 h-[110%] w-full"
@@ -123,7 +123,7 @@ export default function FounderTribute() {
             initial="hidden"
             animate="visible"
             transition={{ delay: 0.2 }}
-            className="text-xl md:text-2xl text-[#1b1a1f] max-w-2xl font-light mb-10"
+            className="text-xl md:text-2xl text-[#fbfbfb] max-w-2xl font-light mb-10"
           >
             Visionary conservationist and humanitarian who dedicated his life to creating sustainable pathways for rural communities and protecting our natural ecosystems.
           </motion.p>
@@ -134,7 +134,7 @@ export default function FounderTribute() {
             animate="visible"
             className="max-w-xl border-l-4 border-[#F4720B] pl-6 py-2"
           >
-            <p className="text-[#1b1a1f] text-lg md:text-xl italic font-light leading-relaxed">
+            <p className="text-[#fbfbfb] text-lg md:text-xl italic font-light leading-relaxed">
               &ldquo;True conservation isn&apos;t about saving nature from people, but empowering people to become stewards of nature. When communities thrive, the environment flourishes.&rdquo;
             </p>
             <p className="text-[#F4720B] mt-4">1962 - 2018</p>
@@ -156,32 +156,7 @@ export default function FounderTribute() {
         }}
       >
         <span className="text-sm uppercase tracking-widest mb-2">Explore Legacy</span>
-        <motion.div 
-          className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center p-1"
-          animate={{
-            y: [0, 5, 0],
-            transition: {
-              duration: 1.5,
-              repeat: Infinity,
-              repeatType: "loop",
-              ease: "easeInOut"
-            }
-          }}
-        >
-          <motion.div 
-            className="w-1.5 h-3 bg-white/50 rounded-full"
-            animate={{
-              y: [0, 10, 0],
-              opacity: [0.3, 1, 0.3],
-              transition: {
-                duration: 1.5,
-                repeat: Infinity,
-                repeatType: "loop",
-                ease: "easeInOut"
-              }
-            }}
-          />
-        </motion.div>
+        
       </motion.div>
     </section>
   );

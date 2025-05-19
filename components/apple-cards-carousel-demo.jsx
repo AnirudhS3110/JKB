@@ -25,17 +25,17 @@ export default function AppleCardsCarouselDemo() {
   };
 
   return (
-    <div className="w-full h-full py-20 bg-gradient-to-b from-[#F8D4B9] to-[#F9A778]" ref={sectionRef}>
+    <div className="w-full h-full py-20  bg-[#fbfbfb]" ref={sectionRef}>
       <motion.div 
-        className="max-w-7xl  mx-[15px] md:mx-auto   px-4 mb-8 rounded-lg bg-[#fbfbfb] py-6"
+        className="max-w-7xl  mx-[15px] md:mx-auto bg-[#fbfbfb] from-[#FF6309] to-[#FF8E16]  px-4 mb-8 rounded-lg  py-6"
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
       >
-        <h2 className="text-xl md:text-5xl text-[32px] md:text-[28px] font-bold text-black ">
+        <h2 className="text-xl md:text-5xl text-[32px] md:text-[42px] font-bold text-[#000000] ">
           Get to know our impact.
         </h2>
-        <p className="text-black mt-2 font-montserrat">
+        <p className="text-[#000000] md:text-[20px] mt-2 font-montserrat">
           Discover how our initiatives are creating positive change in communities around the world.
         </p>
       </motion.div>

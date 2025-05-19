@@ -53,7 +53,7 @@ export const Timeline = ({ data, title, description, customStyles = {} }) => {
       >
         <div className="mb-16 md:mb-24 text-center">
           <motion.h2 
-            className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 text-[#121517] max-w-4xl mx-auto font-cormorant"
+            className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 text-white max-w-4xl mx-auto font-cormorant"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -69,7 +69,7 @@ export const Timeline = ({ data, title, description, customStyles = {} }) => {
             transition={{ duration: 0.5, delay: 0.3 }}
           ></motion.div>
           <motion.p 
-            className="text-[#121517] text-sm md:text-[24px] max-w-2xl mx-auto font-montserrat leading-relaxed"
+            className="text-white text-sm md:text-[24px] max-w-2xl mx-auto font-montserrat leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

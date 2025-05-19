@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform, AnimatePresence, useMotionValueEvent }
 import HomePage from './HomePage';
 
 export default function LandingPage() {
+  const [showTextSection, setShowTextSection] = useState(false);
   const [showHomepage, setShowHomepage] = useState(false);
   const [animationComplete, setAnimationComplete] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
@@ -66,89 +67,95 @@ export default function LandingPage() {
   // Track scroll progress for fine-grained control
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     setScrollRatio(latest);
+    console.log("Scroll progress:", latest); // For debugging
   });
   
   // Helper function for mapping scroll values
   const mapScrollToValue = (ratio, start, end) => 
     Math.min(1, Math.max(0, (ratio - start) / (end - start)));
   
-  // Background image fade out as user scrolls - modified to maintain visibility longer
-  const initialBackgroundOpacity = useTransform(scrollYProgress, [0, 0.45], [1, 0]);
+  // COMPRESSED ANIMATION TIMELINE
+  // Background image fade out as user scrolls
+  const initialBackgroundOpacity = useTransform(scrollYProgress, [0, 0.35], [1, 0]);
   
   // First heading reveal and fade with 3D transforms
-  const headingOpacity = useTransform(scrollYProgress, [0, 0.1, 0.4, 0.55], [1, 1, 1, 0]);
-  const headingY = useTransform(scrollYProgress, [0.2, 0.45], [0, -50]);
-  const headingZ = useTransform(scrollYProgress, [0.2, 0.45], [0, 30]);
-  const headingRotateX = useTransform(scrollYProgress, [0.3, 0.45], [0, -10]);
+  const headingOpacity = useTransform(scrollYProgress, [0, 0.1, 0.3, 0.35], [1, 1, 1, 0]);
+  const headingY = useTransform(scrollYProgress, [0.2, 0.35], [0, -50]);
+  const headingZ = useTransform(scrollYProgress, [0.2, 0.35], [0, 30]);
+  const headingRotateX = useTransform(scrollYProgress, [0.2, 0.35], [0, -10]);
   
   // Individual letter reveal animations with perspective
-  const letter1Opacity = useTransform(scrollYProgress, [0.05, 0.09], [0, 1]); // I
-  const letter2Opacity = useTransform(scrollYProgress, [0.08, 0.12], [0, 1]); // N
-  const letter3Opacity = useTransform(scrollYProgress, [0.11, 0.15], [0, 1]); // N
-  const letter4Opacity = useTransform(scrollYProgress, [0.14, 0.18], [0, 1]); // O
-  const letter5Opacity = useTransform(scrollYProgress, [0.17, 0.21], [0, 1]); // V
-  const letter6Opacity = useTransform(scrollYProgress, [0.20, 0.24], [0, 1]); // A
-  const letter7Opacity = useTransform(scrollYProgress, [0.23, 0.27], [0, 1]); // T
-  const letter8Opacity = useTransform(scrollYProgress, [0.26, 0.30], [0, 1]); // I
-  const letter9Opacity = useTransform(scrollYProgress, [0.29, 0.33], [0, 1]); // O - this is the second O
-  const letter10Opacity = useTransform(scrollYProgress, [0.32, 0.36], [0, 1]); // N
+  const letter1Opacity = useTransform(scrollYProgress, [0.05, 0.08], [0, 1]); // I
+  const letter2Opacity = useTransform(scrollYProgress, [0.08, 0.11], [0, 1]); // N
+  const letter3Opacity = useTransform(scrollYProgress, [0.11, 0.14], [0, 1]); // N
+  const letter4Opacity = useTransform(scrollYProgress, [0.14, 0.17], [0, 1]); // O
+  const letter5Opacity = useTransform(scrollYProgress, [0.17, 0.20], [0, 1]); // V
+  const letter6Opacity = useTransform(scrollYProgress, [0.20, 0.23], [0, 1]); // A
+  const letter7Opacity = useTransform(scrollYProgress, [0.23, 0.26], [0, 1]); // T
+  const letter8Opacity = useTransform(scrollYProgress, [0.26, 0.29], [0, 1]); // I
+  const letter9Opacity = useTransform(scrollYProgress, [0.29, 0.32], [0, 1]); // O - this is the second O
+  const letter10Opacity = useTransform(scrollYProgress, [0.32, 0.35], [0, 1]); // N
   
-  // 3D rotation effects for the letters
-  const letterRotateY = useTransform(scrollYProgress, [0.36, 0.42], [0, -15]);
-  const letterZ = useTransform(scrollYProgress, [0.36, 0.42], [0, 50]);
+  // 3D rotation effects for the letters - compressed
+  const letterRotateY = useTransform(scrollYProgress, [0.32, 0.35], [0, -15]);
+  const letterZ = useTransform(scrollYProgress, [0.32, 0.35], [0, 50]);
   
-  // Word complete animation with 3D perspective
-  const wordCompleteScale = useTransform(scrollYProgress, [0.36, 0.42], [1, 1.2]);
-  const wordOpacity = useTransform(scrollYProgress, [0.42, 0.55], [1, 0]);
+  // Word complete animation with 3D perspective - compressed
+  const wordCompleteScale = useTransform(scrollYProgress, [0.32, 0.36], [1, 1.2]);
+  const wordOpacity = useTransform(scrollYProgress, [0.36, 0.40], [1, 0]);
   
   // Video in the last O (second O)
-  const secondOVideoOpacity = useTransform(scrollYProgress, [0.29, 0.33], [0, 1]);
+  const secondOVideoOpacity = useTransform(scrollYProgress, [0.29, 0.32], [0, 1]);
   
-  // Main video and expansion 
-  const mainVideoOpacity = useTransform(scrollYProgress, [0.55, 0.75], [0, 1]);
+  // Main video and expansion - compressed
+  const mainVideoOpacity = useTransform(scrollYProgress, [0.40, 0.45], [0, 1]);
   
-  // Expanding O animation - specifically for the last/second O
-  const expandingOOpacity = useTransform(scrollYProgress, [0.4, 0.48, 0.65], [0, 1, 0]);
-  const expandingOScale = useTransform(scrollYProgress, [0.44, 0.7], [1, 35]);
-  const expandingORotateY = useTransform(scrollYProgress, [0.44, 0.55], [0, -15]);
-  const expandingOZ = useTransform(scrollYProgress, [0.44, 0.55], [0, 100]);
+  // Expanding O animation - compressed
+  const expandingOOpacity = useTransform(scrollYProgress, [0.35, 0.38, 0.42], [0, 1, 0]);
+  const expandingOScale = useTransform(scrollYProgress, [0.35, 0.42], [1, 35]);
+  const expandingORotateY = useTransform(scrollYProgress, [0.35, 0.40], [0, -15]);
+  const expandingOZ = useTransform(scrollYProgress, [0.35, 0.40], [0, 100]);
   
-  // HomePage reveal animation
-  const homePageY = useTransform(
-    scrollYProgress, 
-    [0.70, 0.98],
-    ["100vh", "0vh"]
-  );
+  // Text section appears earlier and animations complete sooner
+  const textSectionOpacity = useTransform(scrollYProgress, [0.42, 0.45], [0, 1]);
   
-  const homePageOpacity = useTransform(
-    scrollYProgress,
-    [0.70, 0.90],
-    [0, 1]
-  );
-  
-  // Text reveal animations
+  // First text animation - compressed timeline
   const firstTextClipPath = useTransform(
     scrollYProgress, 
-    [0.60, 0.80], 
+    [0.45, 0.55], 
     ["inset(0% 100% 0% 0%)", "inset(0% 0% 0% 0%)"]
   );
   
   const firstTextX = useTransform(
     scrollYProgress,
-    [0.60, 0.80],
+    [0.45, 0.55],
     ["-50%", "0%"]
   );
   
+  // Second text animation - compressed timeline
   const secondTextClipPath = useTransform(
     scrollYProgress, 
-    [0.80, 0.96], 
+    [0.55, 0.65], 
     ["inset(0% 100% 0% 0%)", "inset(0% 0% 0% 0%)"]
   );
   
   const secondTextX = useTransform(
     scrollYProgress,
-    [0.80, 0.96],
+    [0.55, 0.65],
     ["-50%", "0%"]
+  );
+  
+  // Pause after second text, before homepage - shorter gap
+  const homePageY = useTransform(
+    scrollYProgress, 
+    [0.70, 0.85],
+    ["100vh", "0vh"]
+  );
+  
+  const homePageOpacity = useTransform(
+    scrollYProgress,
+    [0.70, 0.78],
+    [0, 1]
   );
   
   // Track position of second O for centering the expanding O
@@ -194,16 +201,25 @@ export default function LandingPage() {
     }
   }, [isMounted]);
   
-  // MODIFIED trigger points for smoother transition
+  // Updated trigger points for compressed timeline
   useEffect(() => {
     const unsubscribe = scrollYProgress.onChange(v => {
-      if (v > 0.70) { // Start showing homepage earlier
+      // Text section appears after INNOVATION word fades
+      if (v > 0.42) {
+        setShowTextSection(true);
+      } else {
+        setShowTextSection(false);
+      }
+      
+      // Homepage appears after second text completes
+      if (v > 0.70) {
         setShowHomepage(true);
       } else {
         setShowHomepage(false);
       }
       
-      if (v > 0.98) { // Delay completion for smoother transition
+      // Animation completes sooner
+      if (v > 0.80) {
         setAnimationComplete(true);
         setHomePageScrollEnabled(true);
       } else {
@@ -247,8 +263,8 @@ export default function LandingPage() {
   
   return (
     <div ref={containerRef} className="relative min-h-screen">
-      {/* Animation section - Fixed height for scroll-based animations */}
-      <div ref={animationSectionRef} className="relative h-[500vh]">
+      {/* Animation section - REDUCED height for easier scrolling */}
+      <div ref={animationSectionRef} className="relative h-[400vh]">
         {/* Fixed viewport elements */}
         <div className="fixed top-0 left-0 w-full h-screen flex flex-col items-center justify-center overflow-visible will-change-transform">
           {/* Initial background image that covers both navigation and hero */}
@@ -468,46 +484,46 @@ export default function LandingPage() {
           </svg>
         </motion.div>
         
-        {/* Homepage Teaser - Appears when scrolled enough */}
-        {showHomepage && (
-          <motion.section 
-            className="fixed top-0 left-0 w-full h-screen z-20 flex items-center justify-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="max-w-4xl px-6 md:px-0 text-center text-[#F8F9FA]">
-              {/* First phrase with scroll-based left-to-right reveal */}
-              <motion.div className="overflow-hidden mb-6">
-                <motion.h2
-                  className="font-cormorant text-4xl md:text-6xl font-bold leading-tight relative inline-block"
-                  style={{
-                    clipPath: firstTextClipPath,
-                    x: firstTextX
-                  }}
-                >
-                  Creating lasting change through sustainable initiatives
-                </motion.h2>
-              </motion.div>
-              
-              {/* Second phrase with scroll-based left-to-right reveal */}
-              <motion.div className="overflow-hidden">
-                <motion.p
-                  className="font-montserrat text-xl relative inline-block"
-                  style={{
-                    clipPath: secondTextClipPath,
-                    x: secondTextX
-                  }}
-                >
-                  Honoring Jaskaran Bothra&apos;s legacy of compassion and innovation
-                </motion.p>
-              </motion.div>
-            </div>
-          </motion.section>
-        )}
+        {/* Text Section - Always rendered but controlled by opacity */}
+        <motion.section 
+          className="fixed top-0 left-0 w-full h-screen z-20 flex items-center justify-center"
+          style={{ 
+            opacity: textSectionOpacity,
+            display: showTextSection ? "flex" : "none" 
+          }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="max-w-4xl px-6 md:px-0 text-center text-[#F8F9FA]">
+            {/* First phrase with scroll-based left-to-right reveal */}
+            <motion.div className="overflow-hidden mb-6">
+              <motion.h2
+                className="font-cormorant text-4xl md:text-6xl font-bold leading-tight relative inline-block"
+                style={{
+                  clipPath: firstTextClipPath,
+                  x: firstTextX
+                }}
+              >
+                Creating lasting change through sustainable initiatives
+              </motion.h2>
+            </motion.div>
+            
+            {/* Second phrase with scroll-based left-to-right reveal */}
+            <motion.div className="overflow-hidden">
+              <motion.p
+                className="font-montserrat text-xl relative inline-block"
+                style={{
+                  clipPath: secondTextClipPath,
+                  x: secondTextX
+                }}
+              >
+                Honoring Jaskaran Bothra&apos;s legacy of compassion and innovation
+              </motion.p>
+            </motion.div>
+          </div>
+        </motion.section>
       </div>
       
-      {/* HomePage Content - Appears from bottom with scroll */}
+      {/* HomePage Content - Always rendered but controlled by opacity and transform */}
       <motion.div
         ref={homePageRef}
         className="relative w-full"
@@ -515,11 +531,12 @@ export default function LandingPage() {
           y: homePageY,
           opacity: homePageOpacity,
           zIndex: 100,
-          pointerEvents: animationComplete ? "auto" : "none"
+          pointerEvents: animationComplete ? "auto" : "none",
+          display: showHomepage ? "block" : "none"
         }}
         transition={{
-          y: { duration: 2.2, ease: [0.16, 1, 0.3, 1] },
-          opacity: { duration: 2.6, ease: [0.33, 1, 0.68, 1] }
+          y: { duration: 1.5, ease: [0.16, 1, 0.3, 1] },
+          opacity: { duration: 1.8, ease: [0.33, 1, 0.68, 1] }
         }}
       >
         {/* HomePage container without scroll overflow */}

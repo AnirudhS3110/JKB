@@ -43,27 +43,24 @@ export default function AboutUsSection() {
     mission: false
   });
   
-  // Content for each section
+  // Content for each section - UPDATED to match screenshot
   const content = {
     about: {
       title: "About Us",
-      headline: "Not charity. Opportunity.",
       description: "The Jaskaran Bothra Foundation transforms underserved communities by creating pathways to independence—continuing the nationally recognized vision of a man who believed in empowerment over aid. We don't just give. We enable.",
-      image: "https://videos.openai.com/vg-assets/assets%2Ftask_01jv1y1r4jf5m83n6brpt8pf01%2F1747043086_img_0.webp?st=2025-05-12T15%3A55%3A35Z&se=2025-05-18T16%3A55%3A35Z&sks=b&skt=2025-05-12T15%3A55%3A35Z&ske=2025-05-18T16%3A55%3A35Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=aa5ddad1-c91a-4f0a-9aca-e20682cc8969&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=t91ASxYRuw6raf7GvC%2BnwFIHfB19YfaRVUlv33dtCHM%3D&az=oaivgprodscus",
+      image: "/images/about-background.jpg",
       link: "/about"
     },
     vision: {
       title: "Our Vision",
-      headline: "Building a socially inclusive tomorrow",
       description: "To build a socially inclusive India by supporting holistic human development, particularly for the underprivileged, through structured initiatives in health, education, and sustainable livelihoods.",
       image: "/images/vision-background.jpg",
       link: "/vision"
     },
     mission: {
       title: "Our Mission",
-      headline: "Targeted action, measurable impact",
       description: "To promote education for the girl child. To strengthen rural healthcare access. To encourage sustainable livelihoods through skill development. To advocate for women empowerment. To promote mental health awareness. To bridge corporate growth and community development.",
-      image: "/images/vision-background.jpg", // Fallback to a known working image
+      image: "/images/vision-background.jpg",
       link: "/mission"
     }
   };
@@ -106,7 +103,7 @@ export default function AboutUsSection() {
                     setImageErrors(prev => ({...prev, [key]: true}));
                   }}
                 />
-                <div className="absolute inset-0 opacity-65 bg-black "></div>
+                <div className="absolute inset-0 opacity-59 bg-black"></div>
               </div>
               {!imagesLoaded[key] && !imageErrors[key] && (
                 <div className="absolute inset-0 z-10 bg-black flex items-center justify-center">
@@ -120,48 +117,75 @@ export default function AboutUsSection() {
       
       {/* Main Content */}
       <div className="relative z-10 w-full">
-        {/* Main Header - Horizontal Layout */}
+        {/* Main Header - Updated to match screenshot with underlines */}
         <div className="container mx-auto px-6 mb-16 text-center">
-          <h2 className="text-5xl md:text-7xl font-semibold mb-12 tracking-tight text-white inline-flex flex-wrap justify-center">
-            <button 
-              onClick={() => setActiveSection('about')}
-              onMouseEnter={() => setActiveSection('about')}
-              className={`transition-colors duration-300 ${activeSection === 'about' ? 'text-white' : 'text-gray-400 hover:text-gray-300'}`}
-            >
-              About Us
-            </button>
-            
-            <span className="inline-block mx-4 relative">
-              <span className="text-[#F4720B]">+</span>
-              <span className="absolute top-0 left-0 w-full h-full border border-[#F4720B] rounded-full opacity-60" style={{ transform: 'scale(1.2)' }}></span>
+          <h2 className="text-6xl font-cormorant font-light mb-12 tracking-wide text-white text-center">
+            {/* About Us with underline effect */}
+            <span className="relative inline-block">
+              <span 
+                className={`cursor-pointer transition-colors md:text-[100px] duration-300 ${
+                  activeSection === 'about' ? 'text-white' : 'text-gray-400 hover:text-gray-300'
+                } md:text-6xl mx-2`}
+                onClick={() => setActiveSection('about')}
+                onMouseEnter={() => setActiveSection('about')}
+              >
+                About Us
+              </span>
+              {/* Underline that shows on hover or when active */}
+              <span 
+                className={`absolute bottom-0 left-0 w-full h-[2px] bg-white transform ${
+                  activeSection === 'about' ? 'scale-x-100' : 'scale-x-0'
+                } transition-transform duration-300 origin-left group-hover:scale-x-100`}
+              ></span>
             </span>
             
-            <button 
-              onClick={() => setActiveSection('vision')}
-              onMouseEnter={() => setActiveSection('vision')}
-              className={`transition-colors duration-300 ${activeSection === 'vision' ? 'text-white' : 'text-gray-400 hover:text-gray-300'}`}
-            >
-              Our Vision
-            </button>
+            <span className="inline-block mx-4 md:text-[100px] text-[#F4720B] text-4xl md:text-6xl">+</span>
             
-            <span className="inline-block mx-4 relative">
-              <span className="text-[#F4720B]">+</span>
-              <span className="absolute top-0 left-0 w-full h-full border border-[#F4720B] rounded-full opacity-60" style={{ transform: 'scale(1.2)' }}></span>
+            {/* Vision with underline effect */}
+            <span className="relative inline-block">
+              <span 
+                className={`cursor-pointer transition-colors md:text-[100px] duration-300 ${
+                  activeSection === 'vision' ? 'text-white' : 'text-gray-400 hover:text-gray-300'
+                } md:text-6xl mx-2`}
+                onClick={() => setActiveSection('vision')}
+                onMouseEnter={() => setActiveSection('vision')}
+              >
+                Vision
+              </span>
+              {/* Underline that shows on hover or when active */}
+              <span 
+                className={`absolute bottom-0 left-0 w-full h-[2px] bg-white transform ${
+                  activeSection === 'vision' ? 'scale-x-100' : 'scale-x-0'
+                } transition-transform duration-300 origin-left group-hover:scale-x-100`}
+              ></span>
             </span>
             
-            <button 
-              onClick={() => setActiveSection('mission')}
-              onMouseEnter={() => setActiveSection('mission')}
-              className={`transition-colors duration-300 ${activeSection === 'mission' ? 'text-white' : 'text-gray-400 hover:text-gray-300'}`}
-            >
-              Our Mission
-            </button>
+            <span className="inline-block mx-4 text-[#F4720B] text-4xl md:text-[100px]">+</span>
+            
+            {/* Mission with underline effect */}
+            <span className="relative inline-block">
+              <span 
+                className={`cursor-pointer transition-colors duration-300 ${
+                  activeSection === 'mission' ? 'text-white' : 'text-gray-400 hover:text-gray-300'
+                } text-4xl md:text-[100px] mx-2`}
+                onClick={() => setActiveSection('mission')}
+                onMouseEnter={() => setActiveSection('mission')}
+              >
+                Mission
+              </span>
+              {/* Underline that shows on hover or when active */}
+              <span 
+                className={`absolute bottom-0 left-0 w-full h-[2px] bg-white transform ${
+                  activeSection === 'mission' ? 'scale-x-100' : 'scale-x-0'
+                } transition-transform duration-300 origin-left group-hover:scale-x-100`}
+              ></span>
+            </span>
           </h2>
         </div>
         
-        {/* Content Section */}
+        {/* Content Section - MODIFIED to match screenshot */}
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-4xl mx-auto md:mx-0">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeSection}
@@ -169,28 +193,31 @@ export default function AboutUsSection() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -30 }}
                 transition={{ duration: 0.6 }}
-                className="bg-black bg-opacity-70 backdrop-blur-sm p-10 rounded-lg"
               >
-                <h3 className="text-2xl md:text-3xl font-medium text-white mb-4">{content[activeSection].headline}</h3>
-                
-                <div className="prose prose-lg prose-invert max-w-none">
-                  <p className="text-gray-200 mb-6">
+                <div className="text-white">
+                  <p className="text-lg md:text-xl leading-relaxed mb-8">
                     {content[activeSection].description}
                   </p>
                   
                   <Link 
                     href={content[activeSection].link} 
-                    className="inline-flex items-center font-medium text-[#F4720B] hover:text-[#E05900] no-underline"
+                    className="inline-flex items-center font-medium text-white hover:text-[#F4720B] no-underline transition-colors"
                   >
                     Read more
-                    <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
                   </Link>
                 </div>
               </motion.div>
             </AnimatePresence>
           </div>
+        </div>
+      </div>
+
+      {/* Location marker at bottom right */}
+      <div className="absolute bottom-5 right-5 z-10">
+        <div className="w-8 h-8 text-white rounded-full flex items-center justify-center">
+          <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"></path>
+          </svg>
         </div>
       </div>
     </section>

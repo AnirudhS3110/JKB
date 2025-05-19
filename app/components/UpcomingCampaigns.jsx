@@ -51,7 +51,7 @@ export default function UpcomingCampaigns() {
   };
 
   return (
-    <div className="relative bg-white" ref={sectionRef}>
+    <div className="relative bg-[#fbfbfb]" ref={sectionRef}>
       <section className="max-w-7xl mx-auto px-6 py-12">
         {/* Header section with title and view all button */}
         <div className="flex justify-between items-center mb-12">
@@ -121,9 +121,8 @@ export default function UpcomingCampaigns() {
         {/* Separator line */}
         <div className="border-t border-[#F4720B] mb-8"></div>
       </section>
-      
       {/* Control panel */}
-      <div className="fixed right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 rounded-l-md text-white p-2 flex flex-col gap-3">
+      {/* <div className="fixed right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 rounded-l-md text-white p-2 flex flex-col gap-3">
         <button className="p-1 hover:bg-gray-700 rounded">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -146,7 +145,7 @@ export default function UpcomingCampaigns() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
           </svg>
         </button>
-      </div>
-    </div>
+      </div>*/}
+    </div> 
   );
 }

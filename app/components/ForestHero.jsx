@@ -10,18 +10,18 @@ const ForestHero = () => {
   // Content data
   const slides = [
     {
-      word: "Science",
-      image: "https://www.blueforest.org/wp-content/uploads/2024/02/hero-one.jpg",
+      word: "About Us",
+      image: "/images/about-background.jpg",
       index: 0
     },
     {
-      word: "Finance",
-      image: "https://www.blueforest.org/wp-content/uploads/2024/01/tab-img-three.jpg",
+      word: "Our Vision",
+      image: "/images/vision-background.jpg",
       index: 1
     },
     {
-      word: "Collaboration",
-      image: "https://www.blueforest.org/wp-content/uploads/2024/01/hero-9.jpg",
+      word: "Our Mission",
+      image: "/images/vision-background.jpg",
       index: 2
     }
   ];
@@ -51,7 +51,7 @@ const ForestHero = () => {
         }}
       >
         {/* Overlay to darken the image slightly */}
-        <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+        <div className="absolute inset-0 bg-black opacity-40"></div>
       </div>
       
       {/* Progress indicators */}
@@ -74,7 +74,7 @@ const ForestHero = () => {
               onMouseEnter={() => setHoverIndex(0)}
               onMouseLeave={() => setHoverIndex(null)}
             >
-              Science
+              About Us
               {(activeIndex === 0 || hoverIndex === 0) && (
                 <span className="absolute -bottom-2 left-0 w-full h-1 bg-white"></span>
               )}
@@ -89,7 +89,7 @@ const ForestHero = () => {
               onMouseEnter={() => setHoverIndex(1)}
               onMouseLeave={() => setHoverIndex(null)}
             >
-              Finance
+              Vision
               {(activeIndex === 1 || hoverIndex === 1) && (
                 <span className="absolute -bottom-2 left-0 w-full h-1 bg-white"></span>
               )}
@@ -104,7 +104,7 @@ const ForestHero = () => {
               onMouseEnter={() => setHoverIndex(2)}
               onMouseLeave={() => setHoverIndex(null)}
             >
-              Collaboration
+              Mission
               {(activeIndex === 2 || hoverIndex === 2) && (
                 <span className="absolute -bottom-2 left-0 w-full h-1 bg-white"></span>
               )}

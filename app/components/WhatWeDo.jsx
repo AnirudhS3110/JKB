@@ -25,7 +25,7 @@ const WhatWeDo = () => {
           }}
         >
           {/* Subtle overlay for better text readability */}
-          <div className="absolute inset-0 bg-[#F4720B] opacity-15"></div>
+          <div className="absolute inset-0 bg-[#000000] opacity-50"></div>
         </div>
       </div>
 
