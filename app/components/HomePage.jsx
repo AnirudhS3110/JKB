@@ -63,7 +63,7 @@ export default function HomePage() {
       <div className="relative z-10">
         {/* Hero section */}
         <section 
-          className="min-h-screen relative overflow-hidden bg-[#F4720B] flex flex-col justify-center"
+          className="min-h-screen relative overflow-hidden bg-[#FE8F2A] flex flex-col justify-center"
         >
           <div className="container mx-auto px-6 min-h-screen flex flex-col justify-center">
             <motion.div
@@ -102,18 +102,29 @@ export default function HomePage() {
          <section id="upcoming-campaigns" className="relative">
           <UpcomingCampaigns />
         </section>
+
+        <section className="  md:hidden bg-white relative">
+          <AppleCardsCarouselDemo />
+        </section>
+
+        <section className='md:hidden'>
+        <AboutUsSection/>
+        </section>
         
         {/* Hero Parallax Section */}
-        <section className="bg-white relative">
+        <section className="hidden md:block bg-white relative">
           <HeroParallaxDemo />
         </section>
 
         <FounderTribute/>
+
+        <section className='hidden  md:block'>
         <AboutUsSection/>
+        </section>
 
         
         {/* Apple Cards Carousel Section */}
-        <section className="bg-white relative">
+        <section className=" hidden md:block bg-white relative">
           <AppleCardsCarouselDemo />
         </section>
         

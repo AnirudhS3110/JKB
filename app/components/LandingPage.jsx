@@ -263,7 +263,7 @@ export default function LandingPage() {
             }}
           >
             {/* Dark overlay for better text readability - made slightly less opaque */}
-            <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+            <div className="absolute inset-0 bg-black opacity-50"></div>
           </motion.div>
           
           {/* Heading Text with 3D transforms */}

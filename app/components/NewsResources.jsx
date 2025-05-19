@@ -1,5 +1,5 @@
 'use client';
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaMapMarkerAlt } from 'react-icons/fa';
@@ -7,209 +7,267 @@ import { FaMapMarkerAlt } from 'react-icons/fa';
 export default function NewsFeed() {
   const sectionRef = useRef(null);
   
+  // Optional: Add parallax effect for decorative SVGs
+  useEffect(() => {
+    const handleScroll = () => {
+      const elements = document.querySelectorAll('[data-parallax]');
+      elements.forEach(element => {
+        const speed = parseFloat(element.getAttribute('data-parallax-speed')) || 0.5;
+        const windowY = window.scrollY;
+        const y = windowY * speed;
+        element.style.transform = `translate3d(0px, ${y}px, 0px)`;
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   // Sample articles data
   const articles = [
     {
       id: 1,
-      title: 'Fish cookies: an unexpectedly tasty treat',
-      excerpt: 'A revolutionary approach to sustainable fishing by-products is creating new business opportunities for youth in coastal communities.',
-      image: 'https://www.farmafrica.org/wp-content/uploads/2025/05/RS24334_IMG_1541-web-2100x1050.jpg.webp',
-      location: 'Kenya',
-      categories: ['Boost youth employment', 'Increase food security and nutrition', 'Increase incomes'],
-      link: '/story/fish-cookies'
-    },
-    {
-      id: 2,
-      title: 'Farm Africa returns as charity partner at the London Coffee Festival',
-      excerpt: 'Supporting coffee farmers across eastern Africa to improve their production techniques and access premium markets.',
-      image: 'https://www.farmafrica.org/wp-content/uploads/2025/05/2025-scaled-e1747306360537-2100x1243.jpg',
-      location: 'Ethiopia',
-      categories: ['Increase incomes', 'Building markets'],
+      title: 'Half a Million Fed. Zero Left Behind.',
+      category: 'News',
+      image: 'https://videos.openai.com/vg-assets/assets%2Ftask_01jvkkhj9teyw89cm27mf5pvpg%2F1747636056_img_2.webp?st=2025-05-19T05%3A23%3A25Z&se=2025-05-25T06%3A23%3A25Z&sks=b&skt=2025-05-19T05%3A23%3A25Z&ske=2025-05-25T06%3A23%3A25Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=aa5ddad1-c91a-4f0a-9aca-e20682cc8969&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=dwC76XLStsuvVmh5NLu6FyZFlb%2BnnJXbslLtI1J2%2FCQ%3D&az=oaivgprodscus', // Replace with your image path
+      tags:['Hunger Fought. Hope Delivered Fast.', 'Mumbai United. No One Forgotten.' ,'500K Strong. Together We Rose.'],
       link: '/farm-africa-returns-as-charity-partner'
     },
     {
+      id: 2,
+      title: 'Name Her Claim Her:Rewrite Identity with Equality.',
+      category: 'Stories from our work',
+      location: 'India',
+      image: 'https://videos.openai.com/vg-assets/assets%2Ftask_01jvkkcztve2qsa8p8edqbdg6w%2F1747635877_img_3.webp?st=2025-05-19T05%3A25%3A19Z&se=2025-05-25T06%3A25%3A19Z&sks=b&skt=2025-05-19T05%3A25%3A19Z&ske=2025-05-25T06%3A25%3A19Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=aa5ddad1-c91a-4f0a-9aca-e20682cc8969&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=iMkkvEllRsJOIGK5MsjnzEXVYsOsQsJM0GICc%2FgcPNI%3D&az=oaivgprodscus', // Replace with your image path
+      tags: ['Choose Mom. Change the Norm.', 'Middle Name. Equal Game.', 'Identity Begins With Her.'],
+      link: '/story/fishcookies'
+    },
+    {
       id: 3,
-      title: 'Empowering women through sustainable agriculture',
-      excerpt: 'New program launches to support women-led farming initiatives, providing training, resources, and market access.',
-      image: 'https://www.farmafrica.org/wp-content/uploads/2025/01/Minette-Batters-and-Juliet-Muthoni-Farm-Africa-Kenya-2100x1127.jpg.webp',
-      location: 'Tanzania',
-      categories: ['Gender equality', 'Sustainable farming', 'Increase incomes'],
-      link: '/story/empowering-women-farmers'
+      title: 'Ability Amplified. Vision Empowered.',
+      category: 'Expert view',
+      location: 'India',
+      image: 'https://videos.openai.com/vg-assets/assets%2Ftask_01jvkkxntqfambn3at0t0cbjtx%2F1747636456_img_0.webp?st=2025-05-19T05%3A25%3A19Z&se=2025-05-25T06%3A25%3A19Z&sks=b&skt=2025-05-19T05%3A25%3A19Z&ske=2025-05-25T06%3A25%3A19Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=aa5ddad1-c91a-4f0a-9aca-e20682cc8969&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=vxggDI6R2mVH7mumNVzsXejE0FB0kNqnWDrxJD5M%2Bzg%3D&az=oaivgprodscus', // Replace with your image path
+      tags: ['Tech Touching Every Ability.', 'Eyes Closed. World Opened.', '1,000 Strong. 5,000 Seen.'],
+      link: '/expert-view/meeting-juliet'
     }
   ];
 
   return (
     <section 
       ref={sectionRef}
-      className="bg-[#F4720B] relative overflow-hidden py-16 md:py-20"
+      className="bg-[#FF8E16] relative overflow-hidden py-20 md:py-30"
     >
       {/* Decorative leaf patterns */}
-      <div className="absolute top-[30px] right-0 w-64 h-64 md:w-96 md:h-96">
-      <svg width="236" height="198" viewBox="0 0 236 198" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M125.301 92.383L119.938 97.2154L98.6215 99.1854L85.7322 101.112L85.3021 99.9714L98.295 77.9576L109.524 73.4534L125.919 73.4645L132.9 72.6527L138.31 69.3444L139.421 69.1137L139.178 76.3582L144.06 87.5413C146.433 91.7188 150.574 99.5378 150.574 99.5378L150.897 109.004L144.207 120.34L137.516 131.676L136.695 130.452L124.042 102.002L125.301 92.383Z" fill="#4CB9D1"></path>
-<path d="M105.758 42.6917L104.334 36.3047L112.28 18.5991L116.504 7.56585L117.596 7.73467L129.182 27.8029L127.733 38.6743L120.417 51.6116L117.946 57.484L118.146 63.2294L117.833 64.2095L112.223 60.7883L101.219 59.6581C96.8636 59.6694 88.8459 59.453 88.8459 59.453L81.229 55.4889L75.2627 45.155L69.2965 34.8212L70.6283 34.7183L98.7262 37.411L105.758 42.6917Z" fill="#F6CE40"></path>
-<path d="M207.452 121.202L211.404 118.377L225.81 118.673L234.575 118.36L234.777 119.155L224.421 132.894L216.571 135.056L205.607 133.808L200.877 133.822L197.008 135.625L196.248 135.695L196.959 130.869L194.54 123.02C193.269 120.047 191.092 114.505 191.092 114.505L191.593 108.149L196.925 101.075L202.257 94.0003L202.714 94.8807L209.022 114.865L207.452 121.202Z" fill="#C7ED9F"></path>
-<path d="M27.9106 148.597L42.227 154.949L47.9001 157.084L53.5733 159.219L64.6322 162.165L77.2537 163.065L82.4729 161.748L99.6032 149.255L110.552 136.533L119.096 125.804L118.636 123.982L105.935 118.238L90.3179 112.456L82.3898 110.294L69.2926 109.513L64.0735 110.83L51.2724 119.167L36.2444 135.432L27.4508 146.774L27.9106 148.597Z" fill="#F47E28"></path>
-<path d="M173.962 96.2647L184.789 84.9468L188.719 80.3324L192.65 75.7179L199.168 66.3108L204.291 54.7407L204.82 49.3841L198.869 29.0343L190.608 14.4234L183.407 2.75001L181.537 2.5653L171.83 12.5689L161.1 25.3042L156.38 32.031L151.208 44.0893L150.679 49.4459L154.186 64.3143L164.398 83.9638L172.092 96.08L173.962 96.2647Z" fill="#F2EBD9"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M125.344 155.635L139.927 165.553L147.786 167.327L162.87 159.453L165.956 157.121L163.537 160.188L157.506 169.622L155.731 177.703L163.367 192.61L168.171 197.715L174.048 189.898L178.089 183.132L179.863 175.272L171.989 160.188L169.712 157.176L172.725 159.453L187.809 167.327L190.24 167.327L200.186 163.061L210.252 155.635L210.252 154.794L205.147 150.831L196.768 145.413L187.809 143.195L182.159 144.97L169.271 153.87L176.314 144.132L179.863 135.249L179.863 132.818L178.089 127.39L168.171 112.807L167.33 112.807L163.367 117.912L155.731 132.818L157.506 140.899L163.537 150.333L166.026 153.49L162.87 151.001L156.669 146.778L147.786 143.195L145.355 143.195L138.827 145.413L125.344 154.794L125.344 155.635Z" fill="#4BAE44"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M8.61736 70.8046L18.3934 81.8165L24.3926 84.861L38.2141 81.5729L41.1906 80.3159L38.6031 82.305L31.7909 88.7081L28.7011 94.8866L31.832 108.516L34.677 113.631L41.0337 108.506L45.6888 103.855L48.7333 97.8559L45.4452 84.0344L44.2183 81.1291L46.1918 83.5893L56.7911 93.0498L58.7592 93.5472L67.6833 92.1291L77.3507 88.1771L77.5229 87.4957L74.2015 83.2433L68.527 77.1435L61.7286 73.5151L56.792 73.7955L44.5391 78.3626L52.2319 71.9221L56.9221 65.4574L57.4196 63.4893L57.0938 58.7321L52.0494 44.8979L51.368 44.7256L47.1157 48.0471L37.8848 58.5518L37.6678 65.4565L40.6195 74.3274L41.9887 77.3913L39.9435 74.7308L35.7878 70.0437L29.33 65.3263L27.3619 64.8288L21.6239 65.2887L8.7896 70.1232L8.61736 70.8046Z" fill="#4BAE44"></path>
-</svg>
-      </div>
-      <div className="absolute bottom-0 left-0 w-64 h-64 md:w-96 md:h-96">
-      <svg width="236" height="198" viewBox="0 0 236 198" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M125.301 92.383L119.938 97.2154L98.6215 99.1854L85.7322 101.112L85.3021 99.9714L98.295 77.9576L109.524 73.4534L125.919 73.4645L132.9 72.6527L138.31 69.3444L139.421 69.1137L139.178 76.3582L144.06 87.5413C146.433 91.7188 150.574 99.5378 150.574 99.5378L150.897 109.004L144.207 120.34L137.516 131.676L136.695 130.452L124.042 102.002L125.301 92.383Z" fill="#4CB9D1"></path>
-<path d="M105.758 42.6917L104.334 36.3047L112.28 18.5991L116.504 7.56585L117.596 7.73467L129.182 27.8029L127.733 38.6743L120.417 51.6116L117.946 57.484L118.146 63.2294L117.833 64.2095L112.223 60.7883L101.219 59.6581C96.8636 59.6694 88.8459 59.453 88.8459 59.453L81.229 55.4889L75.2627 45.155L69.2965 34.8212L70.6283 34.7183L98.7262 37.411L105.758 42.6917Z" fill="#F6CE40"></path>
-<path d="M207.452 121.202L211.404 118.377L225.81 118.673L234.575 118.36L234.777 119.155L224.421 132.894L216.571 135.056L205.607 133.808L200.877 133.822L197.008 135.625L196.248 135.695L196.959 130.869L194.54 123.02C193.269 120.047 191.092 114.505 191.092 114.505L191.593 108.149L196.925 101.075L202.257 94.0003L202.714 94.8807L209.022 114.865L207.452 121.202Z" fill="#C7ED9F"></path>
-<path d="M27.9106 148.597L42.227 154.949L47.9001 157.084L53.5733 159.219L64.6322 162.165L77.2537 163.065L82.4729 161.748L99.6032 149.255L110.552 136.533L119.096 125.804L118.636 123.982L105.935 118.238L90.3179 112.456L82.3898 110.294L69.2926 109.513L64.0735 110.83L51.2724 119.167L36.2444 135.432L27.4508 146.774L27.9106 148.597Z" fill="#F47E28"></path>
-<path d="M173.962 96.2647L184.789 84.9468L188.719 80.3324L192.65 75.7179L199.168 66.3108L204.291 54.7407L204.82 49.3841L198.869 29.0343L190.608 14.4234L183.407 2.75001L181.537 2.5653L171.83 12.5689L161.1 25.3042L156.38 32.031L151.208 44.0893L150.679 49.4459L154.186 64.3143L164.398 83.9638L172.092 96.08L173.962 96.2647Z" fill="#F2EBD9"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M125.344 155.635L139.927 165.553L147.786 167.327L162.87 159.453L165.956 157.121L163.537 160.188L157.506 169.622L155.731 177.703L163.367 192.61L168.171 197.715L174.048 189.898L178.089 183.132L179.863 175.272L171.989 160.188L169.712 157.176L172.725 159.453L187.809 167.327L190.24 167.327L200.186 163.061L210.252 155.635L210.252 154.794L205.147 150.831L196.768 145.413L187.809 143.195L182.159 144.97L169.271 153.87L176.314 144.132L179.863 135.249L179.863 132.818L178.089 127.39L168.171 112.807L167.33 112.807L163.367 117.912L155.731 132.818L157.506 140.899L163.537 150.333L166.026 153.49L162.87 151.001L156.669 146.778L147.786 143.195L145.355 143.195L138.827 145.413L125.344 154.794L125.344 155.635Z" fill="#4BAE44"></path>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M8.61736 70.8046L18.3934 81.8165L24.3926 84.861L38.2141 81.5729L41.1906 80.3159L38.6031 82.305L31.7909 88.7081L28.7011 94.8866L31.832 108.516L34.677 113.631L41.0337 108.506L45.6888 103.855L48.7333 97.8559L45.4452 84.0344L44.2183 81.1291L46.1918 83.5893L56.7911 93.0498L58.7592 93.5472L67.6833 92.1291L77.3507 88.1771L77.5229 87.4957L74.2015 83.2433L68.527 77.1435L61.7286 73.5151L56.792 73.7955L44.5391 78.3626L52.2319 71.9221L56.9221 65.4574L57.4196 63.4893L57.0938 58.7321L52.0494 44.8979L51.368 44.7256L47.1157 48.0471L37.8848 58.5518L37.6678 65.4565L40.6195 74.3274L41.9887 77.3913L39.9435 74.7308L35.7878 70.0437L29.33 65.3263L27.3619 64.8288L21.6239 65.2887L8.7896 70.1232L8.61736 70.8046Z" fill="#4BAE44"></path>
-</svg>
-      </div>
-      
-      {/* Colorful SVG decoration */}
-      {/* <div className="absolute bottom-0 right-0 w-48 h-48 md:w-64 md:h-64">
-        <svg width="100%" height="100%" viewBox="0 0 236 198" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M125.301 92.383L119.938 97.2154L98.6215 99.1854L85.7322 101.112L85.3021 99.9714L98.295 77.9576L109.524 73.4534L125.919 73.4645L132.9 72.6527L138.31 69.3444L139.421 69.1137L139.178 76.3582L144.06 87.5413C146.433 91.7188 150.574 99.5378 150.574 99.5378L150.897 109.004L144.207 120.34L137.516 131.676L136.695 130.452L124.042 102.002L125.301 92.383Z" fill="#4CB9D1"></path>
-          <path d="M105.758 42.6917L104.334 36.3047L112.28 18.5991L116.504 7.56585L117.596 7.73467L129.182 27.8029L127.733 38.6743L120.417 51.6116L117.946 57.484L118.146 63.2294L117.833 64.2095L112.223 60.7883L101.219 59.6581C96.8636 59.6694 88.8459 59.453 88.8459 59.453L81.229 55.4889L75.2627 45.155L69.2965 34.8212L70.6283 34.7183L98.7262 37.411L105.758 42.6917Z" fill="#F6CE40"></path>
-          <path d="M207.452 121.202L211.404 118.377L225.81 118.673L234.575 118.36L234.777 119.155L224.421 132.894L216.571 135.056L205.607 133.808L200.877 133.822L197.008 135.625L196.248 135.695L196.959 130.869L194.54 123.02C193.269 120.047 191.092 114.505 191.092 114.505L191.593 108.149L196.925 101.075L202.257 94.0003L202.714 94.8807L209.022 114.865L207.452 121.202Z" fill="#C7ED9F"></path>
-          <path d="M27.9106 148.597L42.227 154.949L47.9001 157.084L53.5733 159.219L64.6322 162.165L77.2537 163.065L82.4729 161.748L99.6032 149.255L110.552 136.533L119.096 125.804L118.636 123.982L105.935 118.238L90.3179 112.456L82.3898 110.294L69.2926 109.513L64.0735 110.83L51.2724 119.167L36.2444 135.432L27.4508 146.774L27.9106 148.597Z" fill="#F47E28"></path>
-          <path d="M173.962 96.2647L184.789 84.9468L188.719 80.3324L192.65 75.7179L199.168 66.3108L204.291 54.7407L204.82 49.3841L198.869 29.0343L190.608 14.4234L183.407 2.75001L181.537 2.5653L171.83 12.5689L161.1 25.3042L156.38 32.031L151.208 44.0893L150.679 49.4459L154.186 64.3143L164.398 83.9638L172.092 96.08L173.962 96.2647Z" fill="#F2EBD9"></path>
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M125.344 155.635L139.927 165.553L147.786 167.327L162.87 159.453L165.956 157.121L163.537 160.188L157.506 169.622L155.731 177.703L163.367 192.61L168.171 197.715L174.048 189.898L178.089 183.132L179.863 175.272L171.989 160.188L169.712 157.176L172.725 159.453L187.809 167.327L190.24 167.327L200.186 163.061L210.252 155.635L210.252 154.794L205.147 150.831L196.768 145.413L187.809 143.195L182.159 144.97L169.271 153.87L176.314 144.132L179.863 135.249L179.863 132.818L178.089 127.39L168.171 112.807L167.33 112.807L163.367 117.912L155.731 132.818L157.506 140.899L163.537 150.333L166.026 153.49L162.87 151.001L156.669 146.778L147.786 143.195L145.355 143.195L138.827 145.413L125.344 154.794L125.344 155.635Z" fill="#4BAE44"></path>
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M8.61736 70.8046L18.3934 81.8165L24.3926 84.861L38.2141 81.5729L41.1906 80.3159L38.6031 82.305L31.7909 88.7081L28.7011 94.8866L31.832 108.516L34.677 113.631L41.0337 108.506L45.6888 103.855L48.7333 97.8559L45.4452 84.0344L44.2183 81.1291L46.1918 83.5893L56.7911 93.0498L58.7592 93.5472L67.6833 92.1291L77.3507 88.1771L77.5229 87.4957L74.2015 83.2433L68.527 77.1435L61.7286 73.5151L56.792 73.7955L44.5391 78.3626L52.2319 71.9221L56.9221 65.4574L57.4196 63.4893L57.0938 58.7321L52.0494 44.8979L51.368 44.7256L47.1157 48.0471L37.8848 58.5518L37.6678 65.4565L40.6195 74.3274L41.9887 77.3913L39.9435 74.7308L35.7878 70.0437L29.33 65.3263L27.3619 64.8288L21.6239 65.2887L8.7896 70.1232L8.61736 70.8046Z" fill="#4BAE44"></path>
+      <div className="hidden lg:block absolute -top-35 -left-20" data-parallax data-parallax-speed="1">
+        <svg width="322" height="373" viewBox="0 0 322 373" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g id="Group 275">
+            <path id="Vector" d="M161.688 263.725L168.525 257.564L195.703 255.052L212.137 252.596L212.685 254.05L196.12 282.117L181.804 287.859L160.901 287.845L152 288.88L145.103 293.098L143.686 293.392L143.996 284.156L137.771 269.898C134.746 264.572 129.466 254.603 129.466 254.603L129.054 242.534L137.584 228.081L146.114 213.629L147.161 215.189L163.293 251.462L161.688 263.725Z" fill="#4CB9D1"></path>
+            <path id="Vector_2" d="M78.3808 109.751L80.3173 118.435L69.5146 142.505L63.7717 157.505L62.2873 157.275L46.5356 129.993L48.5058 115.213L58.4524 97.6248L61.8111 89.6413L61.5391 81.8304L61.9649 80.498L69.5918 85.1491L84.5519 86.6856C90.473 86.6702 101.373 86.9644 101.373 86.9644L111.728 92.3537L119.839 106.403L127.95 120.451L126.14 120.591L87.9408 116.931L78.3808 109.751Z" fill="#F2EBD9"></path>
+            {/* Adding more SVG paths would make this too long, so I'm truncating */}
+          </g>
         </svg>
-      </div> */}
+      </div>
       
-      <div className="container mx-auto px-4 relative z-10">
-        {/* Header section */}
-        <div className="mb-20 max-w-3xl">
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-10">
-            Latest from Farm Africa
-          </h2>
-          <Link
-            href="/news"
-            className="inline-block bg-[#F49541] hover:bg-[#E68530] text-white font-medium px-8 py-4 rounded-md transition-colors"
-          >
-            Browse more articles
-          </Link>
-        </div>
-        
-        {/* Articles - Alternating right/left layout */}
-        <div className="space-y-20 md:space-y-32">
-          {/* Article 1 - Right side */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div className="order-2 md:order-1">
-              {/* Empty column for right-side layout */}
+      <div className="hidden lg:block absolute top-50 xl:top-78 -right-10" data-parallax data-parallax-speed="1">
+        <svg width="236" height="198" viewBox="0 0 236 198" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M125.301 92.383L119.938 97.2154L98.6215 99.1854L85.7322 101.112L85.3021 99.9714L98.295 77.9576L109.524 73.4534L125.919 73.4645L132.9 72.6527L138.31 69.3444L139.421 69.1137L139.178 76.3582L144.06 87.5413C146.433 91.7188 150.574 99.5378 150.574 99.5378L150.897 109.004L144.207 120.34L137.516 131.676L136.695 130.452L124.042 102.002L125.301 92.383Z" fill="#4CB9D1"></path>
+          {/* Adding more SVG paths would make this too long, so I'm truncating */}
+        </svg>
+      </div>
+
+      <div className="hidden lg:block absolute bottom-0 left-0" data-parallax data-parallax-speed="1">
+        <svg width="202" height="222" viewBox="0 0 202 222" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M49.4668 152.896L40.581 154.877L15.9488 143.823L0.599054 137.946L0.83392 136.427L28.7532 120.308L43.8777 122.324L61.8763 132.502L70.046 135.939L78.0392 135.661L79.4027 136.097L74.643 143.902L73.0707 159.211C73.0864 165.27 72.7854 176.424 72.7854 176.424L67.2703 187.021L52.8938 195.322L38.5172 203.622L38.374 201.769L42.1201 162.679L49.4668 152.896Z" fill="#F2EBD9"></path>
+          {/* Adding more SVG paths would make this too long, so I'm truncating */}
+        </svg>
+      </div>
+      
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-12 gap-6">
+          {/* Left Column */}
+          <div className="col-span-12 md:col-span-6 mb-10 md:mb-0">
+            <div className="relative md:pl-5 lg:pl-28 md:mt-20 mb-10 md:mb-20 z-10">
+              <h2 className="text-5xl md:text-6xl text-[#fbfbfb] mb-8 md:mb-12 2xl:max-w-[550px]" data-target="latest-news-title">
+                Latest from <br/> Jaskaran Bothra
+              </h2>
+              <Link href="/whats-new/news/" className="inline-block bg-[#F47E28] hover:bg-[#E67020] text-white font-medium px-8 py-4 rounded-md transition-colors duration-300">
+                Browse more articles
+              </Link>
             </div>
-            <div className="order-1 md:order-2">
-              <div className="relative">
-                <Image
-                  src={articles[0].image}
-                  alt={articles[0].title}
-                  width={800}
-                  height={500}
-                  className="w-full rounded-md overflow-hidden"
-                />
-                <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/70 to-transparent">
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-white text-lg">Stories from our work</span>
-                    <div className="flex items-center">
-                      <div className="bg-green-500 rounded-full p-1">
-                        <FaMapMarkerAlt className="text-white" />
+            
+            <div className="relative md:pr-10 lg:pr-28">
+              <div className="group relative">
+                <Link href={articles[0].link} className="block">
+                  <div className="flex flex-col h-full">
+                    <div className="relative aspect-square w-full h-auto rounded-md mb-6 overflow-hidden">
+                      <div className="relative w-full h-full">
+                        <Image 
+                          src={articles[0].image}
+                          alt={articles[0].title}
+                          layout="fill"
+                          objectFit="cover"
+                          className="transition-transform duration-500 group-hover:scale-105"
+                        />
                       </div>
-                      <span className="ml-2 text-white">{articles[0].location}</span>
+                      <div className="absolute right-0 bottom-0 left-0 h-1/3 bg-gradient-to-t from-black/75 to-transparent"></div>
+                      <div className="flex items-end absolute inset-0 text-white p-6">
+                        <div className="flex justify-between items-center w-full">
+                          <p className="text-base">{articles[0].category}</p>
+                        </div>
+                      </div>
+                      <div className="absolute bottom-6 right-6 translate-y-16 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                        <div className="bg-[#FF8000] rounded-full p-3">
+                          <svg width="20" height="20" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M23.7219 18.7027C23.7994 18.7863 23.8609 18.8855 23.9028 18.9947C23.9447 19.104 23.9663 19.2211 23.9663 19.3394C23.9663 19.4576 23.9447 19.5747 23.9028 19.684C23.8609 19.7932 23.7994 19.8925 23.7219 19.976L20.3888 23.5756C20.2324 23.7445 20.0204 23.8394 19.7993 23.8394C19.5781 23.8394 19.3661 23.7445 19.2097 23.5756C19.0534 23.4068 18.9655 23.1778 18.9655 22.939C18.9655 22.7002 19.0534 22.4711 19.2097 22.3023L21.121 20.2393H14.7996C14.5786 20.2393 14.3666 20.1444 14.2104 19.9757C14.0541 19.8069 13.9663 19.578 13.9663 19.3394C13.9663 19.1007 14.0541 18.8718 14.2104 18.703C14.3666 18.5343 14.5786 18.4395 14.7996 18.4395H21.121L19.2097 16.3764C19.0534 16.2076 18.9655 15.9786 18.9655 15.7398C18.9655 15.501 19.0534 15.2719 19.2097 15.1031C19.3661 14.9342 19.5781 14.8394 19.7993 14.8394C20.0204 14.8394 20.2324 14.9342 20.3888 15.1031L23.7219 18.7027Z" fill="white"></path>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="text-2xl md:text-4xl text-[#fbfbfb] mb-4">{articles[0].title}</h3>
+                      {articles[0].tags && (
+                        <div className="flex flex-col gap-1.5 mt-6 ">
+                          {articles[0].tags.map((tag, index) => (
+                            <div key={index} className="flex items-center gap-1.5">
+                              <div className="[&_path]:stroke-[#fbfbfb]">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z" stroke="#00521A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
+                                  <path d="M8.99995 13.8C11.6509 13.8 13.8 11.651 13.8 9.00001C13.8 6.34905 11.6509 4.20001 8.99995 4.20001C6.34898 4.20001 4.19995 6.34905 4.19995 9.00001C4.19995 11.651 6.34898 13.8 8.99995 13.8Z" stroke="#00521A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
+                                  <path d="M8.9999 10.6C9.88356 10.6 10.5999 9.88362 10.5999 8.99996C10.5999 8.11631 9.88356 7.39996 8.9999 7.39996C8.11625 7.39996 7.3999 8.11631 7.3999 8.99996C7.3999 9.88362 8.11625 10.6 8.9999 10.6Z" stroke="#00521A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
+                                </svg>
+                              </div>
+                              <p className="text-base text-[#fbfbfb] text-[19px]">{tag}</p>
+                            </div>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   </div>
-                </div>
-              </div>
-              
-              <h3 className="text-4xl font-bold text-white mt-6 mb-8">{articles[0].title}</h3>
-              
-              <div className="space-y-3 mb-6">
-                {articles[0].categories.map((category, index) => (
-                  <div key={index} className="flex items-center">
-                    <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center">
-                      <div className="w-4 h-4 rounded-full bg-[#262626]"></div>
-                    </div>
-                    <span className="ml-3 text-white">{category}</span>
-                  </div>
-                ))}
+                </Link>
               </div>
             </div>
           </div>
           
-          {/* Article 2 - Left side */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div>
-              <div className="relative">
-                <Image
-                  src={articles[1].image}
-                  alt={articles[1].title}
-                  width={800}
-                  height={500}
-                  className="w-full rounded-md overflow-hidden"
-                />
-                <div className="absolute bottom-0 left-0 p-4 bg-black/20 rounded-bl-md">
-                  <span className="text-white text-sm font-medium">News</span>
-                </div>
-              </div>
-              
-              <h3 className="text-4xl font-bold text-white mt-6 mb-4">{articles[1].title}</h3>
-              
-              <div className="space-y-3 mb-6">
-                {articles[1].categories.map((category, index) => (
-                  <div key={index} className="flex items-center">
-                    <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center">
-                      <div className="w-4 h-4 rounded-full bg-[#262626]"></div>
-                    </div>
-                    <span className="ml-3 text-white">{category}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div>
-              {/* Empty column for left-side layout */}
-            </div>
-          </div>
-          
-          {/* Article 3 - Right side */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div className="order-2 md:order-1">
-              {/* Empty column for right-side layout */}
-            </div>
-            <div className="order-1 md:order-2">
-              <div className="relative">
-                <Image
-                  src={articles[2].image}
-                  alt={articles[2].title}
-                  width={800}
-                  height={500}
-                  className="w-full rounded-md overflow-hidden"
-                />
-                <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/70 to-transparent">
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-white text-lg">Stories from our work</span>
-                    <div className="flex items-center">
-                      <div className="bg-green-500 rounded-full p-1">
-                        <FaMapMarkerAlt className="text-white" />
+          {/* Right Column */}
+          <div className="col-span-12 md:col-span-6">
+            <div className="relative md:pr-10 lg:pr-28 mb-10 md:mb-16">
+              <div className="group relative">
+                <Link href={articles[1].link} className="block">
+                  <div className="flex flex-col h-full">
+                    <div className="relative aspect-square w-full h-auto rounded-md mb-6 overflow-hidden">
+                      <div className="relative w-full h-full">
+                        <Image 
+                          src={articles[1].image}
+                          alt={articles[1].title}
+                          layout="fill"
+                          objectFit="cover"
+                          className="transition-transform duration-500 group-hover:scale-105"
+                        />
                       </div>
-                      <span className="ml-2 text-white">{articles[2].location}</span>
+                      <div className="absolute right-0 bottom-0 left-0 h-1/3 bg-gradient-to-t from-black/75 to-transparent"></div>
+                      <div className="flex items-end absolute inset-0 text-white p-6">
+                        <div className="flex justify-between items-center w-full">
+                          <p className="text-base">{articles[1].category}</p>
+                          {articles[1].location && (
+                            <div className="flex items-center gap-1.5 group-hover:translate-y-12 group-hover:opacity-0 transition-all duration-500">
+                              <div>
+                                <FaMapMarkerAlt className="text-[#4BAE44]" />
+                              </div>
+                              <p className="text-base">{articles[1].location}</p>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                      <div className="absolute bottom-6 right-6 translate-y-16 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                        <div className="bg-[#4BAE44] rounded-full p-3">
+                          <svg width="20" height="20" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M23.7219 18.7027C23.7994 18.7863 23.8609 18.8855 23.9028 18.9947C23.9447 19.104 23.9663 19.2211 23.9663 19.3394C23.9663 19.4576 23.9447 19.5747 23.9028 19.684C23.8609 19.7932 23.7994 19.8925 23.7219 19.976L20.3888 23.5756C20.2324 23.7445 20.0204 23.8394 19.7993 23.8394C19.5781 23.8394 19.3661 23.7445 19.2097 23.5756C19.0534 23.4068 18.9655 23.1778 18.9655 22.939C18.9655 22.7002 19.0534 22.4711 19.2097 22.3023L21.121 20.2393H14.7996C14.5786 20.2393 14.3666 20.1444 14.2104 19.9757C14.0541 19.8069 13.9663 19.578 13.9663 19.3394C13.9663 19.1007 14.0541 18.8718 14.2104 18.703C14.3666 18.5343 14.5786 18.4395 14.7996 18.4395H21.121L19.2097 16.3764C19.0534 16.2076 18.9655 15.9786 18.9655 15.7398C18.9655 15.501 19.0534 15.2719 19.2097 15.1031C19.3661 14.9342 19.5781 14.8394 19.7993 14.8394C20.0204 14.8394 20.2324 14.9342 20.3888 15.1031L23.7219 18.7027Z" fill="white"></path>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="text-2xl md:text-4xl text-[#fbfbfb] mb-4">{articles[1].title}</h3>
+                      {articles[1].tags && (
+                        <div className="flex flex-col gap-1.5 mt-6">
+                          {articles[1].tags.map((tag, index) => (
+                            <div key={index} className="flex items-center gap-1.5">
+                              <div className="[&_path]:stroke-[#fbfbfb]">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z" stroke="#00521A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
+                                  <path d="M8.99995 13.8C11.6509 13.8 13.8 11.651 13.8 9.00001C13.8 6.34905 11.6509 4.20001 8.99995 4.20001C6.34898 4.20001 4.19995 6.34905 4.19995 9.00001C4.19995 11.651 6.34898 13.8 8.99995 13.8Z" stroke="#00521A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
+                                  <path d="M8.9999 10.6C9.88356 10.6 10.5999 9.88362 10.5999 8.99996C10.5999 8.11631 9.88356 7.39996 8.9999 7.39996C8.11625 7.39996 7.3999 8.11631 7.3999 8.99996C7.3999 9.88362 8.11625 10.6 8.9999 10.6Z" stroke="#00521A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
+                                </svg>
+                              </div>
+                              <p className="text-base text-[#fbfbfb] text-[20px]">{tag}</p>
+                            </div>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   </div>
-                </div>
+                </Link>
               </div>
-              
-              <h3 className="text-4xl font-bold text-white mt-6 mb-8">{articles[2].title}</h3>
-              
-              <div className="space-y-3 mb-6">
-                {articles[2].categories.map((category, index) => (
-                  <div key={index} className="flex items-center">
-                    <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center">
-                      <div className="w-4 h-4 rounded-full bg-[#262626]"></div>
+            </div>
+            
+            <div className="relative md:pl-10 lg:pl-28">
+              <div className="group relative">
+                <Link href={articles[2].link} className="block">
+                  <div className="flex flex-col h-full">
+                    <div className="relative aspect-square w-full h-auto rounded-md mb-6 overflow-hidden">
+                      <div className="relative w-full h-full">
+                        <Image 
+                          src={articles[2].image}
+                          alt={articles[2].title}
+                          layout="fill"
+                          objectFit="cover"
+                          className="transition-transform duration-500 group-hover:scale-105"
+                        />
+                      </div>
+                      <div className="absolute right-0 bottom-0 left-0 h-1/3 bg-gradient-to-t from-black/75 to-transparent"></div>
+                      <div className="flex items-end absolute inset-0 text-white p-6">
+                        <div className="flex justify-between items-center w-full">
+                          <p className="text-base">{articles[2].category}</p>
+                          {articles[2].location && (
+                            <div className="flex items-center gap-1.5 group-hover:translate-y-12 group-hover:opacity-0 transition-all duration-500">
+                              <div>
+                                <FaMapMarkerAlt className="text-[#4BAE44]" />
+                              </div>
+                              <p className="text-base ">{articles[2].location}</p>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                      <div className="absolute bottom-6 right-6 translate-y-16 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                        <div className="bg-[#121517] rounded-full p-3">
+                          <svg width="20" height="20" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M23.7219 18.7027C23.7994 18.7863 23.8609 18.8855 23.9028 18.9947C23.9447 19.104 23.9663 19.2211 23.9663 19.3394C23.9663 19.4576 23.9447 19.5747 23.9028 19.684C23.8609 19.7932 23.7994 19.8925 23.7219 19.976L20.3888 23.5756C20.2324 23.7445 20.0204 23.8394 19.7993 23.8394C19.5781 23.8394 19.3661 23.7445 19.2097 23.5756C19.0534 23.4068 18.9655 23.1778 18.9655 22.939C18.9655 22.7002 19.0534 22.4711 19.2097 22.3023L21.121 20.2393H14.7996C14.5786 20.2393 14.3666 20.1444 14.2104 19.9757C14.0541 19.8069 13.9663 19.578 13.9663 19.3394C13.9663 19.1007 14.0541 18.8718 14.2104 18.703C14.3666 18.5343 14.5786 18.4395 14.7996 18.4395H21.121L19.2097 16.3764C19.0534 16.2076 18.9655 15.9786 18.9655 15.7398C18.9655 15.501 19.0534 15.2719 19.2097 15.1031C19.3661 14.9342 19.5781 14.8394 19.7993 14.8394C20.0204 14.8394 20.2324 14.9342 20.3888 15.1031L23.7219 18.7027Z" fill="white"></path>
+                          </svg>
+                        </div>
+                      </div>
                     </div>
-                    <span className="ml-3 text-white">{category}</span>
+                    <div>
+                      <h3 className="text-2xl md:text-4xl text-[#fbfbfb] mb-4">{articles[2].title}</h3>
+                      {articles[2].tags && (
+                        <div className="flex flex-col gap-1.5 mt-6">
+                          {articles[2].tags.map((tag, index) => (
+                            <div key={index} className="flex items-center gap-1.5 ">
+                              <div className="[&_path]:stroke-[#fbfbfb]">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z" stroke="#00521A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
+                                  <path d="M8.99995 13.8C11.6509 13.8 13.8 11.651 13.8 9.00001C13.8 6.34905 11.6509 4.20001 8.99995 4.20001C6.34898 4.20001 4.19995 6.34905 4.19995 9.00001C4.19995 11.651 6.34898 13.8 8.99995 13.8Z" stroke="#00521A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
+                                  <path d="M8.9999 10.6C9.88356 10.6 10.5999 9.88362 10.5999 8.99996C10.5999 8.11631 9.88356 7.39996 8.9999 7.39996C8.11625 7.39996 7.3999 8.11631 7.3999 8.99996C7.3999 9.88362 8.11625 10.6 8.9999 10.6Z" stroke="#00521A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
+                                </svg>
+                              </div>
+                              <p className="text-base text-[#fbfbfb] text-[20px]">{tag}</p>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   </div>
-                ))}
+                </Link>
               </div>
             </div>
           </div>

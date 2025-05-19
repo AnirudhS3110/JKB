@@ -53,7 +53,7 @@ export const Timeline = ({ data, title, description, customStyles = {} }) => {
       >
         <div className="mb-16 md:mb-24 text-center">
           <motion.h2 
-            className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 text-white max-w-4xl mx-auto font-cormorant"
+            className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 text-[#121517] max-w-4xl mx-auto font-cormorant"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -62,14 +62,14 @@ export const Timeline = ({ data, title, description, customStyles = {} }) => {
             {title || "Our Journey"}
           </motion.h2>
           <motion.div 
-            className="h-1 max-w-[250px] bg-[#fbfbfb] rounded-full mb-6 mx-auto"
+            className="h-1 max-w-[250px] bg-[#FE871B] rounded-full mb-6 mx-auto"
             initial={{ opacity: 0, y: 20, width: "0px" }}
             whileInView={{ opacity: 1, y: 0, width: "250px" }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
           ></motion.div>
           <motion.p 
-            className="text-[#fbfbfb] text-sm md:text-[24px] max-w-2xl mx-auto font-montserrat leading-relaxed"
+            className="text-[#121517] text-sm md:text-[24px] max-w-2xl mx-auto font-montserrat leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

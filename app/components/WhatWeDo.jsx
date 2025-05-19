@@ -14,7 +14,7 @@ const WhatWeDo = () => {
   ];
 
   return (
-    <section className="relative min-h-screen w-full py-[40px] ">
+    <section className="relative min-h-[120vh] w-full py-[40px] ">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <div 

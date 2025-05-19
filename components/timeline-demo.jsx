@@ -4,8 +4,8 @@
   export default function TimelineDemo({ title, description }) {
     // Custom styles to override defaults in the Timeline component
     const customStyles = {
-      bg: "bg-[#F4720B]", // Custom background color
-      yearColor: "text-[#fbfbfb]", // Custom year text color
+      bg: "bg-gradient-to-b from-[#F8D4B9] to-[#F9A778]", // Softer gradient background
+      yearColor: "text-[#121517] drop-shadow-md", // Darker year text color with subtle shadow for better contrast
     };
 
     const data = [
@@ -13,7 +13,7 @@
         title: "2024",
         content: (
           <div>
-            <p className="mb-8 text-xs font-normal text-[#fbfbfb] md:text-[20px] dark:text-neutral-200">
+            <p className="mb-8 font-normal text-base md:text-[20px] text-[#121517]">
               Launched innovative environmental and educational initiatives across rural communities, focusing on sustainable development and technology integration.
             </p>
             <div className="grid grid-cols-2 gap-4">
@@ -39,10 +39,10 @@
         title: "2023",
         content: (
           <div>
-            <p className="mb-8 text-xs font-normal text-[#fbfbfb] md:text-[20px] dark:text-neutral-200">
+            <p className="mb-8 font-normal text-base md:text-[20px] text-[#121517]">
               Established the Jaskaran Bothra Foundation with a vision to create lasting change through sustainable initiatives and community empowerment.
             </p>
-            <p className="mb-8 text-xs font-normal text-neutral-800 md:text-[20px] dark:text-neutral-200">
+            <p className="mb-8 font-normal text-base md:text-[20px] text-[#121517]">
               Created partnerships with local organizations and global agencies to extend our reach and amplify our impact in key areas of focus.
             </p>
             <div className="grid grid-cols-2 gap-4">
@@ -68,7 +68,7 @@
         title: "2022",
         content: (
           <div>
-            <p className="mb-8 text-xs font-normal text-[#fbfbfb] md:text-[20px] dark:text-neutral-200">
+            <p className="mb-8 font-normal text-base md:text-[20px] text-[#121517]">
               Conducted extensive research and community assessments to identify the most pressing needs in target regions. Formulated strategic plans and gathered support from key stakeholders.
             </p>
             <div className="grid grid-cols-2 gap-4">
@@ -94,7 +94,7 @@
         title: "2021",
         content: (
           <div>
-            <p className="mb-8 text-xs font-normal text-[#fbfbfb] md:text-[20px] dark:text-neutral-200">
+            <p className="mb-8 font-normal text-base md:text-[20px] text-[#121517]">
               Jaskaran Bothra conceptualized the foundation after witnessing firsthand the challenges faced by underserved communities. Initial networking and fundraising efforts began to transform this vision into reality.
             </p>
             <div className="grid grid-cols-2 gap-4">
@@ -120,23 +120,23 @@
         title: "Vision",
         content: (
           <div>
-            <p className="mb-4 text-xs font-normal text-[#fbfbfb] md:text-[20px] dark:text-neutral-200">
+            <p className="mb-4 font-normal text-base md:text-[20px] text-[#121517] ">
               Our future roadmap focuses on 5 key areas:
             </p>
             <div className="mb-8">
-              <div className="flex items-center gap-2 text-xs text-neutral-700 md:text-[18px] dark:text-neutral-300">
+              <div className="flex items-center gap-2 text-xs text-[#121517] md:text-[18px] ">
                 ✅ Green Energy Implementation in Rural Communities
               </div>
-              <div className="flex items-center gap-2 text-xs text-neutral-700 md:text-[18px] dark:text-neutral-300">
+              <div className="flex items-center gap-2 text-xs text-[#121517] md:text-[18px] ">
                 ✅ Clean Water Access for 500,000 people by 2026
               </div>
-              <div className="flex items-center gap-2 text-xs text-neutral-700 md:text-[18px] dark:text-neutral-300">
+              <div className="flex items-center gap-2 text-xs text-[#121517] md:text-[18px] ">
                 ✅ Educational Technology in 1,000 Schools
               </div>
-              <div className="flex items-center gap-2 text-xs text-neutral-700 md:text-[18px] dark:text-neutral-300">
+              <div className="flex items-center gap-2 text-xs text-[#121517] md:text-[18px] ">
                 ✅ Women&apos;s Empowerment through Skills Development
               </div>
-              <div className="flex items-center gap-2 text-xs text-neutral-700 md:text-[18px] dark:text-neutral-300">
+              <div className="flex items-center gap-2 text-xs text-[#121517] md:text-[18px] ">
                 ✅ Healthcare Accessibility in Remote Areas
               </div>
             </div>
@@ -163,7 +163,7 @@
         title: "2025-2030",
         content: (
           <div>
-            <p className="mb-8 text-xs font-normal text-[#fbfbfb] md:text-[20px] dark:text-neutral-200">
+            <p className="mb-8 font-normal text-base md:text-[20px] text-[#121517]">
               Our five-year expansion plan includes establishing regional offices across three continents, launching our flagship carbon neutrality program, and extending our educational initiatives to reach over one million students worldwide.
             </p>
             <div className="grid grid-cols-2 gap-4">
