@@ -14,7 +14,7 @@ const WhatWeDo = () => {
   ];
 
   return (
-    <section className="relative min-h-[120vh] w-full py-[40px] ">
+    <section className="relative min-h-[150vh] md:min-h-[120vh] w-full py-[40px] ">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <div 
@@ -32,7 +32,7 @@ const WhatWeDo = () => {
       {/* Main Content */}
       <div className="absolute inset-0 flex flex-col justify-center z-10">
         <div className="container mx-auto px-6 lg:px-20">
-          <h1 className="text-6xl px-[34px] md:text-7xl font-bold text-[#fbfbfb] mb-16 pt-[50px]">
+          <h1 className="text-[56px] px-[28px] md:px-[32px] md:text-7xl font-bold text-[#fbfbfb] mb-16 pt-[50px]">
             What we do
           </h1>
 

@@ -56,7 +56,7 @@ export default function NewsFeed() {
   return (
     <section 
       ref={sectionRef}
-      className="bg-[#FF8E16] relative overflow-hidden py-20 md:py-30"
+      className="bg-orange-500 opacity-88 relative overflow-hidden py-20 md:py-30"
     >
       {/* Decorative leaf patterns */}
       <div className="hidden lg:block absolute -top-35 -left-20" data-parallax data-parallax-speed="1">
