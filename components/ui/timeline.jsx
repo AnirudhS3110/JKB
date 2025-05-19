@@ -6,7 +6,7 @@ import {
   motion,
   useInView,
 } from "framer-motion";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useLayoutEffect } from "react";
 
 export const Timeline = ({ data, title, description, customStyles = {} }) => {
   const ref = useRef(null);
@@ -19,16 +19,19 @@ export const Timeline = ({ data, title, description, customStyles = {} }) => {
     yearColor: customStyles.yearColor || "text-orange-500",
   };
 
-  useEffect(() => {
+  // Use useLayoutEffect for accurate measurement
+  useLayoutEffect(() => {
     if (ref.current) {
       const rect = ref.current.getBoundingClientRect();
       setHeight(rect.height);
     }
-  }, [ref]);
+  }, [data]); // Add data as dependency in case timeline changes
 
+  // Call useScroll after ref is attached, add layoutEffect: false to avoid hydration warning
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start 10%", "end 50%"],
+    layoutEffect: false,
   });
 
   const heightTransform = useTransform(scrollYProgress, [0, 1], [0, height]);
@@ -115,7 +118,7 @@ export const Timeline = ({ data, title, description, customStyles = {} }) => {
             style={{
               height: height + "px",
             }}
-            className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-gray-600 dark:via-gray-500 to-transparent to-[99%] [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)]"
+            className="absolute  md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-gray-600 dark:via-gray-500 to-transparent to-[99%] [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)]"
           >
             <motion.div
               style={{
