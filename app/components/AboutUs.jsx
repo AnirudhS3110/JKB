@@ -95,7 +95,7 @@ export default function AboutUsSection() {
                   priority
                   sizes="100vw"
                   quality={85}
-                  onLoadingComplete={() => {
+                  onLoad={() => {
                     setImagesLoaded(prev => ({...prev, [key]: true}));
                   }}
                   onError={() => {

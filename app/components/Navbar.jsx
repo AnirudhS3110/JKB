@@ -76,13 +76,14 @@ const ImprovedNavbar = () => {
 
   return (
     <header 
-      className={`fixed top-0 left-0 w-full z-150 transition-all duration-300 ${
+      className={`fixed top-0 left-0 w-full z-220 transition-all duration-300 ${
         isScrolled || activeDropdown !== null ? 'bg-[#000000]' : 'bg-transparent'
       }`}
+      suppressHydrationWarning
     >
       {/* Main Navigation Container */}
-      <div className="container mx-auto px-4 md:px-8 lg:px-16 xl:px-24">
-        <div className="flex items-center justify-between h-20">
+      <div className="container mx-auto px-4 md:px-8 lg:px-16 xl:px-24" suppressHydrationWarning>
+        <div className="flex items-center justify-between h-20" suppressHydrationWarning>
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <h1 className="text-xl font-bold">

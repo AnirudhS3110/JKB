@@ -140,7 +140,7 @@ const ImpactCounter = () => {
             ${moneyCount.toFixed(1)} M
           </h3>
           <p className="text-xl text-green-100 mb-6">Deployed for Ecosystem Resilience</p>
-          <button className="bg-[#1b1a1f] hover:bg-[#262626] transition-colors px-6 py-2 rounded-md">
+          <button suppressHydrationWarning className="bg-[#1b1a1f] hover:bg-[#262626] transition-colors px-6 py-2 rounded-md">
             Learn More
           </button>
         </div>

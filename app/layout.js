@@ -24,7 +24,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${montserrat.variable}`}>
+    <html lang="en" className={`${cormorant.variable} ${montserrat.variable}`} suppressHydrationWarning>
       <body className="bg-white font-montserrat" suppressHydrationWarning>
         <ImprovedNavbar />
         {children}

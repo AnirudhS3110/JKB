@@ -102,12 +102,13 @@ export default function NewsFeed() {
                   <div className="flex flex-col h-full">
                     <div className="relative aspect-square w-full h-auto rounded-md mb-6 overflow-hidden">
                       <div className="relative w-full h-full">
-                        <Image 
+                        <Image
                           src={articles[0].image}
                           alt={articles[0].title}
-                          layout="fill"
-                          objectFit="cover"
-                          className="transition-transform duration-500 group-hover:scale-105"
+                          fill
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          className="object-cover"
+                          priority
                         />
                       </div>
                       <div className="absolute right-0 bottom-0 left-0 h-1/3 bg-gradient-to-t from-black/75 to-transparent"></div>
@@ -157,12 +158,12 @@ export default function NewsFeed() {
                   <div className="flex flex-col h-full">
                     <div className="relative aspect-square w-full h-auto rounded-md mb-6 overflow-hidden">
                       <div className="relative w-full h-full">
-                        <Image 
+                        <Image
                           src={articles[1].image}
                           alt={articles[1].title}
-                          layout="fill"
-                          objectFit="cover"
-                          className="transition-transform duration-500 group-hover:scale-105"
+                          fill
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          className="object-cover"
                         />
                       </div>
                       <div className="absolute right-0 bottom-0 left-0 h-1/3 bg-gradient-to-t from-black/75 to-transparent"></div>
@@ -217,12 +218,12 @@ export default function NewsFeed() {
                   <div className="flex flex-col h-full">
                     <div className="relative aspect-square w-full h-auto rounded-md mb-6 overflow-hidden">
                       <div className="relative w-full h-full">
-                        <Image 
+                        <Image
                           src={articles[2].image}
                           alt={articles[2].title}
-                          layout="fill"
-                          objectFit="cover"
-                          className="transition-transform duration-500 group-hover:scale-105"
+                          fill
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          className="object-cover"
                         />
                       </div>
                       <div className="absolute right-0 bottom-0 left-0 h-1/3 bg-gradient-to-t from-black/75 to-transparent"></div>
