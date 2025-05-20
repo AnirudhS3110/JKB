@@ -163,9 +163,7 @@ const ImprovedNavbar = () => {
                       alt={navItems[activeDropdown].title + ' image'} 
                       className="mb-4 w-[90%] h-[70%] object-cover  shadow-md  bg-[#222]" 
                     />
-                    <p className="text-sm text-[#F8F9FA]/80 font-light leading-relaxed">
-                      {navItems[activeDropdown].description}
-                    </p>
+                    
                   </div>
 
                   {/* Right side - Title and links with arrows */}
