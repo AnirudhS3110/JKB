@@ -17,6 +17,7 @@ export const HeroParallax = ({
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
+    layoutEffect: false // Add this to prevent hydration issues
   });
 
   const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
@@ -48,7 +49,8 @@ export const HeroParallax = ({
   return (
     <div
       ref={ref}
-      className="h-[300vh] py-40 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d] bg-gradient-to-b from-[#F8D4B9] to-[#F9A778]"
+      className="h-[300vh] z-[210] py-40 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d] bg-gradient-to-b from-[#F8D4B9] to-[#F9A778]"
+      style={{ position: 'relative' }}
     >
       <Header />
       <motion.div

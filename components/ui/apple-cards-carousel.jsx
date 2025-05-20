@@ -120,6 +120,7 @@ export const Carousel = ({ items, initialScroll = 0 }) => {
         </div>
         <div className="mr-10 flex justify-end gap-2">
           <button
+            suppressHydrationWarning
             className="relative z-40 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 disabled:opacity-50"
             onClick={scrollLeft}
             disabled={!canScrollLeft}
@@ -127,6 +128,7 @@ export const Carousel = ({ items, initialScroll = 0 }) => {
             <IconArrowNarrowLeft className="h-6 w-6 text-gray-500" />
           </button>
           <button
+            suppressHydrationWarning
             className="relative z-40 flex h-10 w-10 items-center justify-center rounded-full bg-black disabled:opacity-50"
             onClick={scrollRight}
             disabled={!canScrollRight}
@@ -142,7 +144,7 @@ export const Carousel = ({ items, initialScroll = 0 }) => {
 export const Card = ({
   card,
   index,
-  layout = false,
+  layout = true,
 }) => {
   const [open, setOpen] = useState(false);
   const containerRef = useRef(null);
@@ -184,31 +186,32 @@ export const Card = ({
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+              exit={{ opacity: 0, transition: { duration: 0.3 } }}
               className="fixed inset-0 h-full w-full bg-black/80 backdrop-blur-lg"
             />
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0, transition: { duration: 0.5 } }}
+              exit={{ opacity: 0, y: 20, transition: { duration: 0.3 } }}
               ref={containerRef}
-              layoutId={layout ? `card-${card.title}` : undefined}
+              layoutId={layout ? `card-container-${index}` : undefined}
               className="relative z-[60] mx-auto my-10 h-fit max-w-5xl rounded-3xl bg-white p-4 font-sans md:p-10 dark:bg-neutral-900"
             >
               <button
+                suppressHydrationWarning
                 className="sticky top-4 right-0 ml-auto flex h-8 w-8 items-center justify-center rounded-full bg-black dark:bg-white"
                 onClick={handleClose}
               >
                 <IconX className="h-6 w-6 text-neutral-100 dark:text-neutral-900" />
               </button>
               <motion.p
-                layoutId={layout ? `category-${card.title}` : undefined}
+                layoutId={layout ? `category-${index}` : undefined}
                 className="text-base font-medium text-black dark:text-white"
               >
                 {card.category}
               </motion.p>
               <motion.p
-                layoutId={layout ? `title-${card.title}` : undefined}
+                layoutId={layout ? `title-${index}` : undefined}
                 className="mt-4 text-2xl font-semibold text-neutral-700 md:text-5xl dark:text-white"
               >
                 {card.title}
@@ -219,20 +222,34 @@ export const Card = ({
         )}
       </AnimatePresence>
       <motion.button
-        layoutId={layout ? `card-${card.title}` : undefined}
+        suppressHydrationWarning
+        layoutId={layout ? `card-container-${index}` : undefined}
         onClick={handleOpen}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ 
+          opacity: 1, 
+          y: 0,
+          transition: { 
+            duration: 0.5,
+            delay: 0.1 * index
+          }
+        }}
+        whileHover={{ 
+          scale: 1.02,
+          transition: { duration: 0.2 }
+        }}
         className="relative z-10 flex h-64 w-44 flex-col items-start justify-start overflow-hidden rounded-3xl bg-gray-100 md:h-[40rem] md:w-96 dark:bg-neutral-900"
       >
         <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-full bg-gradient-to-b from-black/50 via-transparent to-transparent" />
         <div className="relative z-40 p-4 md:p-8">
           <motion.p
-            layoutId={layout ? `category-${card.category}` : undefined}
+            layoutId={layout ? `category-${index}` : undefined}
             className="text-left font-sans text-xs font-medium text-white md:text-base"
           >
             {card.category}
           </motion.p>
           <motion.p
-            layoutId={layout ? `title-${card.title}` : undefined}
+            layoutId={layout ? `title-${index}` : undefined}
             className="mt-1 md:mt-2 max-w-xs text-left font-sans text-base font-semibold [text-wrap:balance] text-white md:text-3xl"
           >
             {card.title}
