@@ -13,7 +13,7 @@ const Footer = () => {
         <div className="h-full w-full bg-[url('/images/leaf-pattern.png')] bg-no-repeat bg-left-bottom"></div>
       </div>
       
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 font-paragraph">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Logo Section */}
           <div className="">
@@ -42,7 +42,7 @@ const Footer = () => {
           
           {/* Useful Links Section */}
           <div>
-            <h3 className="text-xl font-semibold mb-6 text-[#fbfbfb]">Useful links</h3>
+            <h3 className="text-xl font-semibold mb-6 font-heading font-light text-[#fbfbfb]">Useful links</h3>
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-3">
                 <Link href="/media" className="block text-[#fbfbfb] hover:text-[#F4720B]">Media</Link>
@@ -62,24 +62,24 @@ const Footer = () => {
           
           {/* Follow Us Section */}
           <div className="bg-[#F4720B] h-auto md:h-[200px] max-h-[450px] p-6 rounded-lg">
-            <h3 className="text-xl font-semibold mb-4 text-[#fbfbfb]">Follow us</h3>
+            <h3 className="text-xl font-semibold mb-4 font-title font-light text-[#fbfbfb]">Follow us</h3>
             <p className="mb-6 text-[#fbfbfb]">
               Head over to our social media channels to stay up to date and join the conversation.
             </p>
             <div className="flex space-x-3 text-[#fbfbfb]">
-              <Link href="https://facebook.com" className="w-10 h-10 rounded-full border-2 border-[#fbfbfb] flex items-center justify-center  hover:bg-gray-800 hover:text-yellow-300 transition-colors">
+              <Link href="https://facebook.com" className="w-10 h-10 rounded-full border-2 border-[#fbfbfb] flex items-center justify-center  hover:bg-gray-800 hover:text-orange-500 transition-colors">
                 <FaFacebookF />
               </Link>
-              <Link href="https://twitter.com" className="w-10 h-10 rounded-full border-2 border-[#fbfbfb] flex items-center justify-center  hover:bg-gray-800 hover:text-yellow-300 transition-colors">
+              <Link href="https://twitter.com" className="w-10 h-10 rounded-full border-2 border-[#fbfbfb] flex items-center justify-center  hover:bg-gray-800 hover:text-orange-500 transition-colors">
                 <FaXTwitter />
               </Link>
-              <Link href="https://instagram.com" className="w-10 h-10 rounded-full border-2 border-[#fbfbfb] flex items-center justify-center  hover:bg-gray-800 hover:text-yellow-300 transition-colors">
+              <Link href="https://instagram.com" className="w-10 h-10 rounded-full border-2 border-[#fbfbfb] flex items-center justify-center  hover:bg-gray-800 hover:text-orange-500 transition-colors">
                 <AiOutlineInstagram />
               </Link>
-              <Link href="https://youtube.com" className="w-10 h-10 rounded-full border-2 border-[#fbfbfb] flex items-center justify-center  hover:bg-gray-800 hover:text-yellow-300 transition-colors">
+              <Link href="https://youtube.com" className="w-10 h-10 rounded-full border-2 border-[#fbfbfb] flex items-center justify-center  hover:bg-gray-800 hover:text-orange-500 transition-colors">
                 <FaYoutube />
               </Link>
-              <Link href="https://linkedin.com" className="w-10 h-10 rounded-full border-2 border-[#fbfbfb] flex items-center justify-center  hover:bg-gray-800 hover:text-yellow-300 transition-colors">
+              <Link href="https://linkedin.com" className="w-10 h-10 rounded-full border-2 border-[#fbfbfb] flex items-center justify-center  hover:bg-gray-800 hover:text-orange-500 transition-colors">
                 <FaLinkedinIn />
               </Link>
             </div>
