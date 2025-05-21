@@ -191,7 +191,7 @@ export const Card = ({
     <>
       <AnimatePresence>
         {open && (
-          <div className="fixed inset-0 z-50  h-screen overflow-auto">
+          <div className="fixed inset-0 z-[250]  h-screen overflow-auto">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -204,7 +204,7 @@ export const Card = ({
               exit={{ opacity: 0, y: 20, transition: { duration: 0.3 } }}
               ref={containerRef}
               layoutId={layout ? `card-container-${index}` : undefined}
-              className="relative z-[60] mx-auto my-10 h-fit max-w-5xl rounded-3xl bg-white p-4 font-sans md:p-10 dark:bg-neutral-900"
+              className="relative z-[250] mx-auto my-10 h-fit max-w-5xl rounded-3xl bg-white p-4 font-sans md:p-10 dark:bg-neutral-900"
             >
               <button
                 suppressHydrationWarning
@@ -255,13 +255,13 @@ export const Card = ({
         <div className="relative z-40 p-4 md:p-8">
           <motion.p
             layoutId={layout ? `category-${index}` : undefined}
-            className={`text-left font-sans text-xs font-medium text-white md:text-base ${isHovered ? 'z-50 relative' : ''}`}
+            className={`text-left font-paragraph text-xs font-medium text-white md:text-base ${isHovered ? 'z-50 relative' : ''}`}
           >
             {card.category}
           </motion.p>
           <motion.p
             layoutId={layout ? `title-${index}` : undefined}
-            className={`mt-1 md:mt-2 max-w-xs text-left font-sans text-base font-semibold [text-wrap:balance] text-white md:text-3xl ${isHovered ? 'z-50 relative' : ''}`}
+            className={`mt-1 md:mt-2 max-w-xs text-left font-sans text-base font-paragraph [text-wrap:balance] text-white md:text-3xl ${isHovered ? 'z-50 relative' : ''}`}
           >
             {card.title}
           </motion.p>

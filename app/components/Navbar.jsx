@@ -82,7 +82,7 @@ const ImprovedNavbar = () => {
       suppressHydrationWarning
     >
       {/* Main Navigation Container */}
-      <div className="container mx-auto px-4 md:px-8 lg:px-16 xl:px-24" suppressHydrationWarning>
+      <div className="container mx-auto px-4 md:px-8 lg:px-16 xl:px-24 font-paragraph" suppressHydrationWarning>
         <div className="flex items-center justify-between h-20" suppressHydrationWarning>
           {/* Logo */}
           <Link href="/" className="flex items-center">
@@ -97,7 +97,7 @@ const ImprovedNavbar = () => {
                 {navItems.map((item, index) => (
                   <div 
                     key={index}
-                    className="relative  group"
+                    className="relative  group font-paragraph"
                     onMouseEnter={() => setActiveDropdown(index)}
                     /* We're removing onMouseLeave from here */
                   >
@@ -152,7 +152,7 @@ const ImprovedNavbar = () => {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="absolute left-0 w-full bg-[#000000] text-[#F8F9FA] shadow-lg"
+              className="absolute left-0 w-full bg-[#000000] font-paragraph  text-[#F8F9FA] shadow-lg"
               onMouseEnter={() => setActiveDropdown(activeDropdown)} /* Keep dropdown open when mouse enters it */
               onMouseLeave={() => setActiveDropdown(null)}  /* Close dropdown when mouse leaves it */
             >
@@ -171,7 +171,7 @@ const ImprovedNavbar = () => {
                   {/* Right side - Title and links with arrows */}
                   <div className="w-full md:w-2/3">
                     <div className="mb-10">
-                      <h2 className="text-4xl font-medium text-[#F8F9FA]">{navItems[activeDropdown].title}</h2>
+                      <h2 className="text-4xl font-title font-light text-[#F8F9FA]">{navItems[activeDropdown].title}</h2>
                       <div className="h-1 w-24 bg-[#F4A261] rounded-full mt-2"></div>
                     </div>
                     <div className="space-y-6">
@@ -251,7 +251,7 @@ const ImprovedNavbar = () => {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden bg-[#000000] w-full"
+              className="md:hidden bg-[#000000] font-paragraph w-full"
             >
               <div className="container mx-auto px-4 py-4 space-y-4">
                 {navItems.map((item, index) => (

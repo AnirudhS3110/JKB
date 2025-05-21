@@ -61,7 +61,7 @@ const Footer = () => {
           </div>
           
           {/* Follow Us Section */}
-          <div className="bg-[#F4720B] h-[200px] max-h-[450px] p-6 rounded-lg">
+          <div className="bg-[#F4720B] h-auto md:h-[200px] max-h-[450px] p-6 rounded-lg">
             <h3 className="text-xl font-semibold mb-4 text-[#fbfbfb]">Follow us</h3>
             <p className="mb-6 text-[#fbfbfb]">
               Head over to our social media channels to stay up to date and join the conversation.

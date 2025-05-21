@@ -109,7 +109,7 @@ export default function FounderTribute() {
             variants={textVariants}
             initial="hidden"
             animate="visible"
-            className="text-5xl md:text-7xl lg:text-8xl text-[#F4720B] font-bold tracking-tight mb-6"
+            className="text-5xl md:text-7xl lg:text-8xl text-[#F4720B] font-title font-light tracking-tight mb-6"
           >
             Jaskaran Bothra
           </motion.h1>
@@ -119,7 +119,7 @@ export default function FounderTribute() {
             initial="hidden"
             animate="visible"
             transition={{ delay: 0.2 }}
-            className="text-xl md:text-2xl text-[#fbfbfb] max-w-2xl font-light mb-10"
+            className="text-xl md:text-2xl text-[#fbfbfb] max-w-2xl font-paragraph font-light mb-10"
           >
             Visionary conservationist and humanitarian who dedicated his life to creating sustainable pathways for rural communities and protecting our natural ecosystems.
           </motion.p>
@@ -130,7 +130,7 @@ export default function FounderTribute() {
             animate="visible"
             className="max-w-xl border-l-4 border-[#F4720B] pl-6 py-2"
           >
-            <p className="text-[#fbfbfb] text-lg md:text-xl italic font-light leading-relaxed">
+            <p className="text-[#fbfbfb] text-lg md:text-xl italic font-light font-paragraph leading-relaxed">
               &ldquo;True conservation isn&apos;t about saving nature from people, but empowering people to become stewards of nature. When communities thrive, the environment flourishes.&rdquo;
             </p>
             <p className="text-[#F4720B] mt-4">15th December 1928 - Forver</p>

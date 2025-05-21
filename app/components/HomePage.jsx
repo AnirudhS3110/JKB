@@ -62,14 +62,14 @@ export default function HomePage() {
                 transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
                 className="mb-20"
               >
-                <h2 className="text-white text-6xl sm:text-7xl md:text-8xl font-dm-serif-text font-semibold leading-tight tracking-tighter">
+                <h2 className="text-white text-6xl sm:text-7xl md:text-8xl font-title font-light leading-tight tracking-tighter">
                   Change isn&apos;t coming.
                 </h2>
-                <h2 className="text-black text-6xl sm:text-7xl md:text-8xl font-dm-serif-text font-semibold mt-2 leading-tight tracking-tighter">
+                <h2 className="text-black text-6xl sm:text-7xl md:text-8xl font-heading font-light mt-2 leading-tight tracking-tighter">
                   <span className="text-black">It&apos;s </span><span className='text-white'>here</span>  <span className="text-black">.</span>
                 </h2>
                 
-                <p className="text-white text-xl md:text-3xl mt-8 max-w-3xl font-merriweather font-light leading-relaxed">
+                <p className="text-white text-xl md:text-3xl mt-8 max-w-3xl font-paragraph leading-relaxed">
                   Join the campaigns that don&apos;t just promise tomorrow.
                   <br />They deliver it today.
                 </p>

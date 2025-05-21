@@ -125,7 +125,7 @@ const ImpactCounter = () => {
 
   return (
     <div className="py-12 px-4 max-w-screen-xl min-h-[70vh] mx-auto flex flex-col  justify-center">
-      <h2 className="text-[36px] font-medium text-[#1b1a1f] md:text-[42px] mb-[20px] flex items-center">
+      <h2 className="text-[36px] font-title font-light text-[#1b1a1f] md:text-[42px] mb-[20px] flex items-center">
         <span className="inline-block w-3 h-3  bg-brown-600 rounded-full mr-2"></span>
         Our Impact to Date
       </h2>
@@ -135,9 +135,9 @@ const ImpactCounter = () => {
         className="bg-[#F4720B] rounded-lg p-6 md:p-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-white"
       >
         {/* Money Counter */}
-        <div className="text-center md:text-left md:border-r md:border-white md:pr-8">
+        <div className="text-center md:text-left font-paragraph md:border-r md:border-white md:pr-8">
           <h3 className="text-5xl md:text-6xl font-light mb-2">
-            {moneyCount.toFixed(1)} k+
+            {moneyCount.toFixed(1)} K+
           </h3>
           <p className="text-xl text-green-100 mb-6">Empowered Strong</p>
           <button suppressHydrationWarning className="bg-[#1b1a1f] hover:bg-[#262626] transition-colors px-6 py-2 rounded-md">
@@ -146,7 +146,7 @@ const ImpactCounter = () => {
         </div>
         
         {/* Acres Counter */}
-        <div className="text-center md:border-r md:border-white md:px-8">
+        <div className="text-center font-paragraph md:border-r md:border-white md:px-8">
           <h3 className="text-5xl md:text-6xl font-light mb-2">
             {formatNumber(acresCount)}+
           </h3>
@@ -154,7 +154,7 @@ const ImpactCounter = () => {
         </div>
         
         {/* Water Counter */}
-        <div className="text-center md:text-left md:pl-8">
+        <div className="text-center font-paragraph md:text-left md:pl-8">
           <h3 className="text-5xl md:text-6xl font-light mb-2">
             {formatNumber(Math.floor(waterCount))}+
           </h3>

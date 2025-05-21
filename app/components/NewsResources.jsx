@@ -88,7 +88,7 @@ export default function NewsFeed() {
           {/* Left Column */}
           <div className="col-span-12 md:col-span-6 mb-10 md:mb-0">
             <div className="relative md:pl-5 lg:pl-28 md:mt-20 mb-10 md:mb-20 z-10">
-              <h2 className="text-5xl md:text-6xl text-[#fbfbfb] mb-8 md:mb-12 2xl:max-w-[550px]" data-target="latest-news-title">
+              <h2 className="text-5xl md:text-6xl text-[#fbfbfb] mb-8 md:mb-12 2xl:max-w-[550px] font-title font-light" data-target="latest-news-title">
                 Latest from <br/> Jaskaran Bothra
               </h2>
               <Link href="/whats-new/news/" className="inline-block bg-[#F47E28] hover:bg-[#E67020] text-white font-medium px-8 py-4 rounded-md transition-colors duration-300">
@@ -114,7 +114,7 @@ export default function NewsFeed() {
                       <div className="absolute right-0 bottom-0 left-0 h-1/3 bg-gradient-to-t from-black/75 to-transparent"></div>
                       <div className="flex items-end absolute inset-0 text-white p-6">
                         <div className="flex justify-between items-center w-full">
-                          <p className="text-base">{articles[0].category}</p>
+                          <p className="text-base font-paragraph">{articles[0].category}</p>
                         </div>
                       </div>
                       <div className="absolute bottom-6 right-6 translate-y-16 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
@@ -126,7 +126,7 @@ export default function NewsFeed() {
                       </div>
                     </div>
                     <div>
-                      <h3 className="text-2xl md:text-4xl text-[#fbfbfb] mb-4">{articles[0].title}</h3>
+                      <h3 className="text-2xl md:text-4xl text-[#fbfbfb] mb-4 font-title font-light">{articles[0].title}</h3>
                       {articles[0].tags && (
                         <div className="flex flex-col gap-1.5 mt-6 ">
                           {articles[0].tags.map((tag, index) => (
@@ -138,7 +138,7 @@ export default function NewsFeed() {
                                   <path d="M8.9999 10.6C9.88356 10.6 10.5999 9.88362 10.5999 8.99996C10.5999 8.11631 9.88356 7.39996 8.9999 7.39996C8.11625 7.39996 7.3999 8.11631 7.3999 8.99996C7.3999 9.88362 8.11625 10.6 8.9999 10.6Z" stroke="#00521A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
                                 </svg>
                               </div>
-                              <p className="text-base text-[#fbfbfb] text-[19px]">{tag}</p>
+                              <p className="text-base text-[#fbfbfb] text-[19px] font-paragraph">{tag}</p>
                             </div>
                           ))}
                         </div>
@@ -169,13 +169,13 @@ export default function NewsFeed() {
                       <div className="absolute right-0 bottom-0 left-0 h-1/3 bg-gradient-to-t from-black/75 to-transparent"></div>
                       <div className="flex items-end absolute inset-0 text-white p-6">
                         <div className="flex justify-between items-center w-full">
-                          <p className="text-base">{articles[1].category}</p>
+                          <p className="text-base font-paragraph">{articles[1].category}</p>
                           {articles[1].location && (
                             <div className="flex items-center gap-1.5 group-hover:translate-y-12 group-hover:opacity-0 transition-all duration-500">
                               <div>
                                 <FaMapMarkerAlt className="text-[#4BAE44]" />
                               </div>
-                              <p className="text-base">{articles[1].location}</p>
+                              <p className="text-base font-paragraph">{articles[1].location}</p>
                             </div>
                           )}
                         </div>
@@ -189,7 +189,7 @@ export default function NewsFeed() {
                       </div>
                     </div>
                     <div>
-                      <h3 className="text-2xl md:text-4xl text-[#fbfbfb] mb-4">{articles[1].title}</h3>
+                      <h3 className="text-2xl md:text-4xl text-[#fbfbfb] mb-4 font-title font-light">{articles[1].title}</h3>
                       {articles[1].tags && (
                         <div className="flex flex-col gap-1.5 mt-6">
                           {articles[1].tags.map((tag, index) => (
@@ -201,7 +201,7 @@ export default function NewsFeed() {
                                   <path d="M8.9999 10.6C9.88356 10.6 10.5999 9.88362 10.5999 8.99996C10.5999 8.11631 9.88356 7.39996 8.9999 7.39996C8.11625 7.39996 7.3999 8.11631 7.3999 8.99996C7.3999 9.88362 8.11625 10.6 8.9999 10.6Z" stroke="#00521A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
                                 </svg>
                               </div>
-                              <p className="text-base text-[#fbfbfb] text-[20px]">{tag}</p>
+                              <p className="text-base text-[#fbfbfb] text-[20px] font-paragraph">{tag}</p>
                             </div>
                           ))}
                         </div>
@@ -229,13 +229,13 @@ export default function NewsFeed() {
                       <div className="absolute right-0 bottom-0 left-0 h-1/3 bg-gradient-to-t from-black/75 to-transparent"></div>
                       <div className="flex items-end absolute inset-0 text-white p-6">
                         <div className="flex justify-between items-center w-full">
-                          <p className="text-base">{articles[2].category}</p>
+                          <p className="text-base font-paragraph">{articles[2].category}</p>
                           {articles[2].location && (
                             <div className="flex items-center gap-1.5 group-hover:translate-y-12 group-hover:opacity-0 transition-all duration-500">
                               <div>
                                 <FaMapMarkerAlt className="text-[#4BAE44]" />
                               </div>
-                              <p className="text-base ">{articles[2].location}</p>
+                              <p className="text-base font-paragraph">{articles[2].location}</p>
                             </div>
                           )}
                         </div>
@@ -249,7 +249,7 @@ export default function NewsFeed() {
                       </div>
                     </div>
                     <div>
-                      <h3 className="text-2xl md:text-4xl text-[#fbfbfb] mb-4">{articles[2].title}</h3>
+                      <h3 className="text-2xl md:text-4xl text-[#fbfbfb] mb-4 font-title font-light">{articles[2].title}</h3>
                       {articles[2].tags && (
                         <div className="flex flex-col gap-1.5 mt-6">
                           {articles[2].tags.map((tag, index) => (
@@ -261,7 +261,7 @@ export default function NewsFeed() {
                                   <path d="M8.9999 10.6C9.88356 10.6 10.5999 9.88362 10.5999 8.99996C10.5999 8.11631 9.88356 7.39996 8.9999 7.39996C8.11625 7.39996 7.3999 8.11631 7.3999 8.99996C7.3999 9.88362 8.11625 10.6 8.9999 10.6Z" stroke="#00521A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
                                 </svg>
                               </div>
-                              <p className="text-base text-[#fbfbfb] text-[20px]">{tag}</p>
+                              <p className="text-base text-[#fbfbfb] text-[20px] font-paragraph">{tag}</p>
                             </div>
                           ))}
                         </div>

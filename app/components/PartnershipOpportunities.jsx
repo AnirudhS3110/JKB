@@ -85,10 +85,10 @@ export default function PartnershipOpportunities() {
       <div className="container mx-auto px-6">
         {/* Section header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#F4720B] mb-4 tracking-tight">Partnership Opportunities</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-[#F4720B] mb-4 font-title font-light tracking-tight">Partnership Opportunities</h2>
           <div className="h-1 w-24 bg-[#F4720B] rounded-full mx-auto mb-6"></div>
-          <p className="text-xl text-gray-700 leading-relaxed">
-            Not just donors. <span className="font-semibold">Catalysts for change.</span> Join forces with a legacy initiative 
+          <p className="text-xl text-gray-700 leading-relaxed font-paragraph">
+            Not just donors. <span className="font-paragraph">Catalysts for change.</span> Join forces with a legacy initiative 
             committed to building a socially inclusive future through structured development.
           </p>
         </div>
@@ -110,7 +110,7 @@ export default function PartnershipOpportunities() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#F4720B]/90 via-[#F4720B]/50 to-transparent">
               <div className="absolute bottom-0 left-0 w-full p-8 md:p-10">
-                <p className="text-white text-2xl font-light leading-tight">
+                <p className="text-white text-2xl font-light font-paragraph leading-tight">
                   &ldquo;His vision emphasized <span className="font-medium">not charity, but creating opportunities</span> for people to become independent contributors to society.&rdquo;
                 </p>
                 <p className="text-white/80 mt-4 italic">— In memory of Late Shri Jaskaran Bothra</p>
@@ -155,9 +155,9 @@ export default function PartnershipOpportunities() {
                     </div>
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-800 mb-1">{type.title}</h3>
-                    <p className="text-[#F4720B] font-medium text-sm mb-2">{type.tagline}</p>
-                    <p className="text-gray-600 text-sm mb-4">{type.description}</p>
+                    <h3 className="text-xl font-title font-light text-gray-800 mb-1">{type.title}</h3>
+                    <p className="text-[#F4720B] font-paragraph text-sm mb-2">{type.tagline}</p>
+                    <p className="text-gray-600 font-paragraph text-sm mb-4">{type.description}</p>
                     <Link 
                       href="/partnership"
                       className="flex items-center text-[#F4720B] font-medium text-sm hover:text-orange-800 transition-colors group"
@@ -210,14 +210,14 @@ export default function PartnershipOpportunities() {
                 <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
               </svg>
             </div>
-            <h3 className="text-2xl md:text-3xl font-semibold mb-4">Join Our Mission</h3>
-            <p className="text-white/90 mb-8 max-w-2xl mx-auto">
+            <h3 className="text-2xl md:text-3xl font-title font-light mb-4">Join Our Mission</h3>
+            <p className="text-white/90 font-paragraph mb-8 max-w-2xl mx-auto">
               Connect with us to explore how you can contribute to our initiatives in education, healthcare, rural infrastructure, and sustainable livelihood development.
             </p>
             
             <Link 
               href="/partnership" 
-              className="inline-flex items-center bg-white text-[#F4720B] font-medium px-8 py-3 rounded-md hover:bg-orange-50 transition-all transform hover:-translate-y-1 hover:shadow-lg duration-300"
+              className="inline-flex items-center bg-white text-[#F4720B] font-paragraph px-8 py-3 rounded-md hover:bg-orange-50 transition-all transform hover:-translate-y-1 hover:shadow-lg duration-300"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd" />

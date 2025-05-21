@@ -56,14 +56,14 @@ export default function UpcomingCampaigns() {
         {/* Header section with title and view all button */}
         <div className="flex justify-between items-center mb-12">
           <motion.h2 
-            className="text-5xl font-bold font-dm-serif-text text-black"
+            className="text-5xl  font-heading font-light text-black"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8 }}
           >
             Upcoming Campaigns
           </motion.h2>
-          <button suppressHydrationWarning={true} className="bg-gray-100 text-gray-800 px-5 py-2 rounded-md text-sm hover:bg-gray-200 transition-colors">
+          <button suppressHydrationWarning={true} className="bg-gray-100 md:block hidden text-gray-800 px-5 py-2 rounded-md text-sm hover:bg-gray-200 transition-colors">
             View all
           </button>
         </div>
@@ -101,21 +101,24 @@ export default function UpcomingCampaigns() {
               </div>
               
               {/* Campaign title - left aligned */}
-              <h3 className="text-2xl font-bold font-dm-serif-text text-[#000000] mb-3">
+              <h3 className="text-2xl  font-heading font-light text-[#000000] mb-3">
                 {campaign.title}
               </h3>
               
               {/* Description - left aligned with image */}
-              <p className="text-gray-600 mb-5 font-normal font-merriweather leading-relaxed">
+              <p className="text-gray-600 mb-5 font-normal font-paragraph leading-relaxed">
                 {campaign.description}
               </p>
               
               {/* Enroll button - left aligned with image */}
-              <button suppressHydrationWarning={true} className="text-left w-fit bg-[#F4720B] text-white font-normal px-6 py-3 hover:bg-[#E05900] transition-all">
+              <button suppressHydrationWarning={true} className="text-left w-fit bg-[#F4720B] text-white font-paragraph px-6 py-3 hover:bg-[#E05900] transition-all">
                 Enroll Now
               </button>
             </motion.div>
           ))}
+          <button suppressHydrationWarning={true} className="bg-gray-100 text-gray-800 px-5 py-2 md:hidden font-paragraph rounded-md text-sm hover:bg-gray-200 transition-colors">
+            View all
+          </button>
         </div>
         
         {/* Separator line */}

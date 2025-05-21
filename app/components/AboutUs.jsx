@@ -119,7 +119,7 @@ export default function AboutUsSection() {
       <div className="relative z-10 w-full">
         {/* Main Header - Updated to match screenshot with underlines */}
         <div className="container mx-auto px-6 mb-16 text-center">
-          <h2 className="text-6xl font-cormorant font-light mb-12 tracking-wide text-white text-center">
+          <h2 className="text-6xl font-heading font-light mb-12 tracking-wide text-white text-center">
             {/* About Us with underline effect */}
             <span className="relative inline-block">
               <span 
@@ -184,7 +184,7 @@ export default function AboutUsSection() {
         </div>
         
         {/* Content Section - MODIFIED to match screenshot */}
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-6 font-paragraph font-light">
           <div className="max-w-4xl mx-auto px-[15px] py-[15px] relative md:mx-0">
             <AnimatePresence mode="wait">
               <motion.div

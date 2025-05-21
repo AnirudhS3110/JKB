@@ -54,10 +54,10 @@ export default function AppleCardsCarouselDemo() {
         initial="hidden"
         animate={isComponentVisible ? "visible" : "hidden"}
       >
-        <h2 className="text-xl md:text-5xl text-[32px] md:text-[42px] font-bold text-[#000000]">
+        <h2 className="text-xl md:text-5xl text-[32px] md:text-[42px] font-title font-light text-[#000000]">
           Get to know our impact.
         </h2>
-        <p className="text-[#000000] md:text-[20px] mt-2 font-montserrat">
+        <p className="text-[#000000] md:text-[20px] mt-2 font-paragraph">
           Discover how our initiatives are creating positive change in communities around the world.
         </p>
       </motion.div>

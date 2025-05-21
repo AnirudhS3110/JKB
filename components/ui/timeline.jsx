@@ -56,7 +56,7 @@ export const Timeline = ({ data, title, description, customStyles = {} }) => {
       >
         <div className="mb-16 md:mb-24 text-center">
           <motion.h2 
-            className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 text-white max-w-4xl mx-auto font-cormorant"
+            className="text-3xl md:text-5xl lg:text-6xl font-light mb-6 text-white max-w-4xl mx-auto font-title"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -72,7 +72,7 @@ export const Timeline = ({ data, title, description, customStyles = {} }) => {
             transition={{ duration: 0.5, delay: 0.3 }}
           ></motion.div>
           <motion.p 
-            className="text-white text-sm md:text-[24px] max-w-2xl mx-auto font-montserrat leading-relaxed"
+            className="text-white text-sm md:text-[24px] max-w-2xl mx-auto font-paragraph leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -100,13 +100,13 @@ export const Timeline = ({ data, title, description, customStyles = {} }) => {
                   <div className="h-12 absolute left-3 md:left-3 w-12 rounded-full bg-[#fbfbfb] flex items-center justify-center shadow-lg">
                     <div className="h-5 w-5 rounded-full bg-orange-500 dark:bg-orange-600 border border-orange-300 dark:border-orange-700 p-2 shadow-inner" />
                   </div>
-                  <h3 className={`hidden md:block text-xl md:pl-20 md:text-5xl font-bold ${styles.yearColor} font-cormorant`}>
+                  <h3 className={`hidden md:block text-xl md:pl-20 md:text-5xl font-light ${styles.yearColor} font-title`}>
                     {item.title}
                   </h3>
                 </div>
 
                 <div className="relative pl-20 pr-4 md:pl-4 w-full">
-                  <h3 className={`md:hidden block text-2xl mb-4 text-left font-bold ${styles.yearColor} font-cormorant`}>
+                  <h3 className={`md:hidden block text-2xl mb-4 text-left font-light ${styles.yearColor} font-title`}>
                     {item.title}
                   </h3>
                   {item.content}{" "}
