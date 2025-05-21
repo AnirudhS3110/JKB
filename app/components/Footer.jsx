@@ -16,12 +16,12 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Logo Section */}
-          <div className="space-y-6">
-            <div className="flex flex-col space-y-4">
+          <div className="">
+            <div className="flex flex-row gap-4 items-center">
               <Link href="/" className="inline-block">
                 <img src="https://videos.openai.com/vg-assets/assets%2Ftask_01jvsgk7s6ecbrajwvn17jvadf%2F1747834277_img_3.webp?st=2025-05-21T12%3A00%3A05Z&se=2025-05-27T13%3A00%3A05Z&sks=b&skt=2025-05-21T12%3A00%3A05Z&ske=2025-05-27T13%3A00%3A05Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=3d249c53-07fa-4ba4-9b65-0bf8eb4ea46a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=jfXuY05qCaTRo4SrPZQpHMpHT7jKZjI%2BErED3cimSYI%3D&az=oaivgprodscus" alt="Jaskaran Bothra Foundation" className="h-[200px] md:h-[230px]" />
               </Link>
-              
+              <img src="/images/BelowLogoFooter.jpg" alt="Below Logo Footer" className="w-auto h-[100px]" />
             </div>
             
             {/* Search Box */}
@@ -61,7 +61,7 @@ const Footer = () => {
           </div>
           
           {/* Follow Us Section */}
-          <div className="bg-[#F4720B] p-6 rounded-lg">
+          <div className="bg-[#F4720B] h-[200px] max-h-[450px] p-6 rounded-lg">
             <h3 className="text-xl font-semibold mb-4 text-[#fbfbfb]">Follow us</h3>
             <p className="mb-6 text-[#fbfbfb]">
               Head over to our social media channels to stay up to date and join the conversation.

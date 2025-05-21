@@ -350,7 +350,7 @@ export default function DirectTransitionAnimation() {
                 transformStyle: "preserve-3d" 
               }}
             >
-              Empowering communities through vision, compassion, and action, because the right
+              Empowering communities with vision and compassion, because the right
             </motion.h2>
             
             {/* SOLUTION word animation replacing INNOVATION */}
@@ -425,7 +425,7 @@ export default function DirectTransitionAnimation() {
                 transformStyle: "preserve-3d" 
               }}
             >
-              can change everything
+              changes everything.
             </motion.h2>
           </motion.div>
           
