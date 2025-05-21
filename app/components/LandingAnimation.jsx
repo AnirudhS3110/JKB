@@ -378,9 +378,9 @@ export default function DirectTransitionAnimation() {
               >
                 {/* SVG with embedded video in the "O" */}
                 <svg
-                  className="w-full h-auto h-[50px] w-[240px] md:w-[345px] md:h-[72px] lg:w-[498px] lg:h-[104px] block"
+                  className="w-full h-[32px] md:w-[345px] md:h-[72px] lg:w-[498px] lg:h-[104px] block"
                   
-                  viewBox="0 0 498 104"
+                  viewBox="0 0 498 104"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <defs>
