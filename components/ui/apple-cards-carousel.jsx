@@ -147,6 +147,7 @@ export const Card = ({
   layout = true,
 }) => {
   const [open, setOpen] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const containerRef = useRef(null);
   const { onCardClose, currentIndex } = useContext(CarouselContext);
 
@@ -177,6 +178,14 @@ export const Card = ({
     setOpen(false);
     onCardClose(index);
   };
+  
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+  
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
 
   return (
     <>
@@ -187,7 +196,7 @@ export const Card = ({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0, transition: { duration: 0.3 } }}
-              className="fixed inset-0 h-full w-full bg-black/80 backdrop-blur-lg"
+              className="fixed inset-0 h-full w-full bg-black/80 hover:backdrop-blur-lg"
             />
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -225,6 +234,8 @@ export const Card = ({
         suppressHydrationWarning
         layoutId={layout ? `card-container-${index}` : undefined}
         onClick={handleOpen}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
         initial={{ opacity: 0, y: 20 }}
         animate={{ 
           opacity: 1, 
@@ -244,13 +255,13 @@ export const Card = ({
         <div className="relative z-40 p-4 md:p-8">
           <motion.p
             layoutId={layout ? `category-${index}` : undefined}
-            className="text-left font-sans text-xs font-medium text-white md:text-base"
+            className={`text-left font-sans text-xs font-medium text-white md:text-base ${isHovered ? 'z-50 relative' : ''}`}
           >
             {card.category}
           </motion.p>
           <motion.p
             layoutId={layout ? `title-${index}` : undefined}
-            className="mt-1 md:mt-2 max-w-xs text-left font-sans text-base font-semibold [text-wrap:balance] text-white md:text-3xl"
+            className={`mt-1 md:mt-2 max-w-xs text-left font-sans text-base font-semibold [text-wrap:balance] text-white md:text-3xl ${isHovered ? 'z-50 relative' : ''}`}
           >
             {card.title}
           </motion.p>
@@ -258,6 +269,7 @@ export const Card = ({
         <BlurImage
           src={card.src}
           alt={card.title}
+          isHovered={isHovered}
           className="absolute inset-0 z-10 object-cover"
         />
       </motion.button>
@@ -271,6 +283,7 @@ export const BlurImage = ({
   src,
   className,
   alt,
+  isHovered = false,
   ...rest
 }) => {
   const [isLoading, setLoading] = useState(true);
@@ -278,7 +291,7 @@ export const BlurImage = ({
     <img
       className={cn(
         "h-full w-full transition duration-300",
-        isLoading ? "blur-sm" : "blur-0",
+        isLoading ? null : isHovered ? "blur-md brightness-75" : "blur-0",
         className,
       )}
       onLoad={() => setLoading(false)}

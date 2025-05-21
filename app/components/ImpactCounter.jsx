@@ -137,7 +137,7 @@ const ImpactCounter = () => {
         {/* Money Counter */}
         <div className="text-center md:text-left md:border-r md:border-white md:pr-8">
           <h3 className="text-5xl md:text-6xl font-light mb-2">
-            ${moneyCount.toFixed(1)} k+
+            {moneyCount.toFixed(1)} k+
           </h3>
           <p className="text-xl text-green-100 mb-6">Empowered Strong</p>
           <button suppressHydrationWarning className="bg-[#1b1a1f] hover:bg-[#262626] transition-colors px-6 py-2 rounded-md">
