@@ -48,13 +48,13 @@ export default function AboutUsSection() {
     about: {
       title: "About Us",
       description: "The Jaskaran Bothra Foundation transforms underserved communities by creating pathways to independence—continuing the nationally recognized vision of a man who believed in empowerment over aid. We don't just give. We enable.",
-      image: "/images/about-background.jpg",
+      image: "https://pbs.twimg.com/profile_banners/1381848973963526145/1690267377/1080x360",
       link: "/about"
     },
     vision: {
       title: "Our Vision",
       description: "We visualise our business as an entity offering incredible support for the communities that enable us to thrive. With social and economic agendas, we aim at enhancing the state or country's weaker section and further develop the Human Development Index.",
-      image: "/images/vision-background.jpg",
+      image: "https://th-i.thgim.com/public/news/cities/chennai/wyoek1/article31192582.ece/alternates/FREE_1200/30MPYUVANGO1",
       link: "/vision"
     },
     mission: {
@@ -185,7 +185,7 @@ export default function AboutUsSection() {
         
         {/* Content Section - MODIFIED to match screenshot */}
         <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto md:mx-0">
+          <div className="max-w-4xl mx-auto px-[15px] py-[15px] relative md:mx-0">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeSection}
@@ -194,8 +194,8 @@ export default function AboutUsSection() {
                 exit={{ opacity: 0, y: -30 }}
                 transition={{ duration: 0.6 }}
               >
-                <div className="text-white">
-                  <p className="text-lg md:text-xl leading-relaxed mb-8">
+                <div className=" text-white">
+                  <p className="text-lg md:text-xl text-white leading-relaxed mb-8">
                     {content[activeSection].description}
                   </p>
                   
@@ -205,9 +205,12 @@ export default function AboutUsSection() {
                   >
                     Read more
                   </Link>
+                 
+                  
                 </div>
               </motion.div>
             </AnimatePresence>
+            <div className='bg-black absolute top-0 left-0 w-full h-full opacity-40'/>
           </div>
         </div>
       </div>

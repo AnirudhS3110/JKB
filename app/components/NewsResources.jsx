@@ -29,7 +29,7 @@ export default function NewsFeed() {
       id: 1,
       title: 'Half a Million Fed. Zero Left Behind.',
       category: 'News',
-      image: 'https://videos.openai.com/vg-assets/assets%2Ftask_01jvkkhj9teyw89cm27mf5pvpg%2F1747636056_img_2.webp?st=2025-05-19T05%3A23%3A25Z&se=2025-05-25T06%3A23%3A25Z&sks=b&skt=2025-05-19T05%3A23%3A25Z&ske=2025-05-25T06%3A23%3A25Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=aa5ddad1-c91a-4f0a-9aca-e20682cc8969&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=dwC76XLStsuvVmh5NLu6FyZFlb%2BnnJXbslLtI1J2%2FCQ%3D&az=oaivgprodscus', // Replace with your image path
+      image: '/images/CarousalPic8.jpg', // Replace with your image path
       tags:['Hunger Fought. Hope Delivered Fast.', 'Mumbai United. No One Forgotten.' ,'500K Strong. Together We Rose.'],
       link: '/farm-africa-returns-as-charity-partner'
     },
@@ -45,9 +45,9 @@ export default function NewsFeed() {
     {
       id: 3,
       title: 'Ability Amplified. Vision Empowered.',
-      category: 'Expert view',
+      category: 'News',
       location: 'India',
-      image: 'https://videos.openai.com/vg-assets/assets%2Ftask_01jvkkxntqfambn3at0t0cbjtx%2F1747636456_img_0.webp?st=2025-05-19T05%3A25%3A19Z&se=2025-05-25T06%3A25%3A19Z&sks=b&skt=2025-05-19T05%3A25%3A19Z&ske=2025-05-25T06%3A25%3A19Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=aa5ddad1-c91a-4f0a-9aca-e20682cc8969&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=vxggDI6R2mVH7mumNVzsXejE0FB0kNqnWDrxJD5M%2Bzg%3D&az=oaivgprodscus', // Replace with your image path
+      image: '/images/NewsPaper3.jpg',
       tags: ['Tech Touching Every Ability.', 'Eyes Closed. World Opened.', '1,000 Strong. 5,000 Seen.'],
       link: '/expert-view/meeting-juliet'
     }

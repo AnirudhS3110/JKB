@@ -6,12 +6,11 @@ import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-mot
 const VIDEO_SRC = "/videos/impact-video.mp4";
 const INITIAL_BG = "https://www.blueforest.org/wp-content/uploads/2024/02/hero-one.jpg";
 
-export default function LandingAnimationHybrid() {
+export default function DirectTransitionAnimation() {
   const [showTextSection, setShowTextSection] = useState(false);
   const [showHomepage, setShowHomepage] = useState(false);
   const [animationComplete, setAnimationComplete] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
-  const [scrollRatio, setScrollRatio] = useState(0);
   const [homePageScrollEnabled, setHomePageScrollEnabled] = useState(false);
   const containerRef = useRef(null);
   const animationSectionRef = useRef(null);
@@ -21,7 +20,6 @@ export default function LandingAnimationHybrid() {
   const solutionContainerRef = useRef(null);
   const oVideoRef = useRef(null);
   const backgroundVideoRef = useRef(null);
-  const homePageRef = useRef(null);
   
   // Solution animation dimensions state
   const [dimensions, setDimensions] = useState({
@@ -81,21 +79,43 @@ export default function LandingAnimationHybrid() {
     function calculatePositions() {
       const solutionContainer = solutionContainerRef.current;
       if (!solutionContainer) return;
+      
+      // Match exact values from HTML implementation
       const svgWidth = 498;
       const svgHeight = 104;
-      const oPositionInSvgX = 378;
-      const oPositionInSvgY = 68;
+      const oPositionInSvgX = 378; // X coordinate of O in the SVG
+      const oPositionInSvgY = 68;  // Y coordinate of O in the SVG
+      
+      // Get current dimensions and positions
       const rect = solutionContainer.getBoundingClientRect();
+      
+      // EXPLICITLY SET: Initial position of O relative to viewport (current position)
+      // This matches the HTML implementation exactly
       const initialPositionX = rect.left + oPositionInSvgX * (rect.width / svgWidth);
       const initialPositionY = rect.top + oPositionInSvgY * (rect.height / svgHeight);
+      
+      // Get viewport dimensions
       const viewportWidth = window.innerWidth;
       const viewportHeight = window.innerHeight;
-      const finalPositionX = viewportWidth / 2;
-      const finalPositionY = viewportHeight / 2;
+      const viewportCenterX = viewportWidth / 2;
+      const viewportCenterY = viewportHeight / 2;
+      
+      // EXPLICITLY SET: Final position where O should be centered (center of viewport)
+      const finalPositionX = viewportCenterX;
+      const finalPositionY = viewportCenterY;
+      
+      // Calculate required translation to move from initial to final position
       const requiredTranslationX = finalPositionX - initialPositionX;
       const requiredTranslationY = finalPositionY - initialPositionY;
-      const originX = (oPositionInSvgX / svgWidth) * 100;
-      const originY = (oPositionInSvgY / svgHeight) * 100;
+      
+      // Set transform-origin to the "O" letter position
+      const originX = (oPositionInSvgX / svgWidth) * 100; // Convert to percentage
+      const originY = (oPositionInSvgY / svgHeight) * 100; // Convert to percentage
+      
+      // Set transform-origin directly on the element
+      solutionContainer.style.transformOrigin = `${originX}% ${originY}%`;
+      
+      // Update state with all calculated values
       setDimensions({
         requiredTranslationX,
         requiredTranslationY,
@@ -107,10 +127,18 @@ export default function LandingAnimationHybrid() {
         finalPositionY,
         scaleFactor: 1,
       });
-      // Set transform-origin
-      solutionContainer.style.transformOrigin = `${originX}% ${originY}%`;
+      
+      // Log for debugging (can be removed in production)
+      console.log(`Transform origin set to: ${originX}% ${originY}%`);
+      console.log(`Initial position: ${initialPositionX}, ${initialPositionY}`);
+      console.log(`Final position: ${finalPositionX}, ${finalPositionY}`);
+      console.log(`Required translation: ${requiredTranslationX}, ${requiredTranslationY}`);
     }
-    setTimeout(calculatePositions, 300); // Increased wait for layout
+    
+    // Use a longer timeout to ensure all layout calculations are complete
+    setTimeout(calculatePositions, 500);
+    
+    // Recalculate on resize
     window.addEventListener('resize', calculatePositions);
     return () => window.removeEventListener('resize', calculatePositions);
   }, [isMounted]);
@@ -119,95 +147,88 @@ export default function LandingAnimationHybrid() {
     target: animationSectionRef,
     offset: ["start start", "end start"]
   });
-  const { scrollYProgress: fullPageScrollProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
+  
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    setScrollRatio(latest);
+    // For debugging
     // console.log("Scroll progress:", latest);
   });
-  const mapScrollToValue = (ratio, start, end) => 
-    Math.min(1, Math.max(0, (ratio - start) / (end - start)));
-    
-  // Animation timeline thresholds similar to InitialBannerAnimation
+
+  // Animation timeline thresholds - adjusted to match HTML version precisely
   const timeline = {
     startZoom: 0,             
     oReachesCenter: 0.30,     
     videoFadeInStart: 0.15,   
     videoFadeInComplete: 0.40,
-    wordGrowsSoLarge: 0.40,   
-    videoFullscreen: 0.42,    
-    expandingOStart: 0.35,
-    expandingOEnd: 0.42,
-    textSectionStart: 0.42,
-    textSectionEnd: 0.45,
-    firstTextIn: 0.45,       
-    firstTextDone: 0.55,     
-    secondTextIn: 0.55,      
-    secondTextDone: 0.65,    
-    homePageStart: 0.70,     
-    homePageVisible: 0.85,   
-    animationComplete: 0.80   
+    wordGrowsSoLarge: 0.50,    // Adjusted to allow more growth
+    videoFullscreen: 0.60,     // Direct transition to fullscreen
+    textSectionStart: 0.60,    // Show text section after transition
+    textSectionEnd: 0.63,
+    firstTextIn: 0.63,       
+    firstTextDone: 0.73,     
+    secondTextIn: 0.73,      
+    secondTextDone: 0.76,    
+    homePageStart: 0.94,     
+    homePageVisible: 0.98,   
+    animationComplete: 1   
   };
   
+  // Basic transforms
   const initialBackgroundOpacity = useTransform(scrollYProgress, [0, 0.35], [1, 0]);
   const headingOpacity = useTransform(scrollYProgress, [0, 0.1, 0.3, 0.35], [1, 1, 1, 0]);
   const headingY = useTransform(scrollYProgress, [0.2, 0.35], [0, -50]);
   const headingZ = useTransform(scrollYProgress, [0.2, 0.35], [0, 30]);
   const headingRotateX = useTransform(scrollYProgress, [0.2, 0.35], [0, -10]);
   
-  // Solution word animation transforms
+  // Solution word animation transforms - precisely adjusted for direct HTML-like transition
   const solutionScale = useTransform(
     scrollYProgress,
     [timeline.startZoom, timeline.wordGrowsSoLarge],
-    [1, 15]
+    [1, 35] // Increased to match HTML's 20x scale with some extra for full coverage
   );
   
+  // Apply translation until the O is centered, then stop translating
   const translateX = useTransform(
     scrollYProgress,
-    [0, timeline.oReachesCenter],
-    [0, dimensions.requiredTranslationX]
+    [0, timeline.oReachesCenter, timeline.oReachesCenter + 0.01, 1],
+    [0, dimensions.requiredTranslationX, dimensions.requiredTranslationX, dimensions.requiredTranslationX]
   );
   
   const translateY = useTransform(
     scrollYProgress,
-    [0, timeline.oReachesCenter],
-    [0, dimensions.requiredTranslationY]
+    [0, timeline.oReachesCenter, timeline.oReachesCenter + 0.01, 1],
+    [0, dimensions.requiredTranslationY, dimensions.requiredTranslationY, dimensions.requiredTranslationY]
   );
   
+  // Adjusted to create a smoother fade out matching HTML version
   const solutionOpacity = useTransform(
     scrollYProgress,
-    [timeline.wordGrowsSoLarge, timeline.videoFullscreen],
+    [timeline.wordGrowsSoLarge - 0.1, timeline.videoFullscreen - 0.1],
     [1, 0]
   );
   
+  // O video opacity fades in and stays visible longer
   const oVideoOpacity = useTransform(
     scrollYProgress,
     [timeline.videoFadeInStart, timeline.videoFadeInComplete],
     [0, 1]
   );
   
-  const mainVideoOpacity = useTransform(scrollYProgress, [0.40, 0.45], [0, 1]);
-  
-  const expandingOOpacity = useTransform(
+  // Fullscreen video fades in as solution word grows so large it fills screen
+  // Adjusted to match the HTML timing
+  const mainVideoOpacity = useTransform(
     scrollYProgress, 
-    [timeline.expandingOStart, timeline.expandingOStart + 0.03, timeline.expandingOEnd],
-    [0, 1, 0]
+    [timeline.wordGrowsSoLarge - 0.15, timeline.videoFullscreen - 0.15], 
+    [0, 1]
   );
   
-  const expandingOScale = useTransform(
-    scrollYProgress,
-    [timeline.expandingOStart, timeline.expandingOEnd],
-    [1, 35]
-  );
-  
+  // Text section fades in after video transition
   const textSectionOpacity = useTransform(
     scrollYProgress,
     [timeline.textSectionStart, timeline.textSectionEnd],
     [0, 1]
   );
   
+  // Text animations
   const firstTextClipPath = useTransform(
     scrollYProgress, 
     [timeline.firstTextIn, timeline.firstTextDone], 
@@ -243,44 +264,6 @@ export default function LandingAnimationHybrid() {
     [timeline.homePageStart, timeline.homePageStart + 0.08],
     [0, 1]
   );
-  
-  // Get the O element's position for expanding video effect
-  const [oPosition, setOPosition] = useState({ top: 0, left: 0 });
-  useEffect(() => {
-    if (solutionContainerRef.current && isMounted) {
-      const updatePosition = () => {
-        if (!solutionContainerRef.current) return;
-        const svgWidth = 498;
-        const oPositionInSvgX = 378;
-        const rect = solutionContainerRef.current.getBoundingClientRect();
-        const oLeft = rect.left + oPositionInSvgX * (rect.width / svgWidth);
-        const oTop = rect.top + rect.height / 2;
-        
-        setOPosition({
-          top: oTop,
-          left: oLeft
-        });
-      };
-      updatePosition();
-      
-      let rafId;
-      const handleScroll = () => {
-        cancelAnimationFrame(rafId);
-        rafId = requestAnimationFrame(updatePosition);
-      };
-      const handleResize = () => {
-        cancelAnimationFrame(rafId);
-        rafId = requestAnimationFrame(updatePosition);
-      };
-      window.addEventListener('scroll', handleScroll);
-      window.addEventListener('resize', handleResize);
-      return () => {
-        cancelAnimationFrame(rafId);
-        window.removeEventListener('scroll', handleScroll);
-        window.removeEventListener('resize', handleResize);
-      };
-    }
-  }, [isMounted]);
   
   useEffect(() => {
     const unsubscribe = scrollYProgress.onChange(v => {
@@ -338,7 +321,7 @@ export default function LandingAnimationHybrid() {
             className="fixed top-0 left-0 w-full h-screen z-2"
             style={{ 
               opacity: initialBackgroundOpacity,
-              backgroundImage: 'url(https://videos.openai.com/vg-assets/assets%2Ftask_01jvqe69s4frhtg1e0mh7vj4en%2F1747764680_img_0.webp?st=2025-05-20T16%3A57%3A45Z&se=2025-05-26T17%3A57%3A45Z&sks=b&skt=2025-05-20T16%3A57%3A45Z&ske=2025-05-26T17%3A57%3A45Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=3d249c53-07fa-4ba4-9b65-0bf8eb4ea46a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=YCza2B6Hk9YGVn1aF2rfKgR72DaKgNtr%2BFBxbJ0C0rg%3D&az=oaivgprodscus)',
+              backgroundImage: 'url(https://media.istockphoto.com/id/2167337936/photo/silhouette-of-reaching-giving-a-helping-hand-hope-and-support-each-other-over-blur-sunset-sky.jpg?s=612x612&w=0&k=20&c=YBvZJAQRCUCpjlbFVQ3U5lcQGrNjG4nWsjjAU2LljI0=)',
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat'
@@ -361,7 +344,7 @@ export default function LandingAnimationHybrid() {
           >
             {/* First part of heading */}
             <motion.h2 
-              className="font-cormorant text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-2"
+              className="font-noto-sans font-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-wide leading-tight mb-2"
               style={{ 
                 opacity: headingOpacity,
                 transformStyle: "preserve-3d" 
@@ -378,7 +361,8 @@ export default function LandingAnimationHybrid() {
                 position: "relative",
                 transformStyle: "preserve-3d",
                 perspective: 1000,
-                willChange: "transform, opacity"
+                willChange: "transform, opacity",
+                zIndex: 20 // Higher z-index during animation
               }}
             >
               <motion.span
@@ -388,15 +372,15 @@ export default function LandingAnimationHybrid() {
                   scale: solutionScale,
                   x: translateX,
                   y: translateY,
-                  transformOrigin: `${dimensions.originX}% ${dimensions.originY}%` 
+                  transformOrigin: `${dimensions.originX}% ${dimensions.originY}%`,
+                  willChange: "transform, opacity" 
                 }}
               >
                 {/* SVG with embedded video in the "O" */}
                 <svg
-                  className="w-full h-auto block"
-                  width="430"
-                  height="80"
-                  viewBox="0 0 498 104"
+                  className="w-full h-auto h-[50px] w-[240px] md:w-[345px] md:h-[72px] lg:w-[498px] lg:h-[104px] block"
+                  
+                  viewBox="0 0 498 104"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <defs>
@@ -433,11 +417,9 @@ export default function LandingAnimationHybrid() {
               </motion.span>
             </motion.div>
 
-           
-            
-          </motion.div>
-          <motion.h2 
-              className="font-Montserrat text-4xl z-[5] sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-2"
+            {/* "can change everything" text */}
+            <motion.h2 
+              className="font-noto-sans font-title text-4xl z-[5] sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-wide leading-tight mb-2"
               style={{ 
                 opacity: solutionOpacity,
                 transformStyle: "preserve-3d" 
@@ -445,46 +427,6 @@ export default function LandingAnimationHybrid() {
             >
               can change everything
             </motion.h2>
-            
-          
-          {/* Expanding O effect */}
-          <motion.div
-            className="fixed z-50 flex items-center justify-center"
-            style={{ 
-              opacity: expandingOOpacity,
-              scale: expandingOScale,
-              top: `${oPosition.top}px`,
-              left: `${oPosition.left}px`,
-              transform: 'translate(-50%, -50%)',
-              transformStyle: "preserve-3d",
-              backfaceVisibility: "hidden",
-              willChange: "transform, opacity"
-            }}
-            transition={{ 
-              duration: 1.2, 
-              ease: [0.33, 1, 0.68, 1]
-            }}
-          >
-            
-            <div className="relative rounded-full overflow-hidden" style={{ width: '130px', height: '130px' }}>
-              {isMounted && (
-                <video
-                  className="absolute w-full h-full object-cover"
-                  style={{
-                    transform: 'scale(1.05)',
-                    transformOrigin: 'center center',
-                    willChange: "transform"
-                  }}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="auto"
-                >
-                  <source src={VIDEO_SRC} type="video/mp4" />
-                </video>
-              )}
-            </div>
           </motion.div>
           
           {/* Full screen video appears */}
@@ -523,10 +465,7 @@ export default function LandingAnimationHybrid() {
               }}
             />
           </motion.div>
-
-          
         </div>
-        
         
         {/* Scroll indicator */}
         <motion.div 
@@ -554,7 +493,7 @@ export default function LandingAnimationHybrid() {
             {/* First phrase with scroll-based left-to-right reveal */}
             <motion.div className="overflow-hidden mb-6">
               <motion.h2
-                className="font-cormorant text-4xl md:text-6xl font-bold leading-tight relative inline-block"
+                className="font-noto-sans font-title text-4xl md:text-6xl font-bold tracking-wide leading-tight relative inline-block"
                 style={{
                   clipPath: firstTextClipPath,
                   x: firstTextX
@@ -567,7 +506,7 @@ export default function LandingAnimationHybrid() {
             {/* Second phrase with scroll-based left-to-right reveal */}
             <motion.div className="overflow-hidden">
               <motion.p
-                className="font-montserrat text-xl relative inline-block"
+                className="font-noto-serif font-paragraph text-xl italic relative inline-block"
                 style={{
                   clipPath: secondTextClipPath,
                   x: secondTextX
@@ -581,4 +520,4 @@ export default function LandingAnimationHybrid() {
       </div>
     </div>
   );
-} 
+}

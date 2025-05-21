@@ -22,9 +22,12 @@
 
 @layer base {
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-cormorant);
+    font-family: var(--font-noto-sans), var(--font-cormorant);
     font-weight: 600;
     letter-spacing: -0.02em;
+  }
+  p {
+    font-family: var(--font-noto-serif), serif;
   }
 }
 
@@ -33,6 +36,8 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-montserrat);
   --font-heading: var(--font-cormorant);
+  --font-title: var(--font-noto-sans);
+  --font-paragraph: var(--font-noto-serif);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -52,4 +57,12 @@ body {
 
 .font-heading {
   font-family: var(--font-cormorant), serif;
+}
+
+.font-title {
+  font-family: var(--font-noto-sans), sans-serif !important;
+}
+
+.font-paragraph {
+  font-family: var(--font-noto-serif), serif !important;
 }

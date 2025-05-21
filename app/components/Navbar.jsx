@@ -23,7 +23,7 @@ const ImprovedNavbar = () => {
 
   const navItems = [
     {
-      title: 'Upcoming Campaign',
+      title: 'Upcoming Campaigns',
       description: 'Learn about our current initiatives and how you can get involved to create meaningful change.',
       image: 'https://www.hindustantimes.com/ht-img/img/2024/02/17/1600x900/Bollywood-Actor-Shradha-Kapoor-joined-Protesters-f_1708193327170.jpg',
       links: [
@@ -33,7 +33,7 @@ const ImprovedNavbar = () => {
       ]
     },
     {
-      title: 'Our Impact',
+      title: 'Impact',
       description: 'Explore the measurable change we\'ve created through sustainable initiatives across communities.',
       image: 'https://videos.openai.com/vg-assets/assets%2Ftask_01jvkjz8gpe9xtpvjwyp66m64r%2F1747635471_img_2.webp?st=2025-05-19T11%3A49%3A21Z&se=2025-05-25T12%3A49%3A21Z&sks=b&skt=2025-05-19T11%3A49%3A21Z&ske=2025-05-25T12%3A49%3A21Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=aa5ddad1-c91a-4f0a-9aca-e20682cc8969&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=owy4sQ6m7lKv%2FIMlH10yT%2Be8UstHBSWYtQRmSP%2F8%2FQ8%3D&az=oaivgprodscus',
       links: [
@@ -43,7 +43,7 @@ const ImprovedNavbar = () => {
       ]
     },
     {
-      title: 'About Us',
+      title: 'About',
       description: 'Discover our story, mission, and the legacy of Jaskaran Bothra that guides our foundation.',
       image: '/images/about-background.jpg',
       links: [
@@ -53,7 +53,7 @@ const ImprovedNavbar = () => {
       ]
     },
     {
-      title: 'Partnership Opportunities',
+      title: 'Partnership',
       description: 'Join forces with us to amplify your impact through strategic collaborations and initiatives.',
       image: 'https://images.unsplash.com/photo-1665072204431-b3ba11bd6d06?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHBhcnRuZXJzaGlwfGVufDB8fDB8fHww',
       links: [
@@ -63,7 +63,7 @@ const ImprovedNavbar = () => {
       ]
     },
     {
-      title: 'News And Resources',
+      title: 'News',
       description: 'Stay updated with our latest initiatives, media coverage, and educational resources.',
       image: 'https://videos.openai.com/vg-assets/assets%2Ftask_01jvkf63qvfhptpxx4h7c8bcp8%2F1747631469_img_0.webp?st=2025-05-19T03%3A26%3A06Z&se=2025-05-25T04%3A26%3A06Z&sks=b&skt=2025-05-19T03%3A26%3A06Z&ske=2025-05-25T04%3A26%3A06Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=8ebb0df1-a278-4e2e-9c20-f2d373479b3a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=qgzxCqcVfa1GTAgA5MVhTNRsZ42hLQsHV82sEAWpe6c%3D&az=oaivgprodscus%27',
       links: [

@@ -63,32 +63,28 @@ export default function FounderTribute() {
     <section className="relative h-screen w-full overflow-hidden bg-[#000000] ">
       {/* Full-screen founder image with parallax effect */}
       <div 
-        className="absolute inset-0 h-[110%] w-full"
-        style={{ 
-          transform: `translateY(-${scrollPosition}px)`,
-          transition: 'transform 0.1s linear'
-        }}
+        className="absolute inset-0 h-[100%] w-full"
+       
       >
         <img
-          src="https://videos.openai.com/vg-assets/assets%2Ftask_01jv1y1r4jf5m83n6brpt8pf01%2F1747043086_img_0.webp?st=2025-05-18T10%3A01%3A02Z&se=2025-05-24T11%3A01%3A02Z&sks=b&skt=2025-05-18T10%3A01%3A02Z&ske=2025-05-24T11%3A01%3A02Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=8ebb0df1-a278-4e2e-9c20-f2d373479b3a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=F3tGYM7sorkTEiSq8jSeZPAo2qAdgr9JKyt%2FzqLZGHE%3D&az=oaivgprodscus" // Replace with actual founder image
+          src="/images/about-background.jpg" // Replace with actual founder image
           alt="Late Shri Jaskaran Bothra"  
-          className={`object-cover object-top transition-opacity duration-1000 ${isLoaded ? 'opacity-60' : 'opacity-0'}`} 
+          className="object-cover object-center w-full h-full transition-opacity duration-1000"
         />
+        <div className='absolute inset-0 bg-gradient-to-b from-black/70  to-black/70'></div>
         
         {/* Gradient overlays for better text legibility */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/10 to-black/80"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/40"></div>
+        {/* <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/10 to-black/80"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/40"></div> */}
       </div>
       
       {/* Fixed grain texture overlay for depth */}
-      <div className="absolute inset-0 opacity-20 pointer-events-none z-10">
-        <div className="h-full w-full bg-[url('/images/noise.png')] bg-repeat"></div>
-      </div>
+      
       
       {/* Subtle green leaf pattern accent */}
-      <div className="absolute bottom-0 right-0 w-1/3 h-1/3 opacity-10 z-10">
+      {/* <div className="absolute bottom-0 right-0 w-1/3 h-1/3 opacity-10 z-10">
         <div className="h-full w-full bg-[url('/images/leaf-pattern.png')] bg-no-repeat bg-right-bottom"></div>
-      </div>
+      </div> */}
 
       {/* Content container */}
       <div className="relative z-20 h-full w-full flex flex-col justify-center px-8 md:px-16 lg:px-24">
