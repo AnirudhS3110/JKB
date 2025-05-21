@@ -1,5 +1,5 @@
 import "./globals.css";
-import { Cormorant_Garamond, Montserrat, Noto_Sans, Noto_Serif } from 'next/font/google';
+import { Cormorant_Garamond, Montserrat, DM_Serif_Text, Merriweather } from 'next/font/google';
 import ImprovedNavbar from './components/Navbar';
 
 // Define premium fonts
@@ -10,26 +10,43 @@ const cormorant = Cormorant_Garamond({
   variable: '--font-cormorant',
 });
 
-const montserrat = Montserrat({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  display: 'swap',
-  variable: '--font-montserrat',
-});
+// const montserrat = Montserrat({
+//   subsets: ['latin'],
+//   weight: ['300', '400', '500', '600', '700'],
+//   display: 'swap',
+//   variable: '--font-montserrat',
+// });
 
 // Add Noto Sans and Noto Serif
-const notoSans = Noto_Sans({
+// const notoSans = Noto_Sans({
+//   subsets: ['latin'],
+//   weight: ['400', '500', '600', '700'],
+//   display: 'swap',
+//   variable: '--font-noto-sans',
+// });
+
+// const notoSerif = Noto_Serif({
+//   subsets: ['latin'],
+//   weight: ['400', '500', '600', '700'],
+//   display: 'swap',
+//   variable: '--font-noto-serif',
+// });
+
+// Add DM Serif Text
+const dmSerifText = DM_Serif_Text({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  weight: ['400'], // DM Serif Text only comes in weight 400
   display: 'swap',
-  variable: '--font-noto-sans',
+  variable: '--font-dm-serif-text',
 });
 
-const notoSerif = Noto_Serif({
+// Add Merriweather with all weights
+const merriweather = Merriweather({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  weight: ['300', '400', '700', '900'], // All available weights for Merriweather
+  style: ['normal', 'italic'],
   display: 'swap',
-  variable: '--font-noto-serif',
+  variable: '--font-merriweather',
 });
 
 export const metadata = {
@@ -39,8 +56,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${montserrat.variable} ${notoSans.variable} ${notoSerif.variable}`} suppressHydrationWarning>
-      <body className="bg-white font-montserrat" suppressHydrationWarning>
+    <html lang="en" className={`${cormorant.variable}   ${dmSerifText.variable} ${merriweather.variable}`} suppressHydrationWarning>
+      <body className="bg-white " suppressHydrationWarning>
         <ImprovedNavbar />
         {children}
       </body>

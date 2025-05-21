@@ -4,7 +4,6 @@ import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-mot
 
 // Define constants for the SOLUTION animation
 const VIDEO_SRC = "/videos/impact-video.mp4";
-const INITIAL_BG = "https://www.blueforest.org/wp-content/uploads/2024/02/hero-one.jpg";
 
 export default function DirectTransitionAnimation() {
   const [showTextSection, setShowTextSection] = useState(false);
@@ -344,7 +343,7 @@ export default function DirectTransitionAnimation() {
           >
             {/* First part of heading */}
             <motion.h2 
-              className="font-noto-sans font-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-wide leading-tight mb-2"
+              className="font-dm-serif-text font-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-wide leading-tight mb-2"
               style={{ 
                 opacity: headingOpacity,
                 transformStyle: "preserve-3d" 
@@ -419,7 +418,7 @@ export default function DirectTransitionAnimation() {
 
             {/* "can change everything" text */}
             <motion.h2 
-              className="font-noto-sans font-title text-4xl z-[5] sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-wide leading-tight mb-2"
+              className="font-dm-serif-text font-title text-4xl z-[5] sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-wide leading-tight mb-2"
               style={{ 
                 opacity: solutionOpacity,
                 transformStyle: "preserve-3d" 
@@ -493,7 +492,7 @@ export default function DirectTransitionAnimation() {
             {/* First phrase with scroll-based left-to-right reveal */}
             <motion.div className="overflow-hidden mb-6">
               <motion.h2
-                className="font-noto-sans font-title text-4xl md:text-6xl font-bold tracking-wide leading-tight relative inline-block"
+                className="font-dm-serif-text font-title text-4xl md:text-6xl font-bold tracking-wide leading-tight relative inline-block"
                 style={{
                   clipPath: firstTextClipPath,
                   x: firstTextX
@@ -506,7 +505,7 @@ export default function DirectTransitionAnimation() {
             {/* Second phrase with scroll-based left-to-right reveal */}
             <motion.div className="overflow-hidden">
               <motion.p
-                className="font-noto-serif font-paragraph text-xl italic relative inline-block"
+                className="font-merriweather font-paragraph text-xl italic relative inline-block"
                 style={{
                   clipPath: secondTextClipPath,
                   x: secondTextX

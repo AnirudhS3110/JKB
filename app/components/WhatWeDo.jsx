@@ -29,7 +29,7 @@ const WhatWeDo = () => {
       {/* Main Content */}
       <div className="absolute inset-0 flex flex-col justify-center z-10">
         <div className="container mx-auto px-6 lg:px-20">
-          <h1 className="text-[56px] px-[28px] md:px-[32px] md:text-7xl font-bold text-[#fbfbfb] mb-16 pt-[50px]">
+          <h1 className="text-[56px] px-[28px] md:px-[32px] md:text-7xl font-bold font-dm-serif-text text-[#fbfbfb] mb-16 pt-[50px]">
             What we do
           </h1>
 
@@ -46,12 +46,12 @@ const WhatWeDo = () => {
                   <div className="container">
                     <div className="flex justify-between items-center relative py-8">
                       {/* Initial visible text */}
-                      <h3 className="relative text-Monserrat text-xl sm:text-2xl text-white z-0 [transition:transform_2s_cubic-bezier(0.22,1,0.36,1),opacity_0.3s_linear] group-hover:opacity-0 group-hover:translate-y-1/2">
+                      <h3 className="relative font-merriweather text-xl sm:text-2xl text-white z-0 [transition:transform_2s_cubic-bezier(0.22,1,0.36,1),opacity_0.3s_linear] group-hover:opacity-0 group-hover:translate-y-1/2">
                         {item.text}
                       </h3>
                       
                       {/* Text that appears on hover */}
-                      <h3 className="absolute max-sm:max-w-[80%] max-md:max-w-[90%] text-2xl sm:text-3xl text-white z-20 [transition:transform_2s_cubic-bezier(0.22,1,0.36,1)] opacity-0 -translate-x-1/2 group-hover:opacity-100 group-hover:translate-x-0">
+                      <h3 className="absolute font-merriweather max-sm:max-w-[80%] max-md:max-w-[90%] text-2xl sm:text-3xl text-white z-20 [transition:transform_2s_cubic-bezier(0.22,1,0.36,1)] opacity-0 -translate-x-1/2 group-hover:opacity-100 group-hover:translate-x-0">
                         {item.text}
                       </h3>
                       

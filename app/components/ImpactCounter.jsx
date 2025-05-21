@@ -85,7 +85,7 @@ const ImpactCounter = () => {
         setAcresCount(acresTarget);
         clearInterval(timer);
       } else {
-        setAcresCount(Math.floor(current));
+        setAcresCount(current);
       }
     };
 
@@ -148,7 +148,7 @@ const ImpactCounter = () => {
         {/* Acres Counter */}
         <div className="text-center md:border-r md:border-white md:px-8">
           <h3 className="text-5xl md:text-6xl font-light mb-2">
-            {formatNumber(Math.floor(acresCount))}+
+            {formatNumber(acresCount)}+
           </h3>
           <p className="text-xl text-green-100">Successful Innitatives</p>
         </div>

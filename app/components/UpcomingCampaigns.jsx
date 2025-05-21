@@ -56,7 +56,7 @@ export default function UpcomingCampaigns() {
         {/* Header section with title and view all button */}
         <div className="flex justify-between items-center mb-12">
           <motion.h2 
-            className="text-5xl font-bold text-black"
+            className="text-5xl font-bold font-dm-serif-text text-black"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8 }}
@@ -101,12 +101,12 @@ export default function UpcomingCampaigns() {
               </div>
               
               {/* Campaign title - left aligned */}
-              <h3 className="text-2xl font-bold text-[#000000] mb-3">
+              <h3 className="text-2xl font-bold font-dm-serif-text text-[#000000] mb-3">
                 {campaign.title}
               </h3>
               
               {/* Description - left aligned with image */}
-              <p className="text-gray-600 mb-5 font-normal leading-relaxed">
+              <p className="text-gray-600 mb-5 font-normal font-merriweather leading-relaxed">
                 {campaign.description}
               </p>
               
