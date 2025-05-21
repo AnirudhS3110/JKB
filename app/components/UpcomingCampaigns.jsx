@@ -63,7 +63,7 @@ export default function UpcomingCampaigns() {
           >
             Upcoming Campaigns
           </motion.h2>
-          <button className="bg-gray-100 text-gray-800 px-5 py-2 rounded-md text-sm hover:bg-gray-200 transition-colors">
+          <button suppressHydrationWarning={true} className="bg-gray-100 text-gray-800 px-5 py-2 rounded-md text-sm hover:bg-gray-200 transition-colors">
             View all
           </button>
         </div>
@@ -111,7 +111,7 @@ export default function UpcomingCampaigns() {
               </p>
               
               {/* Enroll button - left aligned with image */}
-              <button className="text-left w-fit bg-[#F4720B] text-white font-normal px-6 py-3 hover:bg-[#E05900] transition-all">
+              <button suppressHydrationWarning={true} className="text-left w-fit bg-[#F4720B] text-white font-normal px-6 py-3 hover:bg-[#E05900] transition-all">
                 Enroll Now
               </button>
             </motion.div>
@@ -123,23 +123,23 @@ export default function UpcomingCampaigns() {
       </section>
       {/* Control panel */}
       {/* <div className="fixed right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 rounded-l-md text-white p-2 flex flex-col gap-3">
-        <button className="p-1 hover:bg-gray-700 rounded">
+        <button suppressHydrationWarning={true} className="p-1 hover:bg-gray-700 rounded">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
         </button>
-        <button className="p-1 hover:bg-gray-700 rounded">
+        <button suppressHydrationWarning={true} className="p-1 hover:bg-gray-700 rounded">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
           </svg>
         </button>
-        <button className="p-1 hover:bg-gray-700 rounded">
+        <button suppressHydrationWarning={true} className="p-1 hover:bg-gray-700 rounded">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
           </svg>
         </button>
-        <button className="p-1 hover:bg-gray-700 rounded">
+        <button suppressHydrationWarning={true} className="p-1 hover:bg-gray-700 rounded">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />

@@ -98,13 +98,11 @@ export const Header = () => {
   return (
     <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full left-0 top-0">
       <h1 className="text-2xl md:text-7xl font-bold text-[#000000]">
-        Our Impact <br /> Around the World
+      Highlights of our work
       </h1>
-      <p className="max-w-2xl text-base md:text-xl mt-8 text-[#000000]">
-        Explore our global initiatives and see how the Jaskaran Bothra Foundation
-        is making a difference through sustainable development, education, and
-        community empowerment.
-      </p>
+      {/* <p className="max-w-2xl text-base md:text-xl mt-8 text-[#000000]">
+      From village schools to digital dreams—our mission empowers, uplifts, and heals. We don’t just support communities—we ignite them to stand strong, skilled, and self-reliant.      
+      </p> */}
     </div>
   );
 };
@@ -122,10 +120,10 @@ export const ProductCard = ({
         y: -20,
       }}
       key={product.title}
-      className="group/product h-96 w-[30rem] relative shrink-0"
+      className="group/product h-96 w-[30rem]  relative shrink-0"
     >
       <a
-        href={product.link}
+        
         className="block group-hover/product:shadow-2xl"
       >
         <img
@@ -136,10 +134,10 @@ export const ProductCard = ({
           alt={product.title}
         />
       </a>
-      <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-[#FE8F2A] pointer-events-none"></div>
-      <h2 className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 text-white">
+      <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity bg-[#000000] pointer-events-none"></div>
+      {/* <h2 className="absolute bottom-4 left-4 text-[24px] opacity-0 group-hover/product:opacity-100 text-white">
         {product.title}
-      </h2>
+      </h2> */}
     </motion.div>
   );
 }; 

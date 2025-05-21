@@ -53,14 +53,14 @@ export default function AboutUsSection() {
     },
     vision: {
       title: "Our Vision",
-      description: "To build a socially inclusive India by supporting holistic human development, particularly for the underprivileged, through structured initiatives in health, education, and sustainable livelihoods.",
+      description: "We visualise our business as an entity offering incredible support for the communities that enable us to thrive. With social and economic agendas, we aim at enhancing the state or country's weaker section and further develop the Human Development Index.",
       image: "/images/vision-background.jpg",
       link: "/vision"
     },
     mission: {
       title: "Our Mission",
-      description: "To promote education for the girl child. To strengthen rural healthcare access. To encourage sustainable livelihoods through skill development. To advocate for women empowerment. To promote mental health awareness. To bridge corporate growth and community development.",
-      image: "/images/vision-background.jpg",
+      description: "To bridge corporate growth and community development. To promote education for the girl child. To strengthen rural healthcare access. To encourage sustainable livelihoods through skill development. To advocate for women empowerment. To promote mental health awareness.",
+      image: "/images/CarousalPic8.jpg",
       link: "/mission"
     }
   };
@@ -145,7 +145,7 @@ export default function AboutUsSection() {
             <span className="relative inline-block">
               <span 
                 className={`cursor-pointer transition-colors md:text-[100px] duration-300 ${
-                  activeSection === 'vision' ? 'text-white' : 'text-gray-400 hover:text-gray-300'
+                  activeSection === 'about' ? 'text-white' : 'text-gray-400 hover:text-gray-300'
                 } md:text-6xl mx-2`}
                 onClick={() => setActiveSection('vision')}
                 onMouseEnter={() => setActiveSection('vision')}
@@ -165,9 +165,9 @@ export default function AboutUsSection() {
             {/* Mission with underline effect */}
             <span className="relative inline-block">
               <span 
-                className={`cursor-pointer transition-colors duration-300 ${
-                  activeSection === 'mission' ? 'text-white' : 'text-gray-400 hover:text-gray-300'
-                } text-4xl md:text-[100px] mx-2`}
+                className={`cursor-pointer transition-colors md:text-[100px] duration-300 ${
+                  activeSection === 'about' ? 'text-white' : 'text-gray-400 hover:text-gray-300'
+                } md:text-6xl mx-2`}
                 onClick={() => setActiveSection('mission')}
                 onMouseEnter={() => setActiveSection('mission')}
               >

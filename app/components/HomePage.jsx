@@ -82,18 +82,13 @@ export default function HomePage() {
             <UpcomingCampaigns />
           </section>
 
-          <section className="md:hidden bg-white relative">
-            <AppleCardsCarouselDemo />
-          </section>
+          
 
           <section className='md:hidden'>
             <AboutUsSection/>
           </section>
           
-          {/* Hero Parallax Section */}
-          <section className="hidden md:block bg-white relative">
-            <HeroParallaxDemo />
-          </section>
+          
 
           <FounderTribute/>
 
@@ -120,6 +115,11 @@ export default function HomePage() {
           {/* Partnership Opportunities Section */}
           <section id="partnership" className="relative">
             <PartnershipOpportunities />
+          </section>
+
+          {/* Hero Parallax Section */}
+          <section className="hidden md:block bg-white relative">
+            <HeroParallaxDemo />
           </section>
           
           {/* News and Resources Section */}

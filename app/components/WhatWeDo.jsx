@@ -1,31 +1,28 @@
-import React, { useState } from 'react';
-import { FaArrowRight } from 'react-icons/fa';
+import React from 'react';
 
 const WhatWeDo = () => {
-  const [activeItem, setActiveItem] = useState(null);
-  
   const menuItems = [
-    { id: 1, text: 'Boost productivity', href: '/boost-productivity', color: 'bg-orange-500' },
-    { id: 2, text: 'Increase incomes', href: '/increase-incomes', color: 'bg-yellow-500' },
-    { id: 3, text: 'Increase food security and nutrition', href: '/food-security', color: 'bg-sky-400' },
-    { id: 4, text: 'Act on climate change', href: '/climate-change', color: 'bg-orange-500' },
-    { id: 5, text: 'Protect ecosystems', href: '/protect-ecosystems', color: 'bg-green-500' },
-    { id: 6, text: 'Connect farmers to markets', href: '/connect-farmers', color: 'bg-green-500' },
+    { id: 1, text: 'Girl Child Education', href: '/boost-productivity', color: 'bg-[#F4720B]' },
+    { id: 2, text: 'Women Empowerment', href: '/increase-incomes', color: 'bg-[#F4720B]' },
+    { id: 3, text: 'Digital Literacy', href: '/food-security', color: 'bg-[#F4720B]' },
+    { id: 4, text: 'Healthcare Initiatives', href: '/climate-change', color: 'bg-[#F4720B]' },
+    { id: 5, text: 'Skill Dvelopment', href: '/protect-ecosystems', color: 'bg-[#F4720B]' },
+    { id: 6, text: 'Infrastructural Aids', href: '/connect-farmers', color: 'bg-[#F4720B]' },
   ];
 
   return (
-    <section className="relative min-h-[150vh] md:min-h-[120vh] w-full py-[40px] ">
+    <section className="relative min-h-[150vh] md:min-h-[120vh] w-full py-[40px]">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <div 
           className="h-full w-full bg-cover bg-center"
           style={{ 
-            backgroundImage: "url('https://videos.openai.com/vg-assets/assets%2Ftask_01jv1y1r4jf5m83n6brpt8pf01%2F1747043086_img_0.webp?st=2025-05-18T14%3A43%3A24Z&se=2025-05-24T15%3A43%3A24Z&sks=b&skt=2025-05-18T14%3A43%3A24Z&ske=2025-05-24T15%3A43%3A24Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=aa5ddad1-c91a-4f0a-9aca-e20682cc8969&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=QXFptrtEQiOlG1pn7XQaNwEMe4dw4jMKkJaaMCjki%2B8%3D&az=oaivgprodscus')",
+            backgroundImage: "url('/images/about-background.jpg')",
             backgroundPosition: "center",
           }}
         >
           {/* Subtle overlay for better text readability */}
-          <div className="absolute inset-0 bg-[#000000] opacity-50"></div>
+          <div className="absolute inset-0 bg-[#000000] opacity-60"></div>
         </div>
       </div>
 
@@ -36,42 +33,50 @@ const WhatWeDo = () => {
             What we do
           </h1>
 
-          <div className="w-full mb-[40px]">
-            {menuItems.map((item, index) => (
-              <div 
-                key={item.id}
-                className="relative overflow-hidden"
-                onMouseEnter={() => setActiveItem(item.id)}
-                onMouseLeave={() => setActiveItem(null)}
-              >
-                {/* Highlight background with smooth transition */}
-                <div 
-                  className={`absolute left-0 right-0 h-full bg-[#151419] opacity-0 transition-all duration-500 ease-in-out z-0 ${
-                    activeItem === item.id ? 'opacity-100' : ''
-                  }`}
-                ></div>
+          <div className="w-full">
+            {menuItems.map((item) => (
+              <div key={item.id} className="group relative w-full border-t border-[#E4DCCA]/25 overflow-hidden" suppressHydrationWarning={true}>
+                {/* Background that slides up on hover */}
+                <div className={`absolute inset-0 ${item.color === 'bg-orange-500' ? 'bg-[#F4720B]' : item.color} transition-transform duration-200 translate-y-full group-hover:translate-y-0 z-10`}></div>
                 
-                {/* Menu item with smooth content scaling */}
-                <div className={`relative z-10 py-7 mx-[50px] mr-[80px] transition-transform duration-500 ease-in-out ${
-                  activeItem === item.id ? 'scale-105 origin-left' : ''
-                } ${index !== menuItems.length - 1 ? 'border-b border-gray-400 border-opacity-30' : ''}`}>
-                  <a 
-                    href={item.href}
-                    className="flex items-center justify-between text-white text-2xl md:text-3xl font-medium group"
-                  >
-                    <span className={`transition-all duration-500 ease-in-out ${
-                      activeItem === item.id ? 'font-semibold text-[#F4720B] transform scale-105' : ''
-                    }`}>
-                      {item.text}
-                    </span>
-                    <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 ease-in-out ${
-                      activeItem === item.id ? 'bg-[#F4720B] transform scale-110' : item.color
-                    }`}>
-                      <FaArrowRight className={`text-xs transition-all duration-500 ease-in-out ${
-                        activeItem === item.id ? 'text-[#fbfbfb]' : 'text-white'
-                      }`} />
+                {/* Full area clickable link */}
+                <a href={item.href} className="absolute inset-0 z-30" aria-label={item.text}></a>
+                
+                <div className="relative w-full">
+                  <div className="container">
+                    <div className="flex justify-between items-center relative py-8">
+                      {/* Initial visible text */}
+                      <h3 className="relative text-Monserrat text-xl sm:text-2xl text-white z-0 [transition:transform_2s_cubic-bezier(0.22,1,0.36,1),opacity_0.3s_linear] group-hover:opacity-0 group-hover:translate-y-1/2">
+                        {item.text}
+                      </h3>
+                      
+                      {/* Text that appears on hover */}
+                      <h3 className="absolute max-sm:max-w-[80%] max-md:max-w-[90%] text-2xl sm:text-3xl text-white z-20 [transition:transform_2s_cubic-bezier(0.22,1,0.36,1)] opacity-0 -translate-x-1/2 group-hover:opacity-100 group-hover:translate-x-0">
+                        {item.text}
+                      </h3>
+                      
+                      {/* Arrow icon */}
+                      <div className="flex relative origin-right z-20 [transition:transform_2s_cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.666] [&_circle]:fill-current [&_circle]:stroke-current [&_circle]:transition-colors [&_path]:fill-white [&_path]:transition-colors group-hover:[&_circle]:fill-white group-hover:[&_circle]:stroke-white group-hover:[&_path]:fill-[#F4720B]">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" suppressHydrationWarning={true}>
+                          <g id="arrow">
+                            <circle 
+                              id="Ellipse 2" 
+                              cx="12" 
+                              cy="12" 
+                              r="11.75" 
+                              className={`${item.color === 'bg-orange-500' ? 'text-[#F4720B]' : item.color.replace('bg-', 'text-')}`}
+                              strokeWidth="0.5"
+                            ></circle>
+                            <path 
+                              id="Vector" 
+                              d="M15.8045 12.0048C15.8665 12.0698 15.9156 12.147 15.9492 12.232C15.9827 12.3169 16 12.408 16 12.5C16 12.592 15.9827 12.6831 15.9492 12.768C15.9156 12.853 15.8665 12.9302 15.8045 12.9952L13.138 15.7949C13.0129 15.9262 12.8433 16 12.6664 16C12.4895 16 12.3198 15.9262 12.1947 15.7949C12.0696 15.6635 11.9994 15.4854 11.9994 15.2997C11.9994 15.114 12.0696 14.9358 12.1947 14.8045L13.7238 13.1999H8.66662C8.48982 13.1999 8.32027 13.1262 8.19525 12.9949C8.07023 12.8637 8 12.6856 8 12.5C8 12.3144 8.07023 12.1363 8.19525 12.0051C8.32027 11.8738 8.48982 11.8001 8.66662 11.8001H13.7238L12.1947 10.1955C12.0696 10.0642 11.9994 9.88605 11.9994 9.70031C11.9994 9.51458 12.0696 9.33645 12.1947 9.20512C12.3198 9.07378 12.4895 9 12.6664 9C12.8433 9 13.0129 9.07378 13.138 9.20512L15.8045 12.0048Z" 
+                              fill="white"
+                            ></path>
+                          </g>
+                        </svg>
+                      </div>
                     </div>
-                  </a>
+                  </div>
                 </div>
               </div>
             ))}

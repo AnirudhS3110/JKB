@@ -8,9 +8,9 @@ const ImpactCounter = () => {
   const [waterCount, setWaterCount] = useState(0);
   
   // Final values
-  const moneyTarget = 32.3;
-  const acresTarget = 28489;
-  const waterTarget = 97391;
+  const moneyTarget = 500;
+  const acresTarget = 10;
+  const waterTarget = 5;
   
   // Reference to the component
   const componentRef = useRef(null);
@@ -137,9 +137,9 @@ const ImpactCounter = () => {
         {/* Money Counter */}
         <div className="text-center md:text-left md:border-r md:border-white md:pr-8">
           <h3 className="text-5xl md:text-6xl font-light mb-2">
-            ${moneyCount.toFixed(1)} M
+            ${moneyCount.toFixed(1)} k+
           </h3>
-          <p className="text-xl text-green-100 mb-6">Deployed for Ecosystem Resilience</p>
+          <p className="text-xl text-green-100 mb-6">Empowered Strong</p>
           <button suppressHydrationWarning className="bg-[#1b1a1f] hover:bg-[#262626] transition-colors px-6 py-2 rounded-md">
             Learn More
           </button>
@@ -148,17 +148,17 @@ const ImpactCounter = () => {
         {/* Acres Counter */}
         <div className="text-center md:border-r md:border-white md:px-8">
           <h3 className="text-5xl md:text-6xl font-light mb-2">
-            {formatNumber(Math.floor(acresCount))}
+            {formatNumber(Math.floor(acresCount))}+
           </h3>
-          <p className="text-xl text-green-100">Acres Protected</p>
+          <p className="text-xl text-green-100">Successful Innitatives</p>
         </div>
         
         {/* Water Counter */}
         <div className="text-center md:text-left md:pl-8">
           <h3 className="text-5xl md:text-6xl font-light mb-2">
-            {formatNumber(Math.floor(waterCount))}
+            {formatNumber(Math.floor(waterCount))}+
           </h3>
-          <p className="text-xl text-green-100">Acre-feet Water Supply Protected</p>
+          <p className="text-xl text-green-100">Companies Collaborated</p>
         </div>
       </div>
     </div>
