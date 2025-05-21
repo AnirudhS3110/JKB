@@ -86,10 +86,8 @@ const ImprovedNavbar = () => {
         <div className="flex items-center justify-between h-20" suppressHydrationWarning>
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <h1 className="text-xl font-bold">
-              <span className="text-[#F4A261]">Jaskaran Bothra</span>
-              <span className="ml-2 text-[#F8F9FA]">Foundation</span>
-            </h1>
+            <img src="https://videos.openai.com/vg-assets/assets%2Ftask_01jvsgk7s6ecbrajwvn17jvadf%2F1747834277_img_3.webp?st=2025-05-21T12%3A00%3A05Z&se=2025-05-27T13%3A00%3A05Z&sks=b&skt=2025-05-21T12%3A00%3A05Z&ske=2025-05-27T13%3A00%3A05Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=3d249c53-07fa-4ba4-9b65-0bf8eb4ea46a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=jfXuY05qCaTRo4SrPZQpHMpHT7jKZjI%2BErED3cimSYI%3D&az=oaivgprodscus" alt="Jaskaran Bothra Foundation" className="h-[160px] md:h-[230px]" />
+            
           </Link>
 
           {/* Desktop Navigation */}
@@ -99,16 +97,19 @@ const ImprovedNavbar = () => {
                 {navItems.map((item, index) => (
                   <div 
                     key={index}
-                    className="relative group"
+                    className="relative  group"
                     onMouseEnter={() => setActiveDropdown(index)}
                     /* We're removing onMouseLeave from here */
                   >
+                    <div className="flex items-center text-[#F8F9FA] hover:text-[#F4720B]">
+                    <div className="w-[10px] h-[10px] bg-[#F4720B] hover:bg-[#F4720B] rounded-full"></div>
                     <a 
                       href="#" 
                       className="text-[#F8F9FA] hover:text-[#F4720B] py-7 px-2 transition-colors relative text-sm font-medium flex items-center"
                     >
                       {item.title}
                     </a>
+                    </div>
                   </div>
                 ))}
 
@@ -119,7 +120,7 @@ const ImprovedNavbar = () => {
                   /* We're removing onMouseLeave from here */
                 >
                   <button 
-                    className="text-[#F8F9FA] hover:text-[#F4720B] transition-colors w-10 h-10 rounded-full bg-[#000000] flex items-center justify-center"
+                    className="text-[#F8F9FA] hover:text-[#F4720B] transition-colors w-10 h-10 rounded-full bg-[#F4720B] hover:bg-[#F8F9FA] flex items-center justify-center"
                   >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />

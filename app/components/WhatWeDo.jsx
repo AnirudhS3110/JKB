@@ -17,7 +17,7 @@ const WhatWeDo = () => {
         <div 
           className="h-full w-full bg-cover bg-center"
           style={{ 
-            backgroundImage: "url('/images/about-background.jpg')",
+            backgroundImage: "url('/images/BG-201.jpg')",
             backgroundPosition: "center",
           }}
         >

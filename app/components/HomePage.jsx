@@ -82,6 +82,10 @@ export default function HomePage() {
             <UpcomingCampaigns />
           </section>
 
+          <section id="our-impact" className="relative md:hidden">
+            <AppleCardsCarouselDemo/>
+          </section>
+
           
 
           <section className='md:hidden'>

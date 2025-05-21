@@ -133,7 +133,7 @@ export default function FounderTribute() {
             <p className="text-[#fbfbfb] text-lg md:text-xl italic font-light leading-relaxed">
               &ldquo;True conservation isn&apos;t about saving nature from people, but empowering people to become stewards of nature. When communities thrive, the environment flourishes.&rdquo;
             </p>
-            <p className="text-[#F4720B] mt-4">1962 - 2018</p>
+            <p className="text-[#F4720B] mt-4">15th December 1928 - Forver</p>
           </motion.div>
         </div>
       </div>
@@ -151,7 +151,7 @@ export default function FounderTribute() {
           }
         }}
       >
-        <span className="text-sm uppercase tracking-widest mb-2">Explore Legacy</span>
+        <span className="text-sm hidden md:block uppercase tracking-widest mb-2">Explore Legacy</span>
         
       </motion.div>
     </section>

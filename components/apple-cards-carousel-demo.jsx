@@ -49,7 +49,7 @@ export default function AppleCardsCarouselDemo() {
   return (
     <div className="w-full h-full py-20 z-[200] bg-[#fbfbfb]" ref={sectionRef}>
       <motion.div 
-        className="max-w-7xl mx-[15px] md:mx-auto bg-[#fbfbfb] px-4 mb-8 rounded-lg py-6"
+        className="max-w-7xl mx-[15px] md:mx-auto bg-[#fbfbfb] px-4 mb-0 rounded-lg pt-6"
         variants={containerVariants}
         initial="hidden"
         animate={isComponentVisible ? "visible" : "hidden"}
@@ -77,7 +77,7 @@ export default function AppleCardsCarouselDemo() {
         }}
         initial="hidden"
         animate={isComponentVisible ? "visible" : "hidden"}
-        className="w-full overflow-visible"
+        className="w-full  overflow-visible"
       >
         <Carousel items={cards} />
       </motion.div>
