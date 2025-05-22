@@ -47,7 +47,7 @@ export default function NewsFeed() {
       title: 'Ability Amplified. Vision Empowered.',
       category: 'News',
       location: 'India',
-      image: '/images/NewsPaper3.jpg',
+      image: '/images/NewsPaper22.png',
       tags: ['Tech Touching Every Ability.', 'Eyes Closed. World Opened.', '1,000 Strong. 5,000 Seen.'],
       link: '/expert-view/meeting-juliet'
     }

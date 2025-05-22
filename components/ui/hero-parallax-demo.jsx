@@ -16,7 +16,7 @@ export const products = [
   {
         title: "Healthcare programmes",
         link: "/farming",
-        thumbnail:"/images/CarousalPic7.jpg",
+        thumbnail:"/images/neoNatal.jpg",
       },
   
   
