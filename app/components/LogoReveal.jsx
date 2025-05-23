@@ -10,7 +10,7 @@ const LogoRevealWrapper = ({child}) => {
   }, []);
 
   return (
-    <div className="w-full h-screen overflow-hidden font-sans relative bg-black text-black">
+    <div className="w-full min-h-screen overflow-hidden font-sans relative bg-black text-black">
       {/* Logo Reveal Container */}
       {!showMain && (
         <div className="absolute inset-0 z-10 flex items-center justify-center bg-[#FF7322] animate-fadeOut delay-600">

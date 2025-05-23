@@ -47,7 +47,7 @@ const ImprovedNavbar = () => {
       description: 'Discover our story, mission, and the legacy of Jaskaran Bothra that guides our foundation.',
       image: '/images/about-background.jpg',
       links: [
-        { text: 'Our Vision and Mission', href: '/vision' },
+        { text: 'Our Vision and Mission', href: '/about-us' },
         { text: 'Origin Story', href: '/origin' },
         { text: 'HONORING JASKARAN BOTHRA', href: '/jaskaran-bothra' },
       ]

@@ -63,7 +63,7 @@ export default function UpcomingCampaigns() {
           >
             Upcoming Campaigns
           </motion.h2>
-          <button suppressHydrationWarning={true} className="bg-gray-100 md:block hidden text-gray-800 px-5 py-2 rounded-md text-sm hover:bg-gray-200 transition-colors">
+          <button suppressHydrationWarning={true} className="bg-gray-100 md:block hidden text-gray-800 px-5 py-2 bg-[#F4720B] rounded-md text-sm hover:bg-gray-200 transition-colors">
             View all
           </button>
         </div>
