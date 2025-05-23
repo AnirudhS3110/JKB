@@ -1,8 +1,7 @@
 "use client"
 
 import React, { useRef, useEffect, useState } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import Footer from '@/app/components/Footer';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 export default function VisionAndMissionPage() {
   // State to control the animation trigger
@@ -107,8 +106,10 @@ export default function VisionAndMissionPage() {
           style={{ y: missionTitleY }}
           className="text-center"
         >
-          <motion.h2 className="text-5xl md:text-7xl z-[50] font-title font-light text-[#fbfbfb] "
-            
+          <motion.h2 className="text-5xl md:text-7xl z- font-title font-light text-[#fbfbfb] "
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
             >Our Mission</motion.h2>
         </motion.div>
       </section>
