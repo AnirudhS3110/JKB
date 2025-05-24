@@ -5,6 +5,7 @@ import Link from 'next/link';
 
 const ImprovedNavbar = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [mobileSubMenu, setMobileSubMenu] = useState(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [renderComplete, setRenderComplete] = useState(false);
 
@@ -258,16 +259,16 @@ const ImprovedNavbar = () => {
                   <div key={index} className="border-b border-[#6C757D] pb-4">
                     <button 
                       className="flex justify-between items-center w-full text-[#F8F9FA] py-2"
-                      onClick={() => setActiveDropdown(activeDropdown === `mobile-${index}` ? 'mobile' : `mobile-${index}`)}
+                      onClick={() => setMobileSubMenu(mobileSubMenu === index ? null : index)}
                     >
                       <span className="text-lg font-medium">{item.title}</span>
-                      <svg className={`w-4 h-4 transition-transform ${activeDropdown === `mobile-${index}` ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <svg className={`w-4 h-4 transition-transform ${mobileSubMenu === index ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
                     </button>
                     
                     <AnimatePresence>
-                      {activeDropdown === `mobile-${index}` && (
+                      {mobileSubMenu === index && (
                         <motion.div 
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: 'auto' }}
