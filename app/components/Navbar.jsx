@@ -28,9 +28,9 @@ const ImprovedNavbar = () => {
       description: 'Learn about our current initiatives and how you can get involved to create meaningful change.',
       image: 'https://www.hindustantimes.com/ht-img/img/2024/02/17/1600x900/Bollywood-Actor-Shradha-Kapoor-joined-Protesters-f_1708193327170.jpg',
       links: [
-        { text: 'Upcoming Campaign', href: '/campaign' },
-        { text: 'How to Participate', href: '/participate' },
-        { text: 'Campaign Timeline', href: '/timeline' },
+        { text: 'Upcoming Campaign', href: '/upcoming-campaigns/upcoming-campaigns' },
+        // { text: 'How to Participate', href: '/participate' },
+        // { text: 'Campaign Timeline', href: '/timeline' },
       ]
     },
     {
@@ -49,7 +49,6 @@ const ImprovedNavbar = () => {
       image: '/images/about-background.jpg',
       links: [
         { text: 'Our Vision and Mission', href: '/about-us/vision-and-mission' },
-        { text: 'Origin Story', href: '/about-us/origin-story' },
         { text: 'HONORING JASKARAN BOTHRA', href: '/about-us/honouring-jaskaran-bothra' },
       ]
     },
