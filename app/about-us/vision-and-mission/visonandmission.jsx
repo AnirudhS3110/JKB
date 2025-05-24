@@ -178,7 +178,11 @@ export default function VisionAndMissionPage() {
         </section>
 
         {/* First Cards Section - floating cards sliding from bottom */}
-        <section className="h-screen relative bg-transparent flex items-center justify-center sticky top-0">
+        <section className="h-screen relative md:bg-transparent flex items-center justify-center sticky top-0">
+        <div className="md:hidden absolute inset-0 left-0 top-0 w-full h-full">
+              <img src="https://images.pexels.com/photos/6146704/pexels-photo-6146704.jpeg?auto=compress&cs=tinysrgb&w=600" alt="vision-bg" className="w-full h-full object-cover" />
+          </div>
+          <div className="absolute md:hidden inset-0 left-0 top-0 w-full h-full bg-black opacity-75"></div>
           <motion.div 
             ref={firstCardsRef}
             style={{ y: firstCardsY }}

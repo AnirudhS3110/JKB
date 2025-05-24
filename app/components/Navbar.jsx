@@ -48,8 +48,8 @@ const ImprovedNavbar = () => {
       image: '/images/about-background.jpg',
       links: [
         { text: 'Our Vision and Mission', href: '/about-us/vision-and-mission' },
-        { text: 'Origin Story', href: '/origin' },
-        { text: 'HONORING JASKARAN BOTHRA', href: '/jaskaran-bothra' },
+        { text: 'Origin Story', href: '/about-us/origin-story' },
+        { text: 'HONORING JASKARAN BOTHRA', href: '/about-us/honouring-jaskaran-bothra' },
       ]
     },
     {
@@ -260,7 +260,7 @@ const ImprovedNavbar = () => {
                       className="flex justify-between items-center w-full text-[#F8F9FA] py-2"
                       onClick={() => setActiveDropdown(activeDropdown === `mobile-${index}` ? 'mobile' : `mobile-${index}`)}
                     >
-                      <span>{item.title}</span>
+                      <span className="text-lg font-medium">{item.title}</span>
                       <svg className={`w-4 h-4 transition-transform ${activeDropdown === `mobile-${index}` ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
@@ -273,15 +273,18 @@ const ImprovedNavbar = () => {
                           animate={{ opacity: 1, height: 'auto' }}
                           exit={{ opacity: 0, height: 0 }}
                           transition={{ duration: 0.2 }}
-                          className="mt-2 space-y-2 pl-4"
+                          className="mt-4 space-y-4 pl-4 bg-[#111111] p-3 rounded"
                         >
                           {item.links.map((link, linkIndex) => (
                             <a 
                               key={linkIndex}
                               href={link.href}
-                              className="block text-[#A8DADC] hover:text-[#F8F9FA] py-1"
+                              className="block text-[#F4720B] hover:text-[#F8F9FA] py-2 border-b border-[#333333] flex items-center justify-between"
                             >
-                              {link.text}
+                              <span>{link.text}</span>
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                              </svg>
                             </a>
                           ))}
                         </motion.div>
