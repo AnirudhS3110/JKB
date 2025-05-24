@@ -38,9 +38,8 @@ const ImprovedNavbar = () => {
       description: 'Explore the measurable change we\'ve created through sustainable initiatives across communities.',
       image: 'https://videos.openai.com/vg-assets/assets%2Ftask_01jvkjz8gpe9xtpvjwyp66m64r%2F1747635471_img_2.webp?st=2025-05-19T11%3A49%3A21Z&se=2025-05-25T12%3A49%3A21Z&sks=b&skt=2025-05-19T11%3A49%3A21Z&ske=2025-05-25T12%3A49%3A21Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=aa5ddad1-c91a-4f0a-9aca-e20682cc8969&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=owy4sQ6m7lKv%2FIMlH10yT%2Be8UstHBSWYtQRmSP%2F8%2FQ8%3D&az=oaivgprodscus',
       links: [
-        { text: 'Facts & Figures', href: '/impact' },
-        { text: 'Success Stories', href: '/stories' },
-        { text: 'Annual Reports', href: '/reports' },
+        { text: 'Facts & Figures', href: '/impact/facts-and-figures' },
+        { text: 'Success Stories', href: '/impact/success-stories' },
       ]
     },
     {
