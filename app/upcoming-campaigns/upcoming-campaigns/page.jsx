@@ -97,11 +97,12 @@ export default function UpcomingCampaignsPage() {
     offset: ["start", "end"]
   });
   
-  // Transform values for sliding animations - adjusted for direct hero to campaigns
+  // Transform values for sliding animations - similar to factsandfigures.js
+  // This makes the second section slide up from below the viewport
   const campaignsY = useTransform(
     scrollYProgress,
-    [0.05, 0.2],  // When to start/complete animation
-    ["100vh", "0vh"]  // Start position to end position
+    [0.05, 0.2],  // Start animation at 5% scroll, finish at 20%
+    ["100vh", "0vh"]  // Start from 100vh below viewport to 0vh (normal position)
   );
   
   const campaigns = [
@@ -142,7 +143,7 @@ export default function UpcomingCampaignsPage() {
   return (
     <LogoRevealWrapper>
       <div ref={containerRef} className="relative">
-        {/* Hero Section - Sticky at top */}
+        {/* Hero Section - Sticky at top with lower z-index */}
         <section className="h-screen relative bg-black flex items-center justify-center sticky top-0 z-10">
           <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-black/60 z-10"></div>
@@ -217,14 +218,14 @@ export default function UpcomingCampaignsPage() {
           </motion.div>
         </section>
   
-        {/* Campaigns Zig-Zag Section */}
-        <section className="min-h-screen relative bg-[#fbfbfb] sticky top-0 z-20">
+        {/* Campaigns Zig-Zag Section - Sticky with higher z-index */}
+        <section className="min-h-screen sticky top-0 z-20">
+          {/* Using motion.div with y transform to create the sliding effect */}
           <motion.div
             style={{ y: campaignsY }}
-            className="py-24 w-full"
+            className="w-full h-full bg-[#fbfbfb] pt-24 pb-24"
             ref={sectionRef}
             id="campaigns"
-            initial={{ opacity: 1 }}
           >
             <div className="max-w-7xl mx-auto px-6">
               {/* Header section */}

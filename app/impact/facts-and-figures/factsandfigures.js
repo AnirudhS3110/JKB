@@ -48,26 +48,26 @@ export default function FactsAndFigures() {
   // Cards animation timing - from 40% to 60% of scroll
   const cardsY = useTransform(
     scrollYProgress,
-    [0.4, 0.6],
+    [0.3, 0.5],
     ["100vh", "10vh"]
   );
 
   // Image receding effect transforms - now synchronized with cards (40% to 60%)
   const imageScale = useTransform(
     scrollYProgress,
-    [0.5, 0.6],  // Matching cards timing
+    [0.4, 0.48 ],  // Matching cards timing
     [1, 0.85]  // Original size to smaller size
   );
 
   const imageOpacity = useTransform(
     scrollYProgress,
-    [0.5, 0.6],  // Matching cards timing
+    [0.4, 0.48],  // Matching cards timing
     [1, 0.85]  // Full opacity to half opacity
   );
 
   const imageTranslateY = useTransform(
     scrollYProgress,
-    [0.5, 0.6],  // Matching cards timing
+    [0.4, 0.48],  // Matching cards timing
     ["0vh", "5vh"]  // No translation to downward translation
   );
 
@@ -227,9 +227,15 @@ export default function FactsAndFigures() {
           </div>
           <div className="absolute inset-0 left-0 top-0 w-full h-full bg-black opacity-75"></div>
           
-          <div className="max-w-4xl mx-auto z-10 text-center p-6">
+          <div className="max-w-7xl mx-auto z-10 px-6 relative z-20 text-white w-full">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="max-w-3xl"
+            >
             <motion.h1 
-              className="text-5xl md:text-7xl font-title font-light text-[#fbfbfb] mb-8"
+                className="text-5xl md:text-6xl font-heading font-light mb-6"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
@@ -237,14 +243,13 @@ export default function FactsAndFigures() {
               Facts and Figures
             </motion.h1>
             
-            <div className="text-xl font-paragraph md:text-2xl text-[#fbfbfb] overflow-hidden">
-              <div className="flex flex-wrap justify-center">
+              <p className="text-xl font-paragraph text-gray-200 max-w-2xl">
                 {heroWords.map((word, index) => (
                   <motion.span
                     key={index}
-                    className="mx-1 inline-block"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={isTextVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                    className="inline-block mr-1"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isTextVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                     transition={{ 
                       duration: 0.4, 
                       delay: index * 0.05,
@@ -254,22 +259,22 @@ export default function FactsAndFigures() {
                     {word}
                   </motion.span>
                 ))}
-              </div>
-            </div>
+              </p>
+            </motion.div>
           </div>
         </section>
 
         {/* Lifelines Title Section - slides in from bottom */}
         <section className="h-screen w-full relative flex items-center justify-center sticky top-0">
           {/* Background elements */}
-          <div className="absolute inset-0 left-0 top-0 w-full h-full">
+          {/* <div className="absolute inset-0 left-0 top-0 w-full h-full">
             <img 
               src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2732&q=80" 
               alt="healthcare impact" 
               className="w-full h-full object-cover"
             />
-          </div>
-          <div className="absolute inset-0 left-0 top-0 w-full h-full bg-black opacity-75"></div>
+          </div> */}
+          <div className="absolute inset-0 left-0 top-0 w-full h-full bg-[#FF6309] from-[#FF6309] to-[#FF8E16] opacity-100"></div>
           
           {/* Content that moves together */}
           <motion.div 
@@ -378,7 +383,7 @@ export default function FactsAndFigures() {
               className="w-full h-full object-cover"
             />
           </div>
-          <div className="absolute inset-0 left-0 top-0 w-full h-full bg-black opacity-75"></div>
+          <div className="absolute inset-0 left-0 top-0 w-full h-full bg-[#fbfbfb] opacity-100"></div>
           
           <motion.div 
             ref={humanityHeaderRef}
@@ -386,7 +391,7 @@ export default function FactsAndFigures() {
             className="text-center z-10 w-full max-w-6xl mx-auto"
           >
             <motion.h2 
-              className="text-5xl md:text-7xl font-title font-light text-[#fbfbfb] mb-12"
+              className="text-5xl md:text-7xl font-title font-light text-[#121212] mb-12"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
