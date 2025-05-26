@@ -9,12 +9,13 @@ import Footer from './Footer';
 import WhatWeDo from './WhatWeDo';
 import ImpactCounter from './ImpactCounter';
 import AppleCardsCarouselDemo from '@/components/apple-cards-carousel-demo';
-import ForestHero from './ForestHero';
 import HeroParallaxDemo from '@/components/ui/hero-parallax-demo';
 import FounderTribute from './FounderTribute';
 import TimelineDemo from '@/components/timeline-demo';
+import { gsap } from 'gsap';
 
 export default function HomePage() {
+  
   const videoRef = useRef(null);
   const containerRef = useRef(null);
   const mainContentRef = useRef(null);
@@ -30,16 +31,36 @@ export default function HomePage() {
     
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    let smoother;
+    if (typeof window !== 'undefined') {
+      (async () => {
+        const { ScrollSmoother } = await import('gsap/ScrollSmoother');
+        gsap.registerPlugin(ScrollSmoother);
+        smoother = ScrollSmoother.create({
+          wrapper: '#smooth-wrapper',
+          content: '#smooth-content',
+          smooth: 1.5,
+          duration: 2,
+        });
+      })();
+    }
+    return () => {
+      if (smoother) smoother.kill();
+    };
+  }, []);
   
   return (
-    <>
+    <div id="smooth-wrapper">
       <style jsx global>{`
         .fixed.right-0.top-1\\/2.bg-gray-800, 
         .fixed.right-0.top-1\\/2 {
           display: none !important;
         }
       `}</style>
-      <div className="relative bg-white" ref={containerRef} style={{ position: 'relative', overflowX: 'hidden' }}>
+      
+      <div id="smooth-content" className="relative bg-white" ref={containerRef} style={{ position: 'relative', overflowX: 'hidden' }}>
         {/* Content */}
         <motion.div 
           className="relative z-10" 
@@ -134,6 +155,7 @@ export default function HomePage() {
           <Footer />
         </motion.div>
       </div>
-    </>
+    </div>
+  
   );
 }

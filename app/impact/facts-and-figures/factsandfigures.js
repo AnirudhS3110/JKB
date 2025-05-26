@@ -117,7 +117,8 @@ export default function FactsAndFigures() {
         "Guardians of life – stabilizing newborns when seconds count.",
         "From fragile to fighting – giving babies a shot at survival.",
         "Built for care – top-tier tech for life's earliest battles."
-      ]
+      ],
+      imageUrl: "https://images.pexels.com/photos/247786/pexels-photo-247786.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     },
     {
       icon: (
@@ -131,7 +132,8 @@ export default function FactsAndFigures() {
         "Hope starts here – a safe space for newborn emergencies.",
         "Equipped to heal – tools that empower doctors to save.",
         "More than treatment – a lifeline where none existed."
-      ]
+      ],
+      imageUrl: "https://images.pexels.com/photos/6823538/pexels-photo-6823538.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     },
     {
       icon: (
@@ -145,7 +147,8 @@ export default function FactsAndFigures() {
         "Sonography + Digital X-Ray → Zero-cost, high-tech diagnostics.",
         "Care that moves – tech brought to rural doorsteps.",
         "Not just machines – access, dignity, second chances."
-      ]
+      ],
+      imageUrl: "https://images.pexels.com/photos/4226119/pexels-photo-4226119.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     }
   ];
 
@@ -162,7 +165,8 @@ export default function FactsAndFigures() {
         "Half a million meals delivered when the city stood still.",
         "In partnership with Mumbai Police — unity in action.",
         "Food became survival. Distribution became hope."
-      ]
+      ],
+      imageUrl: "https://images.pexels.com/photos/4391470/pexels-photo-4391470.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     },
     {
       icon: (
@@ -176,7 +180,8 @@ export default function FactsAndFigures() {
         "5,000 visually impaired received smart assistive tools.",
         "1,000 mobility-challenged gained renewed freedom.",
         "Engineered empathy that sees ability, not limits."
-      ]
+      ],
+      imageUrl: "https://images.pexels.com/photos/6647037/pexels-photo-6647037.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     },
     {
       icon: (
@@ -190,7 +195,8 @@ export default function FactsAndFigures() {
         "Every stick, a path forward.",
         "Every chair, a seat at life's table.",
         "Mobility isn't luxury — it's dignity, returned."
-      ]
+      ],
+      imageUrl: "https://images.pexels.com/photos/2026764/pexels-photo-2026764.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     }
   ];
 
@@ -211,6 +217,103 @@ export default function FactsAndFigures() {
       y: -5,
       transition: { duration: 0.3 }
     }
+  };
+
+  // For flip animation
+  const flipCardVariants = {
+    front: {
+      rotateY: 0,
+      transition: { duration: 0.1, ease: "easeInOut" }
+    },
+    back: {
+      rotateY: 180,
+      transition: { duration: 0.1, ease: "easeInOut" }
+    }
+  };
+
+  const FlipCard = ({ frontContent, imageUrl, card }) => {
+    const [isFlipped, setIsFlipped] = useState(false);
+
+    return (
+      <motion.div 
+        className="flip-card w-full h-full"
+        style={{ perspective: "1000px" }}
+        onHoverStart={() => setIsFlipped(true)}
+        onHoverEnd={() => setIsFlipped(false)}
+      >
+        <motion.div 
+          className="flip-card-inner relative w-full h-full"
+          animate={isFlipped ? "back" : "front"}
+          variants={flipCardVariants}
+          style={{ 
+            transformStyle: "preserve-3d", 
+            transition: "transform 0.8s",
+          }}
+        >
+          {/* Front side - Image, Title, Location */}
+          <motion.div 
+            className="flip-card-front absolute w-full h-full"
+            style={{ 
+              backfaceVisibility: "hidden",
+              WebkitBackfaceVisibility: "hidden",
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+              zIndex: isFlipped ? 0 : 1,
+            }}
+          >
+            {/* Image with title and location overlay */}
+            <div className="relative w-full h-full rounded-xl overflow-hidden">
+              <img 
+                src={imageUrl} 
+                alt="Impact image" 
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black/40 flex items-center justify-center"></div>
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 to-transparent pt-10 pb-4 px-4">
+                <div className="p-3 rounded-full bg-black/30 backdrop-blur-sm mb-2 inline-block">
+                  {card.icon}
+                </div>
+                <h3 className="text-2xl font-title font-medium text-[#FF6309] mb-2 leading-tight">
+                  {card.title}
+                </h3>
+                <p className="text-white/80 text-sm font-medium inline-block px-3 py-1 rounded-full border border-[#FF6309]/20">
+                  {card.location}
+                </p>
+              </div>
+            </div>
+          </motion.div>
+          
+          {/* Back side - Description points */}
+          <motion.div 
+            className="flip-card-back absolute w-full h-full rounded-xl overflow-hidden"
+            style={{ 
+              backfaceVisibility: "hidden",
+              WebkitBackfaceVisibility: "hidden",
+              transform: "rotateY(180deg)",
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+              zIndex: isFlipped ? 1 : 0,
+            }}
+          >
+            {/* Content on back side */}
+            <div className="flex flex-col bg-gradient-to-br from-[#151419] to-black rounded-xl border border-[#222] backdrop-blur-sm p-5 justify-center items-center h-full">
+              {/* Decorative accent */}
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#FF6309] to-transparent"></div>
+              
+              <div className="text-[#fbfbfb] font-paragraph relative z-10 flex-grow overflow-y-auto space-y-4 flex flex-col justify-center">
+                {card.points.map((point, i) => (
+                  <p key={i} className="leading-snug mb-2 text-center">
+                    {point}
+                  </p>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+      </motion.div>
+    );
   };
 
   return (
@@ -325,8 +428,6 @@ export default function FactsAndFigures() {
               {cardData.map((card, index) => (
                 <motion.div 
                   key={index}
-                  whileHover="hover"
-                  variants={cardVariants}
                   style={{ 
                     translateY: useTransform(
                       scrollYProgress,
@@ -337,35 +438,11 @@ export default function FactsAndFigures() {
                   }}
                   className="bg-gradient-to-br from-[#151419] to-black md:min-w-[342px] p-5 rounded-xl shadow-[0_10px_20px_rgba(0,0,0,0.3)] relative overflow-hidden h-[380px] md:h-[450px] flex flex-col justify-between transform-gpu"
                 >
-                  {/* Decorative accent */}
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#FF6309] to-transparent"></div>
-                  
-                  <div className="flex flex-col rounded-xl border border-[#222] backdrop-blur-sm px-5 py-4 justify-between h-full items-center gap-4">
-                    <motion.div 
-                      className="flex flex-col items-center mb-2"
-                      variants={iconContainerVariants}
-                    >
-                      <div className="p-3 rounded-full bg-black/30 backdrop-blur-sm mb-1">
-                        {card.icon}
-                      </div>
-                    </motion.div>
-                    
-                    <h3 className="text-2xl font-title font-medium text-[#FF6309] mb-2 text-center leading-tight">
-                      {card.title}
-                    </h3>
-                    
-                    <p className="text-[#FF6309]/80 text-sm font-medium mb-3 text-center px-3 py-1 rounded-full border border-[#FF6309]/20">
-                      {card.location}
-                    </p>
-                    
-                    <div className="text-[#fbfbfb] font-paragraph min-w-[266px] text-center relative z-10 flex-grow overflow-y-auto space-y-2 px-1">
-                      {card.points.map((point, i) => (
-                        <p key={i} className="leading-snug mb-2">
-                          {point}
-                        </p>
-                      ))}
-                    </div>
-                  </div>
+                  {/* Flip card implementation */}
+                  <FlipCard 
+                    imageUrl={card.imageUrl}
+                    card={card}
+                  />
                 </motion.div>
               ))}
             </div>
@@ -433,8 +510,6 @@ export default function FactsAndFigures() {
               {humanityCardData.map((card, index) => (
                 <motion.div 
                   key={index}
-                  whileHover="hover"
-                  variants={cardVariants}
                   style={{ 
                     translateY: useTransform(
                       scrollYProgress,
@@ -445,35 +520,11 @@ export default function FactsAndFigures() {
                   }}
                   className="bg-gradient-to-br from-[#151419] to-black md:min-w-[342px] p-5 rounded-xl shadow-[0_10px_20px_rgba(0,0,0,0.3)] relative overflow-hidden h-[380px] md:h-[450px] flex flex-col justify-between transform-gpu"
                 >
-                  {/* Decorative accent */}
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#FF6309] to-transparent"></div>
-                  
-                  <div className="flex flex-col rounded-xl border border-[#222] backdrop-blur-sm px-5 py-4 justify-between h-full items-center gap-4">
-                    <motion.div 
-                      className="flex flex-col items-center mb-2"
-                      variants={iconContainerVariants}
-                    >
-                      <div className="p-3 rounded-full bg-black/30 backdrop-blur-sm mb-1">
-                        {card.icon}
-                      </div>
-                    </motion.div>
-                    
-                    <h3 className="text-2xl font-title font-medium text-[#FF6309] mb-2 text-center leading-tight">
-                      {card.title}
-                    </h3>
-                    
-                    <p className="text-[#FF6309]/80 text-sm font-medium mb-3 text-center px-3 py-1 rounded-full border border-[#FF6309]/20">
-                      {card.location}
-                    </p>
-                    
-                    <div className="text-[#fbfbfb] font-paragraph min-w-[266px] text-left relative z-10 flex-grow overflow-y-auto space-y-2 px-1">
-                      {card.points.map((point, i) => (
-                        <p key={i} className="leading-snug mb-2">
-                          {point}
-                        </p>
-                      ))}
-                    </div>
-                  </div>
+                  {/* Flip card implementation */}
+                  <FlipCard 
+                    imageUrl={card.imageUrl}
+                    card={card}
+                  />
                 </motion.div>
               ))}
             </div>
