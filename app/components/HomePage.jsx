@@ -32,27 +32,10 @@ export default function HomePage() {
     return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => {
-    let smoother;
-    if (typeof window !== 'undefined') {
-      (async () => {
-        const { ScrollSmoother } = await import('gsap/ScrollSmoother');
-        gsap.registerPlugin(ScrollSmoother);
-        smoother = ScrollSmoother.create({
-          wrapper: '#smooth-wrapper',
-          content: '#smooth-content',
-          smooth: 1.5,
-          duration: 2,
-        });
-      })();
-    }
-    return () => {
-      if (smoother) smoother.kill();
-    };
-  }, []);
+  // Removed ScrollSmoother effect that was causing errors
   
   return (
-    <div id="smooth-wrapper">
+    <div>
       <style jsx global>{`
         .fixed.right-0.top-1\\/2.bg-gray-800, 
         .fixed.right-0.top-1\\/2 {
@@ -60,7 +43,7 @@ export default function HomePage() {
         }
       `}</style>
       
-      <div id="smooth-content" className="relative bg-white" ref={containerRef} style={{ position: 'relative', overflowX: 'hidden' }}>
+      <div className="relative bg-white" ref={containerRef} style={{ position: 'relative', overflowX: 'hidden' }}>
         {/* Content */}
         <motion.div 
           className="relative z-10" 
@@ -108,16 +91,16 @@ export default function HomePage() {
           </section>
 
           
-
+{/* 
           <section className='md:hidden'>
             <AboutUsSection/>
-          </section>
+          </section> */}
           
           
 
           <FounderTribute/>
 
-          <section className='hidden md:block'>
+          <section >
             <AboutUsSection/>
           </section>
           

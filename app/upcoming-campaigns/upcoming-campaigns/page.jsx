@@ -29,23 +29,16 @@ const ZigZagCampaign = ({ title, date, description, image, status, index }) => {
         </div>
         
         {/* Status indicator - only shown on mobile */}
-        <div className="absolute top-4 right-4 md:hidden">
-          <div className={`bg-[#F4720B] px-4 py-1 rounded-full text-white text-sm font-semibold`}>
-            {status}
-          </div>
-        </div>
+        
       </div>
       
       {/* Content Section */}
       <div className={`w-full md:w-1/2 p-4 ${isEven ? 'md:pl-8' : 'md:pr-8'}`}>
         {/* Status indicator with dot - desktop only */}
-        <div className="hidden md:flex items-center gap-2 mb-4">
-          <div className="h-3 w-3 rounded-full bg-[#F4720B]"></div>
-          <span className="text-[#F4720B] text-sm font-medium">{status}</span>
-        </div>
+        
         
         {/* Date */}
-        <div className="text-sm font-medium text-gray-600 mb-3">{date}</div>
+        
         
         {/* Campaign title */}
         <h3 className="text-3xl font-heading font-light text-black mb-4">{title}</h3>
@@ -108,34 +101,50 @@ export default function UpcomingCampaignsPage() {
   const campaigns = [
     {
       id: 1,
-      title: "Clean Water Initiative 2024",
+      title: "Accessible Futures",
       date: "Launching August 2024",
-      description: "Our upcoming initiative focuses on providing clean water solutions to rural communities facing water scarcity. Working alongside local partners, we'll implement sustainable water management systems that provide safe, reliable access to clean water. This program addresses not only immediate needs but also longstanding infrastructure challenges through innovative filtration technologies, water conservation education, and community maintenance training to ensure lasting impact.",
-      image: "https://images.unsplash.com/photo-1581244277943-fe4a9c777189?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      description: "This campaign promotes a world without physical and societal barriers for persons with disabilities. Through awareness, accessibility initiatives, and inclusive infrastructure, JKBF envisions a future where everyone can thrive with dignity and opportunity.",
+      image: "/images/Accessible.jpg",
       status: "Coming Soon"
     },
     {
       id: 2,
-      title: "Education for All Program",
+      title: "SHE for Sustainability: Support Her Empowerment",
       date: "Launching September 2024",
-      description: "This ambitious campaign brings quality education to underserved communities through technology integration, teacher training, and infrastructure development. We're creating learning environments where every child has access to digital resources, quality instruction, and support systems. The program includes tablet distribution to schools, training workshops for educators on modern teaching methodologies, and partnerships with educational content providers to ensure relevant, culturally appropriate materials reach students.",
-      image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1022&q=80", 
+      description: "This initiative celebrates and uplifts women at the forefront of sustainability—particularly those driving change through rural self-employment and community-based environmental solutions. SHE for Sustainability advances gender equity by empowering women to become agents of ecological and social transformation, fostering a more resilient and sustainable future for all.",
+      image: "/images/SHEpic.jpg", 
       status: "Coming Soon"
     },
     {
       id: 3,
-      title: "Sustainable Farming Project",
+      title: "You Are Not Alone",
       date: "Launching October 2024",
-      description: "Our sustainable farming initiative empowers local farmers with agricultural practices that improve yields while protecting the environment. Through workshops, resource provision, and market access facilitation, we're building resilient food systems and economic stability. Farmers will receive training in crop rotation, water-efficient irrigation, natural pest management, and post-harvest processing techniques. The program also includes establishing farmer cooperatives to improve bargaining power and create direct market linkages.",
-      image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+      description: "Rooted in Buddhist philosophy and compassion, this mental wellness campaign aims to break the stigma around mental health. It offers support, awareness, and resources to ensure no one walks the journey alone.",
+      image: "/images/YouNot.jpg",
       status: "Coming Soon"
     },
     {
       id: 4,
-      title: "Healthcare Accessibility Program",
+      title: "Health Beyond Boundaries",
       date: "Launching November 2024",
-      description: "This comprehensive initiative tackles healthcare gaps in rural areas through mobile clinics, telemedicine solutions, and preventive healthcare education. By bringing medical services directly to underserved communities, we're removing barriers to essential care and building healthier futures. The program includes regular village visits by healthcare professionals, digital health record systems for continuity of care, and community health worker training to sustain local health knowledge and first-response capabilities.",
-      image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+      description: "Focused on providing advanced medical technology and diagnostic services to rural India—free of cost. This campaign ensures that geography never becomes a barrier to health and well-being.",
+      image: "/images/HealthBeyondBoundaries.jpg",
+      status: "Planning Phase"
+    },
+    {
+      id: 5,
+      title: "Hope in Crisis",
+      date: "Launching December 2024",
+      description: "JKBF responds to natural and humanitarian crises with timely aid, shelter, healthcare, and emotional support. Hope in Crisis is our commitment to stand by those who need help the most—when they need it most.",
+      image: "/images/HopeInCrisis.jpg",
+      status: "Planning Phase"
+    },
+    {
+      id: 6,
+      title: "Eternal Flame Campaign",
+      date: "Launching January 2025",
+      description: "This national recognition campaign seeks to immortalize great personalities through postal stamps, commemorative coins, public spaces, and published biographies—ensuring their contributions continue to inspire future generations.",
+        image: "/images/EternalFlame.jpg",
       status: "Planning Phase"
     },
   ];

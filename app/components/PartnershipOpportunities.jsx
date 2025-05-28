@@ -1,151 +1,326 @@
 'use client';
-import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import { motion, useInView } from 'framer-motion';
+
+// Register GSAP plugins
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export default function PartnershipOpportunities() {
-  const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: false, amount: 0.2 });
+  const containerRef = useRef(null);
+  const ctaSectionRef = useRef(null);
+  const headerRef = useRef(null);
   const [activePartner, setActivePartner] = useState(null);
+  const isInView = useInView(ctaSectionRef, { once: false, amount: 0.2 });
+  const isHeaderInView = useInView(headerRef, { once: true, amount: 0.2 });
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Partnership types
+  // Check if we're on mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024); // lg breakpoint in Tailwind
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Partnership types data
   const partnershipTypes = [
     {
-      id: 'corporate',
-      title: 'Corporate Partners',
-      tagline: 'Bridging profit with purpose.',
-      description: 'Join a legacy of corporate social responsibility. Partner with us to create sustainable development initiatives that align with your brand values while making a measurable impact in education, healthcare, and rural development.',
+      id: 'knowledge',
+      title: 'Knowledge & Research Partnerships',
+      tagline: 'Creating evidence-based impact.',
+      who: 'Academic institutions, think tanks, policy researchers',
+      link: '/partnership/knowledge-research',
+      howToPartner: [
+        'Co-develop white papers, policy recommendations, or research reports on disability inclusion, gender equity, rural healthcare, or education',
+        'Host joint symposiums, case studies, or social impact assessments',
+        'Create data-backed solutions to improve grassroots initiatives'
+      ],
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
-          <path d="M3 3v18h18V3H3zm15 15H6V6h12v12z" />
-          <path d="M14 8h1v1h-1zM14 11h1v1h-1zM14 14h1v1h-1zM10 8h1v1h-1zM10 11h1v1h-1zM10 14h1v1h-1zM7 8h1v1H7zM7 11h1v1H7zM7 14h1v1H7z" />
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
         </svg>
       )
     },
     {
-      id: 'foundation',
-      title: 'Foundation Collaborators',
-      tagline: 'Multiplying impact through synergy.',
-      description: 'Align with our structured initiatives in health, education, and livelihoods to create holistic interventions. Together, we can build a socially inclusive India that honors the vision of Late Shri Jaskaran Bothra.',
+      id: 'technology',
+      title: 'Technology & Innovation Collaboration',
+      tagline: 'Scaling solutions through digital transformation.',
+      who: 'Tech companies, innovators, educational labs, start-ups',
+      link: '/partnership/technology-innovation',
+      howToPartner: [
+        'Provide or co-develop assistive tech for differently-abled individuals',
+        'Innovate affordable diagnostics and health tech for rural outreach',
+        'Build platforms or apps to scale mental health and education access'
+      ],
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
-          <path d="M12 2v20M2 12h20M2 7h20M2 17h20M7 2v20M17 2v20" />
+          <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+          <rect x="9" y="9" width="6" height="6"></rect>
+          <line x1="9" y1="1" x2="9" y2="4"></line>
+          <line x1="15" y1="1" x2="15" y2="4"></line>
+          <line x1="9" y1="20" x2="9" y2="23"></line>
+          <line x1="15" y1="20" x2="15" y2="23"></line>
+          <line x1="20" y1="9" x2="23" y2="9"></line>
+          <line x1="20" y1="14" x2="23" y2="14"></line>
+          <line x1="1" y1="9" x2="4" y2="9"></line>
+          <line x1="1" y1="14" x2="4" y2="14"></line>
         </svg>
       )
     },
     {
-      id: 'individual',
-      title: 'Individual Supporters',
-      tagline: 'Not charity. Opportunity.',
-      description: 'Continue Jaskaran Bothra\'s legacy of empowerment over aid. Your contribution supports initiatives for education, healthcare, rural infrastructure, and creating sustainable livelihoods for the underserved.',
+      id: 'media',
+      title: 'Media & Communication Partnerships',
+      tagline: 'Amplifying voices for change.',
+      who: 'Media houses, digital content creators, ad agencies, influencers',
+      link: '/partnership/media-communication',
+      howToPartner: [
+        'Co-create awareness campaigns for mental health, girl child education, or gender rights',
+        'Produce short films, documentaries, or visual storytelling for our initiatives',
+        'Join in amplifying social impact messages through your channels'
+      ],
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
-          <circle cx="12" cy="7" r="4" />
-          <path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2" />
+          <polygon points="23 7 16 12 23 17 23 7"></polygon>
+          <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+        </svg>
+      )
+    },
+    {
+      id: 'volunteer',
+      title: 'Volunteer & Capacity-Building Engagements',
+      tagline: 'Nurturing skills and fostering growth.',
+      who: 'Skill-based volunteers, professional bodies, training institutions',
+      link: '/partnership/volunteer-capacity',
+      howToPartner: [
+        'Offer pro bono training or mentorship in fields like digital literacy, health outreach, or women entrepreneurship',
+        'Facilitate upskilling workshops for frontline workers and community leaders',
+        'Organize employee engagement days tied to Foundation campaigns'
+      ],
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+          <circle cx="9" cy="7" r="4"></circle>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+        </svg>
+      )
+    },
+    {
+      id: 'government',
+      title: 'Government & Civic Partnerships',
+      tagline: 'Creating systemic change together.',
+      who: 'Government departments, municipal bodies, civil society organizations',
+      link: '/partnership/government-civic',
+      howToPartner: [
+        'Co-implement policy pilots or model programs aligned with state or national missions',
+        'Leverage JKBF initiatives like "Named After Mom" or "Health Beyond Boundaries" to scale impact',
+        'Collaborate on national recognition efforts through the Eternal Flame Campaign'
+      ],
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
+          <path d="M2 20h20"></path>
+          <path d="M12 2L3 8v12h18V8L12 2z"></path>
+          <path d="M9 14v4"></path>
+          <path d="M15 14v4"></path>
+          <path d="M9 8v2"></path>
+          <path d="M15 8v2"></path>
+        </svg>
+      )
+    },
+    {
+      id: 'institutional',
+      title: 'Institutional & Infrastructure Support',
+      tagline: 'Building foundations for lasting impact.',
+      who: 'Hospitals, schools, universities, and NGOs',
+      link: '/partnership/institutional-infrastructure',
+      howToPartner: [
+        'Provide physical space, local access, or operational expertise for Foundation programs',
+        'Offer internship or field research opportunities linked to JKBF campaigns',
+        'Assist in outreach, on-ground coordination, or local resource mobilization'
+      ],
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
         </svg>
       )
     }
   ];
 
-  const containerVariants = {
+  // Setup GSAP ScrollTrigger animation - only on desktop
+  useEffect(() => {
+    if (!containerRef.current || typeof window === 'undefined') return;
+    
+    // Don't initialize ScrollTrigger on mobile
+    if (window.innerWidth < 1024) return;
+    
+    // Create a GSAP context to make cleanup easier
+    const ctx = gsap.context(() => {
+      // Create a timeline for the scroll animation
+      const timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top+=100",
+          // Adjusted for shorter cards - reduced scroll distance
+          end: () => `+=${partnershipTypes.length * 100}`, 
+          scrub: 1, // Smoother scrubbing for better feel
+          pin: true,
+          // markers: true, // Uncomment for debugging
+          anticipatePin: 1,
+        },
+      });
+
+      // Animate the cards container upward as user scrolls
+      timeline.to(".partnership-cards-container", {
+        y: () => {
+          // Calculate how far to scroll the cards container
+          // This should be the negative of (total height of cards - visible height)
+          const cardsContainer = document.querySelector('.partnership-cards-container');
+          const visibleHeight = window.innerHeight - 150; // Adjusted for shorter cards
+          const totalHeight = cardsContainer.scrollHeight;
+          
+          // Add a small buffer to ensure the last card is fully visible before unpinning
+          return -(totalHeight - visibleHeight + 50);
+        },
+        ease: "power1.inOut", // Smoother easing for better scrolling feel
+      });
+    }, containerRef);
+
+    // Kill ScrollTrigger on window resize if it becomes mobile
+    const handleResize = () => {
+      if (window.innerWidth < 1024) {
+        ScrollTrigger.getAll().forEach(st => st.kill());
+      }
+    };
+    
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup function
+    return () => {
+      ctx.revert();
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  // Animation variants for mobile elements
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
+
+  const staggerContainer = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut"
+        staggerChildren: 0.1
       }
     }
   };
 
   return (
-    <section 
-      ref={sectionRef}
-      className="py-24 bg-white relative overflow-hidden"
-      id="partnership-opportunities"
-    >
-      {/* Background elements */}
-      <div className="absolute top-0 left-0 w-full h-full">
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-[url('/images/leaf-pattern.png')] bg-no-repeat bg-right opacity-5"></div>
-        <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-[url('/images/leaf-pattern.png')] bg-no-repeat bg-left opacity-5 transform rotate-180"></div>
-      </div>
-      
-      <div className="container mx-auto px-6">
+    <section className="py-24 bg-white relative overflow-hidden" id="partnership-opportunities">
         {/* Section header */}
+      <div ref={headerRef} className="max-w-7xl mx-auto px-4 sm:px-6 mb-16">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#F4720B] mb-4 font-title font-light tracking-tight">Partnership Opportunities</h2>
+          {isMobile ? (
+            <motion.h2 
+              initial="hidden"
+              animate={isHeaderInView ? "visible" : "hidden"}
+              variants={fadeInUp}
+              transition={{ duration: 0.5 }}
+              className="text-4xl md:text-5xl font-bold text-[#F4720B] mb-4 font-title font-light tracking-tight"
+            >
+              Partnership Opportunities
+            </motion.h2>
+          ) : (
+            <h2 className="text-4xl md:text-5xl font-bold text-[#F4720B] mb-4 font-title font-light tracking-tight">
+              Partnership Opportunities
+            </h2>
+          )}
+          
           <div className="h-1 w-24 bg-[#F4720B] rounded-full mx-auto mb-6"></div>
+          
+          {isMobile ? (
+            <motion.p 
+              initial="hidden"
+              animate={isHeaderInView ? "visible" : "hidden"}
+              variants={fadeInUp}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-xl text-gray-700 leading-relaxed font-paragraph"
+            >
+              True progress comes through collaboration, not just contribution. Partner with JKBF to leverage collective strengths for meaningful social impact.
+            </motion.p>
+          ) : (
           <p className="text-xl text-gray-700 leading-relaxed font-paragraph">
-            Not just donors. <span className="font-paragraph">Catalysts for change.</span> Join forces with a legacy initiative 
-            committed to building a socially inclusive future through structured development.
+              True progress comes through collaboration, not just contribution. Partner with JKBF to leverage collective strengths for meaningful social impact.
           </p>
+          )}
+        </div>
         </div>
 
-        {/* Main content grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
-          {/* Left side image */}
-          <motion.div
-            className="relative h-[500px] lg:h-auto rounded-xl overflow-hidden shadow-lg"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.6 }}
-          >
-            <Image 
-              src="https://images.unsplash.com/photo-1580893246395-52aead8960dc?w=1200&auto=format&fit=crop&q=80"
-              alt="Partnership"
-              fill
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#F4720B]/90 via-[#F4720B]/50 to-transparent">
-              <div className="absolute bottom-0 left-0 w-full p-8 md:p-10">
-                <p className="text-white text-2xl font-light font-paragraph leading-tight">
-                  &ldquo;His vision emphasized <span className="font-medium">not charity, but creating opportunities</span> for people to become independent contributors to society.&rdquo;
-                </p>
-                <p className="text-white/80 mt-4 italic">— In memory of Late Shri Jaskaran Bothra</p>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Right side content */}
-          <motion.div
-            variants={containerVariants}
+      {/* Main section - different structure for mobile and desktop */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        {/* Mobile view - regular flow, no animations */}
+        <div className="lg:hidden">
+          {/* Image card at top for mobile */}
+          <motion.div 
             initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            className="flex flex-col space-y-4"
+            animate={isHeaderInView ? "visible" : "hidden"}
+            variants={fadeInUp}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="w-full mb-8"
           >
-            {partnershipTypes.map((type) => (
+            <div className="relative h-[400px] rounded-xl overflow-hidden shadow-lg">
+              <Image 
+                src="https://images.unsplash.com/photo-1580893246395-52aead8960dc?w=1200&auto=format&fit=crop&q=80"
+                alt="Partnership"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#F4720B]/90 via-[#F4720B]/50 to-transparent">
+                <div className="absolute bottom-0 left-0 w-full p-8">
+                  <h3 className="text-white text-2xl font-medium font-title mb-3">Partnering for Change</h3>
+                  <p className="text-white text-lg font-light font-paragraph leading-tight">
+                    &ldquo;His vision emphasized <span className="font-medium">not charity, but creating opportunities</span> for people to become independent contributors to society.&rdquo;
+                  </p>
+                  <p className="text-white/80 mt-3 italic">— In memory of Late Shri Jaskaran Bothra</p>
+                </div>
+                </div>
+              </div>
+            </motion.div>
+
+          {/* Cards below the image for mobile */}
+          <motion.div
+            initial="hidden"
+            animate={isHeaderInView ? "visible" : "hidden"}
+            variants={staggerContainer}
+            className="space-y-6 mt-8"
+          >
+            {partnershipTypes.map((type, index) => (
               <motion.div
                 key={type.id}
-                variants={itemVariants}
-                className={`bg-white p-6 md:p-8 rounded-lg shadow-sm border-l-4 ${
-                  activePartner === type.id 
+                variants={fadeInUp}
+                transition={{ duration: 0.4 }}
+                className={`bg-white p-6 rounded-lg shadow-sm border-l-4 
+                  ${activePartner === type.id 
                     ? 'border-l-[#F4720B] bg-orange-50' 
                     : 'border-l-orange-200 hover:border-l-[#F4720B] hover:bg-orange-50/50'
                 } transition-all duration-300 relative overflow-hidden`}
                 onMouseEnter={() => setActivePartner(type.id)}
                 onMouseLeave={() => setActivePartner(null)}
               >
-                {/* Decorative corner SVG */}
-                <div className={`absolute top-0 right-0 w-16 h-16 transform translate-x-6 -translate-y-6 opacity-5 rotate-12 transition-all duration-300 ${
-                  activePartner === type.id ? 'opacity-15' : 'opacity-5'
-                }`}>
-                  <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                    <path fill="#F4720B" d="M47.7,-57.2C59,-47.3,64.2,-29.7,67.2,-11.5C70.2,6.8,71.1,25.7,62.6,38.5C54.2,51.3,36.4,58.1,19.2,61.7C1.9,65.3,-14.8,65.7,-31.1,60.4C-47.4,55.1,-63.3,44,-69.5,29C-75.7,14,-72.2,-4.9,-65.1,-21.3C-57.9,-37.7,-47.2,-51.5,-34.2,-60.7C-21.2,-69.9,-6,-74.4,7.7,-72.8C21.3,-71.2,36.5,-67.1,47.7,-57.2Z" transform="translate(100 100)" />
-                  </svg>
-                </div>
-                
                 <div className="flex items-start">
                   <div className={`mr-5 bg-orange-100 p-3 rounded-lg transition-all duration-300 ${
                     activePartner === type.id ? 'bg-orange-200 shadow-sm' : 'bg-orange-100'
@@ -156,11 +331,11 @@ export default function PartnershipOpportunities() {
                   </div>
                   <div>
                     <h3 className="text-xl font-title font-light text-gray-800 mb-1">{type.title}</h3>
-                    <p className="text-[#F4720B] font-paragraph text-sm mb-2">{type.tagline}</p>
-                    <p className="text-gray-600 font-paragraph text-sm mb-4">{type.description}</p>
+                    <p className="text-[#F4720B] font-paragraph text-sm mb-3">{type.tagline}</p>
+                    
                     <Link 
-                      href="/partnership"
-                      className="flex items-center text-[#F4720B] font-medium text-sm hover:text-orange-800 transition-colors group"
+                      href={type.link}
+                      className="flex items-center text-[#F4720B] font-medium text-sm hover:text-orange-800 transition-colors group mt-3"
                     >
                       Learn more
                       <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -174,59 +349,97 @@ export default function PartnershipOpportunities() {
           </motion.div>
         </div>
 
-        {/* Call to action */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="max-w-4xl mx-auto text-center bg-[#F4720B] text-white p-10 md:p-12 rounded-lg relative overflow-hidden shadow-md"
-        >
-          {/* Background pattern */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 left-0 w-full h-full bg-[url('/images/leaf-pattern.png')] bg-no-repeat bg-center bg-contain opacity-20"></div>
-          </div>
-          
-          {/* Decorative SVG Elements */}
-          <div className="absolute top-4 left-4 text-white/10">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2L8 8H16L12 2Z" />
-              <path d="M12 22L8 16H16L12 22Z" />
-              <path d="M2 12L8 8V16L2 12Z" />
-              <path d="M22 12L16 8V16L22 12Z" />
-            </svg>
-          </div>
-          
-          <div className="absolute bottom-4 right-4 text-white/10">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
-              <circle cx="12" cy="12" r="8" />
-              <circle cx="12" cy="12" r="4" />
-              <circle cx="12" cy="12" r="1" />
-            </svg>
-          </div>
-          
-          <div className="relative z-10">
-            <div className="mx-auto mb-4 w-16 h-16 bg-white/10 rounded-full flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
-              </svg>
+        {/* Desktop view - scrolling animation */}
+        <div ref={containerRef} className="relative w-full overflow-hidden partnership-container hidden lg:block">
+          <div className="flex z-[230] md:z-0 flex-col lg:flex-row max-w-7xl mx-auto">
+            {/* Left side - Fixed content */}
+            <div className="w-full lg:w-1/2 lg:pr-12 mb-8 lg:mb-0 lg:sticky" style={{ top: '2rem', height: 'fit-content' }}>
+              <div className="relative h-[500px] lg:h-[600px] rounded-xl overflow-hidden shadow-lg">
+                <Image 
+                  src="https://images.unsplash.com/photo-1580893246395-52aead8960dc?w=1200&auto=format&fit=crop&q=80"
+                  alt="Partnership"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#F4720B]/90 via-[#F4720B]/50 to-transparent">
+                  <div className="absolute bottom-0 left-0 w-full p-8 md:p-10">
+                    <h3 className="text-white text-3xl font-medium font-title mb-4">Partnering for Change</h3>
+                    <p className="text-white text-xl font-light font-paragraph leading-tight">
+                      &ldquo;His vision emphasized <span className="font-medium">not charity, but creating opportunities</span> for people to become independent contributors to society.&rdquo;
+                    </p>
+                    <p className="text-white/80 mt-4 italic">— In memory of Late Shri Jaskaran Bothra</p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <h3 className="text-2xl md:text-3xl font-title font-light mb-4">Join Our Mission</h3>
-            <p className="text-white/90 font-paragraph mb-8 max-w-2xl mx-auto">
-              Connect with us to explore how you can contribute to our initiatives in education, healthcare, rural infrastructure, and sustainable livelihood development.
-            </p>
             
-            <Link 
-              href="/partnership" 
-              className="inline-flex items-center bg-white text-[#F4720B] font-paragraph px-8 py-3 rounded-md hover:bg-orange-50 transition-all transform hover:-translate-y-1 hover:shadow-lg duration-300"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd" />
-              </svg>
-              Become a Partner
-            </Link>
+            {/* Right side - Scrollable cards */}
+            <div className="w-full lg:w-1/2 partnership-cards-wrapper relative">
+              <div className="partnership-cards-container">
+                {partnershipTypes.map((type, index) => (
+                  <div 
+                    key={type.id}
+                    className={`bg-white p-6 md:p-8 rounded-lg shadow-sm border-l-4 mb-6 
+                      ${activePartner === type.id 
+                        ? 'border-l-[#F4720B] bg-orange-50' 
+                        : 'border-l-orange-200 hover:border-l-[#F4720B] hover:bg-orange-50/50'
+                      } transition-all duration-300 relative overflow-hidden`}
+                    onMouseEnter={() => setActivePartner(type.id)}
+                    onMouseLeave={() => setActivePartner(null)}
+                  >
+                    <div className="flex items-start">
+                      <div className={`mr-5 bg-orange-100 p-3 rounded-lg transition-all duration-300 ${
+                        activePartner === type.id ? 'bg-orange-200 shadow-sm' : 'bg-orange-100'
+                      }`}>
+                        <div className="w-8 h-8 text-[#F4720B]">
+                          {type.icon}
+                        </div>
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-title font-light text-gray-800 mb-1">{type.title}</h3>
+                        <p className="text-[#F4720B] font-paragraph text-sm mb-3">{type.tagline}</p>
+                        
+                        {/* <div className="mb-3">
+                          <p className="text-gray-800 font-paragraph text-sm font-medium">Who:</p>
+                          <p className="text-gray-600 font-paragraph text-sm">{type.who}</p>
+                        </div>
+                        
+                        <div>
+                          <p className="text-gray-800 font-paragraph text-sm font-medium mb-2">How You Can Partner:</p>
+                          <ul className="text-gray-600 font-paragraph text-sm space-y-2 mb-4">
+                            {type.howToPartner.map((item, i) => (
+                              <li key={i} className="flex items-start">
+                                <span className="text-[#F4720B] mr-2">●</span>
+                                <span>{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div> */}
+                        
+                        <Link 
+                          href={type.link}
+                          className="flex items-center text-[#F4720B] font-medium text-sm hover:text-orange-800 transition-colors group mt-3"
+                        >
+                          Learn more
+                          <svg className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                          </svg>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-        </motion.div>
+        </div>
       </div>
+      
+      {/* Large CTA Banner - Moved outside the pinned section */}
+     
+
+      {/* Hidden spacer that helps with removing the gap */}
+      <div className="h-0 lg:-mt-[150px] overflow-hidden" aria-hidden="true"></div>
     </section>
   );
 }

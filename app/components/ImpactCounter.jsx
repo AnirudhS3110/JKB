@@ -140,9 +140,7 @@ const ImpactCounter = () => {
             {moneyCount.toFixed(1)} K+
           </h3>
           <p className="text-xl text-green-100 mb-6">Empowered Strong</p>
-          <button suppressHydrationWarning className="bg-[#1b1a1f] hover:bg-[#262626] transition-colors px-6 py-2 rounded-md">
-            Learn More
-          </button>
+          
         </div>
         
         {/* Acres Counter */}

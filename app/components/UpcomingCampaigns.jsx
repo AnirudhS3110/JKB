@@ -3,36 +3,37 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function UpcomingCampaigns() {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: false, amount: 0.2 });
-  
+  const router = useRouter();
   // Project data with descriptions
   const campaigns = [
     {
       id: 1,
-      title: "Upper Wenatchee | FRB",
-      image: "https://www.hindustantimes.com/ht-img/img/2024/02/17/1600x900/Bollywood-Actor-Shradha-Kapoor-joined-Protesters-f_1708193327170.jpg",
+      title: "SHE for Sustainability",
+      image: "/images/SHEpic.jpg",
       status: "Project Underway",
       statusColor: "#F4720B", // Orange
-      description: "Supporting sustainable agriculture practices in the Upper Wenatchee region to improve food security and community resilience."
+      description: "Uplifting women at the forefront of sustainability through rural self-employment and community-based environmental solutions, fostering a resilient future for all."
     },
     {
       id: 2,
-      title: "Clean Water Initiative",
-      image: "https://images.hindustantimes.com/rf/image_size_630x354/HT/p2/2018/09/06/Pictures/assignment-name-in-brief_ef7f133a-b1e8-11e8-a206-120fd6da8a0d.jpg",
-      status: "Enrolling Now",
+      title: "Eternal Flame Campaign",
+      image: "/images/EternalFlame.jpg",
+      status: "Starting Soon",
       statusColor: "#F4720B", // Orange
-      description: "Bringing clean water to communities through innovative filtration systems and education on water conservation."
+      description: "Immortalizing great personalities through postal stamps, commemorative coins, and published biographies—ensuring their contributions inspire future generations."
     },
     {
       id: 3,
-      title: "Education Empowerment",
-      image: "https://images.firstpost.com/wp-content/uploads/2019/10/aarey-banner.jpg",
-      status: "Starting Soon",
+      title: "Named After Mom",
+      image: "/images/NamedAfterMom.jpg",
+      status: "Project Underway",
       statusColor: "#F4720B", // Orange
-      description: "Providing educational resources and technology to underserved schools to bridge the digital divide."
+      description: "A first-of-its-kind initiative advocating for the mandatory inclusion of mothers' names in all government documents, recognizing women through official identity."
     }
   ];
 
@@ -63,9 +64,14 @@ export default function UpcomingCampaigns() {
           >
             Upcoming Campaigns
           </motion.h2>
-          <button suppressHydrationWarning={true} className="bg-gray-100 md:block hidden text-gray-800 px-5 py-2 bg-[#F4720B] rounded-md text-sm hover:bg-gray-200 transition-colors">
-            View all
-          </button>
+          <Link href="/upcoming-campaigns/upcoming-campaigns">
+            <button suppressHydrationWarning={true} className="relative overflow-hidden md:block hidden text-white px-6 py-3 bg-[#F4720B] font-paragraph hover:bg-[#E05900] transition-all duration-300 group">
+              <span className="inline-block transition-transform duration-300 group-hover:-translate-x-2">View all</span>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 inline-block ml-0 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </button>
+          </Link>
         </div>
         
         {/* Separator line */}
@@ -83,22 +89,22 @@ export default function UpcomingCampaigns() {
               className="flex flex-col"
             >
               {/* Image container with heart icon */}
-              <div  className=" w-full h-64 md:h-72 mb-4">
+              <div  className=" w-full h-[310px] md:h-72 mb-4">
                 <motion.img 
                 whileHover={{scale: 1.05}} transition={{duration: 0.5}}
                   src={campaign.image}
                   alt={campaign.title} 
                   style={{ objectFit: 'cover' }}
-                  className='w-full h-full object-cover overflow-hidden'
+                  className='w-full h-[300px] object-cover overflow-hidden'
                 />
                 
               </div>
               
               {/* Status indicator with dot - now below the image */}
-              <div className="flex items-center gap-2 mb-2">
+              {/* <div className="flex items-center gap-2 mb-2">
                 <div className="h-3 w-3 rounded-full" style={{ backgroundColor: campaign.statusColor }}></div>
                 <span className="text-[#F4720B] text-sm font-medium">{campaign.status}</span>
-              </div>
+              </div> */}
               
               {/* Campaign title - left aligned */}
               <h3 className="text-2xl  font-heading font-light text-[#000000] mb-3">
@@ -111,14 +117,22 @@ export default function UpcomingCampaigns() {
               </p>
               
               {/* Enroll button - left aligned with image */}
-              <button suppressHydrationWarning={true} className="text-left w-fit bg-[#F4720B] text-white font-paragraph px-6 py-3 hover:bg-[#E05900] transition-all">
-                Enroll Now
+              <button suppressHydrationWarning={true} className="relative overflow-hidden text-left w-fit bg-[#F4720B] text-white font-paragraph px-6 py-3 hover:bg-[#E05900] transition-all duration-300 group">
+                <span className="inline-block transition-transform duration-300 group-hover:-translate-x-2">Enroll Now</span>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 inline-block ml-0 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
               </button>
             </motion.div>
           ))}
-          <button suppressHydrationWarning={true} className="bg-gray-100 text-gray-800 px-5 py-2 md:hidden font-paragraph rounded-md text-sm hover:bg-gray-200 transition-colors">
-            View all
+            
+          <button  onClick={() => router.push('/upcoming-campaigns/upcoming-campaigns')} className="relative overflow-hidden text-white px-6 py-3 bg-[#F4720B] font-paragraph md:hidden hover:bg-[#E05900] transition-all duration-300 group">
+            <span className="inline-block transition-transform duration-300 group-hover:-translate-x-2">View all</span>
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 inline-block ml-0 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
           </button>
+       
         </div>
         
         {/* Separator line */}

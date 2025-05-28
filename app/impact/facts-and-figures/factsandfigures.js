@@ -1,12 +1,13 @@
 "use client"
 
 import React, { useRef, useEffect, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import LogoRevealWrapper from '../../../components/ui/LogoReveal';
 
 export default function FactsAndFigures() {
-  // State to control the animation trigger
+  // State to control the animation trigger and track window size
   const [isTextVisible, setIsTextVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   
   // Main container ref for scroll calculations
   const containerRef = useRef(null);
@@ -18,10 +19,31 @@ export default function FactsAndFigures() {
   const humanityHeaderRef = useRef(null);
   const humanityCardsRef = useRef(null);
   
+  // Refs for individual card sections to use with useInView for mobile
+  const cardSectionRefs = useRef([]);
+  const humanityCardSectionRefs = useRef([]);
+  
   // Split hero text into words for animation
   const heroText = "Every initiative we take is more than a gesture — it's a lifeline. Backed by data and driven by compassion, the Jaskaran Bothra Foundation transforms impact into measurable change. These numbers aren't just statistics — they are stories of survival, strength, and self-reliance.";
   const heroWords = heroText.split(" ");
 
+  // Check if device is mobile
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    // Initial check
+    checkIfMobile();
+    
+    // Add event listener for resize
+    window.addEventListener('resize', checkIfMobile);
+    
+    return () => {
+      window.removeEventListener('resize', checkIfMobile);
+    };
+  }, []);
+  
   // Trigger animation on component mount
   useEffect(() => {
     // Small delay for text animation - appear after page load
@@ -38,70 +60,93 @@ export default function FactsAndFigures() {
     offset: ["start", "end"]
   });
   
-  // Transform values for sliding animations - updated timing to ensure coordinated movement
+  // Adjust scroll triggers based on device size
+  const mobileOffset = 0.05;
+  
+  // Transform values for sliding animations - dynamic offsets based on device type
   const lifelinesHeaderY = useTransform(
     scrollYProgress,
-    [0.10, 0.25],  // When to start/complete animation
+    isMobile ? 
+      [0.05, 0.15] : // Mobile values - smaller range
+      [0.10, 0.25],   // Desktop values
     ["100vh", "0vh"]  // Start position to end position
   );
   
-  // Cards animation timing - from 40% to 60% of scroll
+  // Cards animation timing - adjusted for mobile
   const cardsY = useTransform(
     scrollYProgress,
-    [0.3, 0.5],
-    ["100vh", "10vh"]
+    isMobile ?
+      [0.15, 0.30] : // Mobile values
+      [0.3, 0.5],    // Desktop values
+    ["100vh", isMobile ? "0vh" : "10vh"]
   );
 
-  // Image receding effect transforms - now synchronized with cards (40% to 60%)
+  // Image receding effect transforms - adjusted for mobile
   const imageScale = useTransform(
     scrollYProgress,
-    [0.4, 0.48 ],  // Matching cards timing
-    [1, 0.85]  // Original size to smaller size
+    isMobile ?
+      [0.25, 0.30] : // Mobile values
+      [0.4, 0.48],   // Desktop values
+    [1, 0.85]        // Original size to smaller size
   );
 
   const imageOpacity = useTransform(
     scrollYProgress,
-    [0.4, 0.48],  // Matching cards timing
-    [1, 0.85]  // Full opacity to half opacity
+    isMobile ?
+      [0.25, 0.30] : // Mobile values
+      [0.4, 0.48],   // Desktop values
+    [1, 0.85]        // Full opacity to half opacity
   );
 
   const imageTranslateY = useTransform(
     scrollYProgress,
-    [0.4, 0.48],  // Matching cards timing
-    ["0vh", "5vh"]  // No translation to downward translation
+    isMobile ?
+      [0.25, 0.30] : // Mobile values
+      [0.4, 0.48],   // Desktop values
+    ["0vh", "5vh"]   // No translation to downward translation
   );
 
-  // Humanity section animations
+  // Humanity section animations - adjusted for mobile
   const humanityHeaderY = useTransform(
     scrollYProgress,
-    [0.60, 0.70],  // When to start/complete animation
-    ["100vh", "0vh"]  // Start position to end position
+    isMobile ?
+      [0.45, 0.55] : // Mobile values
+      [0.60, 0.70],  // Desktop values
+    ["100vh", "0vh"] // Start position to end position
   );
 
-  // Humanity cards animation timing - from 75% to 95% of scroll
+  // Humanity cards animation timing - adjusted for mobile
   const humanityCardsY = useTransform(
     scrollYProgress,
-    [0.70, 0.80],
-    ["100vh", "10vh"]  // Using same offset as first set of cards
+    isMobile ?
+      [0.55, 0.65] : // Mobile values
+      [0.70, 0.80],  // Desktop values
+    ["100vh", isMobile ? "0vh" : "10vh"]
   );
 
-  // Humanity image receding effect
+  // Humanity image receding effect - adjusted for mobile
   const humanityImageScale = useTransform(
     scrollYProgress,
-    [0.80, 0.85],  // Synchronized with humanity cards
-    [1, 0.85]  // Original size to smaller size
+    isMobile ?
+      [0.65, 0.70] : // Mobile values
+      [0.80, 0.85],  // Desktop values
+    [1, 0.85]        // Original size to smaller size
   );
 
   const humanityImageOpacity = useTransform(
     scrollYProgress,
-    [0.75, 0.85],  // Synchronized with humanity cards
-    [1, 0.85]  // Full opacity to half opacity
+    isMobile ?
+      [0.65, 0.70] : // Mobile values
+      [0.75, 0.85],  // Desktop values
+    [1, 0.85]        // Full opacity to half opacity
   );
 
   const humanityImageTranslateY = useTransform(
     scrollYProgress,
-    [0.80, 0.85],  // Synchronized with humanity cards
-    ["0vh", "5vh"]  // No translation to downward translation
+    isMobile ?
+      [0.65, 0.70] : // Mobile values
+      [0.80, 0.85],  // Desktop values
+    ["0vh", "5vh"]   // No translation to downward translation
   );
 
   const cardData = [
@@ -240,6 +285,8 @@ export default function FactsAndFigures() {
         style={{ perspective: "1000px" }}
         onHoverStart={() => setIsFlipped(true)}
         onHoverEnd={() => setIsFlipped(false)}
+        // For touch devices
+        onTap={() => setIsFlipped(!isFlipped)}
       >
         <motion.div 
           className="flip-card-inner relative w-full h-full"
@@ -316,6 +363,24 @@ export default function FactsAndFigures() {
     );
   };
 
+  // For mobile viewport detection
+  const MobileCard = ({ imageUrl, card, index, isHumanity = false }) => {
+    const cardRef = useRef(null);
+    const isInView = useInView(cardRef, { once: false, amount: 0.3 });
+    
+    return (
+      <motion.div 
+        ref={cardRef}
+        initial={{ opacity: 0, y: 50 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+        transition={{ duration: 0.8, delay: index * 0.2 }}
+        className="bg-gradient-to-br from-[#151419] to-black md:min-w-[342px] p-5 rounded-xl shadow-[0_10px_20px_rgba(0,0,0,0.3)] relative overflow-hidden h-[380px] md:h-[450px] flex flex-col justify-between transform-gpu"
+      >
+        <FlipCard imageUrl={imageUrl} card={card} />
+      </motion.div>
+    );
+  };
+
   return (
     <LogoRevealWrapper>
       <div ref={containerRef} className="relative">
@@ -370,13 +435,6 @@ export default function FactsAndFigures() {
         {/* Lifelines Title Section - slides in from bottom */}
         <section className="h-screen w-full relative flex items-center justify-center sticky top-0">
           {/* Background elements */}
-          {/* <div className="absolute inset-0 left-0 top-0 w-full h-full">
-            <img 
-              src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2732&q=80" 
-              alt="healthcare impact" 
-              className="w-full h-full object-cover"
-            />
-          </div> */}
           <div className="absolute inset-0 left-0 top-0 w-full h-full bg-[#FF6309] from-[#FF6309] to-[#FF8E16] opacity-100"></div>
           
           {/* Content that moves together */}
@@ -419,22 +477,29 @@ export default function FactsAndFigures() {
         <section className="min-h-screen relative flex items-center justify-center sticky top-0 py-16">
           <div className="absolute inset-0 left-0 top-10 w-full h-full bg-transparent"></div>
           
+          {/* Desktop cards with scroll animation */}
           <motion.div 
             ref={cardsRef}
-            style={{ y: cardsY }}
-            className="max-w-6xl w-full mx-auto px-6 z-20" // Higher z-index than the image
+            style={isMobile ? {} : { y: cardsY }}
+            className={`max-w-6xl w-full mx-auto px-6 z-20 ${isMobile ? 'hidden md:block' : ''}`}
           >
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {cardData.map((card, index) => (
                 <motion.div 
                   key={index}
                   style={{ 
-                    translateY: useTransform(
+                    // Group cards together with a common animation instead of individual transforms
+                    opacity: useTransform(
                       scrollYProgress,
-                      [0.20, 0.4 + (index * 0.02)],
-                      ["50vh", "0vh"]
+                      [0.25, 0.35],
+                      [0, 1]
                     ),
-                    zIndex: 30 // Ensure cards stay above the image
+                    y: useTransform(
+                      scrollYProgress,
+                      [0.25, 0.4],
+                      [50, 0]
+                    ),
+                    zIndex: 30
                   }}
                   className="bg-gradient-to-br from-[#151419] to-black md:min-w-[342px] p-5 rounded-xl shadow-[0_10px_20px_rgba(0,0,0,0.3)] relative overflow-hidden h-[380px] md:h-[450px] flex flex-col justify-between transform-gpu"
                 >
@@ -447,9 +512,23 @@ export default function FactsAndFigures() {
               ))}
             </div>
           </motion.div>
+          
+          {/* Mobile cards with intersection observer */}
+          <div className={`max-w-6xl w-full mx-auto px-6 z-20 ${isMobile ? 'block md:hidden' : 'hidden'}`}>
+            <div className="grid grid-cols-1 gap-8 py-10">
+              {cardData.map((card, index) => (
+                <MobileCard 
+                  key={index}
+                  imageUrl={card.imageUrl}
+                  card={card}
+                  index={index}
+                />
+              ))}
+            </div>
+          </div>
         </section>
 
-        <section className='h-[300vh]'/>
+        <section className={isMobile ? 'h-[100vh]' : 'h-[300vh]'}/>
 
         {/* Humanity in Numbers Section - slides in from bottom */}
         <section className="h-screen w-full relative flex items-center justify-center sticky top-0">
@@ -501,22 +580,29 @@ export default function FactsAndFigures() {
         <section className="min-h-screen relative flex items-center justify-center sticky top-0 py-16">
           <div className="absolute inset-0 left-0 top-10 w-full h-full bg-transparent"></div>
           
+          {/* Desktop cards with scroll animation */}
           <motion.div 
             ref={humanityCardsRef}
-            style={{ y: humanityCardsY }}
-            className="max-w-6xl w-full mx-auto px-6 z-20" // Higher z-index than the image
+            style={isMobile ? {} : { y: humanityCardsY }}
+            className={`max-w-6xl w-full mx-auto px-6 z-20 ${isMobile ? 'hidden md:block' : ''}`}
           >
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {humanityCardData.map((card, index) => (
                 <motion.div 
                   key={index}
                   style={{ 
-                    translateY: useTransform(
+                    // Group cards together with a common animation for humanity section
+                    opacity: useTransform(
                       scrollYProgress,
-                      [0.75, 0.85 + (index * 0.02)],
-                      ["50vh", "0vh"]
+                      [0.75, 0.80],
+                      [0, 1]
                     ),
-                    zIndex: 30 // Ensure cards stay above the image
+                    y: useTransform(
+                      scrollYProgress,
+                      [0.75, 0.85],
+                      [50, 0]
+                    ),
+                    zIndex: 30
                   }}
                   className="bg-gradient-to-br from-[#151419] to-black md:min-w-[342px] p-5 rounded-xl shadow-[0_10px_20px_rgba(0,0,0,0.3)] relative overflow-hidden h-[380px] md:h-[450px] flex flex-col justify-between transform-gpu"
                 >
@@ -529,6 +615,21 @@ export default function FactsAndFigures() {
               ))}
             </div>
           </motion.div>
+          
+          {/* Mobile cards with intersection observer */}
+          <div className={`max-w-6xl w-full mx-auto px-6 z-20 ${isMobile ? 'block md:hidden' : 'hidden'}`}>
+            <div className="grid grid-cols-1 gap-8 py-10">
+              {humanityCardData.map((card, index) => (
+                <MobileCard 
+                  key={index}
+                  imageUrl={card.imageUrl}
+                  card={card}
+                  index={index}
+                  isHumanity={true}
+                />
+              ))}
+            </div>
+          </div>
         </section>
         
         {/* Extra height to ensure scrolling works properly */}

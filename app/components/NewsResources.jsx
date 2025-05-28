@@ -38,7 +38,7 @@ export default function NewsFeed() {
       title: 'Name Her Claim Her:Rewrite Identity with Equality.',
       category: 'Stories from our work',
       location: 'India',
-      image: 'https://videos.openai.com/vg-assets/assets%2Ftask_01jvkkcztve2qsa8p8edqbdg6w%2F1747635877_img_3.webp?st=2025-05-19T05%3A25%3A19Z&se=2025-05-25T06%3A25%3A19Z&sks=b&skt=2025-05-19T05%3A25%3A19Z&ske=2025-05-25T06%3A25%3A19Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=aa5ddad1-c91a-4f0a-9aca-e20682cc8969&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=iMkkvEllRsJOIGK5MsjnzEXVYsOsQsJM0GICc%2FgcPNI%3D&az=oaivgprodscus', // Replace with your image path
+      image: '/images/MomLogo.png',
       tags: ['Choose Mom. Change the Norm.', 'Middle Name. Equal Game.', 'Identity Begins With Her.'],
       link: '/story/fishcookies'
     },

@@ -4,12 +4,55 @@ const WhatWeDo = () => {
   const [activeItem, setActiveItem] = useState(null);
   
   const menuItems = [
-    { id: 1, text: 'Girl Child Education', href: '/boost-productivity', color: 'bg-[#F4720B]' },
-    { id: 2, text: 'Women Empowerment', href: '/increase-incomes', color: 'bg-[#F4720B]' },
-    { id: 3, text: 'Digital Literacy', href: '/food-security', color: 'bg-[#F4720B]' },
-    { id: 4, text: 'Healthcare Initiatives', href: '/climate-change', color: 'bg-[#F4720B]' },
-    { id: 5, text: 'Skill Dvelopment', href: '/protect-ecosystems', color: 'bg-[#F4720B]' },
-    { id: 6, text: 'Infrastructural Aids', href: '/connect-farmers', color: 'bg-[#F4720B]' },
+    { 
+      id: 1, 
+      text: 'Accessible Futures', 
+      tagline: 'Empowering Inclusion for All Abilities',
+      href: '/accessible-futures', 
+      color: 'bg-[#F4720B]' 
+    },
+    { 
+      id: 2, 
+      text: 'SHE for Sustainability', 
+      tagline: 'Championing Women in Sustainability',
+      href: '/she-for-sustainability', 
+      color: 'bg-[#F4720B]' 
+    },
+    { 
+      id: 3, 
+      text: 'You Are Not Alone', 
+      tagline: 'Mental Health Through the Lens of Mindfulness',
+      href: '/you-are-not-alone', 
+      color: 'bg-[#F4720B]' 
+    },
+    { 
+      id: 4, 
+      text: 'She Leads, We Rise', 
+      tagline: 'Advocating Girl Child Education',
+      href: '/she-leads-we-rise', 
+      color: 'bg-[#F4720B]' 
+    },
+    { 
+      id: 5, 
+      text: 'Health Beyond Boundaries', 
+      tagline: 'Bridging the Rural Health Divide',
+      href: '/health-beyond-boundaries', 
+      color: 'bg-[#F4720B]' 
+    },
+    { 
+      id: 6, 
+      text: 'Hope in Crisis', 
+      tagline: 'Relief & Rehabilitation in Times of Calamity',
+      href: '/hope-in-crisis', 
+      color: 'bg-[#F4720B]' 
+    },
+    { 
+      id: 7, 
+      text: 'Eternal Flame Campaign', 
+      tagline: 'Honouring National Icons, Preserving Legacies',
+      href: '/eternal-flame-campaign', 
+      color: 'bg-[#F4720B]' 
+    },
   ];
 
   const handleItemTouch = (id) => {
@@ -23,7 +66,7 @@ const WhatWeDo = () => {
         <div 
           className="h-full w-full bg-cover bg-center"
           style={{ 
-            backgroundImage: "url('/images/BG-201.jpg')",
+            backgroundImage: "url('/images/BG-201.png')",
             backgroundPosition: "center",
           }}
         >
@@ -45,7 +88,7 @@ const WhatWeDo = () => {
                 key={item.id} 
                 className={`group relative w-full border-t border-[#E4DCCA]/25 overflow-hidden ${activeItem === item.id ? 'active' : ''}`} 
                 suppressHydrationWarning={true}
-                onClick={() => handleItemTouch(item.id)}
+                
               >
                 {/* Background that slides up on hover/touch */}
                 <div 
@@ -70,18 +113,18 @@ const WhatWeDo = () => {
                         {item.text}
                       </h3>
                       
-                      {/* Text that appears on hover/touch */}
+                      {/* Tagline that appears on hover/touch */}
                       <h3 
                         className={`absolute font-paragraph max-w-[80%] text-xl sm:text-2xl md:text-3xl text-white z-20 
                         [transition:transform_0.3s_ease,opacity_0.3s_ease] md:[transition:transform_2s_cubic-bezier(0.22,1,0.36,1)]
                         ${activeItem === item.id ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-1/2'}
                         md:opacity-0 md:-translate-x-1/2 md:group-hover:opacity-100 md:group-hover:translate-x-0`}
                       >
-                        {item.text}
+                        {item.tagline}
                       </h3>
                       
                       {/* Arrow icon */}
-                      <div 
+                      {/* <div 
                         className={`flex relative origin-right z-20 
                         transition-transform duration-300 md:[transition:transform_2s_cubic-bezier(0.22,1,0.36,1)]
                         ${activeItem === item.id ? 'scale-[1.4] md:scale-[1.666]' : ''}
@@ -107,7 +150,7 @@ const WhatWeDo = () => {
                             ></path>
                           </g>
                         </svg>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>

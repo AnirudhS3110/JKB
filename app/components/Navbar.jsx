@@ -56,9 +56,12 @@ const ImprovedNavbar = () => {
       description: 'Join forces with us to amplify your impact through strategic collaborations and initiatives.',
       image: 'https://images.unsplash.com/photo-1665072204431-b3ba11bd6d06?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHBhcnRuZXJzaGlwfGVufDB8fDB8fHww',
       links: [
-        { text: 'Corporate Partners', href: '/corporate' },
-        { text: 'Individual Giving', href: '/donate' },
-        { text: 'Volunteer Programs', href: '/volunteer' },
+        { text: 'Knowledge & Research Partnerships', href: '/partnership/knowledge-research' },
+        { text: 'Technology & Innovation Collaboration', href: '/partnership/technology-innovation' },
+        { text: 'Media & Communication Partnerships', href: '/partnership/media-communication' },
+        { text: 'Volunteer & Capacity-Building Engagements', href: '/partnership/volunteer-capacity-building' },
+        { text: 'Government & Civic Partnerships', href: '/partnership/government-civic' },
+        { text: 'Institutional & Infrastructure Support', href: '/partnership/institutional-infrastructure' }
       ]
     },
     {
