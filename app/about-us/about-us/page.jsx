@@ -61,10 +61,10 @@ export default function AboutUsPage() {
         {/* Hero Section - Sticky at top with lower z-index */}
         <section className="h-screen relative bg-black flex items-center justify-center sticky top-0 z-10">
           <div className="absolute inset-0 z-0">
-            <div className="absolute inset-0 bg-black/60 z-10"></div>
+            <div className="absolute inset-0 bg-black/70 z-10"></div>
             <div className="w-full h-full relative">
               <Image 
-                src="/images/about-hero.jpg" 
+                src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
                 alt="About Us" 
                 fill 
                 className="object-cover"
