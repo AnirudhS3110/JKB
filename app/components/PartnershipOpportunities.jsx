@@ -78,7 +78,7 @@ export default function PartnershipOpportunities() {
   const staggerContainer = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } } };
 
   return (
-    <section className="py-24 bg-white relative overflow-hidden" id="partnership-opportunities">
+    <section id="partnership"    className="py-24 bg-white relative overflow-hidden" id="partnership-opportunities">
       {/* Section header */}
       <div ref={headerRef} className="max-w-7xl mx-auto px-4 sm:px-6 mb-16">
         <div className="max-w-3xl mx-auto text-center mb-16">
@@ -172,7 +172,7 @@ export default function PartnershipOpportunities() {
             </p>
             
               <Link 
-                href="/partnership" 
+                href="#partnership" 
               className="inline-flex items-center bg-white text-[#F4720B] font-paragraph px-8 py-3 rounded-md hover:bg-orange-50 transition-all transform hover:-translate-y-1 hover:shadow-lg duration-300"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">

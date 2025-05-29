@@ -117,7 +117,7 @@ export default function UpcomingCampaigns() {
               </p>
               
               {/* Enroll button - left aligned with image */}
-              <button suppressHydrationWarning={true} className="relative overflow-hidden text-left w-fit bg-[#F4720B] text-white font-paragraph px-6 py-3 hover:bg-[#E05900] transition-all duration-300 group">
+              <button onClick={() => router.push('/upcoming-campaigns/upcoming-campaigns')} suppressHydrationWarning={true} className="relative overflow-hidden text-left w-fit bg-[#F4720B] text-white font-paragraph px-6 py-3 hover:bg-[#E05900] transition-all duration-300 group">
                 <span className="inline-block transition-transform duration-300 group-hover:-translate-x-2">Enroll Now</span>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 inline-block ml-0 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />

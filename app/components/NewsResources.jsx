@@ -27,35 +27,35 @@ export default function NewsFeed() {
   const articles = [
     {
       id: 1,
-      title: 'Half a Million Fed. Zero Left Behind.',
-      category: 'News',
-      image: '/images/CarousalPic8.jpg', // Replace with your image path
-      tags:['Hunger Fought. Hope Delivered Fast.', 'Mumbai United. No One Forgotten.' ,'500K Strong. Together We Rose.'],
-      link: '/farm-africa-returns-as-charity-partner'
-    },
-    {
-      id: 2,
-      title: 'Name Her Claim Her:Rewrite Identity with Equality.',
+      title: 'Name Her Claim Her:Rewrite Identity with Equality .',
       category: 'Stories from our work',
-      location: 'India',
       image: '/images/MomLogo.png',
       tags: ['Choose Mom. Change the Norm.', 'Middle Name. Equal Game.', 'Identity Begins With Her.'],
       link: '/story/fishcookies'
     },
     {
-      id: 3,
-      title: 'Ability Amplified. Vision Empowered.',
-      category: 'News',
+      id: 2,
+      title: 'SHE for Sustainability: Support Her Empowerment',
+      category: 'Upcoming Campaign',
       location: 'India',
-      image: '/images/NewsPaper22.png',
-      tags: ['Tech Touching Every Ability.', 'Eyes Closed. World Opened.', '1,000 Strong. 5,000 Seen.'],
-      link: '/expert-view/meeting-juliet'
+      image: '/images/SHEpic.jpg',
+      tags: ['Women Lead. Earth Thrives.', 'Her Vision. Our Future.', 'Sustainable Power. Female Force.', 'Rural Women. Global Impact.'],
+      link: '/upcoming-campaigns/upcoming-campaigns'
+    },
+    {
+      id: 3,
+      title: 'You Are Not Alone',
+      category: 'Upcoming Campaign',
+      location: 'India',
+      image: '/images/YouNot.jpg',
+      tags: ['Mind Matters. Always Here.', 'Break Stigma. Build Connection.', 'Compassion Heals. Silence Doesn\'t.', 'Your Story. Our Support.'],
+      link: '/upcoming-campaigns/upcoming-campaigns'
     }
   ];
 
   return (
     <section 
-      ref={sectionRef}
+           ref={sectionRef}
       className="bg-orange-500 opacity-88 relative overflow-hidden py-20 md:py-30"
     >
       {/* Decorative leaf patterns */}

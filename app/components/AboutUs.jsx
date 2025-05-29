@@ -48,20 +48,20 @@ export default function AboutUsSection() {
     about: {
       title: "About Us",
       description: "The Jaskaran Bothra Foundation (JKBF) is a philanthropic initiative rooted in compassion, equity, and nation-building. Inspired by the values of late Shri Jaskaran Bothra—a visionary social reformer—we're dedicated to uplifting marginalized communities through transformative campaigns that address disability inclusion, women's empowerment, mental wellness, and rural healthcare.",
-      image: "https://pbs.twimg.com/profile_banners/1381848973963526145/1690267377/1080x360",
-      link: "/about"
+      image: "https://i.pinimg.com/736x/d3/71/33/d37133138623006569bfeba91cb0835e.jpg",
+      link: "/about-us/about-us"
     },
     vision: {
       title: "Our Vision",
       description: "To build an inclusive, compassionate, and empowered society where every individual—regardless of gender, ability, or geography—has the opportunity to thrive with dignity.",
       image: "https://th-i.thgim.com/public/news/cities/chennai/wyoek1/article31192582.ece/alternates/FREE_1200/30MPYUVANGO1",
-      link: "/vision"
+      link: "/about-us/vision-and-mission"
     },
     mission: {
       title: "Our Mission",
       description: "To bridge corporate growth and community development. To promote education for the girl child. To strengthen rural healthcare access. To encourage sustainable livelihoods through skill development. To advocate for women empowerment. To promote mental health awareness.",
       image: "/images/CarousalPic8.jpg",
-      link: "/mission"
+      link: "/about-us/vision-and-mission"
     }
   };
 
@@ -103,7 +103,7 @@ export default function AboutUsSection() {
                     setImageErrors(prev => ({...prev, [key]: true}));
                   }}
                 />
-                <div className="absolute inset-0 opacity-85 bg-black"></div>
+                <div className="absolute inset-0 opacity-75 bg-black"></div>
               </div>
               {!imagesLoaded[key] && !imageErrors[key] && (
                 <div className="absolute inset-0 z-10 bg-black flex items-center justify-center">

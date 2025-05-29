@@ -1,7 +1,8 @@
+
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaFacebookF, FaYoutube, FaLinkedinIn } from 'react-icons/fa';
+import { FaFacebookF, FaYoutube, FaLinkedinIn, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { AiOutlineInstagram } from 'react-icons/ai';
 
@@ -19,7 +20,7 @@ const Footer = () => {
           <div className="">
             <div className="flex flex-row gap-4 items-center">
               <Link href="/" className="inline-block">
-                <img src="https://videos.openai.com/vg-assets/assets%2Ftask_01jvsgk7s6ecbrajwvn17jvadf%2F1747834277_img_3.webp?st=2025-05-21T12%3A00%3A05Z&se=2025-05-27T13%3A00%3A05Z&sks=b&skt=2025-05-21T12%3A00%3A05Z&ske=2025-05-27T13%3A00%3A05Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=3d249c53-07fa-4ba4-9b65-0bf8eb4ea46a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=jfXuY05qCaTRo4SrPZQpHMpHT7jKZjI%2BErED3cimSYI%3D&az=oaivgprodscus" alt="Jaskaran Bothra Foundation" className="h-[200px] md:h-[230px]" />
+                <img src="/images/JKBLogo.png" alt="Jaskaran Bothra Foundation" className="h-[200px] md:h-[230px]" />
               </Link>
               <img src="/images/BelowLogoFooter.jpg" alt="Below Logo Footer" className="w-auto h-[100px]" />
             </div>
@@ -45,17 +46,18 @@ const Footer = () => {
             <h3 className="text-xl font-semibold mb-6 font-heading font-light text-[#fbfbfb]">Useful links</h3>
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-3">
-                <Link href="/media" className="block text-[#fbfbfb] hover:text-[#F4720B]">Media</Link>
-                <Link href="/privacy-cookies" className="block text-[#fbfbfb] hover:text-[#F4720B]">Privacy & cookies</Link>
-                <Link href="/modern-slavery" className="block text-[#fbfbfb] hover:text-[#F4720B]">Modern slavery statement</Link>
-                <Link href="/tenders" className="block text-[#fbfbfb] hover:text-[#F4720B]">Tenders</Link>
-                <Link href="/accessibility" className="block text-[#fbfbfb] hover:text-[#F4720B]">Accessibility</Link>
+                <Link href="/about-us" className="block text-[#fbfbfb] hover:text-[#F4720B]">About Us</Link>
+                <Link href="/upcoming-campaigns" className="block text-[#fbfbfb] hover:text-[#F4720B]">Campaigns</Link>
+                <Link href="/impact" className="block text-[#fbfbfb] hover:text-[#F4720B]">Impact</Link>
+                <Link href="/about-us/honouring-jaskaran-bothra" className="block text-[#fbfbfb] hover:text-[#F4720B]">Our Founder</Link>
+                <Link href="/partnership" className="block text-[#fbfbfb] hover:text-[#F4720B]">Partnership</Link>
               </div>
               <div className="space-y-3 text-[#fbfbfb]">
-                <Link href="/terms" className="block  hover:text-[#F4720B]">Terms & conditions</Link>
-                <Link href="/faqs" className="block  hover:text-[#F4720B]">FAQs</Link>
-                <Link href="/policies" className="block  hover:text-[#F4720B]">Policies</Link>
-                <Link href="/contact" className="block  hover:text-[#F4720B]">Contact us</Link>
+                <Link href="/news" className="block hover:text-[#F4720B]">News</Link>
+                <Link href="/contact" className="block hover:text-[#F4720B]">Contact us</Link>
+                <Link href="/privacy-policy" className="block hover:text-[#F4720B]">Privacy Policy</Link>
+                <Link href="/terms-of-use" className="block hover:text-[#F4720B]">Terms of Use</Link>
+                <Link href="/donate" className="block hover:text-[#F4720B]">Donate</Link>
               </div>
             </div>
           </div>

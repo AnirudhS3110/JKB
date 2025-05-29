@@ -71,14 +71,14 @@ export default function TimelineDemo({ title, description }) {
           <p className="mb-8 font-normal text-base md:text-[20px] text-white font-paragraph">
             Conducted extensive research and community assessments to identify the most pressing needs in target regions. Formulated strategic plans and gathered support from key stakeholders.
           </p>
-          <div className="grid grid-cols-2 gap-4">
-            <img
+          <div className="grid grid-cols-1 gap-4">
+            {/* <img
               src="https://images.unsplash.com/photo-1598965402089-897c69f4b143?q=80&w=2067&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt="Community research"
               width={500}
               height={500}
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
+            /> */}
             <img
               src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt="Strategic planning"
@@ -175,14 +175,14 @@ export default function TimelineDemo({ title, description }) {
               Healthcare Accessibility in Remote Areas
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-4">
-            <img
+          <div className="grid grid-cols-1 gap-4">
+            {/* <img
               src="https://images.unsplash.com/photo-1612351924866-470473723803?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt="Rural energy"
               width={500}
               height={500}
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
-            />
+            /> */}
             <img
               src="https://images.unsplash.com/photo-1540151812223-c30b3fab58e6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               alt="Women empowerment"

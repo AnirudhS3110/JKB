@@ -47,6 +47,7 @@ const ImprovedNavbar = () => {
       description: 'Discover our story, mission, and the legacy of Jaskaran Bothra that guides our foundation.',
       image: '/images/about-background.jpg',
       links: [
+        { text: 'About Us', href: '/about-us/about-us' },
         { text: 'Our Vision and Mission', href: '/about-us/vision-and-mission' },
         { text: 'HONORING JASKARAN BOTHRA', href: '/about-us/honouring-jaskaran-bothra' },
       ]
@@ -88,7 +89,7 @@ const ImprovedNavbar = () => {
         <div className="flex items-center justify-between h-20 lg:h-[100px]" suppressHydrationWarning>
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <img src="/images/JKBLogo.png" alt="Jaskaran Bothra Foundation" className="h-[220px] md:pt-[30px] md:pb-[15px] md:h-[300px]" />
+            <img src="/images/JKBLogo.png" alt="Jaskaran Bothra Foundation" className="h-[22  0px] md:pt-[30px] md:pb-[15px] md:h-[300px]" />
             
           </Link>
 
