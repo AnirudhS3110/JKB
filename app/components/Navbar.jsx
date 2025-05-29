@@ -89,7 +89,7 @@ const ImprovedNavbar = () => {
         <div className="flex items-center justify-between h-20 lg:h-[100px]" suppressHydrationWarning>
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <img src="/images/JKBLogo.png" alt="Jaskaran Bothra Foundation" className="h-[22  0px] md:pt-[30px] md:pb-[15px] md:h-[300px]" />
+            <img src="/images/JKBLogo.png" alt="Jaskaran Bothra Foundation" className="h-[220px] md:pt-[30px] md:pb-[15px] md:h-[300px]" />
             
           </Link>
 
