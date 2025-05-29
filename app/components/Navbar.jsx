@@ -26,7 +26,7 @@ const ImprovedNavbar = () => {
     {
       title: 'Upcoming Campaigns',
       description: 'Learn about our current initiatives and how you can get involved to create meaningful change.',
-      image: 'https://www.hindustantimes.com/ht-img/img/2024/02/17/1600x900/Bollywood-Actor-Shradha-Kapoor-joined-Protesters-f_1708193327170.jpg',
+      image: 'https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80',
       links: [
         { text: 'Upcoming Campaign', href: '/upcoming-campaigns/upcoming-campaigns' },
         // { text: 'How to Participate', href: '/participate' },
@@ -36,7 +36,7 @@ const ImprovedNavbar = () => {
     {
       title: 'Impact',
       description: 'Explore the measurable change we\'ve created through sustainable initiatives across communities.',
-      image: 'https://videos.openai.com/vg-assets/assets%2Ftask_01jvkjz8gpe9xtpvjwyp66m64r%2F1747635471_img_2.webp?st=2025-05-19T11%3A49%3A21Z&se=2025-05-25T12%3A49%3A21Z&sks=b&skt=2025-05-19T11%3A49%3A21Z&ske=2025-05-25T12%3A49%3A21Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=aa5ddad1-c91a-4f0a-9aca-e20682cc8969&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=owy4sQ6m7lKv%2FIMlH10yT%2Be8UstHBSWYtQRmSP%2F8%2FQ8%3D&az=oaivgprodscus',
+      image: 'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
       links: [
         { text: 'Facts & Figures', href: '/impact/facts-and-figures' },
         { text: 'Success Stories', href: '/impact/success-stories' },
@@ -68,7 +68,7 @@ const ImprovedNavbar = () => {
     {
       title: 'News',
       description: 'Stay updated with our latest initiatives, media coverage, and educational resources.',
-      image: 'https://videos.openai.com/vg-assets/assets%2Ftask_01jvkf63qvfhptpxx4h7c8bcp8%2F1747631469_img_0.webp?st=2025-05-19T03%3A26%3A06Z&se=2025-05-25T04%3A26%3A06Z&sks=b&skt=2025-05-19T03%3A26%3A06Z&ske=2025-05-25T04%3A26%3A06Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=8ebb0df1-a278-4e2e-9c20-f2d373479b3a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=qgzxCqcVfa1GTAgA5MVhTNRsZ42hLQsHV82sEAWpe6c%3D&az=oaivgprodscus%27',
+      image: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
       links: [
         { text: 'Latest News', href: '/news' },
         { text: 'Publications', href: '/publications' },
@@ -166,7 +166,7 @@ const ImprovedNavbar = () => {
                     <img 
                       src={navItems[activeDropdown].image || '/images/navbar-default.jpg'} 
                       alt={navItems[activeDropdown].title + ' image'} 
-                      className="mb-4 w-[90%] h-[70%] object-cover  shadow-md  bg-[#222]" 
+                      className="mb-4 w-full h-[180px] md:h-[220px] object-cover rounded-md shadow-md bg-[#222]" 
                     />
                     
                   </div>

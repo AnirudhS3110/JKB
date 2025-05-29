@@ -57,7 +57,7 @@ export const Carousel = ({ items, initialScroll = 0 }) => {
 
   const handleCardClose = (index) => {
     if (carouselRef.current) {
-      const cardWidth = isMobile() ? 176 : 384; // (w-44 for mobile, w-96 for desktop)
+      const cardWidth = isMobile() ? 176 : 350; // (w-44 for mobile, w-96 for desktop)
       const gap = isMobile() ? 4 : 8;
       const scrollPosition = (cardWidth + gap) * (index + 1);
       carouselRef.current.scrollTo({
@@ -249,7 +249,7 @@ export const Card = ({
           scale: 1.02,
           transition: { duration: 0.2 }
         }}
-        className="relative z-10 flex h-64 w-44 flex-col items-start justify-start overflow-hidden rounded-3xl bg-gray-100 md:h-[40rem] md:w-96 dark:bg-neutral-900"
+        className="relative z-10 flex h-64 w-44 flex-col items-start justify-start overflow-hidden rounded-3xl bg-gray-100 md:h-[28rem] md:w-96 dark:bg-neutral-900"
       >
         <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-full bg-gradient-to-b from-black/50 via-transparent to-transparent" />
         <div className="relative z-40 p-4 md:p-8">

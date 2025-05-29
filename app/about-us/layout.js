@@ -14,7 +14,7 @@ export default function AboutUsLayout({ children }) {
       
       <div className="min-h-[70vh]">
         {children}
-       
+       <Footer/>
         
       </div>
     </section>

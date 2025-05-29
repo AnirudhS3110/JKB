@@ -5,57 +5,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import LogoRevealWrapper from '../../../components/ui/LogoReveal';
 
-const TrusteeCard = ({ name, role, bio, index, image }) => {
-  return (
-    <motion.div 
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: index * 0.1 }}
-      viewport={{ once: true, amount: 0.3 }}
-      className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col"
-    >
-      <div className="relative h-48 bg-gradient-to-r from-[#F4720B] to-[#F4720B]/80">
-        <div className="absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/2">
-          <div className="h-28 w-28 rounded-full border-4 border-white overflow-hidden shadow-lg">
-            <Image 
-              src={image || `/images/temp/profile-${index + 1}.jpg`} 
-              alt={name}
-              width={112}
-              height={112}
-              className="object-cover w-full h-full"
-            />
-          </div>
-        </div>
-      </div>
-      
-      <div className="p-8 pt-20 text-center flex-grow flex flex-col">
-        <h3 className="text-2xl font-heading font-medium text-black mb-1">{name}</h3>
-        <p className="text-[#F4720B] font-paragraph mb-5 text-sm font-medium uppercase tracking-wide">{role}</p>
-        <div className="w-12 h-0.5 bg-gray-200 mb-5 mx-auto"></div>
-        <p className="text-gray-600 font-paragraph font-normal leading-relaxed text-sm">{bio}</p>
-        
-        <div className="mt-6 pt-4 border-t border-gray-100 flex items-center justify-center gap-6 text-gray-500">
-          <button className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-50 hover:bg-[#F4720B]/10 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#F4720B]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-          </button>
-          <button className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-50 hover:bg-[#F4720B]/10 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#F4720B]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-            </svg>
-          </button>
-          <button className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-50 hover:bg-[#F4720B]/10 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#F4720B]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </motion.div>
-  );
-};
-
 export default function AboutUsPage() {
   // Main container ref for scroll calculations
   const containerRef = useRef(null);
@@ -229,7 +178,7 @@ export default function AboutUsPage() {
               </div>
               
               {/* Board of Trustees */}
-              <div className="mt-24">
+              <div className="mt-24 relative">
                 <motion.h2 
                   className="text-4xl font-heading font-light text-black mb-8 text-center"
                   initial={{ opacity: 0, y: 20 }}
@@ -243,14 +192,71 @@ export default function AboutUsPage() {
                 {/* Separator line */}
                 <div className="w-24 h-1 bg-[#F4720B] mx-auto mb-12"></div>
                 
-                {/* Trustees Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+                {/* Vertical connecting line */}
+                <div className="absolute left-1/2 transform -translate-x-1/2 h-[95%] w-0.5 bg-gray-100 top-40 hidden md:block"></div>
+                
+                {/* Trustees Zig-Zag Layout */}
+                <div className="space-y-24 mt-16">
                   {trustees.map((trustee, index) => (
-                    <TrusteeCard 
-                      key={trustee.id} 
-                      {...trustee} 
-                      index={index}
-                    />
+                    <motion.div 
+                      key={trustee.id}
+                      initial={{ opacity: 0, y: 60 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.8, delay: 0.1 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                      className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 md:gap-16 items-center relative py-8 md:py-12`}
+                    >
+                      {/* Connection dot */}
+                      <div className="absolute left-1/2 -top-12 transform -translate-x-1/2 w-6 h-6 rounded-full bg-[#F4720B]/10 border-2 border-[#F4720B]/30 z-20 hidden md:block"></div>
+                      
+                      {/* Background Shape */}
+                      <div className={`absolute -z-10 rounded-3xl bg-gray-50 h-full w-[95%] ${index % 2 === 0 ? 'right-0' : 'left-0'} opacity-50`}></div>
+                      
+                      {/* Trustee Image */}
+                      <div className="w-full md:w-2/5">
+                        <div className={`relative overflow-hidden rounded-2xl shadow-xl mx-auto max-w-sm aspect-[3/4] group ${index % 2 === 0 ? 'md:ml-6' : 'md:mr-6'}`}>
+                          <div className="absolute inset-0 bg-gradient-to-b from-[#F4720B]/20 to-[#F4720B]/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
+                          <Image 
+                            src={trustee.image || `/images/temp/profile-${index + 1}.jpg`}
+                            alt={trustee.name}
+                            fill
+                            className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                          />
+                          <div className="absolute bottom-0 left-0 right-0 p-6 z-20 bg-gradient-to-t from-black/70 to-transparent text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                            <p className="text-sm font-medium uppercase tracking-wider text-center">{trustee.role}</p>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {/* Trustee Content */}
+                      <div className="w-full md:w-3/5 space-y-6 px-4 md:px-6">
+                        <div className="space-y-2 text-center md:text-left">
+                          <h3 className="text-3xl font-heading font-medium text-black">{trustee.name}</h3>
+                          <p className="text-[#F4720B] font-paragraph text-sm font-medium uppercase tracking-wide">{trustee.role}</p>
+                          <div className="w-12 h-0.5 bg-[#F4720B]/30 my-4 mx-auto md:mx-0"></div>
+                        </div>
+                        
+                        <p className="text-gray-700 font-paragraph font-normal leading-relaxed text-center md:text-left">{trustee.bio}</p>
+                        
+                        <div className="pt-4 flex items-center justify-center md:justify-start gap-4 text-gray-500">
+                          <button className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-50 hover:bg-[#F4720B]/10 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#F4720B]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                          </button>
+                          <button className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-50 hover:bg-[#F4720B]/10 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#F4720B]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                            </svg>
+                          </button>
+                          <button className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-50 hover:bg-[#F4720B]/10 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#F4720B]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    </motion.div>
                   ))}
                 </div>
               </div>

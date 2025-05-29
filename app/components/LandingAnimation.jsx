@@ -320,14 +320,19 @@ export default function DirectTransitionAnimation() {
             className="fixed top-0 left-0 w-full h-screen z-2"
             style={{ 
               opacity: initialBackgroundOpacity,
-              backgroundImage: 'url(https://media.istockphoto.com/id/2167337936/photo/silhouette-of-reaching-giving-a-helping-hand-hope-and-support-each-other-over-blur-sunset-sky.jpg?s=612x612&w=0&k=20&c=YBvZJAQRCUCpjlbFVQ3U5lcQGrNjG4nWsjjAU2LljI0=)',
+              backgroundImage: 'url(https://images.pexels.com/photos/6348202/pexels-photo-6348202.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)',
+              // Alternative high-quality background options:
+              // Option 1 (diverse hands stacked together): 'url(https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80)'
+              // Option 2 (community volunteers stacking hands): 'url(https://images.unsplash.com/photo-1560252829-804f1aedf1be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2274&q=80)'
+              // Option 3 (hands forming heart shape): 'url(https://images.unsplash.com/photo-1469571486292-b53601020a8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80)'
+              // Option 4 (silhouettes of people with raised arms): 'url(https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80)'
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat'
             }}
           >
             {/* Dark overlay for better text readability */}
-            <div className="absolute inset-0 bg-black opacity-50"></div>
+            <div className="absolute inset-0 bg-black opacity-70"></div>
           </motion.div>
           
           {/* Heading Text with 3D transforms */}
