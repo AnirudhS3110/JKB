@@ -6,8 +6,8 @@ export default function Page() {
     return (
         <>
         <VisionAndMission />
-        <div className="h-[4vh] bg-[#151419]"></div>
-        <Footer />
+        <div className="h-[4vh] bg-[#FF7322]"></div>
+       
       </>   
     );
 }

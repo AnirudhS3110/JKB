@@ -8,8 +8,8 @@ export default function Page() {
         <>
             <HonoringJaskaranBothra />
             <TimelineSection />
-            <div className="h-[4vh] bg-[#151419]"></div>
-            <Footer />
+            <div className="h-[0.5vh] bg-[#FF7322]"></div>
+            
         </>   
     );
 } 

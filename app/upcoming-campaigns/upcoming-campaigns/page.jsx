@@ -228,7 +228,7 @@ export default function UpcomingCampaignsPage() {
         </section>
   
         {/* Campaigns Zig-Zag Section - Sticky with higher z-index */}
-        <section className="min-h-screen sticky top-0 z-20">
+        <section className="min-h-screen sticky top-0 z-10">
           {/* Using motion.div with y transform to create the sliding effect */}
           <motion.div
             style={{ y: campaignsY }}

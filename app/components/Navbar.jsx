@@ -1,5 +1,5 @@
 "use client"
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 
@@ -9,6 +9,7 @@ const ImprovedNavbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [renderComplete, setRenderComplete] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const navbarRef = useRef(null);
 
   useEffect(() => {
     // Mark component as rendered on client side
@@ -24,16 +25,27 @@ const ImprovedNavbar = () => {
   }, []);
 
   useEffect(() => {
-    if (activeDropdown === 'mobile') {
-      const handleScroll = () => {
-        if (window.scrollY < lastScrollY - 5) { // Scrolling up
-          setActiveDropdown(null);
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Check if navbar exists
+      if (navbarRef.current) {
+        const navbarRect = navbarRef.current.getBoundingClientRect();
+        const isInNavbarRegion = navbarRect.top + navbarRect.height > 0;
+        
+        // Only close if in navbar region and scrolling up
+        if (isInNavbarRegion && currentScrollY < lastScrollY - 5) {
+          if (activeDropdown === 'mobile') {
+            setActiveDropdown(null);
+          }
         }
-        setLastScrollY(window.scrollY);
-      };
-      window.addEventListener('scroll', handleScroll);
-      return () => window.removeEventListener('scroll', handleScroll);
-    }
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [activeDropdown, lastScrollY]);
 
   const navItems = [
@@ -74,7 +86,7 @@ const ImprovedNavbar = () => {
         { text: 'Knowledge & Research Partnerships', href: '/partnership/knowledge-research' },
         { text: 'Technology & Innovation Collaboration', href: '/partnership/technology-innovation' },
         { text: 'Media & Communication Partnerships', href: '/partnership/media-communication' },
-        { text: 'Volunteer & Capacity-Building Engagements', href: '/partnership/volunteer-capacity-building' },
+        { text: 'Volunteer & Capacity-Building Engagements', href: '/partnership/volunteer-capacitys' },
         { text: 'Government & Civic Partnerships', href: '/partnership/government-civic' },
         { text: 'Institutional & Infrastructure Support', href: '/partnership/institutional-infrastructure' }
       ]
@@ -85,7 +97,6 @@ const ImprovedNavbar = () => {
       image: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
       links: [
         { text: 'Latest News', href: '/news' },
-        { text: 'Publications', href: '/publications' },
         { text: 'Media Coverage', href: '/media' },
       ]
     }
@@ -93,6 +104,7 @@ const ImprovedNavbar = () => {
 
   return (
     <header 
+      ref={navbarRef}
       className={`fixed top-0 left-0 w-full z-220 transition-all duration-300 ${
         isScrolled || activeDropdown !== null ? 'bg-[#000000]' : 'bg-transparent'
       }`}

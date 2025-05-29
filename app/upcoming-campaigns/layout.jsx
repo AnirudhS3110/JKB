@@ -2,12 +2,15 @@ import Newsletter from '../../components/ui/Newsletter';
 import Footer from '../components/Footer';
 
 export default function UpcomingCampaignsLayout({ children }) {
+  
   return (
     <>
       {children}
       {/* <Newsletter /> */}
       <Footer />
+     
     </>
+
   );
 }
 

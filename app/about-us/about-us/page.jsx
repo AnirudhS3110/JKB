@@ -14,13 +14,13 @@ export default function AboutUsPage() {
   // Scroll progress for animations
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start", "end"]
+    offset: ["start", "end start"]
   });
   
   // Transform values for sliding animations
   const contentY = useTransform(
     scrollYProgress,
-    [0.05, 0.2],
+    [0.05, 0.18],
     ["100vh", "0vh"]
   );
   
@@ -59,7 +59,7 @@ export default function AboutUsPage() {
     <LogoRevealWrapper>
       <div ref={containerRef} className="relative">
         {/* Hero Section - Sticky at top with lower z-index */}
-        <section className="h-screen relative bg-black flex items-center justify-center sticky top-0 z-10">
+        <section className="h-screen relative bg-black flex items-center justify-center sticky top-0 z-0">
           <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-black/70 z-10"></div>
             <div className="w-full h-full relative">
@@ -265,7 +265,7 @@ export default function AboutUsPage() {
         </section>
   
         {/* Extra space for scroll */}
-        <div className="h-screen bg-[#fbfbfb]"></div>
+        <div className="h-[50vh] bg-[#fbfbfb]"></div>
       </div>
     </LogoRevealWrapper>
   );

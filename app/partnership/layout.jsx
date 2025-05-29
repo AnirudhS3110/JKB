@@ -1,9 +1,19 @@
 import Footer from '../components/Footer';
+import ExploreNav from '../about-us/ExploreNav';
 
 export default function PartnershipLayout({ children }) {
+  const navItems = [
+    { label: 'Knowledge and Research Partnerships', href: '/partnership/knowledge-research' },
+    {label: 'Technology & Innovation Collaboration', href: '/partnership/technology-innovation'},
+    {label: 'Media & Communication Partnerships', href: '/partnership/media-communication'},
+    {label: 'Volunteer and Capacity building Engagements', href: '/partnership/volunteer-capacity'},
+    {label: 'Government and Civic Partnerships', href: '/partnership/government-civic'},
+    {label: 'Institutional and Infrastrucutre Support', href: '/partnership/institutional-infrastructure'},
+  ];
   return (
     <>
       {children}
+      <ExploreNav navItems={navItems}/>
       <Footer />
     </>
   );
