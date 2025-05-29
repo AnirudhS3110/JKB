@@ -320,7 +320,7 @@ export default function DirectTransitionAnimation() {
             className="fixed top-0 left-0 w-full h-screen z-2"
             style={{ 
               opacity: initialBackgroundOpacity,
-              backgroundImage: 'url(https://images.pexels.com/photos/6348202/pexels-photo-6348202.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2)',
+              backgroundImage: 'url(https://assets.lummi.ai/assets/QmYEhPnux1G3rqbVCHLPx1a8yMsKba2dzUasFZ79D8Sckz?auto=format&w=1500)',
               // Alternative high-quality background options:
               // Option 1 (diverse hands stacked together): 'url(https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80)'
               // Option 2 (community volunteers stacking hands): 'url(https://images.unsplash.com/photo-1560252829-804f1aedf1be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2274&q=80)'
@@ -462,7 +462,7 @@ export default function DirectTransitionAnimation() {
             )}
             {/* Overlay with improved animation */}
             <motion.div 
-              className="absolute inset-0 bg-[#264653]"
+              className="absolute inset-0 bg-[#264653] opacity-90 "
               style={{
                 opacity: useTransform(mainVideoOpacity, [0, 0.5], [0, 0.6]),
                 willChange: "opacity"
