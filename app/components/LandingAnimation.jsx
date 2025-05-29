@@ -5,6 +5,17 @@ import { motion, useScroll, useTransform, useMotionValueEvent } from 'framer-mot
 // Define constants for the SOLUTION animation
 const VIDEO_SRC = "/videos/impact-video.mp4";
 
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= 640);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+  return isMobile;
+}
+
 export default function DirectTransitionAnimation() {
   const [showTextSection, setShowTextSection] = useState(false);
   const [showHomepage, setShowHomepage] = useState(false);
@@ -32,6 +43,8 @@ export default function DirectTransitionAnimation() {
     finalPositionY: 0,
     scaleFactor: 1,
   });
+  
+  const isMobile = useIsMobile();
   
   useEffect(() => {
     setIsMounted(true);
@@ -317,7 +330,7 @@ export default function DirectTransitionAnimation() {
         <div className="fixed top-0 left-0 w-full h-screen flex flex-col items-center justify-center overflow-visible will-change-transform">
           {/* Initial background image that covers both navigation and hero */}
           <motion.div
-            className="fixed top-0 left-0 w-full h-screen z-2"
+            className="fixed top-0 left-0 w-full h-screen z-2 bg-mobile-center"
             style={{ 
               opacity: initialBackgroundOpacity,
               backgroundImage: 'url(https://assets.lummi.ai/assets/QmYEhPnux1G3rqbVCHLPx1a8yMsKba2dzUasFZ79D8Sckz?auto=format&w=1500)',
@@ -327,7 +340,7 @@ export default function DirectTransitionAnimation() {
               // Option 3 (hands forming heart shape): 'url(https://images.unsplash.com/photo-1469571486292-b53601020a8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80)'
               // Option 4 (silhouettes of people with raised arms): 'url(https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80)'
               backgroundSize: 'cover',
-              backgroundPosition: 'center',
+              backgroundPosition: isMobile ? 'center 70%' : 'center',
               backgroundRepeat: 'no-repeat'
             }}
           >
@@ -462,7 +475,7 @@ export default function DirectTransitionAnimation() {
             )}
             {/* Overlay with improved animation */}
             <motion.div 
-              className="absolute inset-0 bg-[#264653] opacity-90 "
+              className="absolute inset-0 bg-[#000000] opacity-100"
               style={{
                 opacity: useTransform(mainVideoOpacity, [0, 0.5], [0, 0.6]),
                 willChange: "opacity"

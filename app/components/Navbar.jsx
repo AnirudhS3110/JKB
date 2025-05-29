@@ -8,6 +8,7 @@ const ImprovedNavbar = () => {
   const [mobileSubMenu, setMobileSubMenu] = useState(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [renderComplete, setRenderComplete] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
     // Mark component as rendered on client side
@@ -21,6 +22,19 @@ const ImprovedNavbar = () => {
     
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (activeDropdown === 'mobile') {
+      const handleScroll = () => {
+        if (window.scrollY < lastScrollY - 5) { // Scrolling up
+          setActiveDropdown(null);
+        }
+        setLastScrollY(window.scrollY);
+      };
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+    }
+  }, [activeDropdown, lastScrollY]);
 
   const navItems = [
     {
@@ -254,7 +268,7 @@ const ImprovedNavbar = () => {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden bg-[#000000] font-paragraph w-full"
+now               className="md:hidden bg-[#000000] font-paragraph w-full max-h-[100vh] overflow-y-auto"
             >
               <div className="container mx-auto px-4 py-4 space-y-4">
                 {navItems.map((item, index) => (
