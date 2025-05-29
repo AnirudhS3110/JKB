@@ -19,6 +19,8 @@ export default function PartnershipOpportunities() {
   const [activePartner, setActivePartner] = useState(null);
   const isHeaderInView = useInView(headerRef, { once: true, amount: 0.2 });
   const [isMobile, setIsMobile] = useState(false);
+  const ctaSectionRef = useRef(null);
+  const isInView2 = useInView(ctaSectionRef, { once: true, amount: 0.2 });
 
   // Determine mobile vs desktop
   useEffect(() => {
@@ -128,12 +130,66 @@ export default function PartnershipOpportunities() {
           </motion.div>
         </div>
 
+        <div ref={ctaSectionRef} className="max-w-7xl md:hidden mx-auto px-4 pb-12 sm:px-6 mt-12 lg:mt-0">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView2 ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="max-w-4xl mx-auto text-center bg-[#F4720B] text-white p-10 md:p-12 rounded-lg relative overflow-hidden shadow-md"
+        >
+          {/* Background pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-0 left-0 w-full h-full bg-[url('/images/leaf-pattern.png')] bg-no-repeat bg-center bg-contain opacity-20"></div>
+          </div>
+          
+          {/* Decorative SVG Elements */}
+          <div className="absolute top-4 left-4 text-white/10">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2L8 8H16L12 2Z" />
+              <path d="M12 22L8 16H16L12 22Z" />
+              <path d="M2 12L8 8V16L2 12Z" />
+              <path d="M22 12L16 8V16L22 12Z" />
+            </svg>
+          </div>
+          
+          <div className="absolute bottom-4 right-4 text-white/10">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+              <circle cx="12" cy="12" r="8" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="12" cy="12" r="1" />
+            </svg>
+          </div>
+          
+          <div className="relative z-10 md:hidden">
+            <div className="mx-auto mb-4 w-16 h-16 bg-white/10 rounded-full flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+              </svg>
+            </div>
+            <h3 className="text-2xl md:text-3xl font-title font-light mb-4">Join Our Mission</h3>
+            <p className="text-white/90 font-paragraph mb-8 max-w-2xl mx-auto">
+             JKBF welcomes forward-thinking collaborators who share our commitment to dignity, inclusion, and sustainable impact. Partner with us not just to support—but to shape—the future.
+            </p>
+            
+              <Link 
+                href="/partnership" 
+              className="inline-flex items-center bg-white text-[#F4720B] font-paragraph px-8 py-3 rounded-md hover:bg-orange-50 transition-all transform hover:-translate-y-1 hover:shadow-lg duration-300"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd" />
+                </svg>
+                Become a Partner
+              </Link>
+            </div>
+          </motion.div>
+      </div>
+
         {/* Desktop view */}
         <div ref={containerRef} className="hidden lg:block relative w-full h-screen overflow-hidden">
           <div className="flex flex-col lg:flex-row max-w-7xl mx-auto">
             {/* Left side (sticky) */}
             <div className="w-full lg:w-1/2 lg:pr-12 mb-8 lg:mb-0 lg:sticky top-8">
-              <div className="relative h-[500px] lg:h-[600px] rounded-xl overflow-hidden shadow-lg">
+              <div className="relative h-[500px] lg:h-[690px] rounded-xl overflow-hidden shadow-lg">
                 <Image src="https://images.unsplash.com/photo-1580893246395-52aead8960dc?w=1200&auto=format&fit=crop&q=80" alt="Partnership" fill className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#F4720B]/90 via-[#F4720B]/50 to-transparent">
                   <div className="absolute bottom-0 left-0 w-full p-8 md:p-10">

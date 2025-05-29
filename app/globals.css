@@ -34,9 +34,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-heading: var(--font-dm-serif-text);
-  --font-title: var(--font-dm-serif-text);
-  --font-paragraph: var(--font-merriweather);
+  --font-heading: var(--font-playfair-display);
+  --font-title: var(--font-playfair-display);
+  --font-paragraph: var(--font-source-serif-pro);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -59,9 +59,9 @@ body {
 }
 
 .font-title {
-  font-family: var(--font-dm-serif-text), serif !important;
+  font-family: var(--font-playfair-display), serif !important;
 }
 
 .font-paragraph {
-  font-family: var(--font-merriweather), serif !important;
+  font-family: var(--font-source-serif-pro), serif !important;
 }

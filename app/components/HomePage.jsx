@@ -7,6 +7,7 @@ import PartnershipOpportunities from './PartnershipOpportunities';
 import NewsResources from './NewsResources';
 import Footer from './Footer';
 import WhatWeDo from './WhatWeDo';
+import ForestHero from './ForestHero';
 import ImpactCounter from './ImpactCounter';
 import AppleCardsCarouselDemo from '@/components/apple-cards-carousel-demo';
 import HeroParallaxDemo from '@/components/ui/hero-parallax-demo';
@@ -106,6 +107,9 @@ export default function HomePage() {
           <section >
             <AboutUsSection/>
           </section>
+          {/* <section>
+            <ForestHero/>
+          </section> */}
           
           {/* Apple Cards Carousel Section */}
           <section className="hidden md:block bg-white relative">
@@ -126,7 +130,7 @@ export default function HomePage() {
           {/* Partnership Opportunities Section */}
           <section id="partnership" className="relative">
             <PartnershipOpportunities />
-            <div ref={ctaSectionRef} className="max-w-7xl mx-auto px-4 pb-12 sm:px-6 mt-12 lg:mt-0">
+            <div ref={ctaSectionRef} className="max-w-7xl hidden md:block mx-auto px-4 pb-12 sm:px-6 mt-12 lg:mt-0">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView2 ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}

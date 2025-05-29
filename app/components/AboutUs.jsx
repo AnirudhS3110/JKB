@@ -117,75 +117,135 @@ export default function AboutUsSection() {
       
       {/* Main Content */}
       <div className="relative z-10 w-full">
-        {/* Main Header - Updated to match screenshot with underlines */}
-        <div className="container mx-auto px-6 mb-16 text-center">
-          <h2 className="text-6xl font-heading font-light mb-12 tracking-wide text-white text-center">
-            {/* About Us with underline effect */}
-            <span className="relative inline-block">
+        {/* Main Header - Simplified for mobile */}
+        <div className="container mx-auto pt-[20px] md:pt-0 px-6  text-left md:text-center">
+          <h2 className="font-title mb-12 tracking-wide text-white flex flex-col md:flex-row md:justify-center md:items-center">
+            {/* About Us */}
+            <div className="mb-4 md:mb-0 relative">
               <span 
-                className={`cursor-pointer transition-colors md:text-[100px] duration-300 ${
+                className={`cursor-pointer transition-colors duration-300 text-5xl md:text-[70px] ${
                   activeSection === 'about' ? 'text-white' : 'text-gray-400 hover:text-gray-300'
-                } md:text-6xl mx-2`}
+                }`}
                 onClick={() => setActiveSection('about')}
-                onMouseEnter={() => setActiveSection('about')}
+                onMouseEnter={() => {
+                  if (window.innerWidth > 768) {
+                    setActiveSection('about')
+                  }
+                }}
               >
-                About Us
+                About
               </span>
-              {/* Underline that shows on hover or when active */}
-              <span 
-                className={`absolute bottom-0 left-0 w-full h-[2px] bg-white transform ${
-                  activeSection === 'about' ? 'scale-x-100' : 'scale-x-0'
-                } transition-transform duration-300 origin-left group-hover:scale-x-100`}
-              ></span>
-            </span>
+              {/* Desktop underline for About */}
+              <div 
+                className={`hidden md:block absolute bottom-[-10px] left-0 h-[3px] bg-white transition-all duration-300 ${
+                  activeSection === 'about' ? 'w-full' : 'w-0'
+                }`}
+              ></div>
+            </div>
             
-            <span className="inline-block mx-4 md:text-[100px] text-[#F4720B] text-4xl md:text-6xl">+</span>
+            {/* Plus sign - mobile only */}
+            <motion.div 
+              className="text-[#F4720B] text-5xl mb-4 md:hidden text-left"
+              
+              initial={{ rotate: 0 }}
+              animate={{ rotate: 360 }}
+              style={{ transformOrigin: "center left" }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
+            >
+              +
+            </motion.div>
             
-            {/* Vision with underline effect */}
-            <span className="relative inline-block">
+            
+            {/* Plus sign - desktop only */}
+            <div className="hidden md:block">
+            <motion.span 
+              className="mx-4 text-[#F4720B] hidden md:block  md:text-[100px] "
+              key={`desktop-plus-1-${activeSection}`}
+              initial={{ rotate: 0 }}
+              animate={{ rotate: 360 }}
+              style={{ transformOrigin: "center", display: "inline-block" }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
+            >
+              +
+            </motion.span>
+            </div>
+            
+            {/* Vision */}
+            <div className="mb-4 md:mb-0 relative">
               <span 
-                className={`cursor-pointer transition-colors md:text-[100px] duration-300 ${
-                  activeSection === 'about' ? 'text-white' : 'text-gray-400 hover:text-gray-300'
-                } md:text-6xl mx-2`}
+                className={`cursor-pointer transition-colors duration-300 text-5xl md:text-[70px] ${
+                  activeSection === 'vision' ? 'text-white' : 'text-gray-400 hover:text-gray-300'
+                }`}
                 onClick={() => setActiveSection('vision')}
-                onMouseEnter={() => setActiveSection('vision')}
+                onMouseEnter={() => {
+                  if (window.innerWidth > 768) {
+                    setActiveSection('vision')
+                  }
+                }}
               >
                 Vision
               </span>
-              {/* Underline that shows on hover or when active */}
-              <span 
-                className={`absolute bottom-0 left-0 w-full h-[2px] bg-white transform ${
-                  activeSection === 'vision' ? 'scale-x-100' : 'scale-x-0'
-                } transition-transform duration-300 origin-left group-hover:scale-x-100`}
-              ></span>
-            </span>
+              {/* Desktop underline for Vision */}
+              <div 
+                className={`hidden md:block absolute bottom-[-10px] left-0 h-[3px] bg-white transition-all duration-300 ${
+                  activeSection === 'vision' ? 'w-full' : 'w-0'
+                }`}
+              ></div>
+            </div>
             
-            <span className="inline-block mx-4 text-[#F4720B] text-4xl md:text-[100px]">+</span>
-            
-            {/* Mission with underline effect */}
-            <span className="relative inline-block">
+            {/* Plus sign - REMOVED for mobile, kept for desktop */}
+            <motion.div 
+              className="text-[#F4720B] text-5xl mb-4 md:hidden text-left"
+             
+              initial={{ rotate: 0 }}
+              animate={{ rotate: 360 }}
+              style={{ transformOrigin: "center left" }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
+            >
+              +
+            </motion.div>
+            <div className="hidden md:block">
+            <motion.span 
+              className="mx-4 text-[#F4720B] text-5xl md:text-[70px] hidden md:block"
+              key={`desktop-plus-2-${activeSection}`}
+              initial={{ rotate: 0 }}
+              animate={{ rotate: 360 }}
+              style={{ transformOrigin: "center", display: "inline-block" }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
+            >
+              +
+            </motion.span>
+            </div>
+            {/* Mission */}
+            <div className="relative">
+              <div className={`flex flex-col items-start group ${activeSection === 'mission' ? 'text-white' : 'text-gray-400 hover:text-gray-300'}`}>
               <span 
-                className={`cursor-pointer transition-colors md:text-[100px] duration-300 ${
-                  activeSection === 'about' ? 'text-white' : 'text-gray-400 hover:text-gray-300'
-                } md:text-6xl mx-2`}
+                className={`cursor-pointer transition-colors duration-300 text-5xl md:text-[70px] ${
+                  activeSection === 'mission' ? 'text-white' : 'text-gray-400 hover:text-gray-300'
+                }`}
                 onClick={() => setActiveSection('mission')}
-                onMouseEnter={() => setActiveSection('mission')}
+                onMouseEnter={() => {
+                  if (window.innerWidth > 768) {
+                    setActiveSection('mission')
+                  }
+                }}
               >
                 Mission
               </span>
-              {/* Underline that shows on hover or when active */}
-              <span 
-                className={`absolute bottom-0 left-0 w-full h-[2px] bg-white transform ${
-                  activeSection === 'mission' ? 'scale-x-100' : 'scale-x-0'
-                } transition-transform duration-300 origin-left group-hover:scale-x-100`}
-              ></span>
-            </span>
+              </div>
+              {/* Desktop underline for Mission */}
+              <div 
+                className={`hidden md:block absolute bottom-[-10px] left-0 h-[3px] bg-white transition-all duration-300 ${
+                  activeSection === 'mission' ? 'w-full' : 'w-0'
+                }`}
+              ></div>
+            </div>
           </h2>
         </div>
         
-        {/* Content Section - MODIFIED to match screenshot */}
-        <div className="container mx-auto px-6  font-paragraph font-light">
-          <div className="max-w-4xl mx-auto  px-[15px] py-[15px] relative md:mx-0">
+        {/* Content Section - Adjusted for mobile */}
+        <div className="container mx-auto px-4 md:px-6 font-paragraph font-light">
+          <div className="mx-auto px-0 md:px-[15px] py-[15px] relative md:max-w-4xl md:mx-0">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeSection}
@@ -194,36 +254,29 @@ export default function AboutUsSection() {
                 exit={{ opacity: 0, y: -30 }}
                 transition={{ duration: 0.6 }}
               >
-                <div className=" text-white">
+                <div className="text-white w-fit ">
                   <p className="text-lg md:text-xl text-white leading-relaxed mb-8">
                     {content[activeSection].description}
-                    
                   </p>
-                  
-                  <Link 
-                    href={content[activeSection].link} 
-                    className="inline-flex items-center font-medium text-white hover:text-[#F4720B] no-underline transition-colors"
-                  >
-                    Read more
-                  </Link>
-                 
+
+                  <div className="flex flex-col items-start group">
+                    <Link 
+                      href={content[activeSection].link} 
+                      className="inline-flex items-center font-medium text-white group-hover:text-[#F4720B] no-underline transition-colors"
+                    >
+                      Read more
+                    </Link>
+                    <div className="mt-2 h-[2px] w-24 bg-white group-hover:bg-[#F4720B] transition-colors duration-300"></div>
+                  </div>
                   
                 </div>
-                
               </motion.div>
             </AnimatePresence>
           </div>
         </div>
       </div>
 
-      {/* Location marker at bottom right */}
-      <div className="absolute bottom-5 right-5 z-10">
-        <div className="w-8 h-8 text-white rounded-full flex items-center justify-center">
-          <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-            <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"></path>
-          </svg>
-        </div>
-      </div>
+      
     </section>
   );
 }

@@ -84,11 +84,11 @@ const ImprovedNavbar = () => {
       suppressHydrationWarning
     >
       {/* Main Navigation Container */}
-      <div className="container mx-auto px-4 md:px-8 lg:px-16 xl:px-24 font-paragraph" suppressHydrationWarning>
-        <div className="flex items-center justify-between h-20" suppressHydrationWarning>
+      <div className="container mx-auto pr-4 pl-0 pt-4 md:pt-0 md:px-4 md:px-8 lg:px-16 xl:px-24 font-paragraph" suppressHydrationWarning>
+        <div className="flex items-center justify-between h-20 lg:h-[100px]" suppressHydrationWarning>
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <img src="https://videos.openai.com/vg-assets/assets%2Ftask_01jvsgk7s6ecbrajwvn17jvadf%2F1747834277_img_3.webp?st=2025-05-21T12%3A00%3A05Z&se=2025-05-27T13%3A00%3A05Z&sks=b&skt=2025-05-21T12%3A00%3A05Z&ske=2025-05-27T13%3A00%3A05Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=3d249c53-07fa-4ba4-9b65-0bf8eb4ea46a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=jfXuY05qCaTRo4SrPZQpHMpHT7jKZjI%2BErED3cimSYI%3D&az=oaivgprodscus" alt="Jaskaran Bothra Foundation" className="h-[160px] md:pt-[23px] md:pb-[15px] md:h-[230px]" />
+            <img src="/images/JKBLogo.png" alt="Jaskaran Bothra Foundation" className="h-[220px] md:pt-[30px] md:pb-[15px] md:h-[300px]" />
             
           </Link>
 
