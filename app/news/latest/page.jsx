@@ -10,18 +10,19 @@ import LogoRevealWrapper from '../../../components/ui/LogoReveal';
 const NewspaperCard = ({ item, onClick }) => {
   return (
     <div 
-      className="min-w-[450px] h-[60vh] mx-2 overflow-hidden cursor-pointer bg-white shadow-lg transition-transform hover:shadow-xl hover:-translate-y-1"
+      className="min-w-[280px] sm:min-w-[300px] md:min-w-[350px] lg:min-w-[450px] h-[35vh] sm:h-[40vh] md:h-[50vh] lg:h-[60vh] mx-1 md:mx-2 overflow-hidden cursor-pointer bg-white shadow-md hover:shadow-lg transition-transform duration-300 hover:-translate-y-1"
       onClick={() => onClick(item)}
       style={{ borderRadius: 0 }} // Explicitly ensure no rounded corners
     >
-      <div className="relative w-full h-full">
+      <div className="relative bg-[#fbfbfb] shadow-lg w-full h-full">
         <Image 
           src={item.image} 
           alt={item.title} 
           fill
           className="object-contain" 
+          sizes="(max-width: 640px) 280px, (max-width: 768px) 300px, (max-width: 1024px) 350px, 450px"
         />
-       
+        <div className="absolute inset-0 bg-black/0 hover:bg-black/10 transition-colors duration-300"></div>
       </div>
     </div>
   );
@@ -31,20 +32,52 @@ const NewspaperCard = ({ item, onClick }) => {
 const NewspaperCarousel = ({ title, items, onItemClick }) => {
   const carouselRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
+  const [touchStartX, setTouchStartX] = useState(0);
+  const [touchEndX, setTouchEndX] = useState(0);
+
   // Duplicate items to create true infinite effect
   const duplicatedItems = [...items, ...items, ...items]; // Triple the items for seamless looping
   
   const handleScroll = (direction) => {
     if (carouselRef.current) {
+      // Adjust scroll amount based on screen size
       const scrollAmount = direction === 'left' 
-        ? -carouselRef.current.offsetWidth / 2
-        : carouselRef.current.offsetWidth / 2;
+        ? -(window.innerWidth < 768 ? carouselRef.current.offsetWidth * 0.85 : carouselRef.current.offsetWidth / 1.2)
+        : (window.innerWidth < 768 ? carouselRef.current.offsetWidth * 0.85 : carouselRef.current.offsetWidth / 1.2);
       
       carouselRef.current.scrollBy({
         left: scrollAmount,
         behavior: 'smooth'
       });
     }
+  };
+
+  // Touch handlers for mobile swiping
+  const handleTouchStart = (e) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+  
+  const handleTouchMove = (e) => {
+    setTouchEndX(e.touches[0].clientX);
+  };
+  
+  const handleTouchEnd = () => {
+    if (!touchStartX || !touchEndX) return;
+    
+    const difference = touchStartX - touchEndX;
+    const threshold = 75; // Minimum swipe distance
+    
+    if (difference > threshold) {
+      // Swiped left, go right
+      handleScroll('right');
+    } else if (difference < -threshold) {
+      // Swiped right, go left
+      handleScroll('left');
+    }
+    
+    // Reset values
+    setTouchStartX(0);
+    setTouchEndX(0);
   };
 
   // Auto-scrolling effect
@@ -74,43 +107,48 @@ const NewspaperCarousel = ({ title, items, onItemClick }) => {
           carousel.style.scrollBehavior = 'smooth';
         }, 50);
       } else {
-        // Normal scroll behavior
+        // Normal scroll behavior - adjust scrolling amount based on screen size
+        const scrollAmount = window.innerWidth < 768 ? carousel.offsetWidth * 0.8 : carousel.offsetWidth / 3;
         carousel.scrollBy({
-          left: carousel.offsetWidth / 3,
+          left: scrollAmount,
           behavior: 'smooth'
         });
       }
-    }, 3000);
+    }, 5000);
     
     return () => clearInterval(interval);
   }, [isPaused, items.length]);
   
   return (
-    <div className="mb-24 relative py-4">
-      <div className="flex justify-between items-center mb-6">
-        <h3 className="text-2xl md:text-3xl font-heading font-light text-gray-800">{title}</h3>
+    <div className="mb-12 md:mb-24 relative py-2 md:py-4">
+      <div className="flex justify-between items-center mb-4 md:mb-6">
+        {title && (
+          <h3 className="text-xl md:text-2xl lg:text-3xl font-heading font-light text-gray-800">{title}</h3>
+        )}
       </div>
       
       {/* Left arrow - positioned on the left side outside the carousel */}
       <button 
         onClick={() => handleScroll('left')}
-        className="absolute left-[-30px] md:left-[-50px] top-1/2 z-10 h-16 w-16 md:h-[70px] md:w-[70px] flex items-center justify-center bg-[#F4720B]/100 text-[#fbfbfb] transition-colors transform -translate-y-1/2 hover:bg-[#F4720B]/80"
-        style={{ borderRadius: 0 }}
+        className="absolute left-0 sm:left-[-15px] md:left-[-30px] lg:left-[-50px] top-1/2 z-10 h-10 w-10 md:h-16 md:w-16 lg:h-[70px] lg:w-[70px] flex items-center justify-center bg-[#fbfbfb] text-[#F4720B] border border-gray-100 transition-all duration-300 transform -translate-y-1/2 shadow-sm hover:bg-[#f5f5f5] hover:shadow-md hover:text-[#E35900] hover:scale-105 rounded-full"
         aria-label="Previous"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 md:h-7 md:w-7 lg:h-8 lg:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
         </svg>
       </button>
       
       <div 
         ref={carouselRef} 
-        className="flex overflow-x-auto scrollbar-hide snap-x snap-mandatory mx-4"
+        className="flex overflow-x-auto scrollbar-hide snap-x snap-mandatory mx-0 sm:mx-1 md:mx-4"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', scrollBehavior: 'smooth' }}
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
       >
-        <div className="flex bg-[#fbfbfb] gap-4">
+        <div className="flex bg-[#fbfbfb]  gap-2 md:gap-4">
           {duplicatedItems.map((item, index) => (
             <div key={`${item.id}-${index}`} className="snap-start">
               <NewspaperCard item={item} onClick={onItemClick} />
@@ -122,12 +160,11 @@ const NewspaperCarousel = ({ title, items, onItemClick }) => {
       {/* Right arrow - positioned on the right side outside the carousel */}
       <button 
         onClick={() => handleScroll('right')}
-        className="absolute right-[-30px] md:right-[-50px] top-1/2 z-10 h-16 w-16 md:h-[70px] md:w-[70px] flex items-center justify-center bg-[#F4720B]/100 text-[#fbfbfb] transition-colors transform -translate-y-1/2 hover:bg-[#F4720B]/80"
-        style={{ borderRadius: 0 }}
+        className="absolute right-0 sm:right-[-15px] md:right-[-30px] lg:right-[-50px] top-1/2 z-10 h-10 w-10 md:h-16 md:w-16 lg:h-[70px] lg:w-[70px] flex items-center justify-center bg-[#fbfbfb] text-[#F4720B] border border-gray-100 transition-all duration-300 transform -translate-y-1/2 shadow-sm hover:bg-[#f5f5f5] hover:shadow-md hover:text-[#E35900] hover:scale-105 rounded-full"
         aria-label="Next"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 md:h-7 md:w-7 lg:h-8 lg:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
         </svg>
       </button>
     </div>
@@ -162,16 +199,55 @@ const CarouselNavButtons = ({ onPrevClick, onNextClick }) => {
   );
 };
 
+// Newspaper modal component updated for responsiveness
+// const NewspaperModal1 = ({ isOpen, onClose, newspaper }) => {
+//   if (!isOpen) return null;
+  
+//   return (
+//     <>
+//       <div className="fixed inset-0 bg-black/70 z-50 animate-fade-in" onClick={onClose}></div>
+//       <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10">
+//         <div 
+//           className="bg-white w-full max-w-4xl max-h-[90vh] overflow-hidden animate-scale-in"
+//           onClick={(e) => e.stopPropagation()}
+//           style={{ borderRadius: 0 }}
+//         >
+//           <div className="relative h-[80vh] w-full">
+//             <button 
+//               className="absolute top-4 right-4 z-10 w-8 h-8 sm:w-10 sm:h-10 bg-[#F4720B]/90 hover:bg-[#F4720B] text-white flex items-center justify-center transition-colors"
+//               onClick={onClose}
+//               style={{ borderRadius: 0 }}
+//             >
+//               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+//                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+//               </svg>
+//             </button>
+            
+//             <div className="h-full">
+//               <Image 
+//                 src={newspaper.image} 
+//                 alt={newspaper.title}
+//                 fill
+//                 className="object-contain"
+//                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1200px"
+//               />
+//             </div>
+//           </div>
+          
+//           <div className="p-4 sm:p-6">
+//             <h2 className="text-xl md:text-2xl font-heading font-light">{newspaper.title}</h2>
+//             <p className="text-sm text-gray-600 mt-1">{newspaper.date}</p>
+//           </div>
+//         </div>
+//       </div>
+//     </>
+//   );
+// };
+
 export default function NewspaperArchivesPage() {
   const [selectedNewspaper, setSelectedNewspaper] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const containerRef = useRef(null);
-  
-  // Refs for each carousel
-  const carousel1Ref = useRef(null);
-  const carousel2Ref = useRef(null);
-  const carousel3Ref = useRef(null);
-  const carousel4Ref = useRef(null);
   
   // Scroll progress for animations
   const { scrollYProgress } = useScroll({
@@ -216,7 +292,42 @@ export default function NewspaperArchivesPage() {
   const closeModal = () => {
     setIsModalOpen(false);
   };
-
+  
+  // Add animations to global style
+  useEffect(() => {
+    // Add keyframes for animations if they don't exist
+    if (!document.querySelector('#newspaper-animations')) {
+      const styleSheet = document.createElement('style');
+      styleSheet.id = 'newspaper-animations';
+      styleSheet.textContent = `
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        
+        @keyframes scaleIn {
+          from { 
+            opacity: 0;
+            transform: scale(0.95);
+          }
+          to { 
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+        
+        .animate-fade-in {
+          animation: fadeIn 0.3s ease forwards;
+        }
+        
+        .animate-scale-in {
+          animation: scaleIn 0.3s ease forwards;
+        }
+      `;
+      document.head.appendChild(styleSheet);
+    }
+  }, []);
+  
   return (
     <LogoRevealWrapper>
       <div ref={containerRef} className="relative">
@@ -235,15 +346,15 @@ export default function NewspaperArchivesPage() {
             </div>
           </div>
           
-          <div className="max-w-7xl mx-auto px-6 relative z-20 text-white w-full">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-20 text-white w-full">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               className="max-w-3xl"
             >
-              <h1 className="text-5xl md:text-6xl font-heading font-light mb-6">Newspaper Archives</h1>
-              <p className="text-xl font-paragraph text-gray-200 max-w-2xl">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-light mb-4 sm:mb-6">Newspaper Archives</h1>
+              <p className="text-base sm:text-lg md:text-xl font-paragraph text-gray-200 max-w-2xl">
                 Explore our extensive collection of historical newspaper archives and publications documenting our journey and impact.
               </p>
             </motion.div>
@@ -251,7 +362,7 @@ export default function NewspaperArchivesPage() {
   
           {/* Scroll indicator positioned at bottom center */}
           <motion.div 
-            className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-30 flex flex-col items-center cursor-pointer group"
+            className="absolute bottom-8 md:bottom-12 left-1/2 transform -translate-x-1/2 z-30 flex flex-col items-center cursor-pointer group"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ 
@@ -265,20 +376,20 @@ export default function NewspaperArchivesPage() {
             }}
           >
             {/* Text label */}
-            <span className="text-white text-lg font-light mb-4 font-paragraph group-hover:text-[#F4720B]/90 transition-colors">
+            <span className="text-white text-sm md:text-lg font-light mb-2 md:mb-4 font-paragraph group-hover:text-[#F4720B]/90 transition-colors">
               Browse Archives
             </span>
             
             {/* Simple circular button with arrow */}
-            <div className="relative h-14 w-14 flex items-center justify-center">
+            <div className="relative h-10 w-10 md:h-14 md:w-14 flex items-center justify-center">
               <div className="absolute h-full w-full rounded-full bg-[#F4720B] opacity-20 animate-ping"></div>
               <motion.div 
-                className="h-14 w-14 rounded-full bg-[#F4720B] flex items-center justify-center group-hover:scale-110 transition-transform"
+                className="h-10 w-10 md:h-14 md:w-14 rounded-full bg-[#F4720B] flex items-center justify-center group-hover:scale-110 transition-transform"
                 whileHover={{ scale: 1.05 }}
               >
                 {/* Down arrow icon */}
                 <svg 
-                  className="h-6 w-6 text-white" 
+                  className="h-4 w-4 md:h-6 md:w-6 text-white" 
                   fill="none" 
                   viewBox="0 0 24 24" 
                   stroke="currentColor"
@@ -300,35 +411,35 @@ export default function NewspaperArchivesPage() {
           {/* Using motion.div with y transform to create the sliding effect */}
           <motion.div
             style={{ y: contentY }}
-            className="w-full h-full bg-[#fbfbfb] pt-24 pb-24"
+            className="w-full h-full bg-[#fbfbfb] pt-12 md:pt-24 pb-12 md:pb-24"
             id="news-content"
           >
-            <div className="max-w-7xl mx-auto px-6">
+            <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6">
               {/* Section Title and Description */}
-              <div className="mb-16">
+              <div className="mb-8 md:mb-16">
                 <motion.h2 
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7 }}
                   viewport={{ once: true, amount: 0.2 }}
-                  className="text-4xl md:text-5xl font-heading font-light text-gray-900 mb-6"
+                  className="text-3xl md:text-4xl lg:text-5xl font-heading font-light text-gray-900 mb-4 md:mb-6"
                 >
                   Historical Publications
                 </motion.h2>
-                <div className="w-24 h-1 bg-[#F4720B]"></div>
+                <div className="w-16 md:w-24 h-1 bg-[#F4720B]"></div>
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: 0.2 }}
                   viewport={{ once: true, amount: 0.2 }}
-                  className="mt-6 text-lg text-gray-700 max-w-3xl"
+                  className="mt-4 md:mt-6 text-base md:text-lg text-gray-700 max-w-3xl"
                 >
                   Our newspaper archives chronicle the Foundation's journey, milestones, and impact stories. Each publication represents a chapter in our ongoing commitment to social change and community empowerment.
                 </motion.p>
               </div>
               
               {/* Newspaper Carousels - Using the reusable component */}
-              <div className="space-y-16 mt-8">
+              <div className="space-y-8 md:space-y-16 mt-4 md:mt-8">
                 <NewspaperCarousel 
                   title="Featured Publications"
                   items={row1Items}
@@ -364,7 +475,7 @@ export default function NewspaperArchivesPage() {
         </section>
   
         {/* Extra space for scroll */}
-        <div className="h-[80vh] bg-[#fbfbfb]"></div>
+        <div className="h-[50vh] sm:h-[60vh] md:h-[80vh] bg-[#fbfbfb]"></div>
       </div>
       
       {/* Modal for viewing selected newspaper */}
