@@ -100,7 +100,7 @@ export const Timeline = ({ data, title, description, customStyles = {} }) => {
                   <div className="h-12 absolute left-3 md:left-3 w-12 rounded-full bg-[#fbfbfb] flex items-center justify-center shadow-lg">
                     <div className="h-5 w-5 rounded-full bg-orange-500 dark:bg-orange-600 border border-orange-300 dark:border-orange-700 p-2 shadow-inner" />
                   </div>
-                  <h3 className={`hidden md:block text-xl md:pl-20 md:text-5xl font-light ${styles.yearColor} font-title`}>
+                  <h3 className={`hidden md:block text-xl md:pl-20 md:text-5xl font-light text-[#FF6309] font-title`}>
                     {item.title}
                   </h3>
                 </div>

@@ -24,6 +24,7 @@ export default function TimelineSection() {
       title: "May 15, 2003",
       content: (
         <div>
+          <h3 className="text-2xl font-title font-light md:text-[32px] text-[#FF6309] mb-4 text-left">At 75, the world paused to honor a man who moved minds.</h3>
           <p className="mb-8 font-normal text-base md:text-[20px] text-white font-paragraph">
             To honor his contributions, the Ministry of Communications, Government of India, celebrated his 75th birth anniversary at the Darbar Hall, Lallgarh Palace, Bikaner, with the release of a Special Cover and Cancellation. The event was attended by many dignitaries, ministers, and national figures.
           </p>
@@ -50,6 +51,7 @@ export default function TimelineSection() {
       title: "July 8, 2000",
       content: (
         <div>
+          <h3 className="text-2xl font-title font-light md:text-[32px] text-[#FF6309] mb-4 text-left">He let go — not of life, but of all that binds it.</h3>
           <p className="mb-8 font-normal text-base md:text-[20px] text-white font-paragraph">
             Shri Bothra passed away like a saint through "Santhara" (voluntary fast unto death) after 8 days of spiritual preparation. Santhara is a Jain spiritual practice indicating that the person has renounced worldly desires and achieved deep self-control. His final rites were conducted with saintly honors, reinforcing the values he lived by.
           </p>
@@ -64,6 +66,27 @@ export default function TimelineSection() {
           </div>
         </div>
       ),
+    },
+    {
+      title: "May 15, 2023",
+      content: (
+        <div>
+          <h3 className="text-2xl font-title font-light md:text-[32px] text-[#FF6309] mb-4 text-left">Not every name makes it to the post. His did.</h3>
+          <p className="mb-8 font-normal text-base md:text-[20px] text-white font-paragraph">
+          India Post released a Special Postal Cancellation honoring Jaskaran Bothra, a literary force, alongside Karni Mata, a symbol of faith.
+It wasn’t just a stamp.
+It was a seal of impact.
+          </p>
+          <div className="grid grid-cols-1 gap-4">
+            <img
+              src="/images/HeroParallax/6.png" 
+              alt="Spiritual legacy"
+              
+              className="h-20 w-full md:min-h-[400px] md:w-auto object-contain rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
+            />
+          </div>
+        </div>
+      )
     }
   ];
 
