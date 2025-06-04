@@ -11,12 +11,12 @@ export const products = [
       title: "Green Energy Initiative",
       link: "/green-energy",
       thumbnail:
-        "/images/CarousalPic6.jpg",
+        "/images/neoNatal.jpg",
     },
   {
         title: "Healthcare programmes",
         link: "/farming",
-        thumbnail:"/images/neoNatal.jpg",
+        thumbnail:"/images/HeroParallax/6.png",
       },
   
   
@@ -32,7 +32,7 @@ export const products = [
         title: "Digital Literacy",
         link: "/healthcare",
         thumbnail:
-          "/images/CarousalPic9.jpg",
+          "/images/ArchivesSection/4.png",
   },
   
     {
@@ -46,7 +46,7 @@ export const products = [
       title: "Forest Conservation",
       link: "/conservation",
       thumbnail:
-        "/images/CarousalPic8.jpg",
+        "/images/ArchivesSection/4.png",
     },
   {
         title: "Clean Water Access",
