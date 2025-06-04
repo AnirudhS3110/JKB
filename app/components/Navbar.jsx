@@ -97,7 +97,7 @@ const ImprovedNavbar = () => {
       image: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
       links: [
         { text: 'Latest News', href: '/news/latest' },
-        { text: 'Media Coverage', href: '/news/media' },
+        { text: 'Media Coverage', href: '/news/media-coverage' },
       ]
     }
   ];
@@ -115,7 +115,7 @@ const ImprovedNavbar = () => {
         <div className="flex items-center justify-between h-20 lg:h-[100px]" suppressHydrationWarning>
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <img src="/images/JKBLogo.png" alt="Jaskaran Bothra Foundation" className="h-[220px] md:pt-[30px] md:pb-[15px] md:h-[300px]" />
+            <img src="/images/JKBLogo.png" alt="Jaskaran Bothra Foundation" className="h-[220px] md:pt-[30px] md:pb-[15px] md:h-[340px]" />
             
           </Link>
 

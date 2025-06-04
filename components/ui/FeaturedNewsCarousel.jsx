@@ -94,7 +94,7 @@ export default function FeaturedNewsCarousel({ items }) {
   
   return (
     <div 
-      className="relative w-screen h-[75vh] md:h-[75vh] overflow-hidden bg-[#fbfbfb]  flex items-center justify-center"
+      className="relative w-screen h-[100vh] md:h-[75vh] overflow-hidden bg-[#fbfbfb]  flex items-center justify-center"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >

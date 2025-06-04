@@ -258,7 +258,7 @@ export default function VolunteerCapacityPartnership() {
                   Join our network of volunteer partners and help us build capacity for lasting social change.
                 </p>
                 <Link 
-                  href="/contact" 
+                  href="/partnership/partnership-form" 
                   className="inline-flex items-center bg-white text-[#F4720B] font-paragraph px-8 py-3 rounded-md hover:bg-orange-50 transition-all transform hover:-translate-y-1 hover:shadow-lg duration-300"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">

@@ -68,11 +68,11 @@ const ZigZagCampaign = ({ title, date, description, image, status, index }) => {
         </div> */}
         
         {/* Enroll button */}
-        <div className="mt-6">
+        {/* <div className="mt-6">
           <button className="bg-[#F4720B] text-white font-paragraph px-8 py-3 hover:bg-[#E05900] transition-all">
             Enroll Now
           </button>
-        </div>
+        </div> */}
       </div>
     </motion.div>
   );
@@ -107,14 +107,14 @@ export default function UpcomingCampaignsPage() {
       image: "/images/Accessible.jpg",
       status: "Coming Soon"
     },
-    {
-      id: 2,
-      title: "SHE for Sustainability: Support Her Empowerment",
-      date: "Launching September 2024",
-      description: "This initiative celebrates and uplifts women at the forefront of sustainability—particularly those driving change through rural self-employment and community-based environmental solutions. SHE for Sustainability advances gender equity by empowering women to become agents of ecological and social transformation, fostering a more resilient and sustainable future for all.",
-      image: "/images/SHEpic.jpg", 
-      status: "Coming Soon"
-    },
+    // {
+    //   id: 2,
+    //   title: "SHE for Sustainability: Support Her Empowerment",
+    //   date: "Launching September 2024",
+    //   description: "This initiative celebrates and uplifts women at the forefront of sustainability—particularly those driving change through rural self-employment and community-based environmental solutions. SHE for Sustainability advances gender equity by empowering women to become agents of ecological and social transformation, fostering a more resilient and sustainable future for all.",
+    //   image: "/images/SHEpic.jpg", 
+    //   status: "Coming Soon"
+    // },
     {
       id: 3,
       title: "You Are Not Alone",
@@ -139,14 +139,14 @@ export default function UpcomingCampaignsPage() {
       image: "/images/HopeInCrisis.jpg",
       status: "Planning Phase"
     },
-    {
-      id: 6,
-      title: "Eternal Flame Campaign",
-      date: "Launching January 2025",
-      description: "This national recognition campaign seeks to immortalize great personalities through postal stamps, commemorative coins, public spaces, and published biographies—ensuring their contributions continue to inspire future generations.",
-        image: "/images/EternalFlame.jpg",
-      status: "Planning Phase"
-    },
+    // {
+    //   id: 6,
+    //   title: "Eternal Flame Campaign",
+    //   date: "Launching January 2025",
+    //   description: "This national recognition campaign seeks to immortalize great personalities through postal stamps, commemorative coins, public spaces, and published biographies—ensuring their contributions continue to inspire future generations.",
+    //     image: "/images/EternalFlame.jpg",
+    //   status: "Planning Phase"
+    // },
   ];
 
   return (

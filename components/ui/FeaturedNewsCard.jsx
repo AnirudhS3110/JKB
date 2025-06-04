@@ -101,7 +101,7 @@ export default function FeaturedNewsCard({
   return (
     <motion.div 
       ref={cardRef}
-      className="flex-shrink-0 w-[70vw] h-[70vh] bg-[#f2efe5] overflow-hidden relative flex flex-col md:flex-row rounded-lg shadow-lg mx-4"
+      className="flex-shrink-0 md:w-[70vw] w-[95vw] md:h-[70vh] h-[100vh] bg-[#f2efe5] overflow-hidden relative flex flex-col md:flex-row rounded-lg shadow-lg mx-4"
       whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
     >
       {/* Media container (75% width) */}
@@ -164,10 +164,10 @@ export default function FeaturedNewsCard({
       </div>
       
       {/* Text content (25% width) */}
-      <div className="w-full h-[25%] md:w-[25%] md:h-full bg-[#F4720B] flex flex-col justify-center px-4 py-6 relative">
-        <Link href={href} className="block h-full flex flex-col justify-center">
+      <div className="w-full h-[25%] md:w-[25%] md:h-full bg-[#F4720B] flex flex-col justify-center md:items-center px-4 py-6 relative">
+        <Link href={href} className="block h-full flex flex-col md:items-center justify-center">
           {/* Date and Location */}
-          <div className="space-y-2 mb-4">
+          {/* <div className="space-y-2 mb-4">
             <span className="text-xs font-medium text-[#F4720B]">
               {date}
             </span>
@@ -176,15 +176,15 @@ export default function FeaturedNewsCard({
               
               <span className="text-xs font-medium text-[#F4720B]">{location}</span>
             </div>
-          </div>
+          </div> */}
           
           {/* Title */}
-          <h3 className="text-lg font-serif text-[#121212] leading-tight mb-3 font-medium">
+          <h3 className="md:text-lg text-[24px] font-serif text-[#121212] leading-tight mb-3 font-medium">
             {title}
           </h3>
           
           {/* Description */}
-          <p className="text-sm text-[#fbfbfb] leading-relaxed line-clamp-4 mb-4">
+          <p className="md:text-sm text-[20px] font-paragraph text-[#fbfbfb] leading-relaxed line-clamp-4 mb-4">
             {description}
           </p>
 

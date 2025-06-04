@@ -26,7 +26,7 @@ export const products = [
       title: "Education Program",
       link: "/education",
       thumbnail:
-        "/images/MahaCabinet.png",
+        "/images/HeroParallax/CarousalPic7.jpg",
     },
   {
         title: "Digital Literacy",
@@ -52,7 +52,7 @@ export const products = [
         title: "Clean Water Access",
         link: "/clean-water",
         thumbnail:
-          "/images/CarousalPic4.png",
+          "/images/HeroParallax/CarousalPic5.png",
       },
     
     
@@ -60,13 +60,13 @@ export const products = [
         title: "Women Empowerment",
         link: "/women-empowerment",
         thumbnail:
-          "/images/momNew.png",
+          "/images/HeroParallax/4.jpg",
       },
     {
       title: "Girl Child Education",
       link: "/women-empowerment",
       thumbnail:
-      "/images/CarousalPic5.png",
+      "/images/momNew.png",
     }
   ];
   

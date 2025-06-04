@@ -99,12 +99,12 @@ export default function NewspaperModal({ isOpen, onClose, newspaper }) {
             </div>
             
             {/* Caption/info (optional) */}
-            {newspaper.title && (
+            {/* {newspaper.title && (
               <div className="bg-gradient-to-t from-black/80 to-transparent p-6 text-white rounded-b-lg">
                 <h3 className="text-xl font-medium">{newspaper.title}</h3>
                 {newspaper.date && <p className="text-sm opacity-80">{newspaper.date}</p>}
               </div>
-            )}
+            )} */}
           </motion.div>
         </motion.div>
       )}

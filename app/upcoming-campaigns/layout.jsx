@@ -7,7 +7,7 @@ export default function UpcomingCampaignsLayout({ children }) {
     { label: 'Eternal Flame Campaign', href: '/upcoming-campaigns/eternal-flame-campaign' },
     { label: 'Named After Mom', href: '/upcoming-campaigns/named-after-mom' },
     { label: 'She for Sustainability', href: '/upcoming-campaigns/she-for-sustainability' },
-    { label: 'Accessible Future', href: '/upcoming-campaigns/upcoming-campaigns/accessible-future' },
+    // { label: 'Accessible Future', href: '/upcoming-campaigns/upcoming-campaigns/accessible-future' },
   ];
   return (
     <>

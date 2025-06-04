@@ -8,8 +8,8 @@ export default function FeaturedNewsSection() {
     {
       date: "13 May 2025",
       location: "Ethiopia",
-      title: "Forest coffee cultivation: a win-win for conservation and livelihoods",
-      description: "A new report published by the NGO Farm Africa outlines how a transformative forest conservation and sustainable agriculture initiative in south-eastern Ethiopia has concluded with striking success.",
+      title: "Bharti Laavekar - MLA Versova(Mumbai)",
+      description: "Supporting Named After Mom Campaign",
       video: "/videos/vid-1.mp4",
       image: "https://images.unsplash.com/photo-1612274777608-dbb81b9edfcf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
       href: "/news/forest-coffee-cultivation"
@@ -17,8 +17,8 @@ export default function FeaturedNewsSection() {
     {
       date: "5 Apr 2025",
       location: "India",
-      title: "Water conservation efforts transform rural communities",
-      description: "Community-led initiatives have successfully implemented rainwater harvesting systems across 50 villages, providing sustainable water sources year-round.",
+      title: "Siddharth Bothra - Founder & Trustee - Jaskaran Bothra Foundation",
+      description: "Explaining named after Mom campaign",
       video: "/videos/vid-2.mp4",
       image: "https://images.unsplash.com/photo-1606041008023-472dfb5e530f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80",
       href: "/news/water-conservation"
@@ -26,8 +26,8 @@ export default function FeaturedNewsSection() {
     {
       date: "18 Mar 2025",
       location: "Rwanda",
-      title: "Youth-led technology program empowers next generation",
-      description: "Over 500 students have graduated from our digital skills initiative, creating innovative solutions for local challenges.",
+      title: "Renowned Fasion Designer - Shaina NC",
+      description: "Supporting Named After Mom Campaign",
       video: "/videos/vid-3.mp4",
       image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80",
       href: "/news/youth-tech-program"
@@ -35,8 +35,8 @@ export default function FeaturedNewsSection() {
     {
       date: "22 Feb 2025",
       location: "Ghana",
-      title: "Sustainable farming practices increase yields by 40%",
-      description: "Farmers implementing regenerative agriculture techniques have reported significant improvements in soil health and crop production.",
+      title: "Jagruti Bothra - Trustee - Jaskaran Bothra Foundation",
+      description: "Walking for the cause to support Cancer Patients on behalf of The Foundation",
       video: "/videos/vid-4.mp4",
       image: "https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
       href: "/news/sustainable-farming"
