@@ -16,6 +16,7 @@ export default function UpcomingCampaigns() {
       title: "SHE for Sustainability",
       image: "/images/SHEpic.jpg",
       status: "Project Underway",
+      link: "/upcoming-campaigns/she-for-sustainability",
       statusColor: "#F4720B", // Orange
       description: "Uplifting women at the forefront of sustainability through rural self-employment and community-based environmental solutions, fostering a resilient future for all."
     },
@@ -24,6 +25,7 @@ export default function UpcomingCampaigns() {
       title: "Eternal Flame Campaign",
       image: "/images/EternalFlame.jpg",
       status: "Starting Soon",
+      link: "/upcoming-campaigns/eternal-flame-campaign",
       statusColor: "#F4720B", // Orange
       description: "Immortalizing great personalities through postal stamps, commemorative coins, and published biographies—ensuring their contributions inspire future generations."
     },
@@ -32,6 +34,7 @@ export default function UpcomingCampaigns() {
       title: "Named After Mom",
       image: "/images/NamedAfterMom.jpg",
       status: "Project Underway",
+      link: "/upcoming-campaigns/named-after-mom",
       statusColor: "#F4720B", // Orange
       description: "A first-of-its-kind initiative advocating for the mandatory inclusion of mothers' names in all government documents, recognizing women through official identity."
     }
@@ -117,8 +120,8 @@ export default function UpcomingCampaigns() {
               </p>
               
               {/* Enroll button - left aligned with image */}
-              <button onClick={() => router.push('/upcoming-campaigns/upcoming-campaigns')} suppressHydrationWarning={true} className="relative overflow-hidden text-left w-fit bg-[#F4720B] text-white font-paragraph px-6 py-3 hover:bg-[#E05900] transition-all duration-300 group">
-                <span className="inline-block transition-transform duration-300 group-hover:-translate-x-2">Enroll Now</span>
+              <button onClick={() => router.push(campaign.link)} suppressHydrationWarning={true} className="relative overflow-hidden text-left w-fit bg-[#F4720B] text-white font-paragraph px-6 py-3 hover:bg-[#E05900] transition-all duration-300 group">
+                <span className="inline-block transition-transform duration-300 group-hover:-translate-x-2">Learn More</span>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 inline-block ml-0 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>

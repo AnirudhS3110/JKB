@@ -7,9 +7,9 @@ export default function Page() {
   return (
     <>
       <SuccessStories />
-      <Impact />
-      <div className="h-[4vh] bg-[#151419]"></div>
-      <Footer />
+      
+      <div className="h-[0.001vh] bg-[#151419]"></div>
+      
     </>
   );
 } 

@@ -23,50 +23,50 @@ const WhatWeDo = () => {
   const menuItems = [
     { 
       id: 1, 
-      text: 'Accessible Futures', 
-      tagline: 'Empowering Inclusion for All Abilities',
+      text: 'Empowering Inclusion for All Abilities' , 
+      tagline: 'Accessible Futures' ,
       href: '/accessible-futures', 
       color: 'bg-[#F4720B]' 
     },
     { 
       id: 2, 
-      text: 'SHE for Sustainability', 
-      tagline: 'Championing Women in Sustainability',
+      text: 'Championing Women in Sustainability', 
+      tagline: 'SHE for Sustainability',
       href: '/she-for-sustainability', 
       color: 'bg-[#F4720B]' 
     },
     { 
       id: 3, 
-      text: 'You Are Not Alone', 
-      tagline: 'Mental Health Through the Lens of Mindfulness',
+      text: 'Mental Health Through the Lens of Mindfulness', 
+      tagline: 'You Are Not Alone',
       href: '/you-are-not-alone', 
       color: 'bg-[#F4720B]' 
     },
     { 
       id: 4, 
-      text: 'She Leads, We Rise', 
-      tagline: 'Advocating Girl Child Education',
+      text: 'Advocating Girl Child Education', 
+      tagline: 'She Leads, We Rise',
       href: '/she-leads-we-rise', 
       color: 'bg-[#F4720B]' 
     },
     { 
       id: 5, 
-      text: 'Health Beyond Boundaries', 
-      tagline: 'Bridging the Rural Health Divide',
+      text: 'Bridging the Rural Health Divide', 
+      tagline: 'Health Beyond Boundaries',
       href: '/health-beyond-boundaries', 
       color: 'bg-[#F4720B]' 
     },
     { 
       id: 6, 
-      text: 'Hope in Crisis', 
-      tagline: 'Relief & Rehabilitation in Times of Calamity',
+      text: 'Relief & Rehabilitation in Times of Calamity', 
+      tagline: 'Hope in Crisis',
       href: '/hope-in-crisis', 
       color: 'bg-[#F4720B]' 
     },
     { 
       id: 7, 
-      text: 'Eternal Flame Campaign', 
-      tagline: 'Honouring National Icons, Preserving Legacies',
+      text: 'Honouring National Icons, Preserving Legacies', 
+      tagline: 'Eternal Flame Campaign',
       href: '/eternal-flame-campaign', 
       color: 'bg-[#F4720B]' 
     },

@@ -14,7 +14,9 @@ import HeroParallaxDemo from '@/components/ui/hero-parallax-demo';
 import FounderTribute from './FounderTribute';
 import TimelineDemo from '@/components/timeline-demo';
 import { gsap } from 'gsap';
+import FeaturedNewsCard from '@/components/ui/FeaturedNewsCard';
 import Link from 'next/link';
+import FeaturedNewsSection from './FeaturedNewsSection';
 
 export default function HomePage() {
   
@@ -121,10 +123,11 @@ export default function HomePage() {
           
           {/* Timeline Section */}
           <section id="our-journey" className="relative w-full">
-            <TimelineDemo 
+            {/* <TimelineDemo 
               title="Our Journey"
               description="Tracking our progress and milestones in building a better future through sustainable initiatives."
-            />
+            /> */}
+            <FeaturedNewsSection/>
           </section>
           
           {/* Partnership Opportunities Section */}
@@ -195,6 +198,8 @@ export default function HomePage() {
             <NewsResources />
           </section>
 
+          {/* Featured News Carousel Section */}
+          
           <Footer />
         </motion.div>
       </div>

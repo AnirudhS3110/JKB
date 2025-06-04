@@ -156,7 +156,7 @@ export default function FactsAndFigures() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
         </svg>
       ),
-      title: "25 Infant Warmers + 5 Phototherapy Machines",
+      title: " Infant Warmers and Phototherapy Machines",
       location: "Donated to Sardar Patel Medical College, Bikaner",
       points: [
         "Guardians of life – stabilizing newborns when seconds count.",
@@ -171,7 +171,7 @@ export default function FactsAndFigures() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       ),
-      title: "1 Neonatal Ward",
+      title: "Neonatal Ward",
       location: "Established at PBM Hospital, Bikaner",
       points: [
         "Hope starts here – a safe space for newborn emergencies.",
@@ -186,7 +186,7 @@ export default function FactsAndFigures() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
         </svg>
       ),
-      title: "2 Diagnostic Machines",
+      title: "Diagnostic Machines",
       location: "Donated to Ganganagar Satellite Hospital",
       points: [
         "Sonography + Digital X-Ray → Zero-cost, high-tech diagnostics.",

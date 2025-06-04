@@ -90,7 +90,7 @@ export default function FounderTribute() {
             variants={textVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            className="text-5xl md:text-7xl lg:text-8xl text-[#F4720B] font-title font-light tracking-tight mb-6"
+            className="text-5xl md:text-7xl lg:text-[60px] text-[#F4720B] font-title font-light tracking-tight mb-6"
           >
             Jaskaran Bothra
           </motion.h1>
@@ -100,7 +100,7 @@ export default function FounderTribute() {
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             transition={{ delay: 0.2 }}
-            className="text-xl md:text-2xl text-[#fbfbfb] max-w-2xl font-paragraph font-light mb-10"
+            className="text-xl md:text-[24px] text-[#fbfbfb] max-w-2xl font-paragraph font-light mb-10"
           >
             Visionary conservationist and humanitarian who dedicated his life to creating sustainable pathways for rural communities and protecting our natural ecosystems.
           </motion.p>
