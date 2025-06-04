@@ -37,7 +37,7 @@ export default function FeaturedNewsCard({
 
   return (
     <motion.div 
-      className="flex-shrink-0 w-[70vw] h-[70vh] bg-[#f2efe5] overflow-hidden relative flex flex-col md:felx-row rounded-lg shadow-lg mx-4"
+      className="flex-shrink-0 w-[70vw] h-[70vh] bg-[#f2efe5] overflow-hidden relative flex flex-col md:flex-row rounded-lg shadow-lg mx-4"
       whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
     >
       {/* Media container (75% width) */}
