@@ -1,5 +1,5 @@
 'use client';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
@@ -14,7 +14,65 @@ export default function FeaturedNewsCard({
 }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [showControls, setShowControls] = useState(false);
+  const [isInView, setIsInView] = useState(false);
   const videoRef = useRef(null);
+  const cardRef = useRef(null);
+
+  // Set up intersection observer to detect when card is in viewport
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        setIsInView(entry.isIntersecting);
+      },
+      {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.5, // Card is at least 50% visible
+      }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => {
+      if (cardRef.current) {
+        observer.unobserve(cardRef.current);
+      }
+    };
+  }, []);
+
+  // Handle auto-play/pause when visibility changes
+  useEffect(() => {
+    if (!videoRef.current) return;
+
+    if (isInView) {
+      // Auto-play when in view
+      videoRef.current.play()
+        .then(() => {
+          setIsPlaying(true);
+        })
+        .catch((error) => {
+          // Browser might block autoplay with sound
+          console.log("Autoplay was prevented:", error);
+          
+          // Try muted autoplay as fallback
+          videoRef.current.muted = true;
+          videoRef.current.play()
+            .then(() => {
+              setIsPlaying(true);
+            })
+            .catch((err) => {
+              console.log("Even muted autoplay was prevented:", err);
+            });
+        });
+    } else {
+      // Pause when out of view
+      videoRef.current.pause();
+      setIsPlaying(false);
+    }
+  }, [isInView]);
 
   const togglePlay = (e) => {
     e.preventDefault();
@@ -25,8 +83,13 @@ export default function FeaturedNewsCard({
         videoRef.current.pause();
         setIsPlaying(false);
       } else {
-        videoRef.current.play();
-        setIsPlaying(true);
+        videoRef.current.play()
+          .then(() => {
+            setIsPlaying(true);
+          })
+          .catch((error) => {
+            console.log("Play was prevented:", error);
+          });
       }
     }
   };
@@ -37,6 +100,7 @@ export default function FeaturedNewsCard({
 
   return (
     <motion.div 
+      ref={cardRef}
       className="flex-shrink-0 w-[70vw] h-[70vh] bg-[#f2efe5] overflow-hidden relative flex flex-col md:flex-row rounded-lg shadow-lg mx-4"
       whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
     >
