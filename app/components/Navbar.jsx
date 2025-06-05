@@ -10,6 +10,7 @@ const ImprovedNavbar = () => {
   const [renderComplete, setRenderComplete] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const navbarRef = useRef(null);
+  const mobileMenuRef = useRef(null);
 
   useEffect(() => {
     // Mark component as rendered on client side
@@ -29,15 +30,25 @@ const ImprovedNavbar = () => {
       const currentScrollY = window.scrollY;
       
       // Check if navbar exists
-      if (navbarRef.current) {
+      if (navbarRef.current && activeDropdown === 'mobile') {
         const navbarRect = navbarRef.current.getBoundingClientRect();
-        const isInNavbarRegion = navbarRect.top + navbarRect.height > 0;
         
-        // Only close if in navbar region and scrolling up
-        if (isInNavbarRegion && currentScrollY < lastScrollY - 5) {
-          if (activeDropdown === 'mobile') {
-            setActiveDropdown(null);
-          }
+        // Define "navbar region" more precisely
+        // Only consider the visible part of the navbar or mobile menu
+        const isMobileMenuOpen = mobileMenuRef.current !== null;
+        const mobileMenuRect = isMobileMenuOpen ? mobileMenuRef.current.getBoundingClientRect() : null;
+        
+        // Check if we're in the navbar region (either the navbar is visible or the mobile menu is visible)
+        const isNavbarVisible = navbarRect.bottom > 0 && navbarRect.top < window.innerHeight;
+        const isMobileMenuVisible = isMobileMenuOpen && mobileMenuRect?.bottom > 0 && mobileMenuRect?.top < window.innerHeight;
+        const isInNavbarRegion = isNavbarVisible || isMobileMenuVisible;
+        
+        // Check if we're scrolling up (not down)
+        const isScrollingUp = currentScrollY < lastScrollY;
+        
+        // Only close if in navbar region AND scrolling up
+        if (isInNavbarRegion && isScrollingUp) {
+          setActiveDropdown(null);
         }
       }
       
@@ -282,11 +293,12 @@ const ImprovedNavbar = () => {
         <AnimatePresence>
           {activeDropdown === 'mobile' && (
             <motion.div 
+              ref={mobileMenuRef}
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-now               className="md:hidden bg-[#000000] font-paragraph w-full max-h-[100vh] overflow-y-auto"
+              className="md:hidden bg-[#000000] font-paragraph w-full max-h-[100vh] overflow-y-auto"
             >
               <div className="container mx-auto px-4 py-4 space-y-4">
                 {navItems.map((item, index) => (

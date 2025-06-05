@@ -82,7 +82,7 @@ const WhatWeDo = () => {
   };
 
   return (
-    <section className="relative min-h-[80vh] md:min-h-[120vh] w-full py-[20px] md:py-[40px]">
+    <section className="relative min-h-[100vh] md:min-h-[120vh] w-full py-[20px] md:py-[40px]">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <div 

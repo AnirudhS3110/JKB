@@ -7,7 +7,7 @@ import ExploreNav from "../about-us/ExploreNav";
 
 export default function NewsLayout({ children }) {
   const navItems = [
-    { href: '/news/latest', label: 'Latest News' },
+    { href: '/news/archives', label: 'Archives' },
     { href: '/news/media-coverage', label: 'Media Coverage' },
   ];
   return (
