@@ -72,12 +72,12 @@ const Footer = () => {
               <Link href="https://facebook.com" className="w-10 h-10 rounded-full border-2 border-[#fbfbfb] flex items-center justify-center  hover:bg-gray-800 hover:text-orange-500 transition-colors">
                 <FaFacebookF />
               </Link>
-              <Link href="https://twitter.com" className="w-10 h-10 rounded-full border-2 border-[#fbfbfb] flex items-center justify-center  hover:bg-gray-800 hover:text-orange-500 transition-colors">
+              <Link href="https://x.com/hfbifoundation?lang=en" className="w-10 h-10 rounded-full border-2 border-[#fbfbfb] flex items-center justify-center  hover:bg-gray-800 hover:text-orange-500 transition-colors">
                 <FaXTwitter />
               </Link>
-              <Link href="https://instagram.com" className="w-10 h-10 rounded-full border-2 border-[#fbfbfb] flex items-center justify-center  hover:bg-gray-800 hover:text-orange-500 transition-colors">
+              {/* <Link href="https://instagram.com" className="w-10 h-10 rounded-full border-2 border-[#fbfbfb] flex items-center justify-center  hover:bg-gray-800 hover:text-orange-500 transition-colors">
                 <AiOutlineInstagram />
-              </Link>
+              </Link> */}
               <Link href="https://youtube.com" className="w-10 h-10 rounded-full border-2 border-[#fbfbfb] flex items-center justify-center  hover:bg-gray-800 hover:text-orange-500 transition-colors">
                 <FaYoutube />
               </Link>

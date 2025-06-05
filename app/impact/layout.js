@@ -11,7 +11,7 @@ export default function ImpactLayout({ children }) {
     <section>
       {/* Common elements for all Impact pages can go here */}
       <div>{children}</div>
-      <ExploreNav navItems={navItems}/>
+      {/* <ExploreNav navItems={navItems}/> */}
       <Footer />
     </section>
   );
