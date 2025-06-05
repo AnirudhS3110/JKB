@@ -30,7 +30,7 @@ export default function AppleCardsCarouselDemo() {
   const isComponentVisible = isInView || forceVisible;
 
   // Create cards from data array
-  const allCards = [...data, viewMoreCard].map((card, index) => (
+  const allCards = [...data].map((card, index) => (
     <Card key={card.src} card={card} index={index} layout={true} />
   ));
 
@@ -105,38 +105,38 @@ const ContentDisplay = ({ title, bulletPoints }) => {
 };
 
 // View More card component
-const ViewMoreContent = () => {
-  const handleClick = (e) => {
-    e.preventDefault();
-    window.location.href = '/impact/success-stories';
-  };
+// const ViewMoreContent = () => {
+//   const handleClick = (e) => {
+//     e.preventDefault();
+//     window.location.href = '/impact/success-stories';
+//   };
 
-  return (
-    <div 
-      onClick={handleClick}
-      className="cursor-pointer w-full h-full"
-    >
-      <div className="bg-gradient-to-br from-[#FF6309] to-[#FF8E16] p-8 md:p-14 rounded-3xl mb-4 h-full flex flex-col items-center justify-center">
-        <div className="text-white text-center">
-          <h3 className="font-bold text-2xl font-title font-light md:text-4xl mb-6">View More Success Stories</h3>
-          <div className="mt-6 flex justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+//   return (
+//     <div 
+//       onClick={handleClick}
+//       className="cursor-pointer w-full h-full"
+//     >
+//       <div className="bg-gradient-to-br from-[#FF6309] to-[#FF8E16] p-8 md:p-14 rounded-3xl mb-4 h-full flex flex-col items-center justify-center">
+//         <div className="text-white text-center">
+//           <h3 className="font-bold text-2xl font-title font-light md:text-4xl mb-6">View More Success Stories</h3>
+//           <div className="mt-6 flex justify-center">
+//             <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+//               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+//             </svg>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
 
 // View More card definition
-const viewMoreCard = {
-  category: "More Stories",
-  title: "View More",
-  src: "/images/ViewMore.jpg", // You can replace with an actual image or leave as is
-  content: <ViewMoreContent />,
-};
+// const viewMoreCard = {
+//   category: "More Stories",
+//   title: "View More",
+//   src: "/images/ViewMore.jpg", // You can replace with an actual image or leave as is
+//   content: <ViewMoreContent />,
+// };
 
 const data = [
   {

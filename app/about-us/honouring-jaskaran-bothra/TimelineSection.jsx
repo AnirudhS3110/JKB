@@ -101,7 +101,7 @@ It was a seal of impact.
           description="Significant moments in honoring Shri Jaskaran Bothra's contributions and spiritual passage"
           customStyles={{
             bg: "bg-black",
-            yearColor: "text-[#FF8E16] drop-shadow-md",
+            yearColor: "text-[#ff6309] drop-shadow-md",
           }}
         />
       </section>
