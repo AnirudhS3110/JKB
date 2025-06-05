@@ -28,7 +28,7 @@ export default function TimelineSection() {
           <p className="mb-8 font-normal text-base md:text-[20px] text-white font-paragraph">
             To honor his contributions, the Ministry of Communications, Government of India, celebrated his 75th birth anniversary at the Darbar Hall, Lallgarh Palace, Bikaner, with the release of a Special Cover and Cancellation. The event was attended by many dignitaries, ministers, and national figures.
           </p>
-          <div className="grid grid-cols-2 gap-4">
+          {/* <div className="grid grid-cols-2 gap-4">
             <img
               src="https://images.unsplash.com/photo-1600093696242-31144e5bf156?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
               alt="Commemoration event"
@@ -43,7 +43,7 @@ export default function TimelineSection() {
               height={500}
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
-          </div>
+          </div> */}
         </div>
       ),
     },
@@ -55,7 +55,7 @@ export default function TimelineSection() {
           <p className="mb-8 font-normal text-base md:text-[20px] text-white font-paragraph">
             Shri Bothra passed away like a saint through "Santhara" (voluntary fast unto death) after 8 days of spiritual preparation. Santhara is a Jain spiritual practice indicating that the person has renounced worldly desires and achieved deep self-control. His final rites were conducted with saintly honors, reinforcing the values he lived by.
           </p>
-          <div className="grid grid-cols-1 gap-4">
+          {/* <div className="grid grid-cols-1 gap-4">
             <img
               src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=926&q=80" 
               alt="Spiritual legacy"
@@ -63,7 +63,7 @@ export default function TimelineSection() {
               height={500}
               className="h-20 w-full rounded-lg object-cover shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] md:h-44 lg:h-60"
             />
-          </div>
+          </div> */}
         </div>
       ),
     },
