@@ -486,7 +486,7 @@ export default function DirectTransitionAnimation() {
         
         {/* Scroll indicator */}
         <motion.div 
-          className="fixed bottom-8 left-1/2 -translate-x-1/2 z-20"
+          className="fixed bottom-8 left-1/2 -translate-x-1/2 z-10"
           initial={{ opacity: 0.6, y: 0 }}
           animate={{ opacity: 1, y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
