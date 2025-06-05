@@ -51,6 +51,7 @@ const ImprovedNavbar = () => {
   const navItems = [
     {
       title: 'Upcoming Campaigns',
+      href:'/#upcoming-campaigns',
       description: 'Learn about our current initiatives and how you can get involved to create meaningful change.',
       image: 'https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80',
       links: [
@@ -61,6 +62,7 @@ const ImprovedNavbar = () => {
     },
     {
       title: 'Impact',
+      href:'/#impact',
       description: 'Explore the measurable change we\'ve created through sustainable initiatives across communities.',
       image: 'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
       links: [
@@ -69,9 +71,11 @@ const ImprovedNavbar = () => {
       ]
     },
     {
-      title: 'About',
+      title: 'About', 
+      href:'/#about',
       description: 'Discover our story, mission, and the legacy of Jaskaran Bothra that guides our foundation.',
       image: '/images/about-background.jpg',
+      
       links: [
         { text: 'About Us', href: '/about-us/about-us' },
         { text: 'Our Vision and Mission', href: '/about-us/vision-and-mission' },
@@ -80,6 +84,7 @@ const ImprovedNavbar = () => {
     },
     {
       title: 'Partnership',
+      href:'/#partnership',
       description: 'Join forces with us to amplify your impact through strategic collaborations and initiatives.',
       image: 'https://images.unsplash.com/photo-1665072204431-b3ba11bd6d06?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHBhcnRuZXJzaGlwfGVufDB8fDB8fHww',
       links: [
@@ -93,6 +98,7 @@ const ImprovedNavbar = () => {
     },
     {
       title: 'News',
+      href:'/#news',
       description: 'Stay updated with our latest initiatives, media coverage, and educational resources.',
       image: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
       links: [
@@ -133,7 +139,7 @@ const ImprovedNavbar = () => {
                     <div className="flex items-center text-[#F8F9FA] hover:text-[#F4720B]">
                     <div className="w-[10px] h-[10px] bg-[#F4720B] hover:bg-[#F4720B] rounded-full"></div>
                     <a 
-                      href="#" 
+                      href={item.href} 
                       className="text-[#F8F9FA] hover:text-[#F4720B] py-7 px-2 transition-colors relative text-sm font-medium flex items-center"
                     >
                       {item.title}

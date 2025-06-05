@@ -106,7 +106,7 @@ export default function HomePage() {
 
           <FounderTribute/>
 
-          <section >
+          <section id="about" >
             <AboutUsSection/>
           </section>
           {/* <section>
@@ -114,7 +114,7 @@ export default function HomePage() {
           </section> */}
           
           {/* Apple Cards Carousel Section */}
-          <section className="hidden md:block bg-white relative">
+          <section id="impact" className="hidden md:block bg-white relative">
             <AppleCardsCarouselDemo />
           </section>
           
@@ -194,7 +194,7 @@ export default function HomePage() {
           </section>
           
           {/* News and Resources Section */}
-          <section id="news-resources" className="relative">
+          <section id="news" className="relative">
             <NewsResources />
           </section>
 

@@ -28,8 +28,9 @@ export default function AppleCardsCarouselDemo() {
   
   // Determine if the component should be visible based on either criteria
   const isComponentVisible = isInView || forceVisible;
-  
-  const cards = data.map((card, index) => (
+
+  // Create cards from data array
+  const allCards = [...data, viewMoreCard].map((card, index) => (
     <Card key={card.src} card={card} index={index} layout={true} />
   ));
 
@@ -79,7 +80,7 @@ export default function AppleCardsCarouselDemo() {
         animate={isComponentVisible ? "visible" : "hidden"}
         className="w-full overflow-visible"
       >
-        <Carousel items={cards} />
+        <Carousel items={allCards} />
       </motion.div>
     </div>
   );
@@ -89,18 +90,52 @@ const ContentDisplay = ({ title, bulletPoints }) => {
   return (
     <div className="bg-[#F5F5F7] dark:bg-neutral-800 p-8 md:p-14 rounded-3xl mb-4">
       <div className="text-neutral-700 dark:text-neutral-200 text-base md:text-2xl font-montserrat max-w-3xl mx-auto">
-        <h3 className="font-bold text-xl md:text-2xl mb-6">{title}</h3>
+        <h3 className="font-light font-title text-xl md:text-2xl mb-6">{title}</h3>
         <ul className="space-y-4">
           {bulletPoints.map((point, index) => (
             <li key={index} className="flex items-start">
               <span className="text-[#F4720B] mr-3 text-xl">●</span>
-              <span className="text-neutral-600 dark:text-neutral-400">{point}</span>
+              <span className="text-neutral-600 dark:text-neutral-400 font-paragraph">{point}</span>
             </li>
           ))}
         </ul>
       </div>
     </div>
   );
+};
+
+// View More card component
+const ViewMoreContent = () => {
+  const handleClick = (e) => {
+    e.preventDefault();
+    window.location.href = '/impact/success-stories';
+  };
+
+  return (
+    <div 
+      onClick={handleClick}
+      className="cursor-pointer w-full h-full"
+    >
+      <div className="bg-gradient-to-br from-[#FF6309] to-[#FF8E16] p-8 md:p-14 rounded-3xl mb-4 h-full flex flex-col items-center justify-center">
+        <div className="text-white text-center">
+          <h3 className="font-bold text-2xl font-title font-light md:text-4xl mb-6">View More Success Stories</h3>
+          <div className="mt-6 flex justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// View More card definition
+const viewMoreCard = {
+  category: "More Stories",
+  title: "View More",
+  src: "/images/ViewMore.jpg", // You can replace with an actual image or leave as is
+  content: <ViewMoreContent />,
 };
 
 const data = [

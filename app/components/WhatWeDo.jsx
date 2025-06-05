@@ -93,7 +93,7 @@ const WhatWeDo = () => {
           }}
         >
           {/* Subtle overlay for better text readability */}
-          <div className="absolute inset-0 bg-[#000000] opacity-60"></div>
+          <div className="absolute inset-0 bg-[#000000] opacity-100"></div>
         </div>
       </div>
 
