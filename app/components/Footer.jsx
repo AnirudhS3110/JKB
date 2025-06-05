@@ -50,7 +50,7 @@ const Footer = () => {
                 <Link href="/upcoming-campaigns" className="block text-[#fbfbfb] hover:text-[#F4720B]">Campaigns</Link>
                 <Link href="/impact" className="block text-[#fbfbfb] hover:text-[#F4720B]">Impact</Link>
                 <Link href="/about-us/honouring-jaskaran-bothra" className="block text-[#fbfbfb] hover:text-[#F4720B]">Our Founder</Link>
-                <Link href="/partnership" className="block text-[#fbfbfb] hover:text-[#F4720B]">Partnership</Link>
+                
               </div>
               <div className="space-y-3 text-[#fbfbfb]">
                 <Link href="/news/latest" className="block hover:text-[#F4720B]">News</Link>
