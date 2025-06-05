@@ -53,11 +53,11 @@ const Footer = () => {
                 <Link href="/partnership" className="block text-[#fbfbfb] hover:text-[#F4720B]">Partnership</Link>
               </div>
               <div className="space-y-3 text-[#fbfbfb]">
-                <Link href="/news" className="block hover:text-[#F4720B]">News</Link>
-                <Link href="/contact" className="block hover:text-[#F4720B]">Contact us</Link>
+                <Link href="/news/latest" className="block hover:text-[#F4720B]">News</Link>
+                <Link href="/partnership/partnership-form" className="block hover:text-[#F4720B]">Partner with us</Link>
                 <Link href="/privacy-policy" className="block hover:text-[#F4720B]">Privacy Policy</Link>
                 <Link href="/terms-of-use" className="block hover:text-[#F4720B]">Terms of Use</Link>
-                <Link href="/donate" className="block hover:text-[#F4720B]">Donate</Link>
+                
               </div>
             </div>
           </div>
