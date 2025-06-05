@@ -149,10 +149,10 @@ const ImprovedNavbar = () => {
                 ))}
 
                 {/* Search Button */}
-                <div 
+                {/* <div 
                   className="relative group"
                   onMouseEnter={() => setActiveDropdown('search')}
-                  /* We're removing onMouseLeave from here */
+                  
                 >
                   <button 
                     className="text-[#F8F9FA] hover:text-[#F4720B] transition-colors w-10 h-10 rounded-full bg-[#F4720B] hover:bg-[#F8F9FA] flex items-center justify-center"
@@ -161,7 +161,7 @@ const ImprovedNavbar = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                     </svg>
                   </button>
-                </div>
+                </div> */}
               </nav>
 
               {/* Mobile Menu Button */}
@@ -239,15 +239,15 @@ const ImprovedNavbar = () => {
           )}
 
           {/* Search Dropdown */}
-          {activeDropdown === 'search' && (
+          {/* {activeDropdown === 'search' && (
             <motion.div 
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
               className="absolute left-0 w-full bg-[#000000] shadow-lg"
-              onMouseEnter={() => setActiveDropdown('search')} /* Keep dropdown open when mouse enters it */
-              onMouseLeave={() => setActiveDropdown(null)}  /* Close dropdown when mouse leaves it */
+              onMouseEnter={() => setActiveDropdown('search')} 
+              onMouseLeave={() => setActiveDropdown(null)}  
             >
               <div className="container mx-auto px-4 md:px-8 lg:px-16 xl:px-24 py-16">
                 <div className="flex flex-col md:flex-row">
@@ -273,7 +273,7 @@ const ImprovedNavbar = () => {
                 </div>
               </div>
             </motion.div>
-          )}
+          )} */}
         </AnimatePresence>
       )}
 
@@ -330,7 +330,7 @@ now               className="md:hidden bg-[#000000] font-paragraph w-full max-h-
                 
                 {/* Mobile Search */}
                 <div className="pt-2">
-                  <div className="relative">
+                  {/* <div className="relative">
                     <input 
                       type="text" 
                       placeholder="Search..." 
@@ -341,7 +341,7 @@ now               className="md:hidden bg-[#000000] font-paragraph w-full max-h-
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                       </svg>
                     </button>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </motion.div>
