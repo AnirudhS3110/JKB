@@ -54,99 +54,72 @@ export default function FactsAndFigures() {
     return () => clearTimeout(timer);
   }, []);
   
-  // Scroll progress for animations
+  // Scroll progress for animations - always create this regardless of device
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start", "end"]
   });
   
-  // Adjust scroll triggers based on device size
-  const mobileOffset = 0.05;
-  
-  // Transform values for sliding animations - dynamic offsets based on device type
+  // Always create all transforms regardless of device type
+  // For desktop animations
   const lifelinesHeaderY = useTransform(
     scrollYProgress,
-    isMobile ? 
-      [0.05, 0.15] : // Mobile values - smaller range
-      [0.10, 0.25],   // Desktop values
-    ["100vh", "0vh"]  // Start position to end position
+    [0.10, 0.25],
+    ["100vh", "0vh"]
   );
   
-  // Cards animation timing - adjusted for mobile
   const cardsY = useTransform(
     scrollYProgress,
-    isMobile ?
-      [0.15, 0.30] : // Mobile values
-      [0.3, 0.5],    // Desktop values
-    ["100vh", isMobile ? "0vh" : "10vh"]
+    [0.3, 0.5],
+    ["100vh", "10vh"]
   );
 
-  // Image receding effect transforms - adjusted for mobile
   const imageScale = useTransform(
     scrollYProgress,
-    isMobile ?
-      [0.25, 0.30] : // Mobile values
-      [0.4, 0.48],   // Desktop values
-    [1, 0.85]        // Original size to smaller size
+    [0.4, 0.48],
+    [1, 0.85]
   );
 
   const imageOpacity = useTransform(
     scrollYProgress,
-    isMobile ?
-      [0.25, 0.30] : // Mobile values
-      [0.4, 0.48],   // Desktop values
-    [1, 0.85]        // Full opacity to half opacity
+    [0.4, 0.48],
+    [1, 0.85]
   );
 
   const imageTranslateY = useTransform(
     scrollYProgress,
-    isMobile ?
-      [0.25, 0.30] : // Mobile values
-      [0.4, 0.48],   // Desktop values
-    ["0vh", "5vh"]   // No translation to downward translation
+    [0.4, 0.48],
+    ["0vh", "5vh"]
   );
 
-  // Humanity section animations - adjusted for mobile
   const humanityHeaderY = useTransform(
     scrollYProgress,
-    isMobile ?
-      [0.45, 0.55] : // Mobile values
-      [0.60, 0.70],  // Desktop values
-    ["100vh", "0vh"] // Start position to end position
+    [0.60, 0.70],
+    ["100vh", "0vh"]
   );
 
-  // Humanity cards animation timing - adjusted for mobile
   const humanityCardsY = useTransform(
     scrollYProgress,
-    isMobile ?
-      [0.55, 0.65] : // Mobile values
-      [0.70, 0.80],  // Desktop values
-    ["100vh", isMobile ? "0vh" : "10vh"]
+    [0.70, 0.80],
+    ["100vh", "10vh"]
   );
 
-  // Humanity image receding effect - adjusted for mobile
   const humanityImageScale = useTransform(
     scrollYProgress,
-    isMobile ?
-      [0.65, 0.70] : // Mobile values
-      [0.80, 0.85],  // Desktop values
-    [1, 0.85]        // Original size to smaller size
+    [0.80, 0.85],
+    [1, 0.85]
   );
 
   const humanityImageOpacity = useTransform(
     scrollYProgress,
-    isMobile ?
-      [0.65, 0.70] : // Mobile values
-      [0.75, 0.85],  // Desktop values
-    [1, 0.85]        // Full opacity to half opacity
+    [0.75, 0.85],
+    [1, 0.85]
   );
 
   const humanityImageTranslateY = useTransform(
     scrollYProgress,
-    isMobile ?
-      [0.65, 0.70] : // Mobile values
-      [0.80, 0.85],  // Desktop values
-    ["0vh", "5vh"]   // No translation to downward translation
+    [0.80, 0.85],
+    ["0vh", "5vh"]
   );
 
   const cardData = [
@@ -244,6 +217,23 @@ export default function FactsAndFigures() {
       imageUrl: "https://images.pexels.com/photos/2026764/pexels-photo-2026764.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     }
   ];
+
+  // Create all transforms for cards at the top level - regardless of device or render path
+  const lifelinesCardOpacities = cardData.map(() => 
+    useTransform(scrollYProgress, [0.25, 0.35], [0, 1])
+  );
+  
+  const lifelinesCardYTransforms = cardData.map(() => 
+    useTransform(scrollYProgress, [0.25, 0.4], [50, 0])
+  );
+  
+  const humanityCardOpacities = humanityCardData.map(() => 
+    useTransform(scrollYProgress, [0.75, 0.80], [0, 1])
+  );
+  
+  const humanityCardYTransforms = humanityCardData.map(() => 
+    useTransform(scrollYProgress, [0.75, 0.85], [50, 0])
+  );
 
   // Card hover variants for animation
   const cardVariants = {
@@ -366,19 +356,260 @@ export default function FactsAndFigures() {
   // For mobile viewport detection
   const MobileCard = ({ imageUrl, card, index, isHumanity = false }) => {
     const cardRef = useRef(null);
-    const isInView = useInView(cardRef, { once: false, amount: 0.3 });
+    const isInView = useInView(cardRef, { once: true, amount: 0.2 });
     
     return (
       <motion.div 
         ref={cardRef}
-        initial={{ opacity: 0, y: 50 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-        transition={{ duration: 0.8, delay: index * 0.2 }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        transition={{ duration: 0.5, delay: index * 0.1 }}
         className="bg-gradient-to-br from-[#151419] to-black md:min-w-[342px] p-5 rounded-xl shadow-[0_10px_20px_rgba(0,0,0,0.3)] relative overflow-hidden h-[380px] md:h-[450px] flex flex-col justify-between transform-gpu"
       >
         <FlipCard imageUrl={imageUrl} card={card} />
       </motion.div>
     );
+  };
+
+  // Render different content based on device type
+  const renderLifelinesSection = () => {
+    if (isMobile) {
+      return (
+        <section className="relative bg-[#FF6309]">
+          <div className="w-full max-w-6xl mx-auto px-6 py-16">
+            <motion.h2 
+              className="text-4xl font-title font-light text-[#fbfbfb] mb-8 text-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8 }}
+            >
+              Lifelines Delivered
+            </motion.h2>
+            
+            <motion.div
+              className="w-full mx-auto overflow-hidden rounded-lg mb-12"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                alt="Medical equipment" 
+                className="w-full h-64 object-cover rounded-lg"
+              />
+            </motion.div>
+            
+            <div className="grid grid-cols-1 gap-8 mt-8">
+              {cardData.map((card, index) => (
+                <MobileCard 
+                  key={index}
+                  imageUrl={card.imageUrl}
+                  card={card}
+                  index={index}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    } else {
+      return (
+        <>
+          <section className="h-screen w-full relative flex items-center justify-center sticky top-0">
+            {/* Background elements */}
+            <div className="absolute inset-0 left-0 top-0 w-full h-full bg-[#FF6309] from-[#FF6309] to-[#FF8E16] opacity-100"></div>
+            
+            {/* Content that moves together */}
+            <motion.div 
+              ref={lifelinesHeaderRef}
+              style={{ y: lifelinesHeaderY }}
+              className="text-center z-10 w-full max-w-6xl mx-auto"
+            >
+              <motion.h2 
+                className="text-5xl md:text-7xl font-title font-light text-[#fbfbfb] mb-12"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                Lifelines Delivered
+              </motion.h2>
+              
+              <motion.div
+                className="w-full mx-auto overflow-hidden rounded-lg"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1, delay: 0.4 }}
+                style={{ 
+                  scale: imageScale,
+                  opacity: imageOpacity,
+                  y: imageTranslateY,
+                  zIndex: 5 // Explicitly set lower z-index
+                }}
+              >
+                <img 
+                  src="https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                  alt="Medical equipment" 
+                  className="w-full h-64 md:h-[60vh] object-cover rounded-lg"
+                />
+              </motion.div>
+            </motion.div>
+          </section>
+
+          <section className="min-h-screen relative flex items-center justify-center sticky top-0 py-16">
+            <div className="absolute inset-0 left-0 top-10 w-full h-full bg-transparent"></div>
+            
+            <motion.div 
+              ref={cardsRef}
+              style={{ y: cardsY }}
+              className="max-w-6xl w-full mx-auto px-6 z-20"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {cardData.map((card, index) => (
+                  <motion.div 
+                    key={index}
+                    style={{ 
+                      opacity: lifelinesCardOpacities[index],
+                      y: lifelinesCardYTransforms[index],
+                      zIndex: 30
+                    }}
+                    className="bg-gradient-to-br from-[#151419] to-black md:min-w-[342px] p-5 rounded-xl shadow-[0_10px_20px_rgba(0,0,0,0.3)] relative overflow-hidden h-[380px] md:h-[450px] flex flex-col justify-between transform-gpu"
+                  >
+                    <FlipCard 
+                      imageUrl={card.imageUrl}
+                      card={card}
+                    />
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </section>
+          
+          <section className="h-[300vh]"/>
+        </>
+      );
+    }
+  };
+
+  const renderHumanitySection = () => {
+    if (isMobile) {
+      return (
+        <section className="relative sticky top-0 bg-[#fbfbfb]">
+          <div className="w-full max-w-6xl mx-auto px-6 py-16">
+            <motion.h2 
+              className="text-4xl font-title font-light text-[#121212] mb-8 text-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8 }}
+            >
+              Humanity in Numbers
+            </motion.h2>
+            
+            <motion.div
+              className="w-full mx-auto overflow-hidden rounded-lg mb-12"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                alt="Community impact" 
+                className="w-full h-64 object-cover rounded-lg"
+              />
+            </motion.div>
+            
+            <div className="grid grid-cols-1 gap-8 mt-8">
+              {humanityCardData.map((card, index) => (
+                <MobileCard 
+                  key={index}
+                  imageUrl={card.imageUrl}
+                  card={card}
+                  index={index}
+                  isHumanity={true}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    } else {
+      return (
+        <>
+          <section className="h-screen w-full relative flex items-center justify-center sticky top-0">
+            <div className="absolute inset-0 left-0 top-0 w-full h-full">
+              <img 
+                src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                alt="humanity impact" 
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="absolute inset-0 left-0 top-0 w-full h-full bg-[#fbfbfb] opacity-100"></div>
+            
+            <motion.div 
+              ref={humanityHeaderRef}
+              style={{ y: humanityHeaderY }}
+              className="text-center z-10 w-full max-w-6xl mx-auto"
+            >
+              <motion.h2 
+                className="text-5xl md:text-7xl font-title font-light text-[#121212] mb-12"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                Humanity in Numbers
+              </motion.h2>
+              
+              <motion.div
+                className="w-full mx-auto overflow-hidden rounded-lg"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1, delay: 0.4 }}
+                style={{ 
+                  scale: humanityImageScale,
+                  opacity: humanityImageOpacity,
+                  y: humanityImageTranslateY,
+                  zIndex: 5 // Lower z-index for receding effect
+                }}
+              >
+                <img 
+                  src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                  alt="Community impact" 
+                  className="w-full h-64 md:h-[60vh] object-cover rounded-lg"
+                />
+              </motion.div>
+            </motion.div>
+          </section>
+
+          <section className="min-h-screen relative flex items-center justify-center sticky top-0 py-16">
+            <div className="absolute inset-0 left-0 top-10 w-full h-full bg-transparent"></div>
+            
+            <motion.div 
+              ref={humanityCardsRef}
+              style={{ y: humanityCardsY }}
+              className="max-w-6xl w-full mx-auto px-6 z-20"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {humanityCardData.map((card, index) => (
+                  <motion.div 
+                    key={index}
+                    style={{ 
+                      opacity: humanityCardOpacities[index],
+                      y: humanityCardYTransforms[index],
+                      zIndex: 30
+                    }}
+                    className="bg-gradient-to-br from-[#151419] to-black md:min-w-[342px] p-5 rounded-xl shadow-[0_10px_20px_rgba(0,0,0,0.3)] relative overflow-hidden h-[380px] md:h-[450px] flex flex-col justify-between transform-gpu"
+                  >
+                    <FlipCard 
+                      imageUrl={card.imageUrl}
+                      card={card}
+                    />
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </section>
+        </>
+      );
+    }
   };
 
   return (
@@ -432,206 +663,10 @@ export default function FactsAndFigures() {
           </div>
         </section>
 
-        {/* Lifelines Title Section - slides in from bottom */}
-        <section className="h-screen w-full relative flex items-center justify-center sticky top-0">
-          {/* Background elements */}
-          <div className="absolute inset-0 left-0 top-0 w-full h-full bg-[#FF6309] from-[#FF6309] to-[#FF8E16] opacity-100"></div>
-          
-          {/* Content that moves together */}
-          <motion.div 
-            ref={lifelinesHeaderRef}
-            style={{ y: lifelinesHeaderY }}
-            className="text-center z-10 w-full max-w-6xl mx-auto"
-          >
-            <motion.h2 
-              className="text-5xl md:text-7xl font-title font-light text-[#fbfbfb] mb-12"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              Lifelines Delivered
-            </motion.h2>
-            
-            <motion.div
-              className="w-full mx-auto overflow-hidden rounded-lg"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.4 }}
-              style={{ 
-                scale: imageScale,
-                opacity: imageOpacity,
-                y: imageTranslateY,
-                zIndex: 5 // Explicitly set lower z-index
-              }}
-            >
-              <img 
-                src="https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-                alt="Medical equipment" 
-                className="w-full h-64 md:h-[60vh] object-cover rounded-lg"
-              />
-            </motion.div>
-          </motion.div>
-        </section>
+        {renderLifelinesSection()}
 
-        {/* Cards Section - grid layout for all cards in viewport */}
-        <section className="min-h-screen relative flex items-center justify-center sticky top-0 py-16">
-          <div className="absolute inset-0 left-0 top-10 w-full h-full bg-transparent"></div>
-          
-          {/* Desktop cards with scroll animation */}
-          <motion.div 
-            ref={cardsRef}
-            style={isMobile ? {} : { y: cardsY }}
-            className={`max-w-6xl w-full mx-auto px-6 z-20 ${isMobile ? 'hidden md:block' : ''}`}
-          >
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {cardData.map((card, index) => (
-                <motion.div 
-                  key={index}
-                  style={{ 
-                    // Group cards together with a common animation instead of individual transforms
-                    opacity: useTransform(
-                      scrollYProgress,
-                      [0.25, 0.35],
-                      [0, 1]
-                    ),
-                    y: useTransform(
-                      scrollYProgress,
-                      [0.25, 0.4],
-                      [50, 0]
-                    ),
-                    zIndex: 30
-                  }}
-                  className="bg-gradient-to-br from-[#151419] to-black md:min-w-[342px] p-5 rounded-xl shadow-[0_10px_20px_rgba(0,0,0,0.3)] relative overflow-hidden h-[380px] md:h-[450px] flex flex-col justify-between transform-gpu"
-                >
-                  {/* Flip card implementation */}
-                  <FlipCard 
-                    imageUrl={card.imageUrl}
-                    card={card}
-                  />
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-          
-          {/* Mobile cards with intersection observer */}
-          <div className={`max-w-6xl w-full mx-auto px-6 z-20 ${isMobile ? 'block md:hidden' : 'hidden'}`}>
-            <div className="grid grid-cols-1 gap-8 py-10">
-              {cardData.map((card, index) => (
-                <MobileCard 
-                  key={index}
-                  imageUrl={card.imageUrl}
-                  card={card}
-                  index={index}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
+        {renderHumanitySection()}
 
-        <section className={isMobile ? 'h-[100vh]' : 'h-[300vh]'}/>
-
-        {/* Humanity in Numbers Section - slides in from bottom */}
-        <section className="h-screen w-full relative flex items-center justify-center sticky top-0">
-          <div className="absolute inset-0 left-0 top-0 w-full h-full">
-            <img 
-              src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-              alt="humanity impact" 
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="absolute inset-0 left-0 top-0 w-full h-full bg-[#fbfbfb] opacity-100"></div>
-          
-          <motion.div 
-            ref={humanityHeaderRef}
-            style={{ y: humanityHeaderY }}
-            className="text-center z-10 w-full max-w-6xl mx-auto"
-          >
-            <motion.h2 
-              className="text-5xl md:text-7xl font-title font-light text-[#121212] mb-12"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              Humanity in Numbers
-            </motion.h2>
-            
-            <motion.div
-              className="w-full mx-auto overflow-hidden rounded-lg"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.4 }}
-              style={{ 
-                scale: humanityImageScale,
-                opacity: humanityImageOpacity,
-                y: humanityImageTranslateY,
-                zIndex: 5 // Lower z-index for receding effect
-              }}
-            >
-              <img 
-                src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-                alt="Community impact" 
-                className="w-full h-64 md:h-[60vh] object-cover rounded-lg"
-              />
-            </motion.div>
-          </motion.div>
-        </section>
-
-        {/* Humanity Cards Section */}
-        <section className="min-h-screen relative flex items-center justify-center sticky top-0 py-16">
-          <div className="absolute inset-0 left-0 top-10 w-full h-full bg-transparent"></div>
-          
-          {/* Desktop cards with scroll animation */}
-          <motion.div 
-            ref={humanityCardsRef}
-            style={isMobile ? {} : { y: humanityCardsY }}
-            className={`max-w-6xl w-full mx-auto px-6 z-20 ${isMobile ? 'hidden md:block' : ''}`}
-          >
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {humanityCardData.map((card, index) => (
-                <motion.div 
-                  key={index}
-                  style={{ 
-                    // Group cards together with a common animation for humanity section
-                    opacity: useTransform(
-                      scrollYProgress,
-                      [0.75, 0.80],
-                      [0, 1]
-                    ),
-                    y: useTransform(
-                      scrollYProgress,
-                      [0.75, 0.85],
-                      [50, 0]
-                    ),
-                    zIndex: 30
-                  }}
-                  className="bg-gradient-to-br from-[#151419] to-black md:min-w-[342px] p-5 rounded-xl shadow-[0_10px_20px_rgba(0,0,0,0.3)] relative overflow-hidden h-[380px] md:h-[450px] flex flex-col justify-between transform-gpu"
-                >
-                  {/* Flip card implementation */}
-                  <FlipCard 
-                    imageUrl={card.imageUrl}
-                    card={card}
-                  />
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-          
-          {/* Mobile cards with intersection observer */}
-          <div className={`max-w-6xl w-full mx-auto px-6 z-20 ${isMobile ? 'block md:hidden' : 'hidden'}`}>
-            <div className="grid grid-cols-1 gap-8 py-10">
-              {humanityCardData.map((card, index) => (
-                <MobileCard 
-                  key={index}
-                  imageUrl={card.imageUrl}
-                  card={card}
-                  index={index}
-                  isHumanity={true}
-                />
-              ))}
-            </div>
-          </div>
-        </section>
-        
         {/* Extra height to ensure scrolling works properly */}
         <div className="h-[50vh]"></div>
       </div>

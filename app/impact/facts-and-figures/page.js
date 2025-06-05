@@ -1,7 +1,9 @@
+"use client";
+
 import React from "react";
-import FactsAndFigures from "./factsandfigures";
-import Footer from "@/app/components/Footer";
-import Impact from "./impact.jsx";
+import dynamic from "next/dynamic";
+
+const FactsAndFigures = dynamic(() => import("./factsandfigures"), { ssr: false });
 
 export default function Page() {
   return (
@@ -9,4 +11,4 @@ export default function Page() {
       <FactsAndFigures />
     </>
   );
-} 
+}

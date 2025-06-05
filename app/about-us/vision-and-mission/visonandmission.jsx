@@ -70,7 +70,7 @@ export default function VisionAndMissionPage() {
   
   const thirdSlideY = useTransform(
     scrollYProgress,
-    [0.0, 0.6, 0.7, 1.0],
+    [0.0, 0.6, 0.7, .8],
     ["100vh", "100vh", "0vh", "0vh"]
   );
   
