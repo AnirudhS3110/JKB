@@ -91,7 +91,7 @@ export default function NewsFeed() {
               <h2 className="text-5xl md:text-6xl text-[#fbfbfb] mb-8 md:mb-12 2xl:max-w-[550px] font-title font-light" data-target="latest-news-title">
                 Archives Of <br/> Jaskaran Bothra Foundation
               </h2>
-              <Link href="/news/latest" className="inline-block bg-[#F47E28] hover:bg-[#E67020] text-white font-medium px-8 py-4 rounded-md transition-colors duration-300">
+              <Link href="/news/archives" className="inline-block bg-[#F47E28] hover:bg-[#E67020] text-white font-medium px-8 py-4 rounded-md transition-colors duration-300">
                 Browse more articles
               </Link>
             </div>
