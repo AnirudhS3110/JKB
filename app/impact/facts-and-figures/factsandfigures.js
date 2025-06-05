@@ -375,7 +375,7 @@ export default function FactsAndFigures() {
   const renderLifelinesSection = () => {
     if (isMobile) {
       return (
-        <section className="relative bg-[#FF6309]">
+        <section className="relative sticky top-[-150vh] bg-[#FF6309]">
           <div className="w-full max-w-6xl mx-auto px-6 py-16">
             <motion.h2 
               className="text-4xl font-title font-light text-[#fbfbfb] mb-8 text-center"
