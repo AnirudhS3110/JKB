@@ -136,7 +136,7 @@ export default function FactsAndFigures() {
         "From fragile to fighting – giving babies a shot at survival.",
         "Built for care – top-tier tech for life's earliest battles."
       ],
-      imageUrl: "https://images.pexels.com/photos/247786/pexels-photo-247786.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      imageUrl: "/images/infant-radiant.jpg"
     },
     {
       icon: (
@@ -151,7 +151,7 @@ export default function FactsAndFigures() {
         "Equipped to heal – tools that empower doctors to save.",
         "More than treatment – a lifeline where none existed."
       ],
-      imageUrl: "https://images.pexels.com/photos/6823538/pexels-photo-6823538.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      imageUrl: "/images/neoNatal.jpg"
     },
     {
       icon: (
@@ -166,7 +166,7 @@ export default function FactsAndFigures() {
         "Care that moves – tech brought to rural doorsteps.",
         "Not just machines – access, dignity, second chances."
       ],
-      imageUrl: "https://images.pexels.com/photos/4226119/pexels-photo-4226119.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      imageUrl: "/images/gaganasagar.png"
     }
   ];
 
@@ -184,7 +184,7 @@ export default function FactsAndFigures() {
         "In partnership with Mumbai Police — unity in action.",
         "Food became survival. Distribution became hope."
       ],
-      imageUrl: "https://images.pexels.com/photos/4391470/pexels-photo-4391470.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      imageUrl: "/images/MediaCoverage/9.jpg"
     },
     {
       icon: (
@@ -199,7 +199,7 @@ export default function FactsAndFigures() {
         "1,000 mobility-challenged gained renewed freedom.",
         "Engineered empathy that sees ability, not limits."
       ],
-      imageUrl: "https://images.pexels.com/photos/6647037/pexels-photo-6647037.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      imageUrl: "https://images.pexels.com/photos/7188916/pexels-photo-7188916.jpeg?auto=compress&cs=tinysrgb&w=600"
     },
     {
       icon: (
@@ -214,7 +214,7 @@ export default function FactsAndFigures() {
         "Every chair, a seat at life's table.",
         "Mobility isn't luxury — it's dignity, returned."
       ],
-      imageUrl: "https://images.pexels.com/photos/2026764/pexels-photo-2026764.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      imageUrl: "/images/NewsPaper22.png"
     }
   ];
 
