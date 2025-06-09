@@ -32,7 +32,7 @@ export const products = [
         title: "Digital Literacy",
         link: "/healthcare",
         thumbnail:
-          "/images/ArchivesSection/4.png",
+          "/images/MediaCoverage/9.jpg",
   },
   
     {
@@ -46,13 +46,13 @@ export const products = [
       title: "Forest Conservation",
       link: "/conservation",
       thumbnail:
-        "/images/ArchivesSection/4.png",
+        "/images/MediaCoverage/5.jpg",
     },
   {
         title: "Clean Water Access",
         link: "/clean-water",
         thumbnail:
-          "/images/HeroParallax/CarousalPic5.png",
+          "/images/MediaCoverage/7.jpg",
       },
     
     
@@ -66,7 +66,8 @@ export const products = [
       title: "Girl Child Education",
       link: "/women-empowerment",
       thumbnail:
-      "/images/momNew.png",
-    }
+      "/images/MediaCoverage/8.jpg",
+    },
+    
   ];
   

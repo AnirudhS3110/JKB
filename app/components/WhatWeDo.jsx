@@ -26,49 +26,49 @@ const WhatWeDo = () => {
       text: 'Empowering Inclusion for All Abilities' , 
       tagline: 'Accessible Futures' ,
       href: '/accessible-futures', 
-      color: 'bg-[#F4720B]' 
+      color: 'bg-[#fbfbfb]' 
     },
     { 
       id: 2, 
       text: 'Championing Women in Sustainability', 
       tagline: 'SHE for Sustainability',
       href: '/she-for-sustainability', 
-      color: 'bg-[#F4720B]' 
+      color: 'bg-[#fbfbfb]' 
     },
     { 
       id: 3, 
       text: 'Mental Health Through the Lens of Mindfulness', 
       tagline: 'You Are Not Alone',
       href: '/you-are-not-alone', 
-      color: 'bg-[#F4720B]' 
+      color: 'bg-[#fbfbfb]' 
     },
     { 
       id: 4, 
       text: 'Advocating Girl Child Education', 
       tagline: 'She Leads, We Rise',
       href: '/she-leads-we-rise', 
-      color: 'bg-[#F4720B]' 
+      color: 'bg-[#fbfbfb]' 
     },
     { 
       id: 5, 
       text: 'Bridging the Rural Health Divide', 
       tagline: 'Health Beyond Boundaries',
       href: '/health-beyond-boundaries', 
-      color: 'bg-[#F4720B]' 
+      color: 'bg-[#fbfbfb]' 
     },
     { 
       id: 6, 
       text: 'Relief & Rehabilitation in Times of Calamity', 
       tagline: 'Hope in Crisis',
       href: '/hope-in-crisis', 
-      color: 'bg-[#F4720B]' 
+      color: 'bg-[#fbfbfb]' 
     },
     { 
       id: 7, 
       text: 'Honouring National Icons, Preserving Legacies', 
       tagline: 'Eternal Flame Campaign',
       href: '/eternal-flame-campaign', 
-      color: 'bg-[#F4720B]' 
+      color: 'bg-[#fbfbfb]' 
     },
   ];
 
@@ -93,7 +93,7 @@ const WhatWeDo = () => {
           }}
         >
           {/* Subtle overlay for better text readability */}
-          <div className="absolute inset-0 bg-[#000000] opacity-100"></div>
+          <div className="absolute inset-0 bg-[#F4720B] opacity-100"></div>
         </div>
       </div>
 
@@ -142,7 +142,7 @@ const WhatWeDo = () => {
                       
                       {/* Tagline that appears on hover/touch */}
                       <h3 
-                        className={`absolute font-paragraph max-w-[80%] text-xl sm:text-2xl md:text-3xl text-white z-20 
+                        className={`absolute font-paragraph max-w-[80%] text-xl sm:text-2xl md:text-3xl text-[#F4720B] z-20 
                         [transition:transform_0.3s_ease,opacity_0.3s_ease] md:[transition:transform_2s_cubic-bezier(0.22,1,0.36,1)]
                         ${activeItem === item.id ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-1/2'}
                         md:opacity-0 md:-translate-x-1/2 md:group-hover:opacity-100 md:group-hover:translate-x-0`}

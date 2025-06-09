@@ -40,6 +40,26 @@ export default function FeaturedNewsSection() {
       video: "/videos/vid-4.mp4",
       image: "https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
       href: "/news/sustainable-farming"
+    },
+    {
+      date: "22 Feb 2025",
+      location: "Ghana",
+      title: "Jagruti Bothra - Trustee - Jaskaran Bothra Foundation",
+      description: "Supporting Named After Mom Campaign",
+      video: "/videos/vid-5.mp4",
+      image: "https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
+      href: "/news/sustainable-farming"
+
+    },
+    {
+      date: "22 Feb 2025",
+      location: "Ghana",
+      title: "Jagruti Bothra - Trustee - Jaskaran Bothra Foundation",
+      description: "Supporting Named After Mom Campaign",
+      video: "/videos/vid-6.mp4",
+      image: "https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
+      href: "/news/sustainable-farming"
+
     }
   ];
 
