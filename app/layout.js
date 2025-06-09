@@ -1,7 +1,7 @@
 import "./globals.css";
 import { Cormorant_Garamond, Source_Serif_4, Playfair_Display, DM_Serif_Text, Merriweather } from 'next/font/google';
 import ImprovedNavbar from './components/Navbar';
-
+import Head from "next/head";
 // Define premium fonts
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
@@ -63,11 +63,15 @@ const sourceSerifPro = Source_Serif_4({
   export const metadata = {
   title: 'Jaskaran Bothra Foundation',
   description: 'Creating lasting change through sustainable initiatives',
+  icons: {
+    icon: '/images/favicon-2.png', // This sets the favicon properly!
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${cormorant.variable}   ${dmSerifText.variable} ${merriweather.variable} ${playfairDisplay.variable} ${sourceSerifPro.variable} `} suppressHydrationWarning>
+       
       <body className="bg-white " suppressHydrationWarning>
         <ImprovedNavbar />
         {children}

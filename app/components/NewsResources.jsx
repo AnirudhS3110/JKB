@@ -29,7 +29,7 @@ export default function NewsFeed() {
       id: 1,
       title: 'Name Her Claim Her:Rewrite Identity with Equality .',
       category: 'Stories from our work',
-      image: '/images/ArchivesSection/1.png',
+      image: '/images/ArchivesSection/news1.png',
       tags: ['Choose Mom. Change the Norm.', 'Middle Name. Equal Game.', 'Identity Begins With Her.'],
       link: '/story/fishcookies'
     },
@@ -38,7 +38,7 @@ export default function NewsFeed() {
       title: 'SHE for Sustainability: Support Her Empowerment',
       category: 'Upcoming Campaign',
       location: 'India',
-      image: '/images/ArchivesSection/2.png',
+      image: '/images/ArchivesSection/news3.png',
       tags: ['Women Lead. Earth Thrives.', 'Her Vision. Our Future.', 'Sustainable Power. Female Force.', 'Rural Women. Global Impact.'],
       link: '/upcoming-campaigns/upcoming-campaigns'
     },
@@ -47,7 +47,7 @@ export default function NewsFeed() {
       title: 'You Are Not Alone',
       category: 'Upcoming Campaign',
       location: 'India',
-      image: '/images/ArchivesSection/3.png',
+      image: '/images/ArchivesSection/news2.png',
       tags: ['Mind Matters. Always Here.', 'Break Stigma. Build Connection.', 'Compassion Heals. Silence Doesn\'t.', 'Your Story. Our Support.'],
       link: '/upcoming-campaigns/upcoming-campaigns'
     }
@@ -107,7 +107,7 @@ export default function NewsFeed() {
                           alt={articles[0].title}
                           fill
                           sizes="(max-width: 768px) 100vw, 50vw"
-                          className="object-cover"
+                          className="object-contain"
                           priority
                         />
                       </div>

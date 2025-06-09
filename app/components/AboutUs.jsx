@@ -60,7 +60,7 @@ export default function AboutUsSection() {
     mission: {
       title: "Our Mission",
       description: "To bridge corporate growth and community development. To promote education for the girl child. To strengthen rural healthcare access. To encourage sustainable livelihoods through skill development. To advocate for women empowerment. To promote mental health awareness.",
-      image: "/images/CarousalPic8.jpg",
+      image: "/images/CommunityEmpowerment.jpg",
       link: "/about-us/vision-and-mission"
     }
   };
