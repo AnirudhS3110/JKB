@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -53,9 +52,11 @@ const Footer = () => {
                 
               </div>
               <div className="space-y-3 text-[#fbfbfb]">
+              <Link href="/contact" className="block hover:text-[#F4720B]">Contact Us</Link>
                 <Link href="/news/latest" className="block hover:text-[#F4720B]">News</Link>
                 <Link href="/partnership/partnership-form" className="block hover:text-[#F4720B]">Partner with us</Link>
-                <Link href="/privacy-policy" className="block hover:text-[#F4720B]">Privacy Policy</Link>
+                
+                {/* <Link href="/privacy-policy" className="block hover:text-[#F4720B]">Privacy Policy</Link> */}
                 <Link href="/terms-of-use" className="block hover:text-[#F4720B]">Terms of Use</Link>
                 
               </div>

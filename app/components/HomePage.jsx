@@ -13,6 +13,7 @@ import AppleCardsCarouselDemo from '@/components/apple-cards-carousel-demo';
 import HeroParallaxDemo from '@/components/ui/hero-parallax-demo';
 import FounderTribute from './FounderTribute';
 import TimelineDemo from '@/components/timeline-demo';
+import ContactusSection from './Contactus';
 import { gsap } from 'gsap';
 import FeaturedNewsCard from '@/components/ui/FeaturedNewsCard';
 import Link from 'next/link';
@@ -191,6 +192,11 @@ export default function HomePage() {
           {/* Hero Parallax Section */}
           <section className="hidden md:block bg-white relative">
             <HeroParallaxDemo />
+          </section>
+          
+          {/* Contact Us Section */}
+          <section id="contact" className="relative">
+            <ContactusSection />
           </section>
           
           {/* News and Resources Section */}

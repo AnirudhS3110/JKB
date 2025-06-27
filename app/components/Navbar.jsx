@@ -116,6 +116,15 @@ const ImprovedNavbar = () => {
         { text: 'Archives', href: '/news/archives' },
         { text: 'Media Coverage', href: '/news/media-coverage' },
       ]
+    },
+    {
+      title: 'Contact',
+      href:'/contact',
+      description: 'Get in touch with our team for partnerships, inquiries, or how you can contribute to our mission.',
+      image: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      links: [
+        { text: 'Contact Us', href: '/contact' },
+      ]
     }
   ];
 
