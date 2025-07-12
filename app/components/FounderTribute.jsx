@@ -7,6 +7,11 @@ export default function FounderTribute() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [navbarHeight, setNavbarHeight] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [sectionStyle, setSectionStyle] = useState({
+    height: '110vh',
+    minHeight: 'auto',
+    maxHeight: 'none'
+  });
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { 
     once: false, 
@@ -26,12 +31,24 @@ export default function FounderTribute() {
       setNavbarHeight(navbar.offsetHeight);
     }
     
+    // Set the section style after we have access to window
+    setSectionStyle({
+      height: window.innerWidth > 768 ? `calc(100vh - ${navbar?.offsetHeight || 0}px)` : '110vh',
+      minHeight: 'auto',
+      maxHeight: 'none'
+    });
+    
     // Update on resize to maintain responsive behavior
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
       const navbar = document.querySelector('nav') || document.querySelector('header');
       if (navbar) {
         setNavbarHeight(navbar.offsetHeight);
+        setSectionStyle({
+          height: window.innerWidth > 768 ? `calc(100vh - ${navbar.offsetHeight}px)` : '110vh',
+          minHeight: 'auto',
+          maxHeight: 'none'
+        });
       }
     };
     
@@ -88,12 +105,12 @@ export default function FounderTribute() {
     }
   };
 
-  // Calculate section height to be 100vh minus navbar height
-  const sectionStyle = {
-    height: window.innerWidth > 768 ? `calc(100vh - ${navbarHeight}px)` : '110vh',
-    minHeight: 'auto', // Override the min-height
-    maxHeight: 'none'  // Override the max-height
-  };
+  // Remove the direct window access that was causing the error
+  // const sectionStyle = {
+  //   height: window.innerWidth > 768 ? `calc(100vh - ${navbarHeight}px)` : '110vh',
+  //   minHeight: 'auto',
+  //   maxHeight: 'none'
+  // };
 
   return (
     <section 
@@ -103,7 +120,7 @@ export default function FounderTribute() {
     >
       {/* Left content section */}
       <div className="relative z-10 w-full md:h-full md:w-1/2 flex flex-col justify-center px-8 md:px-16 py-16 md:py-0">
-        <div className="max-w-xl">
+        
           <motion.div
             variants={textVariants}
             initial="hidden"
@@ -150,7 +167,6 @@ export default function FounderTribute() {
             <p className="text-[#F4720B] mt-4">15th December 1928 - Forver</p>
           </motion.div>
         </div>
-      </div>
       
       {/* Right image section with normal display */}
       <motion.div 

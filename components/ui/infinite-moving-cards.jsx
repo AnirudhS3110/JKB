@@ -13,7 +13,6 @@ export const InfiniteMovingCards = ({
 }) => {
   const containerRef = React.useRef(null);
   const scrollerRef = React.useRef(null);
-  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     addAnimation();
@@ -72,24 +71,15 @@ export const InfiniteMovingCards = ({
       className={cn(
         "scroller relative z-20 max-w-7xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
         className,
-        isHovered && "after:content-[''] after:absolute after:inset-0 after:bg-black/5 after:rounded-lg after:z-10"
       )}
-      onMouseEnter={() => pauseOnHover && setIsHovered(true)}
-      onMouseLeave={() => pauseOnHover && setIsHovered(false)}
     >
-      {pauseOnHover && isHovered && (
-        <div className="absolute top-4 right-4 bg-black/70 text-white text-xs px-2 py-1 rounded-full z-30">
-          Paused
-        </div>
-      )}
       <ul
         ref={scrollerRef}
         className={cn(
           "flex w-max min-w-full shrink-0 flex-nowrap gap-4 py-4",
           start && "animate-scroll",
-          pauseOnHover && isHovered && "animation-play-state-paused"
+          pauseOnHover && "hover:[animation-play-state:paused]",
         )}
-        style={pauseOnHover && isHovered ? { animationPlayState: 'paused' } : {}}
       >
         {items.map((item, idx) => (
           <li
