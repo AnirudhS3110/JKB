@@ -1,7 +1,7 @@
 import "./globals.css";
 import { Cormorant_Garamond, Source_Serif_4, Playfair_Display, DM_Serif_Text, Merriweather } from 'next/font/google';
 import ImprovedNavbar from './components/Navbar';
-import Head from "next/head";
+
 // Define premium fonts
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
