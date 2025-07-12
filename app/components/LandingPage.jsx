@@ -12,7 +12,7 @@ export default function LandingPage() {
   // Refs for scroll tracking
   const containerRef = useRef(null);
   const heroContainerRef = useRef(null);
-  const homePageRef = useRef(null);
+  // const homePageRef = useRef(null);
   
   // Set up scroll-based animation for HomePage
   const { scrollYProgress } = useScroll({
@@ -23,11 +23,11 @@ export default function LandingPage() {
   // Transform values for sliding animations - similar to AboutUsPage.jsx
   // Start sliding HomePage from 100vh (off-screen) to 0vh (top of screen)
   // The values [0.4, 0.6] represent the scroll progress range during which the slide happens
-  const homePageY = useTransform(
-    scrollYProgress,
-    [0.7, 0.9], 
-    ["100vh", "0vh"]
-  );
+  // const homePageY = useTransform(
+  //   scrollYProgress,
+  //   [0.7, 0.9], 
+  //   ["100vh", "0vh"]
+  // );
   
   // Handle hydration mismatch
   useEffect(() => {
@@ -50,33 +50,35 @@ export default function LandingPage() {
   }, []);
 
   return(
-    <div className="relative" ref={containerRef}>
-      {/* HeroLandingPage with sticky sections */}
-      <div ref={heroContainerRef}>
+    
+      <div className=" w-full  " ref={containerRef}>
+        {/* HeroLandingPage with sticky sections */}
+        {/* <div ref={heroContainerRef}>
+          
+          
+        </div> */}
         <HeroLandingPage />
+  
+        <section className='   w-screen  h-[100vh]  sticky top-0 z-[5]'>
+          
+        <VideoHeroSection />
+        </section>
+        <section className='w-screen   sticky top-0 z-10'>
+        <HomePage />
+        </section>
+        {/* HomePage slides over the video section */}
+        {/* <section className="min-h-screen sticky top-0 z-20">
+          <motion.div
+            ref={homePageRef}
+            style={{ y: homePageY }}
+            className="relative w-full h-full bg-white"
+          >
+            
+          </motion.div>
+        </section>
+         */}
+        {/* Extra space for scroll */}
         
       </div>
-
-      <section className='w-screen relative h-[100vh] bg-black/70 sticky top-0 z-[5]'>
-        
-      <VideoHeroSection />
-      </section>
-      <section className='w-screen   sticky  z-10'>
-      <HomePage />
-      </section>
-      {/* HomePage slides over the video section */}
-      {/* <section className="min-h-screen sticky top-0 z-20">
-        <motion.div
-          ref={homePageRef}
-          style={{ y: homePageY }}
-          className="relative w-full h-full bg-white"
-        >
-          
-        </motion.div>
-      </section>
-       */}
-      {/* Extra space for scroll */}
-      
-    </div>
   );
 }

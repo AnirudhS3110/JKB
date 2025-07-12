@@ -68,7 +68,7 @@ export default function VideoHeroSection() {
   return (
     <section 
       ref={videoSectionRef}
-      className="h-screen flex items-center justify-center overflow-hidden"
+      className="h-full overflow-hidden flex items-center justify-center  "
     >
       {/* Video Background */}
       <motion.div 
@@ -82,7 +82,7 @@ export default function VideoHeroSection() {
             ref={videoRef}
             className="w-full h-full object-cover"
             style={{
-              transform: 'scale(1.05)',
+              
               transformOrigin: 'center center'
             }}
             autoPlay

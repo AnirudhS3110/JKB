@@ -46,7 +46,7 @@ export default function HomePage() {
         }
       `}</style>
       
-      <div ref={containerRef} style={{ position: 'relative', overflowX: 'hidden' }}>
+      <div ref={containerRef} style={{ position: 'relative'  }}>
         {/* Main Content */}
         <div className="bg-white">
           {/* Hero section */}
