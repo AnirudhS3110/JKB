@@ -3,14 +3,13 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 import { useInView } from 'framer-motion';
 import LogoRevealWrapper from '@/components/ui/LogoReveal';
+import Image from 'next/image';
 
 export default function HonoringJaskaranBothra() {
   const containerRef = useRef(null);
   const sectionRef = useRef(null);
   const heroRef = useRef(null);
   const legacyTitleRef = useRef(null);
-  const firstCardsRef = useRef(null);
-  const secondCardsRef = useRef(null);
   
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
   const isHeroInView = useInView(heroRef, { once: true });
@@ -32,77 +31,40 @@ export default function HonoringJaskaranBothra() {
     target: containerRef,
     offset: ["start", "end"]
   });
-  
-  // Transform values for sliding animations
-  const firstCardsY = useTransform(
-    scrollYProgress,
-    [0.2, 0.4],  // When to start/complete animation
-    ["100vh", "0vh"]  // Start position to end position
-  );
-  
-  const secondCardsY = useTransform(
-    scrollYProgress,
-    [0.6, 0.8],  // When to start/complete animation
-    ["100vh", "0vh"]  // Start position to end position
-  );
 
-  // First set of cards
-  const firstCardsData = [
+  // Legacy data with descriptions and images
+  const legacyData = [
     {
       title: "Compassionate Leader",
       content: "Dedicated over 30 years to community service, touching countless lives through mentorship and charitable work that continues to inspire generations.",
-      icon: (
-        <div className="bg-[#FF6309] rounded-full h-20 w-20 flex items-center justify-center shadow-md">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-          </svg>
-        </div>
-      )
+      image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      alt: "Elderly man mentoring youth"
     },
     {
       title: "Education & Healthcare",
       content: "Shri Jaskaran Bothra has always advocated for girls' education and healthcare for the underprivileged. He consistently worked towards building institutions that today provide education to many in need.",
-      icon: (
-        <div className="bg-[#FF6309] rounded-full h-20 w-20 flex items-center justify-center shadow-md">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-          </svg>
-        </div>
-      )
-    }
-  ];
-  
-  // Second set of cards
-  const secondCardsData = [
+      image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      alt: "Students in a classroom"
+    },
     {
       title: "Freedom Fighter",
       content: "Shri Bothra participated actively in the Indian Independence Movement, especially in the boycott of imported clothes, a nationwide campaign. He was involved in the Swadeshi movement in Kolkata.",
-      icon: (
-        <div className="bg-[#FF6309] rounded-full h-20 w-20 flex items-center justify-center shadow-md">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" />
-          </svg>
-        </div>
-      )
+      image: "https://images.unsplash.com/photo-1532375810709-75b1da00537c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      alt: "Indian flag"
     },
     {
       title: "Recognized Legacy",
       content: "In recognition of his extensive social service, the Akhil Bharatiya Sadhumargi Jain Sangh posthumously awarded him the 'Atulya Seva Puraskar' in Chennai.",
-      icon: (
-        <div className="bg-[#FF6309] rounded-full h-20 w-20 flex items-center justify-center shadow-md">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-          </svg>
-        </div>
-      )
+      image: "https://images.unsplash.com/photo-1569587112025-0d460e81a126?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      alt: "Award ceremony"
     }
   ];
 
   return (
     <LogoRevealWrapper>
-      <div ref={containerRef} className="relative">
+      <div ref={containerRef} className="relative bg-white">
         {/* Hero Section */}
-        <section ref={heroRef} className="relative h-screen w-full overflow-hidden sticky top-0">
+        <section ref={heroRef} className="relative h-screen bg-white w-full overflow-hidden sticky top-0">
           <div className="absolute inset-0 h-full w-full">
             <img
               src="/images/BG-201.png" 
@@ -151,185 +113,80 @@ export default function HonoringJaskaranBothra() {
           </div>
         </section>
         
-        {/* Life & Legacy Title Section - similar to Mission Title Section in visonandmission.jsx */}
-        <section className="h-screen flex items-center justify-center bg-gradient-to-r from-[#FF6309] to-[#FF8E16] sticky top-0">
-          <div className="absolute inset-0 left-0 top-0 w-full h-full">
-            {/* <img
-              src="https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1189&q=80"
-              alt="legacy-bg" 
-              className="w-full h-full object-cover"
-            /> */}
-          </div>
-          <div className="absolute inset-0 left-0 top-0 w-full h-full bg-[black] opacity-0"></div>
-          
-          <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
+        {/* Life & Legacy Title Section */}
+        <section className="bg-white py-16 relative z-10">
+          <div className="max-w-7xl bg-white mx-auto px-6">
             <motion.h2 
               ref={legacyTitleRef}
-              className="text-5xl md:text-7xl font-title font-light text-[#fbfbfb] mb-8"
+              className="text-5xl md:text-7xl font-title font-light text-black mb-6 text-center"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
               Life & Legacy
             </motion.h2>
+            
+            {/* Separator line */}
+            <div className="w-24 h-1 bg-[#F4720B] mx-auto mb-8"></div>
+            
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-xl md:text-2xl text-[#fbfbfb] font-paragraph"
+              className="text-xl md:text-2xl text-gray-800 font-paragraph text-center max-w-4xl mx-auto"
             >
               The extraordinary journey and contributions that shaped communities
             </motion.p>
           </div>
         </section>
         
-        {/* First Cards Section - floating cards sliding from bottom */}
-        <section className="h-screen relative md:bg-transparent flex items-center justify-center sticky top-0">
-          {/* Mobile-only background for first cards */}
-          <div className="md:hidden bg-gradient-to-r from-[#FF6309] to-[#FF8E16] absolute inset-0 left-0 top-0 w-full h-full">
-            {/* <img
-              src="https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1189&q=80"
-              alt="legacy-bg" 
-              className="w-full h-full object-cover"
-            /> */}
-          </div>
-          <div className="absolute md:hidden inset-0 left-0 top-0 w-full h-full bg-black opacity-20"></div>
-          
-          {/* Mobile: First set of cards */}
-          <div className="md:hidden max-w-6xl w-full mx-auto flex flex-col items-center justify-center gap-4 px-6 z-10">
-            {firstCardsData.map((card, index) => (
-              <motion.div 
-                key={`mobile-first-${index}`}
-                initial={{ opacity: 0, y: 50 }}
-                animate={(isInView || animationReady) ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-                transition={{ duration: 0.5, delay: 0.3 + (0.1 * index) }}
-                className="bg-white p-8 max-h-[450px] rounded-lg shadow-lg relative overflow-hidden"
-              >
-                <div className="flex flex-col items-center">
-                  <div className="mb-6 transform -translate-y-2">
-                    {card.icon}
-                  </div>
-                  <h3 className="text-2xl font-heading font-medium text-gray-900 mb-2 text-center">{card.title}</h3>
-                  <div className="w-16 h-1 bg-[#FF6309] mb-6"></div>
-                  <p className="text-gray-700 font-paragraph text-center">
-                    {card.content}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-          <div className="md:hidden h-[80vh] bg-gradient-to-r from-[#FF6309] to-[#FF8E16] relative"></div>
-          
-          {/* Desktop: First set sliding cards */}
-          <motion.div 
-            ref={firstCardsRef}
-            style={{ y: firstCardsY }}
-            className="hidden md:flex max-w-6xl w-full mx-auto justify-around gap-8 px-6 z-10"
-          >
-            {firstCardsData.map((card, index) => (
-              <motion.div 
-                whileHover={{scale: 1.02, transition: {duration: 0.3}}}
-                key={`desktop-first-${index}`}
-                style={{ 
-                  translateY: useTransform(
-                    scrollYProgress,
-                    [0.2, 0.4 + (index * 0.028)],
-                    ["50vh", "0vh"]
-                  )
-                }}
-                className="bg-[#fbfbfb] min-w-[200px] max-w-[400px] p-8 rounded-lg shadow-lg relative overflow-hidden min-h-[380px]"
-              >
-                <div className="flex flex-col items-center h-full">
-                  <div className="flex flex-col items-center mb-4">
-                    <div className="mb-6 transform -translate-y-2">
-                      {card.icon}
+        {/* Legacy Content Section - Styled like Mission section */}
+        <section className="bg-white relative z-10 pt-0 pb-16">
+          <div className="max-w-7xl mx-auto px-6 bg-white">
+            {/* Legacy Cards in Zig-Zag Layout */}
+            <div className="space-y-16 mt-8 bg-white">
+              {legacyData.map((legacy, index) => (
+                <motion.div 
+                  key={index}
+                  initial={{ opacity: 0, y: 60 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.1 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 md:gap-16 items-center relative py-8 md:py-12 bg-white`}
+                >
+                  {/* Background Shape */}
+                  <div className={`absolute -z-10 rounded-3xl bg-gray-50 h-full w-[95%] ${index % 2 === 0 ? 'right-0' : 'left-0'} opacity-50`}></div>
+                  
+                  {/* Legacy Image */}
+                  <div className="w-full md:w-2/5">
+                    <div className={`relative overflow-hidden rounded-2xl shadow-xl mx-auto max-w-sm aspect-[3/4] group ${index % 2 === 0 ? 'md:ml-6' : 'md:mr-6'}`}>
+                      <div className="absolute inset-0 bg-gradient-to-b from-[#F4720B]/20 to-[#F4720B]/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
+                      <Image 
+                        src={legacy.image}
+                        alt={legacy.alt}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-700"
+                      />
+                      <div className="absolute bottom-0 left-0 right-0 p-6 z-20 bg-gradient-to-t from-black/70 to-transparent text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                        <p className="text-sm font-medium uppercase tracking-wider text-center">{legacy.title}</p>
+                      </div>
                     </div>
-                    <h3 className="text-2xl font-heading font-medium text-gray-900 mb-2 text-center">{card.title}</h3>
-                    <div className="w-16 h-1 bg-[#FF6309] mb-6"></div>
                   </div>
-                  <p className="text-gray-700 font-paragraph text-[18px] text-center">
-                    {card.content}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </section>
-        
-        {/* Second Cards Section - floating cards sliding from bottom */}
-        <section className="h-screen relative  md:bg-transparent flex items-center justify-center sticky top-0">
-          {/* Mobile-only background for second cards */}
-          <div className="md:hidden absolute bg-gradient-to-r from-[#FF6309] to-[#FF8E16] inset-0 left-0 top-0 w-full h-full min-h-[120vh]">
-            {/* <img
-              src="https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1189&q=80"
-              alt="legacy-bg" 
-              className="w-full h-full object-cover"
-            /> */}
-          </div>
-          <div className="absolute md:hidden inset-0 left-0 top-0 w-full h-full bg-black opacity-10"></div>
-          
-          {/* Mobile: Second set of cards */}
-          <div className="md:hidden max-w-6xl w-full mx-auto grid grid-cols-1 gap-8 px-6 z-10">
-            {secondCardsData.map((card, index) => (
-              <motion.div 
-                key={`mobile-second-${index}`}
-                initial={{ opacity: 0, y: 50 }}
-                animate={(isInView || animationReady) ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-                transition={{ duration: 0.5, delay: 0.5 + (0.1 * index) }}
-                className="bg-white p-8 rounded-lg shadow-lg relative overflow-hidden"
-              >
-                <div className="flex flex-col items-center">
-                  <div className="mb-6 transform -translate-y-2">
-                    {card.icon}
-                  </div>
-                  <h3 className="text-2xl font-heading font-medium text-gray-900 mb-2 text-center">{card.title}</h3>
-                  <div className="w-16 h-1 bg-[#FF6309] mb-6"></div>
-                  <p className="text-gray-700 font-paragraph text-center">
-                    {card.content}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-          
-          {/* Desktop: Second set sliding cards */}
-          <motion.div 
-            ref={secondCardsRef}
-            style={{ y: secondCardsY }}
-            className="hidden md:flex justify-around max-w-6xl w-full mx-auto gap-8 px-6 z-10"
-          >
-            {secondCardsData.map((card, index) => (
-              <motion.div 
-                whileHover={{scale: 1.02, transition: {duration: 0.3}}}
-                key={`desktop-second-${index}`}
-                style={{ 
-                  translateY: useTransform(
-                    scrollYProgress,
-                    [0.4, 0.6 + (index * 0.028)],
-                    ["50vh", "0vh"]
-                  )
-                }}
-                className="bg-white min-w-[200px] max-w-[400px] p-8 rounded-lg shadow-lg relative overflow-hidden min-h-[380px]"
-              >
-                <div className="flex flex-col items-center h-full">
-                  <div className="flex flex-col items-center mb-4">
-                    <div className="mb-6 transform -translate-y-2">
-                      {card.icon}
+                  
+                  {/* Legacy Content */}
+                  <div className="w-full md:w-3/5 space-y-6 px-4 md:px-6 bg-white">
+                    <div className="space-y-2 text-center md:text-left">
+                      <h3 className="text-3xl font-heading font-medium text-black">{legacy.title}</h3>
+                      <div className="w-24 h-1 bg-[#F4720B]/70 my-4 mx-auto md:mx-0"></div>
                     </div>
-                    <h3 className="text-2xl font-heading font-medium text-gray-900 mb-2 text-center">{card.title}</h3>
-                    <div className="w-16 h-1 bg-[#FF6309] mb-6"></div>
+                    
+                    <p className="text-gray-800 font-paragraph text-lg md:text-xl leading-relaxed text-center md:text-left text-[20px] lg:text-[20px] xl:text-[26px]">{legacy.content}</p>
                   </div>
-                  <p className="text-gray-700 text-[18px] font-paragraph text-center">
-                    {card.content}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </section>
-        
-        {/* Extra height to help unstick cards */}
-        <div className="h-screen bg-transparent"></div>
       </div>
     </LogoRevealWrapper>
   );

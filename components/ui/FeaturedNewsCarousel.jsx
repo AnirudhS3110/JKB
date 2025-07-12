@@ -94,7 +94,7 @@ export default function FeaturedNewsCarousel({ items }) {
   
   return (
     <div 
-      className="relative w-screen h-[100vh] md:h-[75vh] overflow-hidden bg-[#fbfbfb]  flex items-center justify-center"
+      className="relative w-full h-[100vh] md:h-[75vh] overflow-hidden bg-[#fbfbfb] flex items-center justify-center"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -138,29 +138,31 @@ export default function FeaturedNewsCarousel({ items }) {
       </AnimatePresence>
       
       {/* Navigation arrows */}
-      <motion.button 
-        className="absolute top-1/2 -translate-y-1/2 left-[5vw] z-20 h-14 w-14 flex items-center justify-center rounded-full bg-white/90 backdrop-blur-sm text-gray-800 shadow-lg focus:outline-none hover:bg-white hover:scale-110 transition-all duration-200"
-        onClick={handlePrev}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        aria-label="Previous slide"
-      >
-        <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-        </svg>
-      </motion.button>
-      
-      <motion.button 
-        className="absolute top-1/2 -translate-y-1/2 right-[5vw] z-20 h-14 w-14 flex items-center justify-center rounded-full bg-white/90 backdrop-blur-sm text-gray-800 shadow-lg focus:outline-none hover:bg-white hover:scale-110 transition-all duration-200"
-        onClick={handleNext}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        aria-label="Next slide"
-      >
-        <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-        </svg>
-      </motion.button>
+      <div className="container mx-auto relative h-full">
+        <motion.button 
+          className="absolute top-1/2 -translate-y-1/2 left-4 sm:left-8 z-20 h-10 w-10 md:h-14 md:w-14 flex items-center justify-center rounded-full bg-white/90 backdrop-blur-sm text-gray-800 shadow-lg focus:outline-none hover:bg-white hover:scale-110 transition-all duration-200"
+          onClick={handlePrev}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          aria-label="Previous slide"
+        >
+          <svg className="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+        </motion.button>
+        
+        <motion.button 
+          className="absolute top-1/2 -translate-y-1/2 right-4 sm:right-8 z-20 h-10 w-10 md:h-14 md:w-14 flex items-center justify-center rounded-full bg-white/90 backdrop-blur-sm text-gray-800 shadow-lg focus:outline-none hover:bg-white hover:scale-110 transition-all duration-200"
+          onClick={handleNext}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          aria-label="Next slide"
+        >
+          <svg className="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </motion.button>
+      </div>
       
       {/* Slide indicators */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">

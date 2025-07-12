@@ -18,15 +18,13 @@ import { gsap } from 'gsap';
 import FeaturedNewsCard from '@/components/ui/FeaturedNewsCard';
 import Link from 'next/link';
 import FeaturedNewsSection from './FeaturedNewsSection';
+import Image from 'next/image';
 
 export default function HomePage() {
-  
-  const videoRef = useRef(null);
   const containerRef = useRef(null);
-  const mainContentRef = useRef(null);
+  const ctaSectionRef = useRef(null);
   const isInView = useInView(containerRef, { once: false, amount: 0.1 });
   const [animationReady, setAnimationReady] = useState(false);
-  const ctaSectionRef = useRef(null);
   const isInView2 = useInView(ctaSectionRef, { once: false, amount: 0.2 });
   
   // Set animation ready immediately 
@@ -38,8 +36,6 @@ export default function HomePage() {
     
     return () => clearTimeout(timer);
   }, []);
-
-  // Removed ScrollSmoother effect that was causing errors
   
   return (
     <div>
@@ -50,20 +46,12 @@ export default function HomePage() {
         }
       `}</style>
       
-      <div className="relative bg-white" ref={containerRef} style={{ position: 'relative', overflowX: 'hidden' }}>
-        {/* Content */}
-        <motion.div 
-          className="relative z-10" 
-          style={{ position: 'relative' }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-        >
+      <div ref={containerRef} style={{ position: 'relative', overflowX: 'hidden' }}>
+        {/* Main Content */}
+        <div className="bg-white">
           {/* Hero section */}
-          <section 
-            className="min-h-screen relative overflow-hidden bg-[#FF7322] flex flex-col justify-center"
-          >
-            <div className="relative container mx-auto px-6 min-h-screen flex flex-col justify-center" style={{ position: 'relative' }}>
+          <section className="min-h-screen bg-[#FF7322] flex flex-col justify-center">
+            <div className="relative container mx-auto px-6 min-h-screen flex flex-col justify-center">
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ 
@@ -97,22 +85,11 @@ export default function HomePage() {
             <AppleCardsCarouselDemo/>
           </section>
 
-          
-{/* 
-          <section className='md:hidden'>
-            <AboutUsSection/>
-          </section> */}
-          
-          
-
           <FounderTribute/>
 
           <section id="about" >
             <AboutUsSection/>
           </section>
-          {/* <section>
-            <ForestHero/>
-          </section> */}
           
           {/* Apple Cards Carousel Section */}
           <section id="impact" className="hidden md:block bg-white relative">
@@ -124,10 +101,6 @@ export default function HomePage() {
           
           {/* Timeline Section */}
           <section id="our-journey" className="relative w-full">
-            {/* <TimelineDemo 
-              title="Our Journey"
-              description="Tracking our progress and milestones in building a better future through sustainable initiatives."
-            /> */}
             <FeaturedNewsSection/>
           </section>
           
@@ -203,13 +176,10 @@ export default function HomePage() {
           <section id="news" className="relative">
             <NewsResources />
           </section>
-
-          {/* Featured News Carousel Section */}
           
           <Footer />
-        </motion.div>
+        </div>
       </div>
     </div>
-  
   );
 }

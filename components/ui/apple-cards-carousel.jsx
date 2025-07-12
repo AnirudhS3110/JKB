@@ -248,8 +248,8 @@ export const Card = ({
         whileHover={{ 
           scale: 1.02,
           transition: { duration: 0.2 }
-        }}
-        className="relative z-10 flex h-64 w-44 flex-col items-start justify-start overflow-hidden rounded-3xl bg-gray-100 md:h-[28rem] md:w-96 dark:bg-neutral-900"
+                  }}
+          className="relative z-10 flex h-64 w-44 flex-col items-start justify-start overflow-hidden rounded-3xl bg-gray-100 md:h-[28rem] md:w-96 dark:bg-neutral-900 cursor-pointer"
       >
         <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-full bg-gradient-to-b from-black/50 via-transparent to-transparent" />
         <div className="relative z-40 p-4 md:p-8">

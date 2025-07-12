@@ -1,31 +1,34 @@
 "use client"
 
-
-
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Checkbox } from "@/components/ui/checkbox"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Upload, FileText, Mail, Building, User, Lightbulb } from "lucide-react"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 const partnershipTypes = [
-  "Knowledge & Research Partnerships",
-  "Technology & Innovation Collaboration",
-  "Media & Communication Partnerships",
-  "Volunteer & Capacity-Building Engagements",
-  "Government & Civic Partnerships",
+  "Knowledge & Research Collaboration",
+  "Technology & Innovation Partnership",
+  "Media & Communication Support",
+  "Volunteer & Capacity Building",
+  "Government & Civic Engagement",
   "Institutional & Infrastructure Support",
 ]
 
 export default function PartnershipForm() {
   const [selectedPartnershipTypes, setSelectedPartnershipTypes] = useState([])
-  const [uploadedFiles, setUploadedFiles] = useState([])
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    organization: "",
+    partnershipReason: ""
+  })
+  const [isHovered, setIsHovered] = useState(false)
 
-  const handlePartnershipTypeChange = (type , checked) => {
+  const handlePartnershipTypeChange = (type, checked) => {
     if (checked) {
       setSelectedPartnershipTypes([...selectedPartnershipTypes, type])
     } else {
@@ -33,278 +36,167 @@ export default function PartnershipForm() {
     }
   }
 
-  const handleFileUpload = (event) => {
-    const files = Array.from(event.target.files || [])
-    setUploadedFiles([...uploadedFiles, ...files])
+  const handleInputChange = (e) => {
+    const { id, value } = e.target
+    setFormData({
+      ...formData,
+      [id]: value
+    })
   }
 
-  const removeFile = (index) => {
-    setUploadedFiles(uploadedFiles.filter((_, i) => i !== index))
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    // Handle form submission
+    console.log({ ...formData, partnershipTypes: selectedPartnershipTypes })
+    // Add your form submission logic here
   }
 
   return (
-    <div className="min-h-screen bg-[#fbfbfb] py-8 px-4">
-      <div className="max-w-2xl mx-auto">
-        <Card className="border-0 shadow-lg">
-          <CardHeader className="text-center pb-8">
-            <CardTitle className="text-3xl font-light text-[#121212] mb-2 font-title">Partnership Inquiry</CardTitle>
-            <CardDescription className="text-lg text-gray-600 font-paragraph">
-              Let's explore how we can work together to create something amazing
-            </CardDescription>
-          </CardHeader>
+    <div className="min-h-screen bg-[#fbfbfb]">
+      <div className="max-w-5xl md:max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row shadow-[0_20px_50px_rgba(0,0,0,0.15)] rounded-lg transform hover:scale-[1.01] transition-all duration-300">
+          {/* Left Column - Form Title and Info */}
+          <div className="md:w-1/3 p-8 hidden md:block bg-[#F4720B] text-white rounded-l-lg relative z-10 shadow-[inset_-10px_0px_20px_rgba(0,0,0,0.1)]">
+            <h1 className="text-4xl md:text-5xl font-title font-light mb-6">
+              Partner for <span className="border-b-2 border-white">Social Impact</span>
+            </h1>
+            
+            <p className="text-base font-paragraph mb-12 md:text-[19px]">
+              Every partnership inquiry helps us build a more inclusive, empowered, and sustainable society. We'll get back to you within 24 hours.
+            </p>
+            
+            <div className="bg-[#F4720B]/80 p-6 rounded-lg shadow-[0_5px_15px_rgba(0,0,0,0.1)]">
+              <h3 className="text-xl font-title font-light mb-4 md:text-[24px]">Before You Write Us...</h3>
+              
+              <ul className="space-y-4">
+                <li className="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 mr-2 mt-1 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>We seek partners who share our commitment to dignity, inclusion, and social innovation.</span>
+                </li>
+                <li className="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 mr-2 mt-1 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>Our collaborations are designed for real, measurable impact in communities.</span>
+                </li>
+                <li className="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 mr-2 mt-1 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>We value transparency, mutual respect, and a shared vision for a better future.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
 
-          <CardContent className="space-y-8">
-            <form className="space-y-6">
-              {/* Personal Information Section */}
-              <div className="space-y-4">
-                <div className="flex items-center gap-2 mb-4">
-                  <User className="h-5 w-5 text-[#f4720b]" />
-                  <h3 className="text-lg font-light text-[#121212] font-heading">Personal Information</h3>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="fullName" className="text-[#121212] font-medium font-paragraph">
-                      Full Name <span className="text-[#f4720b]">*</span>
-                    </Label>
+          {/* Right Column - Form */}
+          <div className="md:w-2/3 bg-white p-8 rounded-r-lg shadow-md relative z-0">
+            <h2 className="text-2xl font-title font-light text-center mb-8">Let's Create Change Together</h2>
+            
+            <form onSubmit={handleSubmit} className="space-y-6 font-regular text-[20px]">
+              {/* Name Field */}
+              <div className="space-y-2 text-[25px]">
                     <Input
                       id="fullName"
-                      placeholder="Enter your full name"
-                      className="border-gray-300 focus:border-[#f4720b] focus:ring-[#f4720b] font-paragraph"
+                  value={formData.fullName}
+                  onChange={handleInputChange}
+                  placeholder="Your Name"
+                  className="border-0 border-b-2 border-gray-200 rounded-none px-0 focus-visible:ring-0 focus-visible:border-[#F4720B] transition-colors"
                       required
                     />
                   </div>
 
+              {/* Email Field */}
                   <div className="space-y-2">
-                    <Label htmlFor="email" className="text-[#121212] font-medium font-paragraph">
-                      Email Address <span className="text-[#f4720b]">*</span>
-                    </Label>
                     <Input
                       id="email"
                       type="email"
-                      placeholder="your.email@example.com"
-                      className="border-gray-300 focus:border-[#f4720b] focus:ring-[#f4720b] font-paragraph"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  placeholder="Email Address"
+                  className="border-0 border-b-2 border-gray-200 rounded-none px-0 focus-visible:ring-0 focus-visible:border-[#F4720B] transition-colors"
                       required
                     />
-                  </div>
                 </div>
 
+              {/* Phone Field */}
                 <div className="space-y-2">
-                  <Label htmlFor="phone" className="text-[#121212] font-medium font-paragraph">
-                    Phone Number
-                  </Label>
                   <Input
                     id="phone"
                     type="tel"
-                    placeholder="+1 (555) 123-4567"
-                    className="border-gray-300 focus:border-[#f4720b] focus:ring-[#f4720b] font-paragraph"
-                  />
-                </div>
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  placeholder="Phone Number (for WhatsApp)"
+                  className="border-0 border-b-2 border-gray-200 rounded-none px-0 focus-visible:ring-0 focus-visible:border-[#F4720B] transition-colors"
+                />
               </div>
 
-              {/* Organization Information Section */}
-              <div className="space-y-4">
-                <div className="flex items-center gap-2 mb-4">
-                  <Building className="h-5 w-5 text-[#f4720b]" />
-                  <h3 className="text-lg font-light text-[#121212] font-light font-heading">Organization Details</h3>
-                </div>
-
+              {/* Organization Field */}
                 <div className="space-y-2">
-                  <Label htmlFor="organization" className="text-[#121212] font-medium font-paragraph">
-                    Organization / Institution Name <span className="text-[#f4720b]">*</span>
-                  </Label>
                   <Input
                     id="organization"
-                    placeholder="Your organization name"
-                    className="border-gray-300 focus:border-[#f4720b] focus:ring-[#f4720b] font-paragraph"
+                  value={formData.organization}
+                  onChange={handleInputChange}
+                  placeholder="Organization / Institution"
+                  className="border-0 border-b-2 border-gray-200 rounded-none px-0 focus-visible:ring-0 focus-visible:border-[#F4720B] transition-colors"
                     required
                   />
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {/* Partnership Type Dropdown */}
                   <div className="space-y-2">
-                    <Label htmlFor="designation" className="text-[#121212] font-medium font-paragraph">
-                      Designation / Role
-                    </Label>
-                    <Input
-                      id="designation"
-                      placeholder="Your role or title"
-                      className="border-gray-300 focus:border-[#f4720b] focus:ring-[#f4720b] font-paragraph"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="location" className="text-[#121212] font-medium font-paragraph">
-                      Location / Country
-                    </Label>
-                    <Input
-                      id="location"
-                      placeholder="City, Country"
-                      className="border-gray-300 focus:border-[#f4720b] focus:ring-[#f4720b] font-paragraph"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* Partnership Details Section */}
-              <div className="space-y-4">
-                <div className="flex items-center gap-2 mb-4">
-                  <Lightbulb className="h-5 w-5 text-[#f4720b]" />
-                  <h3 className="text-lg font-light text-[#121212] font-heading">Partnership Details</h3>
-                </div>
-
-                <div className="space-y-2">
-                  <Label className="text-[#121212] font-medium font-paragraph">
-                    Type of Partnership <span className="text-[#f4720b]">*</span>
-                  </Label>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-2">
+                <Select>
+                  <SelectTrigger className="border-0 border-b-2 border-gray-200 rounded-none px-0 focus:ring-0 focus-visible:ring-0 focus-visible:border-[#F4720B] transition-colors">
+                    <SelectValue placeholder="Select the area you wish to collaborate on" />
+                  </SelectTrigger>
+                  <SelectContent>
                     {partnershipTypes.map((type) => (
-                      <div key={type} className="flex items-center space-x-2">
-                        <Checkbox
-                          id={type}
-                          checked={selectedPartnershipTypes.includes(type)}
-                          onCheckedChange={(checked) => handlePartnershipTypeChange(type, checked)}
-                          className="border-gray-300 data-[state=checked]:bg-[#f4720b] data-[state=checked]:border-[#f4720b]"
-                        />
-                        <Label htmlFor={type} className="text-sm text-[#121212] cursor-pointer font-paragraph">
-                          {type}
-                        </Label>
-                      </div>
+                      <SelectItem key={type} value={type}>{type}</SelectItem>
                     ))}
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="interest" className="text-[#121212] font-medium font-paragraph">
-                    Why are you interested in this partnership?
-                  </Label>
-                  <Textarea
-                    id="interest"
-                    placeholder="Tell us about your goals and what you hope to achieve through this partnership..."
-                    className="min-h-[100px] border-gray-300 focus:border-[#f4720b] focus:ring-[#f4720b] resize-none font-paragraph"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="proposal" className="text-[#121212] font-medium font-paragraph">
-                    Do you have a project idea / proposal?
-                  </Label>
-                  <Textarea
-                    id="proposal"
-                    placeholder="Share your project ideas, proposals, or specific collaboration concepts..."
-                    className="min-h-[100px] border-gray-300 focus:border-[#f4720b] focus:ring-[#f4720b] resize-none font-paragraph"
-                  />
-                </div>
+                  </SelectContent>
+                </Select>
               </div>
 
-              {/* Contact Preferences Section */}
-              <div className="space-y-4">
-                <div className="flex items-center gap-2 mb-4">
-                  <Mail className="h-5 w-5 text-[#f4720b]" />
-                  <h3 className="text-lg  font-light text-[#121212] font-heading">Contact Preferences</h3>
-                </div>
-
-                <div className="space-y-3">
-                  <Label className="text-[#121212] font-medium font-paragraph">Preferred mode of contact</Label>
-                  <RadioGroup defaultValue="email" className="flex flex-col space-y-2">
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="email" id="email-contact" className="border-gray-300 text-[#f4720b]" />
-                      <Label htmlFor="email-contact" className="text-[#121212] cursor-pointer font-paragraph">
-                        Email
-                      </Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="phone" id="phone-contact" className="border-gray-300 text-[#f4720b]" />
-                      <Label htmlFor="phone-contact" className="text-[#121212] cursor-pointer font-paragraph">
-                        Phone
-                      </Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="either" id="either-contact" className="border-gray-300 text-[#f4720b]" />
-                      <Label htmlFor="either-contact" className="text-[#121212] cursor-pointer font-paragraph">
-                        Either Email or Phone
-                      </Label>
-                    </div>
-                  </RadioGroup>
-                </div>
-              </div>
-
-              {/* File Upload Section */}
-              <div className="space-y-4">
-                <div className="flex items-center gap-2 mb-4">
-                  <FileText className="h-5 w-5 text-[#f4720b]" />
-                  <h3 className="text-lg font-light text-[#121212] font-light font-heading">Supporting Documents</h3>
-                </div>
-
+              {/* Message Field */}
                 <div className="space-y-2">
-                  <Label htmlFor="documents" className="text-[#121212] font-medium font-paragraph">
-                    Upload Supporting Documents (Proposal, CV, etc.)
-                  </Label>
-                  <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-[#f4720b] transition-colors">
-                    <Upload className="h-8 w-8 text-gray-400 mx-auto mb-2" />
-                    <Label htmlFor="documents" className="cursor-pointer font-paragraph">
-                      <span className="text-[#f4720b] font-medium">Click to upload</span>
-                      <span className="text-gray-600"> or drag and drop</span>
-                    </Label>
-                    <p className="text-sm text-gray-500 mt-1 font-paragraph">PDF, DOC, DOCX up to 10MB</p>
-                    <Input
-                      id="documents"
-                      type="file"
-                      multiple
-                      accept=".pdf,.doc,.docx"
-                      onChange={handleFileUpload}
-                      className="hidden"
+                <Textarea
+                  id="partnershipReason"
+                  value={formData.partnershipReason}
+                  onChange={handleInputChange}
+                  placeholder="Tell us about your organization, your goals, or how you'd like to partner with JKBF"
+                  className="min-h-[120px] border-0 border-b-2 border-gray-200 rounded-none px-0 focus-visible:ring-0 focus-visible:border-[#F4720B] resize-none"
                     />
                   </div>
 
-                  {uploadedFiles.length > 0 && (
-                    <div className="space-y-2">
-                      {uploadedFiles.map((file, index) => (
-                        <div key={index} className="flex items-center justify-between bg-gray-50 p-2 rounded">
-                          <span className="text-sm text-[#121212]">{file.name}</span>
-                          <Button
-                            type="button"
-                            variant="ghost"
-                            size="sm"
-                            onClick={() => removeFile(index)}
-                            className="text-red-500 hover:text-red-700"
-                          >
-                            Remove
-                          </Button>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-
-              {/* Consent Section */}
-              <div className="space-y-4">
-                <div className="flex items-start space-x-2">
-                  <Checkbox
-                    id="consent"
-                    required
-                    className="border-gray-300 data-[state=checked]:bg-[#f4720b] data-[state=checked]:border-[#f4720b] mt-1"
-                  />
-                  <Label htmlFor="consent" className="text-sm text-[#121212] leading-relaxed cursor-pointer font-paragraph">
-                    I agree to be contacted regarding this partnership inquiry and consent to the processing of my
-                    personal data in accordance with the privacy policy. <span className="text-[#f4720b]">*</span>
-                  </Label>
-                </div>
-              </div>
-
-              {/* Submit Button */}
-              <div className="pt-6">
-                <Button
+              {/* Submit Button with Slide Animation */}
+              <div className="pt-4">
+                <button 
                   type="submit"
-                  className="w-full bg-[#f4720b] hover:bg-[#e5650a] text-white font-semibold py-3 text-lg transition-colors font-heading"
+                  className="group w-full bg-[#F4720B] hover:bg-[#F4720B]/90 text-white py-3 rounded-md transition-all duration-300 relative overflow-hidden"
+                  onMouseEnter={() => setIsHovered(true)}
+                  onMouseLeave={() => setIsHovered(false)}
                 >
+                  <div className="flex items-center justify-center">
+                    <span className={`inline-block transition-transform duration-300 ${isHovered ? '-translate-x-3' : 'translate-x-0'}`}>
                   Submit Partnership Inquiry
-                </Button>
+                    </span>
+                    <svg 
+                      xmlns="http://www.w3.org/2000/svg" 
+                      className={`h-5 w-5 inline-block transition-all duration-300 ${isHovered ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`} 
+                      fill="none" 
+                      viewBox="0 0 24 24" 
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </div>
+                </button>
               </div>
             </form>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
     </div>
   )

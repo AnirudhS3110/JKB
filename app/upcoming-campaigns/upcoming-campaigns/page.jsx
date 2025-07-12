@@ -18,7 +18,7 @@ const ZigZagCampaign = ({ title, date, description, image, status, index }) => {
     >
       {/* Image Section */}
       <div className="w-full md:w-1/2 relative overflow-hidden group">
-        <div className="relative h-[350px] w-full">
+        <div className="relative h-[350px] md:h-[480px] w-full">
           <Image 
             src={image} 
             alt={title} 
@@ -44,7 +44,7 @@ const ZigZagCampaign = ({ title, date, description, image, status, index }) => {
         <h3 className="text-3xl font-heading font-light text-black mb-4">{title}</h3>
         
         {/* Description - now full length without clamp */}
-        <p className="text-gray-600 mb-6 font-paragraph font-normal leading-relaxed">
+        <p className="text-gray-600 mb-6 font-paragraph font-normal leading-relaxed md:text-[22px]">
           {description}
         </p>
         

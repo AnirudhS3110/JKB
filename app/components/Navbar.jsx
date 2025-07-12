@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const ImprovedNavbar = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -11,6 +12,10 @@ const ImprovedNavbar = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const navbarRef = useRef(null);
   const mobileMenuRef = useRef(null);
+  const pathname = usePathname();
+  
+  // Check if we're on the homepage
+  const isHomePage = pathname === '/';
 
   useEffect(() => {
     // Mark component as rendered on client side
@@ -99,22 +104,21 @@ const ImprovedNavbar = () => {
       description: 'Join forces with us to amplify your impact through strategic collaborations and initiatives.',
       image: 'https://images.unsplash.com/photo-1665072204431-b3ba11bd6d06?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHBhcnRuZXJzaGlwfGVufDB8fDB8fHww',
       links: [
-        { text: 'Knowledge & Research Partnerships', href: '/partnership/knowledge-research' },
-        { text: 'Technology & Innovation Collaboration', href: '/partnership/technology-innovation' },
-        { text: 'Media & Communication Partnerships', href: '/partnership/media-communication' },
-        { text: 'Volunteer & Capacity-Building Engagements', href: '/partnership/volunteer-capacitys' },
-        { text: 'Government & Civic Partnerships', href: '/partnership/government-civic' },
-        { text: 'Institutional & Infrastructure Support', href: '/partnership/institutional-infrastructure' }
+        { text: 'Partnerships', href: '/partnership/partnership-form' },
+        { text: 'Why partnership with us?', href: '/partnership/partnership-form/#why-partnership-with-us' },
+        { text: 'Partnership Types', href: '/partnership/partnership-form/#partnership-types' },
+        { text: 'Partnership Form', href: '/partnership/partnership-form/#partnership-form' },
       ]
     },
     {
-      title: 'News',
+      title: 'Resources',
       href:'/#news',
       description: 'Stay updated with our latest initiatives, media coverage, and educational resources.',
       image: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
       links: [
         { text: 'Archives', href: '/news/archives' },
         { text: 'Media Coverage', href: '/news/media-coverage' },
+        { text: 'Social Media', href: '/news/socialMedia' },
       ]
     },
     {
@@ -132,7 +136,7 @@ const ImprovedNavbar = () => {
     <header 
       ref={navbarRef}
       className={`fixed top-0 left-0 w-full z-220 transition-all duration-300 ${
-        isScrolled || activeDropdown !== null ? 'bg-[#000000]' : 'bg-transparent'
+        isHomePage ? 'bg-[#000000]' : (isScrolled || activeDropdown !== null ? 'bg-[#000000]' : 'bg-transparent')
       }`}
       suppressHydrationWarning
     >
@@ -161,6 +165,7 @@ const ImprovedNavbar = () => {
                     <a 
                       href={item.href} 
                       className="text-[#F8F9FA] hover:text-[#F4720B] py-7 px-2 transition-colors relative text-sm font-medium flex items-center"
+                      onClick={() => setActiveDropdown(null)}
                     >
                       {item.title}
                     </a>
@@ -226,33 +231,32 @@ const ImprovedNavbar = () => {
                   {/* Right side - Title and links with arrows */}
                   <div className="w-full md:w-2/3">
                     <div className="mb-10">
-                      <h2 className="text-4xl font-title font-light text-[#F8F9FA]">{navItems[activeDropdown].title}</h2>
+                      <h2 className="text-4xl font-title font-light text-[#F8F9FA] cursor-pointer" onClick={() => setActiveDropdown(null)}>{navItems[activeDropdown].title}</h2>
                       <div className="h-1 w-24 bg-[#F4A261] rounded-full mt-2"></div>
                     </div>
+                    
                     <div className="space-y-6">
-                      {navItems[activeDropdown].links.map((link, linkIndex) => (
-                        <div key={linkIndex} className="flex justify-between items-center border-b border-[#6C757D] pb-4 group">
-                          <a 
-                            href={link.href}
-                            className="text-[#F8F9FA] group-hover:text-[#F4720B] transition-colors text-xl"
-                          >
-                            {link.text}
-                          </a>
-                          <div className="bg-transparent rounded-full p-1">
-                            <svg 
-                              className="w-6 h-6 text-[#F4A261] group-hover:text-[#F4720B]" 
-                              fill="none" 
-                              stroke="currentColor" 
-                              viewBox="0 0 24 24" 
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      {navItems[activeDropdown].links && navItems[activeDropdown].links.map((link, idx) => (
+                        <Link 
+                          key={idx}
+                          href={link.href}
+                          className="flex items-center group text-[#F8F9FA] hover:text-[#F4720B] transition-colors"
+                          onClick={() => setActiveDropdown(null)}
+                        >
+                          <span className="text-2xl mr-4 font-title font-light">{link.text}</span>
+                          <span className="w-10 h-10 rounded-full bg-[#F4720B] group-hover:bg-[#F8F9FA] flex items-center justify-center transition-colors">
+                            <svg className="w-5 h-5 text-[#F8F9FA] group-hover:text-[#F4720B]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                             </svg>
-                          </div>
-                        </div>
+                          </span>
+                        </Link>
                       ))}
                     </div>
                   </div>
+                </div>
+                
+                <div className="mt-16 pt-8 border-t border-[#6C757D] text-[#F8F9FA]/80">
+                  <p className="text-sm">{navItems[activeDropdown].description}</p>
                 </div>
               </div>
             </motion.div>
@@ -324,24 +328,36 @@ const ImprovedNavbar = () => {
                     
                     <AnimatePresence>
                       {mobileSubMenu === index && (
-                        <motion.div 
+                        <motion.div
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: 'auto' }}
                           exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.2 }}
-                          className="mt-4 space-y-4 pl-4 bg-[#111111] p-3 rounded"
+                          transition={{ duration: 0.3 }}
+                          className="pl-4 mt-2 space-y-2"
                         >
-                          {item.links.map((link, linkIndex) => (
-                            <a 
-                              key={linkIndex}
+                          <a 
+                            href={item.href} 
+                            className="block text-[#F8F9FA]/80 hover:text-[#F4720B] py-1"
+                            onClick={() => {
+                              setActiveDropdown(null);
+                              setMobileSubMenu(null);
+                            }}
+                          >
+                            Overview
+                          </a>
+                          
+                          {item.links && item.links.map((link, idx) => (
+                            <Link 
+                              key={idx}
                               href={link.href}
-                              className="block text-[#F4720B] hover:text-[#F8F9FA] py-2 border-b border-[#333333] flex items-center justify-between"
+                              className="block text-[#F8F9FA]/80 hover:text-[#F4720B] py-1"
+                              onClick={() => {
+                                setActiveDropdown(null);
+                                setMobileSubMenu(null);
+                              }}
                             >
-                              <span>{link.text}</span>
-                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                              </svg>
-                            </a>
+                              {link.text}
+                            </Link>
                           ))}
                         </motion.div>
                       )}

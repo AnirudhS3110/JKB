@@ -447,7 +447,7 @@ export default function FactsAndFigures() {
                 }}
               >
                 <img 
-                  src="https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                  src="/images/MediaCoverage/2.jpg" 
                   alt="Medical equipment" 
                   className="w-full h-64 md:h-[60vh] object-cover rounded-lg"
                 />

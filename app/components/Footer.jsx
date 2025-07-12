@@ -57,7 +57,7 @@ const Footer = () => {
                 <Link href="/partnership/partnership-form" className="block hover:text-[#F4720B]">Partner with us</Link>
                 
                 {/* <Link href="/privacy-policy" className="block hover:text-[#F4720B]">Privacy Policy</Link> */}
-                <Link href="/terms-of-use" className="block hover:text-[#F4720B]">Terms of Use</Link>
+                <Link href="/news/socialMedia" className="block hover:text-[#F4720B]">Social Media</Link>
                 
               </div>
             </div>

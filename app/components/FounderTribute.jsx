@@ -5,6 +5,8 @@ import Image from 'next/image';
 
 export default function FounderTribute() {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [navbarHeight, setNavbarHeight] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { 
     once: false, 
@@ -14,6 +16,27 @@ export default function FounderTribute() {
   
   useEffect(() => {
     setIsLoaded(true);
+    
+    // Check if mobile on mount
+    setIsMobile(window.innerWidth <= 768);
+    
+    // Get the navbar height to adjust the section height accordingly
+    const navbar = document.querySelector('nav') || document.querySelector('header');
+    if (navbar) {
+      setNavbarHeight(navbar.offsetHeight);
+    }
+    
+    // Update on resize to maintain responsive behavior
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+      const navbar = document.querySelector('nav') || document.querySelector('header');
+      if (navbar) {
+        setNavbarHeight(navbar.offsetHeight);
+      }
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   // Text reveal animations
@@ -65,10 +88,21 @@ export default function FounderTribute() {
     }
   };
 
+  // Calculate section height to be 100vh minus navbar height
+  const sectionStyle = {
+    height: window.innerWidth > 768 ? `calc(100vh - ${navbarHeight}px)` : '110vh',
+    minHeight: 'auto', // Override the min-height
+    maxHeight: 'none'  // Override the max-height
+  };
+
   return (
-    <section ref={sectionRef} className="relative w-full bg-[#000000] min-h-[110vh] flex flex-col-reverse md:flex-row overflow-hidden">
+    <section 
+      ref={sectionRef} 
+      className="relative w-full bg-[#000000] min-h-[110vh] md:max-h-[80vh] flex flex-col-reverse md:flex-row overflow-hidden"
+      style={sectionStyle}
+    >
       {/* Left content section */}
-      <div className="relative z-10 w-full md:w-1/2 flex flex-col justify-center px-8 md:px-16 py-16 md:py-0">
+      <div className="relative z-10 w-full md:h-full md:w-1/2 flex flex-col justify-center px-8 md:px-16 py-16 md:py-0">
         <div className="max-w-xl">
           <motion.div
             variants={textVariants}
@@ -100,7 +134,7 @@ export default function FounderTribute() {
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             transition={{ delay: 0.2 }}
-            className="text-xl md:text-[24px] text-[#fbfbfb] max-w-2xl font-paragraph font-light mb-10"
+            className="text-xl md:text-[21px] text-[#fbfbfb] max-w-2xl font-paragraph font-light mb-10"
           >
             Visionary conservationist and humanitarian who dedicated his life to creating sustainable pathways for rural communities and protecting our natural ecosystems.
           </motion.p>
@@ -111,7 +145,7 @@ export default function FounderTribute() {
             animate={isInView ? "visible" : "hidden"}
             className="max-w-xl border-l-4 border-[#F4720B] pl-6 py-2"
           >
-            <p className="text-[#fbfbfb] text-lg md:text-xl italic font-light font-paragraph leading-relaxed">
+            <p className="text-[#fbfbfb] text-lg md:text-[18px] italic font-light font-paragraph leading-relaxed">
             "True philanthropy goes beyond money—it is the deep empathy to feel the struggles of others, the courage to empower them, and the commitment to give back what fortune has bestowed. As we look to the future, real leadership will be defined not by power or wealth, but by how we use our privilege to uplift  and build a more equitable, compassionate world."            </p>
             <p className="text-[#F4720B] mt-4">15th December 1928 - Forver</p>
           </motion.div>
@@ -120,7 +154,7 @@ export default function FounderTribute() {
       
       {/* Right image section with normal display */}
       <motion.div 
-        className="relative w-full md:w-1/2 h-80 md:h-screen overflow-hidden"
+        className="relative w-full md:w-1/2 h-[350px] md:h-full overflow-hidden"
         variants={imageVariants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
@@ -131,14 +165,14 @@ export default function FounderTribute() {
             src="/images/JaskaranBothra.jpg"
             alt="Jaskaran Bothra"
             fill
-            quality={100}
+            quality={90}
             priority
-            className="object-cover transition-all duration-1000"
+            className="object-cover object-center transition-all duration-1000"
           />
         </div>
         
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-transparent z-10 md:opacity-70"></div>
+        {/* Gradient overlay - adjusted for better mobile visibility */}
+        <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black via-transparent to-transparent z-10 opacity-60 md:opacity-70"></div>
         
         {/* Accent details */}
         <div className="absolute hidden md:block top-16 right-16 w-20 h-20 border-t-2 border-r-2 border-[#F4720B] opacity-60 z-20"></div>

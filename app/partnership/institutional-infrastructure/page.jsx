@@ -158,23 +158,23 @@ export default function InstitutionalInfrastructurePartnership() {
                 {/* Separator line */}
                 <div className="w-24 h-1 bg-[#F4720B] mb-8"></div>
                 
-                <p className="text-lg text-gray-700 max-w-3xl font-paragraph mb-12">
+                <p className="text-lg text-gray-700 max-w-3xl font-paragraph lg:text-[20px] xl:text-[21px] mb-12">
                   {partnershipData.description}
                 </p>
               </div>
               
               {/* Partnership details */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-16">
+              <div className="grid grid-cols-1  gap-16 mb-16">
                 {/* Who can partner */}
                 <motion.div 
-                  className="bg-white p-8 rounded-lg shadow-sm border-l-4 border-l-[#F4720B]"
+                  className="bg-white p-8 rounded-lg shadow-sm border-l-4 border-l-[#F4720B] transition-transform md:hover:scale-102 lg:hover:scale-102 xl:hover:scale-103"
                   initial={{ opacity: 0, x: -30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
                   viewport={{ once: true }}
                 >
-                  <h3 className="text-2xl font-heading font-light text-gray-800 mb-4">Who Can Partner With Us</h3>
-                  <p className="text-gray-700 font-paragraph mb-6">{partnershipData.who}</p>
+                  <h3 className="text-2xl font-heading font-light text-gray-800 mb-4 md:text-[26px]">Who Can Partner With Us</h3>
+                  <p className="text-gray-700 font-paragraph md:text-[20px] mb-6">{partnershipData.who}</p>
                   
                   <div className="flex items-center">
                     <div className="h-12 w-12 bg-orange-100 rounded-full flex items-center justify-center mr-4">
@@ -183,25 +183,25 @@ export default function InstitutionalInfrastructurePartnership() {
                       </svg>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500 font-paragraph">These partnerships are ideal for organizations seeking to build lasting physical and institutional structures for social impact</p>
+                      <p className="text-sm text-gray-500 font-paragraph lg:text-[18px] xl:text-[20px]">These partnerships are ideal for organizations with resources to contribute to sustainable infrastructure development</p>
                     </div>
                   </div>
                 </motion.div>
                 
                 {/* How to partner */}
                 <motion.div 
-                  className="bg-white p-8 rounded-lg shadow-sm border-l-4 border-l-[#F4720B]"
+                  className="bg-white p-8 rounded-lg shadow-sm border-l-4 border-l-[#F4720B] transition-transform md:hover:scale-102 lg:hover:scale-102 xl:hover:scale-103"
                   initial={{ opacity: 0, x: 30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6 }}
                   viewport={{ once: true }}
                 >
-                  <h3 className="text-2xl font-heading font-light text-gray-800 mb-4">How You Can Partner</h3>
+                  <h3 className="text-2xl font-heading font-light text-gray-800 mb-4 md:text-[26px]">How You Can Partner</h3>
                   <ul className="space-y-4 mb-6">
                     {partnershipData.howToPartner.map((item, i) => (
                       <li key={i} className="flex items-start">
                         <span className="text-[#F4720B] mr-3 font-bold">●</span>
-                        <span className="text-gray-700 font-paragraph">{item}</span>
+                        <span className="text-gray-700 font-paragraph text-[20px]">{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -213,14 +213,14 @@ export default function InstitutionalInfrastructurePartnership() {
                       </svg>
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500 font-paragraph">Our institutional partnerships focus on creating sustainable systems that amplify social impact for generations</p>
+                      <p className="text-sm text-gray-500 font-paragraph lg:text-[18px] xl:text-[20px]">Our infrastructure partnerships focus on sustainable development that creates lasting community impact</p>
                     </div>
                   </div>
                 </motion.div>
               </div>
               
               {/* Partnership example or case study */}
-              <motion.div 
+              {/* <motion.div 
                 className="bg-white rounded-lg overflow-hidden shadow-md mb-16"
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -246,7 +246,7 @@ export default function InstitutionalInfrastructurePartnership() {
                     </p>
                   </div>
                 </div>
-              </motion.div>
+              </motion.div> */}
               
               {/* CTA section */}
               <motion.div 

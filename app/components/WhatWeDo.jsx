@@ -82,7 +82,7 @@ const WhatWeDo = () => {
   };
 
   return (
-    <section className="relative min-h-[100vh] md:min-h-[120vh] w-full py-[20px] md:py-[40px]">
+    <section className="relative min-h-[100vh] md:min-h-[130vh] w-full py-[20px] md:py-[40px]">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <div 
@@ -120,12 +120,12 @@ const WhatWeDo = () => {
                 ></div>
                 
                 {/* Link - only active on desktop */}
-                <a 
+                {/* <a 
                   href={item.href} 
                   className="absolute inset-0 z-30 md:block" 
                   aria-label={item.text}
                   onClick={(e) => handleItemClick(e, item.id)}
-                ></a>
+                ></a> */}
                 
                 <div className="relative w-full">
                   <div className="container">

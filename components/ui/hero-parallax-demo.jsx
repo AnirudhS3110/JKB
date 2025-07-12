@@ -26,7 +26,7 @@ export const products = [
       title: "Education Program",
       link: "/education",
       thumbnail:
-        "/images/HeroParallax/CarousalPic7.jpg",
+        "/images/MediaCoverage/7.jpg",
     },
   {
         title: "Digital Literacy",
