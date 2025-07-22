@@ -169,16 +169,16 @@ export default function VideoHeroSection() {
           transition={{ duration: 0.8, delay: 1.5 }}
           className="mt-8 flex flex gap-4"
         >
-          <a href="#partnership" onClick={(e) => scrollToSection('partnership')}>
+          <a href="#partnership" onClick={(e) => scrollToSection('upcoming-campaigns-ref')}>
             <button className="relative overflow-hidden cursor-pointer text-left w-fit bg-[#F4720B] border border-white text-[20px] text-white font-paragraph font-regular px-6 py-3 hover:bg-transparent transition-all duration-300 group">
-              <span className="inline-block transition-transform duration-300 font-light group-hover:-translate-x-2">Explore Cammpaigns</span>
+              <span className="inline-block transition-transform duration-300 font-light group-hover:-translate-x-2">Explore Campaigns</span>
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 inline-block ml-0 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>
             </button>
           </a>
           
-          <a href="#upcoming-campaigns-ref" onClick={(e) => scrollToSection('upcoming-campaigns-ref')}>
+          <a href="#partnership" onClick={(e) => scrollToSection('partnership')}>
             <button className="relative overflow-hidden cursor-pointer text-left w-fit bg-transparent border border-white text-[20px] text-white font-paragraph px-6 py-3 hover:bg-[#F4720B] transition-all duration-300 group">
               <span className="inline-block transition-transform duration-300 font-light group-hover:-translate-x-2">Explore Partnerships</span>
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 inline-block ml-0 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
