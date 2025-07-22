@@ -1,6 +1,7 @@
 'use client';
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
+import Link from 'next/link';
 
 // Define constants for the video animation
 const VIDEO_SRC = "/videos/impact-video.mp4";
@@ -65,10 +66,25 @@ export default function VideoHeroSection() {
     };
   }, [isMounted]);
   
+  // Smooth scroll function
+  const scrollToSection = (elementId) => {
+    const element = document.getElementById(elementId);
+    if (element) {
+      // Prevent default behavior
+      event.preventDefault();
+      
+      // Scroll to the element with smooth behavior
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+  
   return (
     <section 
       ref={videoSectionRef}
-      className="h-full overflow-hidden flex items-center justify-center  "
+      className="h-full overflow-hidden flex items-center justify-start"
     >
       {/* Video Background */}
       <motion.div 
@@ -99,42 +115,15 @@ export default function VideoHeroSection() {
       </motion.div>
       
       {/* Text Overlay */}
-      <div className="relative z-10 max-w-4xl px-6 md:px-0 text-right text-white ml-auto mr-8">
-        {/* First phrase with reveal animation */}
-        <motion.div 
-          className="overflow-hidden mb-6"
-          initial="hidden"
-          animate={videoInView ? "visible" : "hidden"}
-        >
-          <motion.h2
-            className="font-dm-serif-text font-title text-4xl md:text-6xl font-normal tracking-wide leading-tight relative inline-block"
-            variants={firstTextSlide}
-          >
-            Driving <span className="text-[#F47E28]">impactful</span> change
-          </motion.h2>
-        </motion.div>
-        
-        <motion.div 
-          className="overflow-hidden mb-8"
-          initial="hidden"
-          animate={videoInView ? "visible" : "hidden"}
-        >
-          <motion.p
-            className="font-paragraph text-xl md:text-2xl relative inline-block"
-            variants={secondTextSlide}
-          >
-            Through innovative solutions and collaborative partnerships
-          </motion.p>
-        </motion.div>
-        
+      <div className="relative z-10 max-w-4xl px-6 md:px-10 text-left text-white ml-0 md:ml-4 lg:ml-8 lg:mt-[100px]">
         {/* Additional text from the original animation */}
         <motion.div 
-          className="overflow-hidden mt-16 mb-6"
+          className="overflow-hidden"
           initial="hidden"
           animate={videoInView ? "visible" : "hidden"}
         >
           <motion.h2
-            className="font-dm-serif-text font-title text-4xl md:text-6xl font-normal tracking-wide leading-tight relative inline-block"
+            className="font-dm-serif-text font-title text-4xl md:text-6xl font-normal tracking-wide leading-[1.1] relative inline-block"
             variants={{
               ...firstTextSlide,
               visible: {
@@ -146,13 +135,13 @@ export default function VideoHeroSection() {
               }
             }}
           >
-            Creating lasting change through sustainable initiatives
+            Creating lasting change through <span className="text-[#F4720B]">sustainable</span> initiatives
           </motion.h2>
         </motion.div>
         
         {/* Second phrase with reveal animation */}
         <motion.div 
-          className="overflow-hidden"
+          className="overflow-hidden lg:mt-12 mb-16"
           initial="hidden"
           animate={videoInView ? "visible" : "hidden"}
         >
@@ -171,6 +160,33 @@ export default function VideoHeroSection() {
           >
             Honoring Jaskaran Bothra's legacy of compassion and innovation
           </motion.p>
+        </motion.div>
+        
+        {/* CTA Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={videoInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.8, delay: 1.5 }}
+          className="mt-8 flex flex gap-4"
+        >
+          <a href="#partnership" onClick={(e) => scrollToSection('partnership')}>
+            <button className="relative overflow-hidden cursor-pointer text-left w-fit bg-[#F4720B] border border-white text-[20px] text-white font-paragraph font-regular px-6 py-3 hover:bg-transparent transition-all duration-300 group">
+              <span className="inline-block transition-transform duration-300 font-light group-hover:-translate-x-2">Explore Cammpaigns</span>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 inline-block ml-0 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </button>
+          </a>
+          
+          <a href="#upcoming-campaigns-ref" onClick={(e) => scrollToSection('upcoming-campaigns-ref')}>
+            <button className="relative overflow-hidden cursor-pointer text-left w-fit bg-transparent border border-white text-[20px] text-white font-paragraph px-6 py-3 hover:bg-[#F4720B] transition-all duration-300 group">
+              <span className="inline-block transition-transform duration-300 font-light group-hover:-translate-x-2">Explore Partnerships</span>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 inline-block ml-0 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </button>
+          </a>
+          
         </motion.div>
       </div>
     </section>
