@@ -119,11 +119,11 @@ export default function AboutUsSection() {
       <div className="relative z-10 w-full">
         {/* Main Header - Simplified for mobile */}
         <div className="container mx-auto pt-[20px] md:pt-0 px-6  text-left md:text-center">
-          <h2 className="font-title mb-12 tracking-wide text-white flex flex-col md:flex-row md:justify-center md:items-center">
+          <h2 className="font-title  mb-12 tracking-wide text-white flex flex-col md:flex-row md:justify-center md:items-center">
             {/* About Us */}
             <div className="mb-4 md:mb-0 relative">
               <span 
-                className={`cursor-pointer transition-colors duration-300 text-5xl md:text-[70px] ${
+                className={`cursor-pointer transition-colors duration-300 text-5xl font-light md:text-[70px] ${
                   activeSection === 'about' ? 'text-white' : 'text-gray-400 hover:text-gray-300'
                 }`}
                 onClick={() => setActiveSection('about')}
@@ -173,7 +173,7 @@ export default function AboutUsSection() {
             {/* Vision */}
             <div className="mb-4 md:mb-0 relative">
               <span 
-                className={`cursor-pointer transition-colors duration-300 text-5xl md:text-[70px] ${
+                className={`cursor-pointer transition-colors duration-300 text-5xl font-light md:text-[70px] ${
                   activeSection === 'vision' ? 'text-white' : 'text-gray-400 hover:text-gray-300'
                 }`}
                 onClick={() => setActiveSection('vision')}
@@ -220,7 +220,7 @@ export default function AboutUsSection() {
             <div className="relative">
               <div className={`flex flex-col items-start group ${activeSection === 'mission' ? 'text-white' : 'text-gray-400 hover:text-gray-300'}`}>
               <span 
-                className={`cursor-pointer transition-colors duration-300 text-5xl md:text-[70px] ${
+                className={`cursor-pointer transition-colors duration-300 text-5xl font-light md:text-[70px] ${
                   activeSection === 'mission' ? 'text-white' : 'text-gray-400 hover:text-gray-300'
                 }`}
                 onClick={() => setActiveSection('mission')}

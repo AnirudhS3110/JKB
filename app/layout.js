@@ -1,5 +1,5 @@
 import "./globals.css";
-import { Cormorant_Garamond, Source_Serif_4, Playfair_Display, DM_Serif_Text, Merriweather } from 'next/font/google';
+import { Cormorant_Garamond,Open_Sans,Lato,Cinzel, Source_Serif_4, Playfair_Display, DM_Serif_Text, Merriweather } from 'next/font/google';
 import ImprovedNavbar from './components/Navbar';
 
 // Define premium fonts
@@ -10,11 +10,30 @@ const cormorant = Cormorant_Garamond({
   variable: '--font-cormorant',
 });
 
+const cinzel = Cinzel({
+  subsets: ['latin'],
+  weight: ['400', '700', '900'],
+  display: 'swap',
+  variable: '--font-cinzel',
+});
+const lato = Lato({
+  subsets: ['latin'],
+  weight: ['100', '300', '400', '700', '900'],
+  display: 'swap',
+  variable: '--font-lato',
+});
 const playfairDisplay = Playfair_Display({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700', '800', '900'],
   display: 'swap',
   variable: '--font-playfair-display',
+});
+
+const openSans = Open_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  display: 'swap',
+  variable: '--font-open-sans',
 });
 
 
@@ -70,7 +89,7 @@ const sourceSerifPro = Source_Serif_4({
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${cormorant.variable}   ${dmSerifText.variable} ${merriweather.variable} ${playfairDisplay.variable} ${sourceSerifPro.variable} `} suppressHydrationWarning>
+    <html lang="en" className={`${cormorant.variable} ${lato.variable} ${cinzel.variable}   ${dmSerifText.variable} ${merriweather.variable} ${playfairDisplay.variable} ${sourceSerifPro.variable} ${openSans.variable}   `} suppressHydrationWarning>
        
       <body className="bg-white " suppressHydrationWarning>
         <ImprovedNavbar />

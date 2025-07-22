@@ -100,7 +100,7 @@ const WhatWeDo = () => {
       {/* Main Content */}
       <div className="absolute inset-0 flex flex-col justify-start md:justify-center z-10 overflow-y-auto">
         <div className="container mx-auto px-4 md:px-6 lg:px-20 pt-16 md:pt-0">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] px-[12px] md:px-[28px] lg:px-[32px] font-title text-[#fbfbfb] mb-6 md:mb-16 pt-[20px] md:pt-[50px]">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[56px] px-[12px] md:px-[28px] lg:px-[32px] font-title font-light text-[#fbfbfb] mb-6 md:mb-16 pt-[20px] md:pt-[50px]">
             What we do
           </h1>
 

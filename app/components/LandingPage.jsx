@@ -57,7 +57,7 @@ export default function LandingPage() {
           
           
         </div> */}
-        <HeroLandingPage />
+        {/* <HeroLandingPage /> */}
   
         <section className='   w-screen  h-[100vh]  sticky top-0 z-[5]'>
           

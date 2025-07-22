@@ -67,7 +67,7 @@ const ImprovedNavbar = () => {
   const navItems = [
     {
       title: 'Upcoming Campaigns',
-      href:'/#upcoming-campaigns',
+      href:'/#upcoming-campaigns-ref',
       description: 'Learn about our current initiatives and how you can get involved to create meaningful change.',
       image: 'https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80',
       links: [
@@ -136,13 +136,13 @@ const ImprovedNavbar = () => {
     <header 
       ref={navbarRef}
       className={`fixed top-0 left-0 w-full z-220 transition-all duration-300 ${
-        isHomePage ? 'bg-[#000000]' : (isScrolled || activeDropdown !== null ? 'bg-[#000000]' : 'bg-transparent')
+        isScrolled || activeDropdown !== null ? 'bg-[#000000]' : 'bg-transparent'
       }`}
       suppressHydrationWarning
     >
       {/* Main Navigation Container */}
-      <div className="container mx-auto pr-4 pl-0 pt-4 md:pt-0 md:px-4 md:px-8 lg:px-16 xl:px-24 font-paragraph" suppressHydrationWarning>
-        <div className="flex items-center justify-between h-20 lg:h-[100px]" suppressHydrationWarning>
+      <div className="container  pr-4 pl-0 pt-4 md:pt-0 md:px-4 md:px-8 lg:px-4 lg:w-full  font-paragraph" suppressHydrationWarning>
+        <div className="flex items-center justify-between h-20 lg:h-[100px] lg:min-w-[60vw]" suppressHydrationWarning>
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <img src="/images/JKBLogo.png" alt="Jaskaran Bothra Foundation" className="h-[220px] md:pt-[30px] md:pb-[15px] md:h-[340px]" />

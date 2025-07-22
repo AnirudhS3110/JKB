@@ -95,11 +95,11 @@ export default function VideoHeroSection() {
           </video>
         )}
         {/* Overlay */}
-        <div className="absolute h-full w-full inset-0 bg-[#000000] opacity-60"></div>
+        <div className="absolute h-full w-full inset-0 bg-[#000000] opacity-70"></div>
       </motion.div>
       
       {/* Text Overlay */}
-      <div className="relative z-10 max-w-4xl px-6 md:px-0 text-center text-[#F8F9FA]">
+      <div className="relative z-10 max-w-4xl px-6 md:px-0 text-right text-white ml-auto mr-8">
         {/* First phrase with reveal animation */}
         <motion.div 
           className="overflow-hidden mb-6"

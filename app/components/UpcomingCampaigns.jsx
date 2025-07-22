@@ -55,12 +55,12 @@ export default function UpcomingCampaigns() {
   };
 
   return (
-    <div className="relative bg-[#fbfbfb]" ref={sectionRef}>
+    <div className="relative bg-[#fbfbfb]"  ref={sectionRef}>
       <section className="max-w-7xl mx-auto px-6 py-12">
         {/* Header section with title and view all button */}
-        <div className="flex justify-between items-center mb-12">
+        <div id="upcoming-campaigns-ref" className="flex justify-between items-center  mb-12">
           <motion.h2 
-            className="text-5xl  font-title  text-black"
+            className="text-5xl  font-title font-light text-black"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8 }}
@@ -110,7 +110,7 @@ export default function UpcomingCampaigns() {
               </div> */}
               
               {/* Campaign title - left aligned */}
-              <h3 className="text-2xl  font-title text-[#000000] mb-3">
+              <h3 className="text-2xl lg:text-[26px]  font-title font-light text-[#000000] mb-3">
                 {campaign.title}
               </h3>
               
