@@ -58,7 +58,7 @@ export default function UpcomingCampaigns() {
     <div className="relative bg-[#fbfbfb]"  ref={sectionRef}>
       <section className="max-w-7xl mx-auto px-6 py-12">
         {/* Header section with title and view all button */}
-        <div id="upcoming-campaigns-ref" className="flex justify-between items-center  mb-12">
+        <div  className="flex justify-between items-center  mb-12">
           <motion.h2 
             className="text-5xl  font-title font-light text-black"
             initial={{ opacity: 0, y: 20 }}
@@ -68,7 +68,7 @@ export default function UpcomingCampaigns() {
             Upcoming Campaigns
           </motion.h2>
           <Link href="/upcoming-campaigns/upcoming-campaigns">
-            <button suppressHydrationWarning={true} className="relative overflow-hidden md:block hidden text-white px-6 py-3 bg-[#F4720B] font-paragraph hover:bg-[#E05900] transition-all duration-300 group">
+            <button id="upcoming-campaigns-ref" suppressHydrationWarning={true} className="relative overflow-hidden md:block hidden text-white px-6 py-3 bg-[#F4720B] font-paragraph hover:bg-[#E05900] transition-all duration-300 group">
               <span className="inline-block transition-transform duration-300 group-hover:-translate-x-2">View all</span>
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 inline-block ml-0 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />

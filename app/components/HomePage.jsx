@@ -75,6 +75,7 @@ export default function HomePage() {
               </motion.div>
             </div>
           </section>
+          <section id="upcoming-campaigns-ref" className="relative lg:h-[55px] bg-[#fbfbfb]"></section>
 
           {/* Upcoming Campaigns Section */}
           <section id="upcoming-campaigns" className="relative">
