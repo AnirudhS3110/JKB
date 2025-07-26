@@ -169,7 +169,7 @@ export default function HomePage() {
           </section>
           
           {/* Contact Us Section */}
-          <section id="contact" className="relative">
+          <section id="contact" className="relative ">
             <ContactusSection />
           </section>
           

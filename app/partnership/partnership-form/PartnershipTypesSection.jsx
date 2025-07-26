@@ -10,13 +10,13 @@ export default function PartnershipTypesSection() {
   const partnershipTypes = [
     {
       name: "Knowledge & Research Collaboration",
-      designation: "Academic & Research Partnerships",
+      designation: "Academic & Research Collaboration",
       quote: "Partner with us to conduct groundbreaking research, develop evidence-based interventions, and create knowledge resources that drive sustainable social change. Our knowledge partnerships bridge theory and practice to address complex challenges.",
       src: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-      link: "/partnership/knowledge-research"
+      link: "/partnership/k nowledge-research"
     },
     {
-      name: "Technology & Innovation Partnership",
+      name: "Technology & Innovation Collaboration",
       designation: "Tech-Driven Social Solutions",
       quote: "Leverage technology to amplify social impact. We collaborate with tech innovators to develop digital solutions, platforms, and tools that address critical needs and create scalable, sustainable change in underserved communities.",
       src: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
