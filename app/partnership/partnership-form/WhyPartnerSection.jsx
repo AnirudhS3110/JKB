@@ -10,7 +10,7 @@ export default function WhyPartnerSection() {
     {
       id: 1,
       title: "Amplified Social Impact",
-      description: "By partnering with Jaskaran Bothra Foundation, your organization's social initiatives gain enhanced reach and impact. Our established networks and deep community connections ensure your contributions create meaningful, lasting change where it's needed most.",
+      description: "By collaborating with Jaskaran Bothra Foundation, your organization's social initiatives gain enhanced reach and impact. Our established networks and deep community connections ensure your contributions create meaningful, lasting change where it's needed most.",
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-[#F4720B]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -40,7 +40,7 @@ export default function WhyPartnerSection() {
     {
       id: 4,
       title: "Sustainable Ecosystem Building",
-      description: "Join a growing network of like-minded organizations committed to long-term change. Our collaborative approach creates synergies between partners, fostering an ecosystem where collective efforts yield exponentially greater results than individual initiatives.",
+      description: "Join a growing network of like-minded organizations committed to long-term change. Our collaborative approach creates synergies between Collaborators, fostering an ecosystem where collective efforts yield exponentially greater results than individual initiatives.",
       icon: (
         <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-[#F4720B]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h.5A2.5 2.5 0 0020 5.5v-1.65M12 9.5l3 3m0 0l-3 3m3-3H9" />
@@ -58,7 +58,7 @@ export default function WhyPartnerSection() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-4xl font-heading font-light text-black mb-6">Why Partner with Jaskaran Bothra Foundation</h2>
+          <h2 className="text-4xl font-heading font-light text-black mb-6">Why Collaborate with Jaskaran Bothra Foundation</h2>
           <div className="w-24 h-1 bg-[#F4720B] mx-auto mb-8"></div>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto font-paragraph">
             Together, we can create transformative change that benefits communities while advancing your organization's vision and values.

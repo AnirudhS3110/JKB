@@ -58,11 +58,11 @@ export default function PartnershipForm() {
           {/* Left Column - Form Title and Info */}
           <div className="md:w-1/3 p-8 hidden md:block bg-[#F4720B] text-white rounded-l-lg relative z-10 shadow-[inset_-10px_0px_20px_rgba(0,0,0,0.1)]">
             <h1 className="text-4xl md:text-5xl font-title font-light mb-6">
-              Partner for <span className="border-b-2 border-white">Social Impact</span>
+              Collaborate for <span className="">Social Impact</span>
             </h1>
             
             <p className="text-base font-paragraph mb-12 md:text-[19px]">
-              Every partnership inquiry helps us build a more inclusive, empowered, and sustainable society. We'll get back to you within 24 hours.
+              Every collaboration inquiry helps us build a more inclusive, empowered, and sustainable society. We'll get back to you within 24 hours.
             </p>
             
             <div className="bg-[#F4720B]/80 p-6 rounded-lg shadow-[0_5px_15px_rgba(0,0,0,0.1)]">
@@ -73,7 +73,7 @@ export default function PartnershipForm() {
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 mr-2 mt-1 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span>We seek partners who share our commitment to dignity, inclusion, and social innovation.</span>
+                  <span>We seek Collaborators who share our commitment to dignity, inclusion, and social innovation.</span>
                 </li>
                 <li className="flex items-start">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 mr-2 mt-1 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -165,7 +165,7 @@ export default function PartnershipForm() {
                   id="partnershipReason"
                   value={formData.partnershipReason}
                   onChange={handleInputChange}
-                  placeholder="Tell us about your organization, your goals, or how you'd like to partner with JKBF"
+                  placeholder="Tell us about your organization, your goals, or how you'd like to collaborate with JKBF"
                   className="min-h-[120px] border-0 border-b-2 border-gray-200 rounded-none px-0 focus-visible:ring-0 focus-visible:border-[#F4720B] resize-none"
                     />
                   </div>
@@ -180,7 +180,7 @@ export default function PartnershipForm() {
                 >
                   <div className="flex items-center justify-center">
                     <span className={`inline-block transition-transform duration-300 ${isHovered ? '-translate-x-3' : 'translate-x-0'}`}>
-                  Submit Partnership Inquiry
+                  Submit Collaboration Inquiry
                     </span>
                     <svg 
                       xmlns="http://www.w3.org/2000/svg" 

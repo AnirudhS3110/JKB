@@ -25,7 +25,7 @@ export default function HeroSection() {
           transition={{ duration: 0.8 }}
           className="max-w-3xl"
         >
-          <h1 className="text-5xl md:text-6xl font-heading font-light mb-6">Partnership</h1>
+          <h1 className="text-5xl md:text-6xl font-heading font-light mb-6">Collaboration</h1>
           <p className="text-xl font-paragraph text-gray-200 max-w-2xl">
             Join forces with us to create extraordinary impact. Together, we don't just change lives—we transform futures.
           </p>
@@ -49,7 +49,7 @@ export default function HeroSection() {
       >
         {/* Text label */}
         <span className="text-white text-lg font-light mb-4 font-paragraph group-hover:text-[#F4720B]/90 transition-colors">
-          Explore Partnership Opportunities
+          Explore Collaboration Opportunities
         </span>
         
         {/* Simple circular button with arrow */}

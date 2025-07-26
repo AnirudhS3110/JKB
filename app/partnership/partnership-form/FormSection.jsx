@@ -16,7 +16,7 @@ export default function FormSection() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-4xl font-heading font-light text-black mb-6">Start Your Partnership Journey</h2>
+          <h2 className="text-4xl font-heading font-light text-black mb-6">Start Your Collaboration Journey</h2>
           <div className="w-24 h-1 bg-[#F4720B] mx-auto mb-8"></div>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto font-paragraph">
             Ready to make a difference? Fill out the form below and we'll get back to you within 24 hours.

@@ -23,18 +23,18 @@ export default function UpcomingCampaigns() {
     {
       id: 2,
       title: "Eternal Flame Campaign",
-      image: "/images/EternalFlame.jpg",
+      image: "https://videos.openai.com/vg-assets/assets%2Ftask_01k1314dpwe1ks1gef74vm2qmq%2F1753522373_img_1.webp?st=2025-07-26T08%3A11%3A35Z&se=2025-08-01T09%3A11%3A35Z&sks=b&skt=2025-07-26T08%3A11%3A35Z&ske=2025-08-01T09%3A11%3A35Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=8ebb0df1-a278-4e2e-9c20-f2d373479b3a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=JS7s2ocu96CKIz%2BRGyWhQVWgc3HQ6jSmnDJCY5kOG9Y%3D&az=oaivgprodscus",
       status: "Starting Soon",
-      link: "https://videos.openai.com/vg-assets/assets%2Ftask_01k1314dpwe1ks1gef74vm2qmq%2F1753522373_img_1.webp?st=2025-07-26T08%3A11%3A35Z&se=2025-08-01T09%3A11%3A35Z&sks=b&skt=2025-07-26T08%3A11%3A35Z&ske=2025-08-01T09%3A11%3A35Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=8ebb0df1-a278-4e2e-9c20-f2d373479b3a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=JS7s2ocu96CKIz%2BRGyWhQVWgc3HQ6jSmnDJCY5kOG9Y%3D&az=oaivgprodscus",
+      link: "/upcoming-campaigns/eternal-flame-campaign",
       statusColor: "#F4720B", // Orange
       description: "Immortalizing great personalities through postal stamps, commemorative coins, and published biographies—ensuring their contributions inspire future generations."
     },
     {
       id: 3,
       title: "Named After Mom",
-      image: "/images/NamedAfterMom.jpg",
+      image: "https://videos.openai.com/vg-assets/assets%2Ftask_01k130yy1afq1sp33py078npm3%2F1753522248_img_0.webp?st=2025-07-26T08%3A08%3A47Z&se=2025-08-01T09%3A08%3A47Z&sks=b&skt=2025-07-26T08%3A08%3A47Z&ske=2025-08-01T09%3A08%3A47Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=8ebb0df1-a278-4e2e-9c20-f2d373479b3a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=APezobL7Y%2F%2B2Mp7NFQO3lwgbsBgozx37lfT2T%2BblPM4%3D&az=oaivgprodscus",
       status: "Project Underway",
-      link: "https://videos.openai.com/vg-assets/assets%2Ftask_01k130yy1afq1sp33py078npm3%2F1753522248_img_0.webp?st=2025-07-26T08%3A08%3A47Z&se=2025-08-01T09%3A08%3A47Z&sks=b&skt=2025-07-26T08%3A08%3A47Z&ske=2025-08-01T09%3A08%3A47Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=8ebb0df1-a278-4e2e-9c20-f2d373479b3a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=APezobL7Y%2F%2B2Mp7NFQO3lwgbsBgozx37lfT2T%2BblPM4%3D&az=oaivgprodscus",
+      link: "/upcoming-campaigns/named-after-mom",
       statusColor: "#F4720B", // Orange
       description: "A first-of-its-kind initiative advocating for the mandatory inclusion of mothers' names in all government documents, recognizing women through official identity."
     }
@@ -55,7 +55,7 @@ export default function UpcomingCampaigns() {
   };
 
   return (
-    <div className="relative bg-[#fbfbfb]"  ref={sectionRef}>
+    <div className="relative bg-[#ffffff]"  ref={sectionRef}>
       <section className="max-w-7xl mx-auto px-6 py-12">
         {/* Header section with title and view all button */}
         <div  className="flex justify-between items-center  mb-12">
@@ -120,7 +120,7 @@ export default function UpcomingCampaigns() {
               </p>
               
               {/* Enroll button - left aligned with image */}
-              <button onClick={() => router.push(campaign.link)} suppressHydrationWarning={true} className="relative overflow-hidden text-left w-fit bg-[#F4720B] text-white font-paragraph px-6 py-3 hover:bg-[#E05900] transition-all duration-300 group">
+              <button onClick={() => router.push(campaign.link)} suppressHydrationWarning={true} className="relative cursor-pointer overflow-hidden text-left w-fit bg-[#F4720B] text-white font-paragraph px-6 py-3 hover:bg-[#E05900] transition-all duration-300 group">
                 <span className="inline-block transition-transform duration-300 group-hover:-translate-x-2">Learn More</span>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 inline-block ml-0 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />

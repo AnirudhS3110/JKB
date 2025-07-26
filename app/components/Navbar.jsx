@@ -99,15 +99,15 @@ const ImprovedNavbar = () => {
       ]
     },
     {
-      title: 'Partnership',
+      title: 'Collaboration',
       href:'/#partnership',
       description: 'Join forces with us to amplify your impact through strategic collaborations and initiatives.',
       image: 'https://images.unsplash.com/photo-1665072204431-b3ba11bd6d06?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHBhcnRuZXJzaGlwfGVufDB8fDB8fHww',
       links: [
-        { text: 'Partnerships', href: '/partnership/partnership-form' },
-        { text: 'Why partnership with us?', href: '/partnership/partnership-form/#why-partnership-with-us' },
-        { text: 'Partnership Types', href: '/partnership/partnership-form/#partnership-types' },
-        { text: 'Partnership Form', href: '/partnership/partnership-form/#partnership-form' },
+        { text: 'Collaborations', href: '/partnership/partnership-form' },
+        { text: 'Why collaborate with us?', href: '/partnership/partnership-form/#why-partnership-with-us' },
+        { text: 'Collaboration Types', href: '/partnership/partnership-form/#partnership-types' },
+        { text: 'Collaboration Form', href: '/partnership/partnership-form/#partnership-form' },
       ]
     },
     {
