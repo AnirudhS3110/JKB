@@ -68,6 +68,45 @@ export const products = [
       thumbnail:
       "/images/MediaCoverage/8.jpg",
     },
+    {
+      title: "Youth Empowerment",
+      link: "/youth-empowerment",
+      thumbnail:
+      "/images/HeroParallax/12.jpg", 
+    },
+    {
+      title: "Youth Empowerment",
+      link: "/youth-empowerment",
+      thumbnail:
+      "/images/HeroParallax/10.jpg", 
+    },
+    {
+      title: "Youth Empowerment",
+      link: "/youth-empowerment",
+      thumbnail:
+      "/images/HeroParallax/9.jpg", 
+    },
+    {
+      title: "Youth Empowerment",
+      link: "/youth-empowerment",
+      thumbnail:
+      "/images/HeroParallax/11.jpg", 
+    },
+    {
+      title: "Youth Empowerment",
+      link: "/youth-empowerment",
+      thumbnail:
+      "/images/HeroParallax/8.jpg", 
+    },
+    {
+      title: "Youth Empowerment",
+      link: "/youth-empowerment",
+      thumbnail:
+      "/images/HeroParallax/7.jpg", 
+    },
+    {
+      
+    }
     
   ];
   
