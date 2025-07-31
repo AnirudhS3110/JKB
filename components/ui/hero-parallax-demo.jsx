@@ -11,12 +11,12 @@ export const products = [
       title: "Green Energy Initiative",
       link: "/green-energy",
       thumbnail:
-        "/images/neoNatal.jpg",
+        "/images/HeroParallax/7.jpg",
     },
   {
         title: "Healthcare programmes",
         link: "/farming",
-        thumbnail:"/images/MediaCoverage/11.jpg",
+        thumbnail:"/images/HeroParallax/8.jpg",
       },
   
   
@@ -78,7 +78,7 @@ export const products = [
       title: "Youth Empowerment",
       link: "/youth-empowerment",
       thumbnail:
-      "/images/HeroParallax/10.jpg", 
+      "", 
     },
     {
       title: "Youth Empowerment",
@@ -88,7 +88,7 @@ export const products = [
     },
     {
       title: "Youth Empowerment",
-      link: "/youth-empowerment",
+      link: "/youth-empowerent",
       thumbnail:
       "/images/HeroParallax/11.jpg", 
     },
@@ -96,13 +96,13 @@ export const products = [
       title: "Youth Empowerment",
       link: "/youth-empowerment",
       thumbnail:
-      "/images/HeroParallax/8.jpg", 
+      "/images/HeroParallax/10.jpg", 
     },
     {
       title: "Youth Empowerment",
-      link: "/youth-empowerment",
+      link: "/youth-empowermet",
       thumbnail:
-      "/images/HeroParallax/7.jpg", 
+      "", 
     },
     {
       

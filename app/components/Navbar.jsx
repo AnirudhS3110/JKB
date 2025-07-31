@@ -135,7 +135,7 @@ const ImprovedNavbar = () => {
   return (
     <header 
       ref={navbarRef}
-      className={`fixed top-0 left-0 w-full z-220 transition-all duration-300 ${
+      className={`fixed top-0 left-0 w-full z-[150] transition-all duration-300 ${
         isScrolled || activeDropdown !== null ? 'bg-[#000000]' : 'bg-transparent'
       }`}
       suppressHydrationWarning
